@@ -9,7 +9,8 @@ Check if `ruby` is installed: `ruby -v`
 Assuming it is, do (may need to run w/ sudo): `gem update --system && gem install compass`
 
 Check if `brew` is installed: `which brew`  
-If it's not: `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+If it's not:  
+`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
 Check if `node` is installed: `node -v`  
 If it's not: `brew install node`
