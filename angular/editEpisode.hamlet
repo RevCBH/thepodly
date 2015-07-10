@@ -1,0 +1,243 @@
+<div episode-editor>
+  <div class="affix" style="left:5px; width: 100px">
+    <ul class="nav nav-pills nav-stacked well well-small" style="min-width: 100px; background-color: white; margin-bottom: 6px;">
+      <li><a href="/admin/podcasts/{{episode.podcast}}"><i class="icon-chevron-left"></i> Episodes</a>
+      <li><hr style="margin: 3px 0px;">
+      <li class="active">
+        <a href="#display-nodes" show-tab ng-click="curTab = 'nodes'">
+          Nodes
+      <li><a href="#episode-properties" show-tab ng-click="curTab = 'properties'">Properties</a>
+      <li ng-show="canManage()">
+        <a href="#manage-permissions" show-tab ng-click="curTab = 'manage'">Manage</a>
+      <li><a href="#csv-import-nodes" show-tab ng-click="curTab = 'import'">Spreadsheet Import</a>
+    <ul ng-show="curTab == 'nodes'" class="nav nav-pills nav-stacked well well-small" style="min-width: 100px; background-color: white;">
+      <li style="text-align: center;">
+        <span style="background-color: #eee;">{{time | formatOffset }}
+      <li id="mini-play-controls">
+        <div class="btn-group">
+          <button class="btn btn-mini" ng-click="seek(time - 5)">
+            <i class="icon-backward"></i>
+          <button class="btn btn-mini" ng-click="togglePlay()">
+            <i ng-class="{'icon-play': !isPlaying, 'icon-pause': isPlaying}"></i>
+          <button class="btn btn-mini" ng-click="seek(time + 5)">
+            <i class="icon-forward"></i>
+    <ul class="nav nav-pills nav-stacked well well-small" style="min-width: 100px; background-color: white;">
+      <li>Publishing
+      <li style="text-align: center;">
+        <button ng-show="canSubmit()" class="btn btn-success" ng-click="submitEpisode()">
+          Submit
+      <li style="text-align: center;">
+        <button ng-show="canPublish()" class="btn btn-primary" ng-click="publishEpisode()">
+          Publish
+      <li style="text-align: center;">
+        <button ng-show="canUnpublish()" class="btn btn-warning" ng-click="unpublishEpisode()">
+          Un-Publish
+
+  <div id="nowPlayingTitle">
+    Joe Rogan Experience &#35;{{episode.number}}
+  <div id="nowPlayingSubTitle">
+    {{episode.title}}
+
+  <div class="tab-content" style="margin-top: 20px;">
+    <div id="episode-properties" class="tab-pane">
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label" for="episodeTitle">Episode Title
+          <div in-place class="controls" model=episode.title on-update="saveProperty('title')">
+            <input type=text name="episodeTitle" ng-model=episode.title>
+        <div class="control-group">
+          <label class="control-label" for="episodeNumber">Episode Number
+          <div in-place class="controls" model=episode.number on-update="saveProperty('number')">
+            <input type=number name="episodeNumber" ng-model=episode.number>
+      <div id="mediaSourcePanel">
+        <div>
+          <h5>Add Media
+          <input type="url" id="newMediaSource" ng-model="newMediaSourceUrl" ui-keypress="{enter: 'addMediaSource()'}">
+          <br>
+          <span ng-show="newMediaSource" class="label label-info">{{newMediaSource.kind.toString()}}
+          <div ng-show="newMediaSource" id="newMediaPreview">
+        <div ng-repeat="x in episode.mediaSources">
+          [<a ng-click="removeMediaSource(x)">x</a>]
+          <span class="label label-info">{{x.kind}}
+          {{x.resource}}
+
+        <!-- <div class="control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" ng-model=episode.published>Published? -->
+
+    <!-- Node editor -->
+    <div id="display-nodes" class="tab-pane active">
+      <div #contentContainerLeft>
+        <!--Table holding Video & List Controls-->
+        <table class="table" id="topContent">
+          <!--Video Container-->
+          <div id="videoContainer">
+            <tr>
+              <td id="videoContainerCell">
+          <!--End Video Container-->
+        <!--End Table holding Video & List Controls-->
+
+        <div sticky-bits>
+          <div class="sticky-anchor">
+          <div id="newNodeNav" class="newNodeNav sticky">
+            <div id="newNode">
+              <!--Input for Nodes-->
+              <form class="form-inline">
+                <div class="input-prepend input-append">
+                  <!--Time Input-->
+                  <span class="add-on" type="text" class="input-mini" disabled>
+                    {{time | formatOffset}}
+                  <!--Title Input-->
+                  <input type="text" class="span2" placeholder="Topic" ng-model="newNodeTitle" ui-keydown="{enter: 'createNode()', 'ctrl-space': 'togglePlay($event)', 'ctrl-188 ctrl-219': 'seek(time - 5)', 'ctrl-190 ctrl-221': 'seek(time + 5)', 'ctrl-enter': 'syncTime(lastCreatedNode)', 'shift-enter': 'seek(lastCreatedNode.time)'}">
+                  <!--Add Button-->
+                  <a class="btn" type="button" ng-click="createNode()"><i class="icon-plus"></i>Add
+              <!--End Input for Nodes-->
+            <!--End newNode-->
+
+            <!--Total Topics:# & "Clear Selected"-->
+            <div id="totalTopics">
+              <h3>
+                <div class="span3">
+                  Total topics: {{episode.nodes.length}}
+            <!--End Total Topics:# & "Clear Selected"-->
+          <!--End newNodeNav-->
+
+        <!--Cleaned up Node List-->
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Play
+              <th>Time
+              <th>Title
+              <th>Category
+              <th>Link
+              <th>Delete
+          <tbody data-selector="td.status .popover-thunk" data-placement="top" data-trigger="hover" data-title="" data-html="true">
+            <tr ng-repeat="x in nodeRows | orderBy:'-time':false">
+              <td style="width: 40px;">
+                <button class="btn" ng-click="seek(x.time)">
+                  <i class="icon-play"></i>
+              <td>
+                <a class="btn" ng-class="{'btn-info': x.time || x.time == 0, 'btn-danger': !x.time && x.time != 0}"
+                               ng-click="syncTime(x, $event)"
+                               ng-hide="x.manualMode">{{x.time | formatOffset}}</a>
+                <input class="span2" style="margin-bottom: 0px" type=text ng-show="x.manualMode"
+                       ng-model=x.newTimeBuffer ui-mask="'99:99:99'"
+                       ui-keydown="{enter: 'updateTimeManual(x, true)', 27: 'updateTimeManual(x, false)'}"
+                       ui-event="{blur: 'updateTimeManual(x, true)'}">
+              <td ng-class="x.statusFor('title')">
+                <div class="popover-thunk" data-content="{{x.messagesFor('title', true)}}">
+                  <div class="span2" in-place model=x.title on-update="x.update()">
+                    <input class="span2" type=text ng-model=x.title>
+              <td ng-class="x.statusFor('nodeType')">
+                <div class="popover-thunk" data-content="{{x.messagesFor('nodeType', true)}}">
+                  <div node-type-select model=x.nodeType on-update="x.update()">
+                    <a ng-click="showNewNodeTypeModal(x.invalidNodeType())" ng-show="x.invalidNodeType()" style="color: green">
+                      <i class="icon-plus-sign"></i><i>create</i>
+              <td ng-class="x.statusFor('url')">
+                <div class="popover-thunk" data-content="{{x.messagesFor('url', true)}}">
+                  <div class="span4" in-place model=x.url on-update="x.update()">
+                    <input class="span4" type=text ng-model=x.url>
+              <td style="width: 40px;">
+                <!-- <div id="infoStatusBadge">
+                  <span class="badge badge-{{todo.badge}}">i -->
+                <button class="btn btn-danger" ng-click="deleteNode(x.model)"><i class="icon-trash"></i>
+        <!--End Cleaned up Node List-->
+
+    <div id="csv-import-nodes" class="tab-pane">
+      <!-- CSV ingestion box + error area -->
+      <div class="row">
+        <div class="span6">
+          <h3>CSV/TSV Import
+          <textarea rows=3 class="span6" ng-model=csvData>
+          <br>
+        <div class="span6">
+          <h3>Status
+          <div id="csv-status" class="well well-small">
+            <div ng-show=parseErrors>
+              <h6>There was a problem reading the data
+              <div ng-repeat="err in parseErrors">{{err}}
+            <div>
+              <span style="color: green"><b>OK:</b> {{successNodes().length}}
+              <span style="color: red"><b>Errors:</b> {{errorNodes().length}}
+            <div>
+              <a class="btn btn-danger" ng-click="saveCSV({overwrite: true})">Overwrite
+              <a class="btn" ng-class="appendBtnClass()" ng-click="saveCSV()">Append
+
+      <!-- Node Table -->
+      <div class="row" ng-show=nodeParseResults>
+        <div class="span12">
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <td>Status
+                <td>Time
+                <td>Title
+                <td>Category
+                <td>Link
+            <tbody data-selector="i.icon-info-sign" data-placement="right" data-trigger="hover" data-title="Errors" data-html="true">
+              <tr ng-repeat="x in nodeParseResults" ng-class="x.cssRowClass">
+                <td><i ng-class=x.rowIcon data-content="{{x.popoverContent()}}"> {{x.statusText}}
+                <td>{{x.node.time | formatOffset}}
+                <td>
+                  <div class="span4" in-place model=x.node.title on-update="x.validate()">
+                    <input class="span4" type=text ng-model=x.node.title>
+                <td>
+                  <div node-type-select class="span2" model=x.node.nodeType on-update="x.validate()">
+                    <a ng-click="showNewNodeTypeModal(x.invalidNodeType())" ng-show="x.invalidNodeType()" style="color: green">
+                      <i class="icon-plus-sign"></i><i>create</i>
+                <td>
+                  <div class="span4 in-place-wrapper" in-place model=x.node.url on-update="x.validate()">
+                    <input class="span4" type=url ng-model=x.node.url>
+    <!-- Permissions Editor -->
+    <div id="manage-permissions" class="tab-pane">
+      <div .span12 style="margin-left:0px">
+        <form .form-inline style="margin-top: 20px; margin-bottom: 5px">
+          <input type="text" ng-model="grantUserEmail" placeholder="User email">
+          <button type="button" class="btn btn-primary" ng-click="addGrantUser()">Add
+        <table .table>
+          <thead>
+            <tr>
+              <td>User
+              <td>Permissions
+          <tbody>
+            <tr ng-repeat="x in rights">
+              <td>{{x.ident}}
+              <td>
+                <div class="btn-group" data-toggle="buttons-checkbox">
+                  <button type="button" class="btn btn-info"
+                          ng-class="{active: hasPermisson(x.id, 'AsEditor')}"
+                          ng-click="togglePermission(x.id, 'AsEditor')">Edit
+                  <button type="button" class="btn btn-info"
+                          ng-class="{active: hasPermisson(x.id, 'AsManager')}"
+                          ng-click="togglePermission(x.id, 'AsManager')">Manage
+                  <button type="button" class="btn btn-info"
+                          ng-class="{active: hasPermisson(x.id, 'AsPublisher'), disabled: !isAdmin()}"
+                          ng-click="togglePermission(x.id, 'AsPublisher')">Publish
+                  <button type="button" class="btn btn-info"
+                          ng-class="{active: hasPermisson(x.id, 'AsAdmin'), disabled: !isAdmin()}"
+                          ng-click="togglePermission(x.id, 'AsAdmin')">Admin
+
+  <!-- NodeType creation modal -->
+  <div id="node-type-creator" class="modal hide fade">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+      <h3>Create Node Type
+    <div class="modal-body">
+      <p>Title: <input type="text" ng-model=newNodeType.title>
+      <p>Icon: {{newNodeType.icon}}
+
+      <div class="icon-pane">
+        <ul>
+          <li ng-repeat="icon in icons" ng-class="{'active-icon': icon == newNodeType.icon}">
+            <a ng-click="newNodeType.icon = icon.name">
+              <img ng-src="/static/img/{{icon.name}}">
+    <div class="modal-footer">
+      <a ng-click="hideNodeTypeModal()" data-dismiss-"modal" class="btn">Cancel</a>
+      <button ng-click="saveNewNodeType()" ng-disabled="!(newNodeType.title && newNodeType.icon)" class="btn btn-primary">Create</button>
+<script>
+  var tag = document.createElement('script');
+  tag.src = "//www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);

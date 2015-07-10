@@ -1,0 +1,20 @@
+<div podcast-detail>
+  <h1>{{podcast.name}}
+
+<h2>Episodes <small><a href="/admin/podcasts/{{podcast.name}}/episodes.new">new</a>
+<table episode-list .table .table-striped .table-small .table-condensed>
+  <thead>
+    <tr>
+      <td .span1>Number
+      <td>Title
+      <td>State
+  <tbody>
+    <tr ng-repeat="episode in episodes | orderBy:'number':'true'">
+      <td .span1>{{episode.number}}
+      <td><a href="/admin/podcasts/{{podcast.name}}/episodes/{{episode.number}}">{{episode.title}}
+      <td><span class="label label-info">{{episode.published}}
+
+<ul>
+  <li ng-repeat="r in rights">
+    <div ng-show="r.HasRole">Role: {{r.HasRole.permission.toString()}}
+    <div ng-show="r.HasEpisodeGrant">Role: {{r.HasEpisodeGrant.permission.toString()}} (episode id: {{r.HasEpisodeGrant.episodeId}})
