@@ -3,19 +3,30 @@
   <table .table>
     <thead>
       <tr>
-        <td>Identity
-        <td>Permissions
+        <td>Identity</td>
+        <td>Permissions</td>
+      </tr>
+    </thead>
     <tbody>
       <tr ng-repeat="user in users">
-        <td>{{user.identity}}
+        <td>{{user.identity}}</td>
         <td>
           <ul style="list-style-type: none;">
             <li ng-repeat="p in user.permissions" style="display: inline-block;">
               <div ng-show="p.HasRole"
                    style="background-color: #D0D4DF; margin-right: 12px; margin-bottom: 3px; padding: 4px; border-radius: 4px;">
-                <span class="label label-important">Role
-                <span>{{p.HasRole.permission}}
+                <span class="label label-important">Role</span>
+                <span>{{p.HasRole.permission}}</span>
+              </div>
               <div ng-show="p.HasEpisodeGrant"
                    style="background-color: #D0D4DF; margin-right: 12px; margin-bottom: 5px; padding: 4px; border-radius: 4px;">
-                <span class="label label-info">Grant
-                <span>on {{p.HasEpisodeGrant.episodeId}} {{p.HasEpisodeGrant.permission}}
+                <span class="label label-info">Grant</span>
+                <span>on {{p.HasEpisodeGrant.episodeId}} {{p.HasEpisodeGrant.permission}}</span>
+              </div>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
