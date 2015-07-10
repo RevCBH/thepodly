@@ -1,14 +1,18 @@
-<h1>{{episode.podcast}}
+<h1>{{episode.podcast}}</h1>
 <form class="form-horizontal" ng-submit="submit()">
   <div class="control-group">
-    <label class="control-label" for="episodeTitle">Title
+    <label class="control-label" for="episodeTitle">Title</label>
     <div class="controls">
       <input type="text" id="episodeTitle" ng-model="episode.title" required>
+    </div>
+  </div>
 
   <div class="control-group">
-    <label class="control-label" for="episodeNumber">Number
+    <label class="control-label" for="episodeNumber">Number</label>
     <div class="controls">
       <input type="number" id="episodeNumber" ng-model="episode.number" required>
+    </div>
+  </div>
 
   <!-- <div class="control-group">
     <label class="control-label" for="episodeAirDate">Air Date
@@ -21,14 +25,19 @@
       <input type="text" id="episodeSearchSlug" ng-model="episode.searchSlug"> -->
 
   <div class="control-group">
-    <label class="control-label" for="mediaSource">Media URL
+    <label class="control-label" for="mediaSource">Media URL</label>
     <div class="controls">
       <input type="url" id="mediaSource" ng-model="mediaSourceUrl">
-      <div id="player-preview">
+      <div id="player-preview"></div>
+    </div>
+  </div>
 
   <div class="control-group">
     <div class="controls">
-      <button class="btn btn-primary" type="submit" ng-disabled="!isValid()">Create
+      <button class="btn btn-primary" type="submit" ng-disabled="!isValid()">Create</button>
+    </div>
+  </div>
+</form>
 
 <!-- <textarea ng-model="csvData">
 
