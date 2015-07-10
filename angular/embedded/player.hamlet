@@ -1,2 +1,0 @@
-<div podly-vimeo id="contentContainerLeft">
-  <div ng-include src="'/partials/player.html'" onload="loadMedia()">
