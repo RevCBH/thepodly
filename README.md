@@ -2,7 +2,7 @@
 Resurrect Podly
 
 # Dev Setup
-I built a blank `[yo](http://yeoman.io/) [angular](https://github.com/yeoman/generator-angular)` and copied it into the project. The idea is to port the stuff under `angular/` over to `app/`
+I built a blank [yo](http://yeoman.io/) [angular](https://github.com/yeoman/generator-angular) and copied it into the project. The idea is to port the stuff under `angular/` over to `app/`
 
 ## Installing dependencies
 Check if `ruby` is installed: `ruby -v`
