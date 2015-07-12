@@ -24,17 +24,21 @@
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#podly-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="#/">Podly</a>
           </div>
 
-          <div class="collapse">
-
+          <div class="collapse navbar-collapse" id="podly-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a href="http://podlyblog.tumblr.com/" target="_blank">Blog</a></li>
             </ul>
+            <ul class="nav navbar-nav pull-right">
+              <li><a id="toolbar-logout-link" data-placement="bottom" href="#/logout">Logout</a></li>
           </div>
         </div>
       </div>
