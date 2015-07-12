@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name yoApp
+ * @name podlyApp
  * @description
- * # yoApp
+ * # Podly app
  *
  * Main module of the application.
  */
 angular
-  .module('yoApp', [
+  .module('podlyApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
