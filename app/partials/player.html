@@ -1,0 +1,66 @@
+<!--Table holding Video & List Controls-->
+<table class="table" id="topContent">
+  <tbody>
+    <tr>
+      <td id="videoContainerCell"></td>
+    </tr>
+    <!--List Controls Top-->
+    <tr>
+      <td id="listControlTop">
+        <a class="btn btn-small" ng-click="scrollToCurrent()" ng-hide="shouldHideSnapButton()">Now Playing</a>
+
+        <form class="navbar-search pull-right">
+          <input type="text" class="search-query" placeholder="Search this episode" ng-model="shared.nodeFilter">
+        </form>
+      </td>
+    </tr>
+    <!--End List Controls Top-->
+  </tbody>
+</table>
+<!--End Table holding Video & List Controls-->
+
+<!--List o' Nodes-->
+<div id="listOfNodes">
+  <table class="table table-striped">
+    <!--Node Elements Row 1-->
+    <tr ng-repeat="node in episode.nodes | filter:shared.nodeFilter" data-node-id="{{node.relId}}" ng-class="classesForNode(node)">
+      <td>
+        <div class="nodeElements" ng-click="seek(node)">
+          <!--Play Time-->
+          <div class="playTime">
+            <!--Button -->
+            <div class="playButton">
+              <button type="submit" class="btn btn-mini" ng-click="seek(node)">
+                <i class="icon-play icon-black">&nbsp;</i>
+              </button>
+            </div>
+
+            <!--Time Test-->
+            <div class="playButtonTime">{{node.time | formatOffset}}</div>
+          <!--End Play Time-->
+          </div>
+
+          <!--Icon-->
+          <div class="icon">
+            <img ng-src="/static/img/{{node.nodeType.icon}}">
+          </div>
+          <!--End Icon-->
+
+          <!--Wordy Bits -->
+          <div class="wordyBits">
+            <div class="category">{{node.nodeType.title | categoryTitle}}</div>
+            <div class="wordLinks">
+              <a href="{{node.url}}" stop-event="click" target="_blank" ng-click="trackExit(node)">{{node.title}}</a>
+            </div>
+          </div>
+          <!--End Wordy Bits -->
+          <div class="twitterNodeShare">
+            <a href="https://twitter.com/share" class="socialite twitter-share" data-text="{{tweetText(node)}}" data-url="{{linkToNode(node)}}" data-via="ThePodly" data-size="large" data-related="JoeRoganExp" data-count="none" data-hashtags="podly,{{node.nodeType.title}}"></a>
+          </div>
+        </div>
+        <!--End Node Elements-->
+      </td>
+    </tr>
+    <!--End Row -->
+  </table>
+</div>
