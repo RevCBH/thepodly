@@ -1,0 +1,305 @@
+ <!DOCTYPE html>
+<html>
+  <title></title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+    
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+      <!-- Boostrap Goodness --> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Custom CSS--> 
+        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- More bootstrap goodness -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- End more bootstrap goodness -->
+  
+  <!-- Master Div -->
+    <div class = "container-fluid">
+      
+    
+          <p></p><p></p>
+          <!-- Embeded Player demo --> 
+             
+            <div class="old-panel panel-default col-xs-12">
+              <div class="old-panel-body">
+                
+                
+
+                <!-- Pannel wrapping just the player --> 
+                <div class="panel panel-default col-xs-12">
+                  <div class="panel-body">
+                  
+                  
+                    <h4>
+                      Heal Yourself Radio Podcast  
+                    </h4>
+                    <h5>
+                      Episode 20 - Evidence-based Sports Nutrition Hacks with Jose Antonio PhD
+                    </h5>
+                    
+                  <div class='container'>
+                    <div class = 'row-fluid pull-left'>
+                    <!-- Image --> 
+                      <img id="jp_poster_0" src="https://assets.libsyn.com/secure/content/9481545?width=480&amp;height=320&amp;overlay=true&amp;player_time=1438051907367" style="width: auto; height: 320px; display: block; text-align: center; margin: 0px auto;" class="img-rounded" class="text-left">
+
+                    <!-- Audio Control -->
+                        <audio controls="" autoplay="" name="media" id="demo" width="480">
+                            
+                          <source src="http://hwcdn.libsyn.com/p/8/3/b/83bd15215470c98e/Jose_Antonio_interview_final_cut_-_72615_1.35_PM.mp3?c_id=9481552&expiration=1438054573&hwt=0fc88897e9e101ebd4c2ce950d10f245" type="audio/mpeg" preload = 'auto'>
+                        </audio>
+                         </br>
+                        
+                      <!-- Editors tools -->
+ 
+                        
+                    
+                        
+                        <!-- Backwards --> 
+                          <!-- Seek back 10 seconds --> 
+                          <button onclick="document.getElementById(&#39;demo&#39;).currentTime-=10">&lt;&lt;</button>
+                          <!-- Seek back 5 seconds --> 
+                          <button onclick="document.getElementById(&#39;demo&#39;).currentTime-=5">&lt;</button>
+                          
+                        <!-- Forward --> 
+                          <!-- Seek forward 5 seconds --> 
+                          <button onclick="document.getElementById(&#39;demo&#39;).currentTime+=5">&gt;</button>
+                          <!-- Seek forward 10 seconds --> 
+                          <button onclick="document.getElementById(&#39;demo&#39;).currentTime+=10">&gt;&gt;</button>
+                        </p>
+                      <!-- End / Audio Controls --> 
+                    </div>
+                  </div>
+
+                      
+                    <!-- Embded player relevant links -->   
+                      <div id="Embded player relevant links">
+                        <h5>Show Notes</h5>
+                          <!-- Play Relevent Links --> 
+                            <!--Intro
+                              <p>
+                                <button type="button" class="btn btn-default btn"" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=08">
+                                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;</button> Intro
+                              </p>-->
+                            
+                          <!-- Guest: Jose Antonio, PhD -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=0"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> &nbsp; Guest: Jose Antonio, PhD</button> 
+                                <a href = "https://twitter.com/JoseAntonioPhD" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+
+
+                          <!-- Sports Nutrition Conference -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=240.5"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; International Society of Sports Nutrition Conference in Clearwater, FL - June 9 -11 2016</button> 
+                                <a href = "http://www.sportsnutritionsociety.org/conferences.html" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+
+                        
+                          <!-- Optimizing nutrition for endurance sports-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=338"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;Optimizing nutrition for endurance sports</button> 
+                                
+                            </p>
+                          
+                          <!-- Benefits of caffeine extend to all sports-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=432"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;Benefits of caffeine extend to all sports</button> 
+                                
+                            </p>
+
+                          <!-- Beta Alanine Supplementation: One of the best ergogenic aids that athletes don’t know about -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=495"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;Beta Alanine Supplementation: One of the best ergogenic aids athletes don’t know about</button> 
+                                
+                            </p>
+
+                          <!-- Optimizing strength and power output  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=560"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;Optimizing strength and power output </button> 
+                                
+                            </p>
+
+                          <!-- Creatine Monohydrate: “The single most effective sports supplement ever”   -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=579"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;Creatine Monohydrate: “The single most effective sports supplement ever” </button> 
+                                
+                            </p>
+
+                          <!-- The post workout nutrient timing: what’s the truth?   -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=652"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;The post workout nutrient timing: what’s the truth?</button> 
+                                  
+                            </p>
+
+                          
+                          
+                            </br>
+                            <p>
+                              <u>3 Big Myths in Sports Nutrition</u>
+                            </p>
+                            
+                            <ol>
+                              <li>
+                                <!-- “Eating a lot of protein is bad for your kidneys” -->
+                                <p>
+                                  <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=838"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;“Eating a lot of protein is bad for your kidneys”</button> 
+                                    
+                                </p>
+                              </li>
+                              <li>
+                                <!-- “Kids shouldn’t take supplements” -->
+                                <p>
+                                  <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=960"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;“Kids shouldn’t take supplements”</button> 
+                                    
+                                </p>
+                              </li>
+                              <li>
+                                <!-- “You need to clean up your diet before taking supplements” -->
+                                <p>
+                                  <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1080"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;“You need to clean up your diet before taking supplements”</button> 
+                                    
+                                </p>
+                              </li>
+                          </ol>
+                          </br>
+
+                          <!-- The diet that works the best is the diet you will be compliant with  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1211"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;The diet that works the best is the diet you will be compliant with</button> 
+                                
+                            </p>
+
+                          <!-- The Dirty Secret of the Super Lean - they are hungry all the time  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1435"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;The Dirty Secret of the Super Lean - they are hungry all the time</button> 
+                                
+                            </p>
+
+
+                          </br>
+                          <u>Favorite Resources</u>
+                            <ul>
+                              <li>
+                              <!-- National Strength and Conditioning Association Textbooks -->
+                                <p>
+                                  <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1517"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;National Strength and Conditioning Association Textbooks</button> 
+                                    <a href = "http://www.amazon.com/NSCA-National-Strength-Conditioning-Association/e/B007NLWDL8" target="_blank">
+                                      <button type='button' class="btn btn-primary">
+                                        Link
+                                      </button> 
+                                    </a>
+                                </p>
+                              </li>
+
+                              <li>
+                              <!-- The Essentials of Sports Nutrition and Supplements -->
+                                <p>
+                                  <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1550"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;The Essentials of Sports Nutrition and Supplements</button> 
+                                    <a href = "http://www.amazon.com/Essentials-Sports-Nutrition-Supplements-Antonio/dp/1627038159" target="_blank">
+                                      <button type='button' class="btn btn-primary">
+                                        Link
+                                      </button>
+                                    </a>
+                                </p>
+                              </li>
+
+                              <li><!-- yann le meuron Twitter -->
+                                <p>
+                                  <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1590"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;yann le meuron Twitter</button>
+                                    <a href = "https://twitter.com/yannlemeur" target="_blank" class="nav-pill">
+                                      <button type='button' class="btn btn-primary">
+                                        Link
+                                      </button>
+                                    </a>
+                                </p>
+                              </li>
+                            </ul>
+
+                          </br>
+                          <!-- How to perform your best the day of an event? -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1665"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;How to perform your best the day of an event?</button> 
+                              
+                            </p>
+                          <!-- Jose Antonio, PhD on Twitter -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1813.7"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;Jose Antonio, PhD on Twitter</button> 
+                                <a href = "https://twitter.com/JoseAntonioPhD" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+                          <!-- Web Site: International Society for Sports Nutrition -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1823"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;International Society for Sports Nutrition</button> 
+                                <a href = "http://www.issn.net" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+                          <!-- Sports Nutrition Conference -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1840"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;13th annual Sports Nutrition Conference in Clearwater, FL - June 9 -11 2016</button> 
+                                <a href = "http://www.sportsnutritionsociety.org/conferences.html" target="_blank">
+                                <button type='button' class="btn btn-primary">
+                                  Link
+                                </button>
+                                </a>
+                            </p>
+
+                              
+
+
+                  </div>
+                </div>
+                <!-- Pannel wrapping just the player --> 
+                
+              
+                </div>
+            </div>
+
+    
+
+       
+
+</div>
+  <!-- End Master Div --> 

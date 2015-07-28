@@ -1,22 +1,6 @@
-<!-- DO
-  minor funcationality fix (if paused, needs to play when clicking relevant link)
-
-  === YC Applications ===
-  S+ follow up with ClipMine
-  Twitter Bootstrap for organization 
-  Put together demo page & ask friends for input 
-
-  === Optional fun === 
-  Example embed into upvoted UX
-  CSS make player longer
-  loading wheel with jQuery
-
-
- 
--->
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-  <title>Podly Prototype</title>
+  <title></title>
   <!-- head -->
     <head>
       <!-- Include jQuery --> 
@@ -31,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Bootstrap 101 Template</title>
+        
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -56,42 +40,28 @@
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-
+    <!-- End more bootstrap goodness -->
+  
   <!-- Master Div -->
     <div class = "container-fluid">
       
-      <!-- Navbar 
-        <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container">
-            <p class="navbar-text">Podly | Enage your audience, grow your podcast</p>
-          </div>
-        </nav>
-        --> 
+     
         
         <!-- About --> 
           <h2 id="about" class="page-header"><a class="anchorjs-link " href="#about" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>About </h2>
           <p>
-            Podly is a podcast indexer.  We give podcasters simple tools (bult ontop of the index) that make their podcast easier for audiences to discover, engage, search, and share.  
+            This is a bootstrap template for Podly
           </p>
 
-          <p>
-            Podly was started in 2012 and put on pause to make a Bitcoin Exchange, Buttercoin.  Now that Buttercoin has wound down I'm picking Podly back up.  See 'History' section for more details. 
-          </p>
           <!-- End About --> 
 
 
-        <!-- Panel: Embdeded Player Explination & Demo Example --> 
-          <h2 id="examples" class="page-header">
-            <a class="anchorjs-link " href="#examples" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
-            Prototype, Details and Demo
-          </h2>
-        
-        
+       
 
           <!-- Embeded Player demo --> 
              
-            <div class="panel panel-default col-xs-12">
-              <div class="panel-body">
+            <div class="old-panel panel-default col-xs-12">
+              <div class="old-panel-body">
                 
                 <!-- H4 Heading --> 
                 <h4>
@@ -280,80 +250,11 @@
                 </div>
                 <!-- Pannel wrapping just the player --> 
                 
-                <hr>
-                <!-- Details  -->
-                  <div id="details section" class="col-xs-12"> 
-                    <h4>
-                      Details
-                    </h4>
-                      <p>
-                        The interactive player above is assembled from an index of the Upvoted podcast #27 by reddit.
-                      </p>
-                     
-                      <p>
-                        The index contains the following info about relevant links:
-                        <ul>
-                          <li>Time mentioned (in seconds from the start)</li>
-                          <li>Link name (as it should appear to an end user) </li>
-                          <li>URL of the most relevant external web page </li>
-                          <li>[not show here] Image most relevant to url / link name</li> 
-                        </ul>
-                      </p>
-                      <p>
-                        *Podly's index can also be used for search and discovery, not shown here but we'll describe it later. 
-                      </p>  
-                    </div>
-                  <!-- End Details  -->
-
-                
-                  
-                   <!-- Video demo on Upvoted --> 
-                    <div id="details section" class="col-xs-12"> 
-                      <hr>
-                      <h4>
-                        Demo on reddit of Embeded Player via Podly
-                      </h4>
-                      <!-- 4:3 aspect ratio -->
-                      <div class="embed-responsive embed-responsive-4by3">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/G5S_OWIU6cg"></iframe>
-                      </div>
-                    </div>
-                    <!-- End Video Demo on Upvoted -->    
+              
                 </div>
             </div>
 
     
-
-
- 
-      
-  <!-- Search -->
-         <h2 id="serach" class="page-header"><a class="anchorjs-link " href="#search" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Search </h2>
-         <!-- Search --> 
-          <p>
-            We've indexed ~1,000 hours of audio / video content, primarily on 1 podcast, the Joe Rogan Experience (JRE).  Each episode of the JRE is ~3 hours long and covers a wide range of topics.  Finding a particular topic in these podcasts is nearly impossible without Podly.  Podly makes search easy and nearly instant.  
-          </p>
-        <div class="row">
-          <div class="col-xs-12 col-md-12">
-            <a href="#" class="thumbnail">
-              <img src="https://pbs.twimg.com/media/BDluhgXCQAEdEiy.png:large" alt="...">
-            </a>
-          </div>
-        </div>
-  <!-- End Search -->
- 
-
-  <!-- Project History --> 
-     <h2 id="projectHistory" class="page-header"><a class="anchorjs-link " href="#projectHistory" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Project History </h2>
-     
-      Podly was originally conceved and  written in 2012 using: yesod (haskell), postgresql, angular (javascript/coffeescript), heroku.
-
-      I'm re-writing the code using Agular and Firebase. 
-
-  <!-- Why Podly? 
-     <h2 id="whyPodly" class="page-header"><a class="anchorjs-link " href="#whyPodly" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Project History </h2>
-     More info coming later today (23-July-2015)--> 
-
 
        
 
