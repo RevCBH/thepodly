@@ -86,6 +86,7 @@
                     <a href="#Details">Details</a>
                   </li>
                   
+
                   <!-- Search --> 
                   <li>
                     <a href="#SearchSection">Search</a>
@@ -93,12 +94,17 @@
 
                   <!-- Social Share --> 
                   <li>
-                    <a href="#Social">Social Share</a>
+                    <a href="#Social">Social Discovery</a>
                   </li>
 
                   <!-- Project History --> 
                   <li>
                     <a href="#projectHistory">Project History</a>
+                  </li>
+
+                  <!-- Contact --> 
+                  <li>
+                    <a href="#contact">Contact</a>
                   </li>
 
 
@@ -108,8 +114,13 @@
           </nav>
         
         <!-- About --> 
-          <div id="about" href="#about"></>
-          <h2 class="page-header"><a class="anchorjs-link"  aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>About Podly</h2>
+          <section id="about">
+            <h2 id="about" class="page-header">
+              <a class="anchorjs-link" href="#about" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"> 
+              </a>
+              About Podly
+            </h2>
+          </section> 
           <p>
             Podly is a podcast indexer.  We give podcasters simple tools (built on top of the index) that make their podcast easier for audiences to discover, engage, search, and share.  
           </p>
@@ -120,9 +131,14 @@
           </p>
           <!-- End About --> 
 
+
+        
+
+
         <!-- Live Customer -->
-          
+            <section id="livecustomer">
                <h2 id="livecustomer" class="page-header"><a class="anchorjs-link " href="#livecustomer" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Live Customer </h2>
+            </section>
                <!-- Live Customer --> 
                 <p>
                   We have 1 live customer!  See example of how they're using Podly in the wild at
@@ -135,28 +151,43 @@
                 </p>
                 <h4>
                   Below is an example of our first customers podcast 
-                  <span class="label label-success">with Podly (left)</span> and 
-                  <span class="label label-danger">without Podly (right)</span> 
+                  <span class="label label-success">with Podly</span> and 
+                  <span class="label label-danger">without Podly</span> 
                 </h4>
-                <div class="panel panel-default col-xs-6 panel-success">
-                  
-                  <div class="panel-body">
+                
+
+        <!-- Container to wrap customer after / before podly --> 
+
+          <div class="container-fluid">
+            <div class='row'>
+                
+                
+            <!-- Container for 'With Podly' panel  / player --> 
+              <div class='container col-lg-6'>
+                
+                  <div class="panel panel-default panel-success">
+                    <div class="panel-body">
                     
+                        <div class="alert alert-success" role="alert">
+                          Podly Example: This is what our 1st customers podcast looks like using Podly.
+                        </div>
+
+                        <iframe src="https://resplendent-inferno-6819.firebaseapp.com/prototype/HYRP_20.html" frameborder="0" width="600" height="1500" scrolling="no"></iframe>
                     
-                    <div class="alert alert-success" role="alert">
-                      Podly Example: This is what our 1st customers podcast looks like using Podly.
                     </div>
-                    <iframe src="https://resplendent-inferno-6819.firebaseapp.com/prototype/HYRP_20.html" frameborder="0" width="600" height="1500" scrolling="no"></iframe>
+                    
                   </div>
-                </div>
+              </div>
+          
+            
         <!-- Live Customer -->
 
 
         <!-- Customer Before Podly-->
           
+            <div class='container'>
 
-
-                <div class="panel panel-default col-xs-6">
+                <div class="panel panel-default col-lg-6">
                   <div class="panel-body">
                     <div class="alert alert-danger" role="alert">
                       Non-Podly Example: This is what our 1st customers podcast looked like _before_ he started using Podly.
@@ -240,23 +271,29 @@
                         </div>    
                   </div>
                 </div>
+              </div>
         <!-- End Customer Before Podly-->
+            
+            </div>
+            <!--End Row --> 
 
-
+          </div>
+        <!-- Container to wrap customer after / before podly -->
 
 
 
         
         <!-- Pannel wrapping just the player --> 
         <div class="col-xs-12">
-          <div >
+          <div>
           
-            
+            <section id="Details">
               <h2 id="Details" class="page-header">
                 <a class="anchorjs-link " href="#Details" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
                 
                   Details
                 </h2>
+              </section>
             
         
         
@@ -301,57 +338,65 @@
                     </div>--> 
                    
                     <!-- End Video Demo on Upvoted -->    
-                  </div>
-                </div>
+            
+            </div>
+          </div>
 
  
       
   <!-- Search -->
         <div class="col-xs-12">
            
-         <h2 id="SearchSection" class="page-header">
-            <a class="anchorjs-link " href="#SearchSection" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Search </h2>
-         <!-- Search --> 
-          <p>
-            We've indexed ~1,000 hours of audio / video content, primarily on 1 podcast, the Joe Rogan Experience (JRE).  Each episode of the JRE is ~3 hours long and covers a wide range of topics.  Finding a particular topic in these podcasts is nearly impossible without Podly.  Podly makes search easy and nearly instant.  
-          </p>
-          <h5>*Example of search across a podcast</h5>
-          <div class="row">
-            <div class="col-xs-12 col-md-12">
-              <a href="#" class="thumbnail">
-                <img src="https://pbs.twimg.com/media/BDluhgXCQAEdEiy.png:large" alt="...">
-              </a>
-              <div class="well well-sm">* Codebase for the search example above depends on depreciated haskell libraries, I'm re-writing the codebase in Angular / Firebase and will have a working example of search soon.</div>
-            </div>
-          </div>
-        </div>
-  <!-- End Search -->
- 
-  <!-- Social -->
-      <div class="col-xs-12">
-         <h2 id="Social" class="page-header"><a class="anchorjs-link " href="#search" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Social Share </h2>
-         <!-- Search --> 
-          <p>
-            Interacive podcast players (based on Podly's index) can be generated on the fly and embeded on twitter and Facebook, example below.  
-          </p>
-          <p>
-
-            This is a BIG deal for podcasts.  
-          </p>
-          <p>
-
-            One of the biggest problem podcasters face is increasing their reach. Podly's social sharing feature makes it easy for podcasts to be discovered by new viewers on the sites they already frequent like Facebook and Twitter. 
-          </p>
-
-            <h5>*Example of embeded player on Facebook</h5>
+         <section id="SearchSection">
+            <h2 id="SearchSection" class="page-header">
+              <a class="anchorjs-link " href="#SearchSection" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Search </h2>
+           <!-- Search --> 
+            <p>
+              We've indexed ~1,000 hours of audio / video content, primarily on 1 podcast, the Joe Rogan Experience (JRE).  Each episode of the JRE is ~3 hours long and covers a wide range of topics.  Finding a particular topic in these podcasts is nearly impossible without Podly.  Podly makes search easy and nearly instant.  
+            </p>
+            <h5>*Example of search across a podcast</h5>
             <div class="row">
               <div class="col-xs-12 col-md-12">
                 <a href="#" class="thumbnail">
-                  <img src="imgs/PodlyFlash.png" alt="...">
+                  <img src="https://pbs.twimg.com/media/BDluhgXCQAEdEiy.png:large" alt="...">
                 </a>
-                <div class="well well-sm">* Codebase for the social share example above depends on depreciated libraries, I'm re-writing the codebase in Angular / Firebase and will have a working example of social share soon.</div>
+                <div class="well well-sm">* Codebase for the search example above depends on depreciated haskell libraries, I'm re-writing the codebase in Angular / Firebase and will have a working example of search soon.</div>
               </div>
             </div>
+          </section>
+        </div>
+  <!-- End Search -->
+ 
+
+  <!-- Social -->
+      <div class="col-xs-12">
+         <section id="Social">
+           <h2 id="Social" class="page-header">
+
+            <a class="anchorjs-link " href="#Social" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Social Discovery</h2>
+           <!-- Search --> 
+            <p>
+              Interacive podcast players (based on Podly's index) can be generated on the fly and embeded on twitter and Facebook, example below.  
+            </p>
+            <p>
+
+              This is a BIG deal for podcasts.  
+            </p>
+            <p>
+
+              One of the biggest problem podcasters face is increasing their reach. Podly's social sharing feature makes it easy for podcasts to be discovered by new viewers on the sites they already frequent like Facebook and Twitter. 
+            </p>
+
+              <h5>*Example of embeded player on Facebook</h5>
+              <div class="row">
+                <div class="col-xs-12 col-md-12">
+                  <a href="#" class="thumbnail">
+                    <img src="imgs/PodlyFlash.png" alt="...">
+                  </a>
+                  <div class="well well-sm">* Codebase for the social share example above depends on depreciated libraries, I'm re-writing the codebase in Angular / Firebase and will have a working example of social share soon.</div>
+                </div>
+              </div>
+          </section> 
         </div> 
           
 
@@ -360,12 +405,27 @@
 
   <!-- Project History -->
       <div class="col-xs-12"> 
-       <h2 id="projectHistory" class="page-header"><a class="anchorjs-link " href="#projectHistory" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Project History </h2>
-       
-        Podly was originally conceved and  written in 2012 using: yesod (haskell), postgresql, angular (javascript/coffeescript), heroku.
+        <section id="projectHistory">
+         <h2 id="projectHistory" class="page-header"><a class="anchorjs-link " href="#projectHistory" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Project History </h2>
+         
+          Podly was originally conceved and  written in 2012 using: yesod (haskell), postgresql, angular (javascript/coffeescript), heroku.
 
-        I'm re-writing the code using Agular and Firebase. 
+          I'm re-writing the code using Agular and Firebase. 
+        </section>
       </div> 
+  <!-- End Project History -->
+
+  <!-- Contact -->
+      <div class="col-xs-12"> 
+        <section id="contact">
+         <h2 id="contact" class="page-header"><a class="anchorjs-link " href="#contact" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Contact </h2>
+        </section>
+         
+          <a href='mailto:podlyplayer@gmail.com'>Send us an email and say hi.</a> 
+        
+      </div> 
+  <!-- End Contact -->
+  
   <!-- Why Podly? 
      <h2 id="whyPodly" class="page-header"><a class="anchorjs-link " href="#whyPodly" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Project History </h2>
      More info coming later today (23-July-2015)--> 
