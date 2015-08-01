@@ -2,12 +2,12 @@
 $(document).ready(function() {
 
   //create firebase reference
-  var url = 'sky-jump-run.firebaseIO.com/1'; 
+  var url = 'sky-jump-run.firebaseIO.com'; 
   var myDataRef = new Firebase(url);
 
 
   //Code that works
-  myDataRef.set({author: "Jon Chug"}})
+  //myDataRef.set("test");
   
 
 
