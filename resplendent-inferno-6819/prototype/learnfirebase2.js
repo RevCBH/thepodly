@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 
   //Code that works
-  myDataRef.set("I wrote a thing")
+  myDataRef.set({author: "Jon Chug"}})
   
 
 
