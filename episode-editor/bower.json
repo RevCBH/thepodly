@@ -4,7 +4,8 @@
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.3",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "firebase": "~2.2.9"
   },
   "overrides": {
     "bootstrap-sass": {
