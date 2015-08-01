@@ -1,0 +1,217 @@
+<!-- DO
+  minor funcationality fix (if paused, needs to play when clicking relevant link)
+
+  === YC Applications ===
+  S+ follow up with ClipMine
+  Twitter Bootstrap for organization 
+  Put together demo page & ask friends for input 
+
+  === Optional fun === 
+  Example embed into upvoted UX
+  CSS make player longer
+  loading wheel with jQuery
+
+
+ 
+-->
+<!DOCTYPE html>
+<html>
+  <title>Podly Prototype</title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+      <!--Hidden CSS-->
+      <link rel='stylesheet' type='text/css' href='podlyPrototype.css'/>
+      
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- Editor tools -->
+    <h1>
+      Upvoted Episode 27 - Unidan
+    </h1>
+
+    <!-- Editors tools -->
+ 
+        
+        <!-- Audio Control -->
+          <audio controls="" autoplay="" name="media" id="demo"><source src="http://ec.libsyn.com/p/b/7/b/b7bbbecfffee6a31/027_-_Unidan.mp3?d13a76d516d9dec20c3d276ce028ed5089ab1ce3dae902ea1d06cb8032d9ce5b3833&amp;c_id=9418746" type="audio/mpeg"></audio>
+        </br>
+    
+      
+    
+  <div>
+  <!--Hide Play / Pause
+    <button onclick="document.getElementById('demo').play()">Play the Audio</button>
+    <button onclick="document.getElementById('demo').pause()">Pause the Audio</button>
+  --> 
+
+  <!-- Seek buttons :D -->  
+    <h3>Relevent links</h3>
+  <!-- Play Relevent Links --> 
+    <!--Intro
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=08">&#9658;</button> Intro
+      </br>-->
+    
+    <!-- Unidan on Mega Memecast -->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=49.5">&#9658;</button> 
+          <a href = "https://youtu.be/-19oeSNWcKY?t=11m56s" target="_blank">
+            Unidan on Mega Memecast
+          </a>
+      </br>
+
+  
+    <!-- Unidan Introduces Himself
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=318">&#9658;</button> 
+          Unidan (Ben) introduces himself
+      </br>-->
+
+    <!-- Unidan's AMA-->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=557.5">&#9658;</button> 
+          <a href = "https://www.reddit.com/r/IAmA/comments/1d42co" target="_blank">
+            Unidan's AMA
+          </a>
+      </br>
+
+    <!-- Ask Historians 
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=631">&#9658;</button> 
+          <a href = "http://www.reddit.com/r/askhistorians1/" target="_blank">
+            r/Ask Historians
+          </a>
+      </br> -->
+
+    <!-- David Attenborough’s AMA-->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=892">&#9658;</button> 
+          <a href = "https://www.reddit.com/r/IAmA/comments/1uqlmf/i_am_sir_david_attenborough_im_on_reddit_ama/" target="_blank">
+          David Attenborough's AMA
+          </a>
+      </br>
+
+    <!-- Unidan's TEDx Talk-->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').play(); document.getElementById('demo').currentTime=1032.5">&#9658;</button> 
+          <a href = "https://youtu.be/hw2mHEMUfkI?t=10s" target="_blank">
+          Unidan's TEDx Talk
+          </a>
+      </br>
+
+    <!-- /u/unidanx’s Personal Science Youtube Channel-->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1284">&#9658;</button> 
+          /u/unidanx's Youtube Channels:
+          <a href = "https://www.youtube.com/user/ecologyvideos/videos" target="_blank">
+           Science
+          </a>
+          & 
+          <a href="https://www.youtube.com/user/collegiatealliance" target="_blank">
+            Gaming
+          </a>
+        
+
+      </br>
+
+    <!-- Unidan's fall from grace -->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1488">&#9658;</button> 
+         <a href="http://np.reddit.com/r/AdviceAnimals/comments/2byyca/reddit_helps_me_focus_on_the_important_things/cjb2z41" target="_blank">
+          Unidan's fall from grace
+        </a>
+         
+      </br>
+    <!-- Mashable article on Unidan 
+      
+          <button onclick="document.getElementById('demo').currentTime=1768.5">&#9658;</button> 
+           <a href="http://mashable.com/2014/07/31/unidan-banned-reddit-permanent/" target="_blank">
+            Mashable article on Unidan
+          </a>
+           
+      </br>
+      -->
+
+    <!-- Edward Snowden’s Unidan Jackdaw Joke-->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1938">&#9658;</button> 
+          <a href = "https://np.reddit.com/r/IAmA/comments/36ru89/just_days_left_to_kill_mass_surveillance_under/crgmnsc" target="_blank">
+          Edward Snowden's' Unidan Jackdaw Joke
+          </a>
+      </br>
+
+    <!-- Unidan Reflects on lessons learned
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1987.5">&#9658;</button> 
+          Unidan's reflects on his reddit experience
+          
+      </br>-->
+
+    <!-- Unidan's Instagram -->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=2381.5">&#9658;</button> 
+          <a href="http://www.reddit.com/user/unidanx" target="_blank">
+            u/unidanx
+          </a>
+          , 
+          <a href = "https://instagram.com/unidan/" target="_blank">
+            on Instagram 
+          </a>
+          ,
+          <a href = "https://twitter.com/unidanbiology" target="_blank">
+            @unidanbiology
+          </a>
+      </br>
+
+    <!-- Ting’s Ask an Exec Series -->
+      
+        <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=2640">&#9658;</button> 
+          <a href="https://www.youtube.com/playlist?list=PL5lbdVpMA9vS0vayNyq5iBxP0HhCf3XGm" target="_blank">
+            Ting's Ask an Exec Series
+          </a>
+          
+      </br>
+
+
+  <!-- Sponsors -->
+    <h3>This episode is sponsored by</h3> 
+    
+      <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=197">&#9658;</button> 
+        <a href = "http://www.casper.com/upvoted" target="_blank">
+          Casper
+        </a>
+    </br>
+    
+      <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=254">&#9658;</button> 
+        <a href = "http://upvoted.ting.com/" target="_blank">
+          Ting
+        </a>
+    </br>
+    
+      <button onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1419">&#9658;</button> 
+        <a href = "http://www.stamps.com/radio/upvoted/" target="_blank">
+          Stamps.com
+        </a>
+    </br>
+
+
+
+
+  <!-- Example of 'jump to'  
+  Jump to <input id="time" type="text" value="30"> (in seconds)</input>
+  <button onclick="document.getElementById('demo').currentTime=document.getElementById('time').value">Jump</button>
+  -->
+    
+  <!-- hiding button to control audio <input type="submit" id="audioPayer" value="Audio go to minute 1"> -->
+
+  </body>
+</html>

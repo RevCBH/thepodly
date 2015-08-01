@@ -1,0 +1,262 @@
+ <!DOCTYPE html>
+<html>
+  <title></title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+    
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+      <!-- Boostrap Goodness --> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Custom CSS--> 
+        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- More bootstrap goodness -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- End more bootstrap goodness -->
+  
+  <!-- Master Div -->
+    <div class = "container-fluid">
+      
+     
+        
+        <!-- About --> 
+          <h2 id="about" class="page-header"><a class="anchorjs-link " href="#about" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>About </h2>
+          <p>
+            This is a bootstrap template for Podly
+          </p>
+
+          <!-- End About --> 
+
+
+       
+
+          <!-- Embeded Player demo --> 
+             
+            <div class="old-panel panel-default col-xs-12">
+              <div class="old-panel-body">
+                
+                <!-- H4 Heading --> 
+                <h4>
+                  Prototype
+                </h4>
+
+                <p>
+                  The interactive Podcast player below is assembled from an index of the Upvoted podcast #27 by reddit. The index can automatically create players like the one below, as well as embeded players for social sites (Facebook / Twitter), blogs, as well as native (iOS / Android) apps.  In addition to the basic funcionality below there are other features like search and social sharing which we'll talk about more below. 
+                </p>
+
+                <!-- Pannel wrapping just the player --> 
+                <div class="panel panel-default col-xs-12">
+                  <div class="panel-body">
+                  
+                  
+                    <h5>
+                      Upvoted by reddit Episode 27 - Unidan
+                    </h5>
+                    
+                    
+                    <!-- Audio Control -->
+                        <audio controls="" autoplay="" name="media" id="demo"><source src="http://ec.libsyn.com/p/b/7/b/b7bbbecfffee6a31/027_-_Unidan.mp3?d13a76d516d9dec20c3d276ce028ed5089ab1ce3dae902ea1d06cb8032d9ce5b3833&amp;c_id=9418746" type="audio/mpeg"></audio>
+                         </br>
+                      <!-- End / Audio Controls -->   
+                    
+                      
+                    <!-- Embded player relevant links -->   
+                      <div id="Embded player relevant links">
+                        <h5>Relevant links</h5>
+                          <!-- Play Relevent Links --> 
+                            <!--Intro
+                              <p>
+                                <button type="button" class="btn btn-default btn-xs"" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=08">
+                                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> Intro
+                              </p>-->
+                            
+                          <!-- Unidan on Mega Memecast -->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs"  onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=49.5"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href = "https://youtu.be/-19oeSNWcKY?t=11m56s" target="_blank">
+                                  Unidan on Mega Memecast
+                                </a>
+                            </p>
+
+                        
+                          <!-- Unidan Introduces Himself
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=318"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                Unidan (Ben) introduces himself
+                            </p>-->
+
+                          <!-- Unidan's AMA-->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=557.5"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href = "https://www.reddit.com/r/IAmA/comments/1d42co" target="_blank">
+                                  Unidan's AMA
+                                </a>
+                            </p>
+
+                          <!-- Ask Historians 
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=631"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href = "http://www.reddit.com/r/askhistorians1/" target="_blank">
+                                  r/Ask Historians
+                                </a>
+                            </p> -->
+
+                          <!-- David Attenborough’s AMA-->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=892"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href = "https://www.reddit.com/r/IAmA/comments/1uqlmf/i_am_sir_david_attenborough_im_on_reddit_ama/" target="_blank">
+                                David Attenborough's AMA
+                                </a>
+                            </p>
+
+                          <!-- Unidan's TEDx Talk-->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').play(); document.getElementById('demo').currentTime=1032.5"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href = "https://youtu.be/hw2mHEMUfkI?t=10s" target="_blank">
+                                Unidan's TEDx Talk
+                                </a>
+                            </p>
+
+                          <!-- /u/unidanx’s Personal Science Youtube Channel-->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1284"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                /u/unidanx's Youtube Channels:
+                                <a href = "https://www.youtube.com/user/ecologyvideos/videos" target="_blank">
+                                 Personal Science
+                                </a>
+                                & 
+                                <a href="https://www.youtube.com/user/collegiatealliance" target="_blank">
+                                  Collegiate Alliance
+                                </a>
+                                
+                              </br>
+
+                            </p>
+
+                          <!-- Unidan's fall from grace -->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1488"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                               <a href="http://np.reddit.com/r/AdviceAnimals/comments/2byyca/reddit_helps_me_focus_on_the_important_things/cjb2z41" target="_blank">
+                                Unidan's fall from grace
+                              </a>
+                               
+                            </p>
+                          <!-- Mashable article on Unidan 
+                            <p>
+                                <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').currentTime=1768.5"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                 <a href="http://mashable.com/2014/07/31/unidan-banned-reddit-permanent/" target="_blank">
+                                  Mashable article on Unidan
+                                </a>
+                                 
+                            </p>
+                            -->
+
+                          <!-- Edward Snowden’s Unidan Jackdaw Joke-->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1938"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href = "https://np.reddit.com/r/IAmA/comments/36ru89/just_days_left_to_kill_mass_surveillance_under/crgmnsc" target="_blank">
+                                Edward Snowden's' Unidan Jackdaw Joke
+                                </a>
+                            </p>
+
+                          <!-- Unidan Reflects on lessons learned
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1987.5"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                Unidan's reflects on his reddit experience
+                                
+                            </p>-->
+
+                          <!-- Unidan's Instagram -->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=2381.5"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href="http://www.reddit.com/user/unidanx" target="_blank">
+                                  u/unidanx
+                                </a>
+                                , 
+                                <a href = "https://instagram.com/unidan/" target="_blank">
+                                  on Instagram 
+                                </a>
+                                ,
+                                <a href = "https://twitter.com/unidanbiology" target="_blank">
+                                  @unidanbiology
+                                </a>
+                            </p>
+
+                          <!-- Ting’s Ask an Exec Series -->
+                            <p>
+                              <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=2640"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                                <a href="https://www.youtube.com/playlist?list=PL5lbdVpMA9vS0vayNyq5iBxP0HhCf3XGm" target="_blank">
+                                  Ting's Ask an Exec Series
+                                </a>
+                                
+                            </p>
+                      </div> 
+                      <!-- End / Embded player relevent links -->   
+
+                    <!-- Embded player sponsored links -->   
+                      <div id = "Embded player sponsored links">
+                     
+                      <!-- Sponsors -->
+                        <h5>This episode is sponsored by</h5> 
+                        <p>
+                          <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=197"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                            <a href = "http://www.casper.com/upvoted" target="_blank">
+                              Casper
+                            </a>
+                        </p>
+                        <p>
+                          <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=254"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                            <a href = "http://upvoted.ting.com/" target="_blank">
+                              Ting
+                            </a>
+                        </p>
+                        <p>
+                          <button type="button" class="btn btn-default btn-xs" onclick="document.getElementById('demo').play(); document.getElementById('demo').currentTime=1419"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> 
+                            <a href = "http://www.stamps.com/radio/upvoted/" target="_blank">
+                              Stamps.com
+                            </a>
+                        </p>
+                      </div>
+                      <!-- End / Embded player sponsored links -->   
+                  </div>
+                </div>
+                <!-- Pannel wrapping just the player --> 
+                
+              
+                </div>
+            </div>
+
+    
+
+       
+
+</div>
+  <!-- End Master Div --> 

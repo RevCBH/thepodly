@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html>
+  <title>Podly Prototype</title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+    
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+      <!-- Boostrap Goodness --> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Bootstrap 101 Template</title>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Custom CSS--> 
+        <link href="css/YCPrototype.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- More bootstrap goodness -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+  <!-- Master Div -->
+    <div class = "container-fluid">
+      
+      <!-- Navbar 
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <p class="navbar-text">Podly | Enage your audience, grow your podcast</p>
+          </div>
+        </nav>
+        --> 
+
+        <!-- Nav V2 --> 
+          <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Podly</a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  
+                  <!-- About --> 
+                  <li>
+                    <a href="#about">About <span class="sr-only">(current)</span></a>
+                  </li>
+                  
+                  <!-- Live Customer --> 
+                  <li>
+                    <a href="#livecustomer">Live Customer</a>
+                  </li>
+
+                  <!-- Details --> 
+                  <li>
+                    <a href="#Details">Details</a>
+                  </li>
+                  
+
+                  <!-- Search --> 
+                  <li>
+                    <a href="#SearchSection">Search</a>
+                  </li>
+
+                  <!-- Social Share --> 
+                  <li>
+                    <a href="#Social">Social Discovery</a>
+                  </li>
+
+                  <!-- Project History --> 
+                  <li>
+                    <a href="#projectHistory">Project History</a>
+                  </li>
+
+                  <!-- Contact --> 
+                  <li>
+                    <a href="#contact">Contact</a>
+                  </li>
+
+
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+        
+        <!-- About --> 
+          <section id="about">
+            <h2 id="about" class="page-header">
+              <a class="anchorjs-link" href="#about" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"> 
+              </a>
+              About Podly
+            </h2>
+          </section> 
+          <p>
+            Podly is a podcast indexer.  We give podcasters simple tools (built on top of the index) that make their podcast easier for audiences to discover, engage, search, and share.  
+          </p>
+
+          <p>
+            Podly was started in 2012 and put on pause to make a Bitcoin Exchange, Buttercoin.  Now that Buttercoin has wound down I'm picking Podly back up.  See 
+            <a href="#projectHistory">'Project History'</a> section for more details. 
+          </p>
+          <!-- End About --> 
+
+
+        
+
+
+        <!-- Live Customer -->
+            <section id="livecustomer">
+               <h2 id="livecustomer" class="page-header"><a class="anchorjs-link " href="#livecustomer" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Live Customer </h2>
+            </section>
+               <!-- Live Customer --> 
+                <p>
+                  We have 1 live customer!  See example of how they're using Podly in the wild at
+                  <a href ="http://www.healyourselfradio.com/post/125251215692/ep-020-evidence-based-sports-nutrition-hacks">
+                      HealYourselfRadio.com
+                  </a>
+                  <div class="alert alert-success" role="alert">
+                    <h3>Initial results show a 50% increase in Podcast engagment with Podly</h3>
+                  </div>
+                </p>
+                <h4>
+                  Below is an example of our first customers podcast 
+                  <span class="label label-success">with Podly</span> and 
+                  <span class="label label-danger">without Podly</span> 
+                </h4>
+                
+
+        <!-- Container to wrap customer after / before podly --> 
+
+          <div class="container-fluid">
+            <div class='row'>
+                
+                
+            <!-- Container for 'With Podly' panel  / player --> 
+              <div class='container col-lg-6'>
+                
+                  <div class="panel panel-default panel-success">
+                    <div class="panel-body">
+                    
+                        <div class="alert alert-success" role="alert">
+                          Podly Example: This is what our 1st customers podcast looks like using Podly.
+                        </div>
+
+                        <iframe src="https://resplendent-inferno-6819.firebaseapp.com/prototype/HYRP_20.html" frameborder="0" width="600" height="1500" scrolling="no"></iframe>
+                    
+                    </div>
+                    
+                  </div>
+              </div>
+          
+            
+        <!-- Live Customer -->
+
+
+        <!-- Customer Before Podly-->
+          
+            <div class='container'>
+
+                <div class="panel panel-default col-lg-6">
+                  <div class="panel-body">
+                    <div class="alert alert-danger" role="alert">
+                      Non-Podly Example: This is what our 1st customers podcast looked like _before_ he started using Podly.
+                    </div>
+                    
+                     <div id="showTitleHeader" class="sectionContainerHeader">
+                      <h4>Heal Yourself Radio Podcast</h4>
+                    </div>
+                    <h4>Episode 020 - Evidence-based Sports Nutrition Hacks with Jose Antonio PhD</h4>
+
+
+                    <div class="sectionContainerHeader" style="width: 480px; margin: 0 auto; border: none; padding: 0;">    
+                      <iframe style="border: none" src="https://html5-player.libsyn.com/embed/episode/id/3696804/height/320/width/480/theme/standard/direction/no/autoplay/no/autonext/no/thumbnail/yes/preload/no/no_addthis/no/menu/no/" height="320" width="480" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen=""></iframe>
+                   
+
+                    <div id="episode-description-holder">
+                    <p class="p1">Show Notes:</p>
+                    
+                    <p class="p1">Check out the International Society of Sports Nutrition Conference in Clearwater, FL - June 9 -11 2016 - <a href="http://www.sportsnutritionsociety.org/conferences.html">http://www.sportsnutritionsociety.org/conferences.html</a> - 4:00</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">Optimizing nutrition for endurance sports - 5:37</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">Benefits of caffeine extend to all sports - 7:10</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">Beta Alanine Supplementation: One of the best ergogenic aids that athletes don’t know about - 8:15</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">Optimizing strength and power output - 9:20</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">Creatine Monohydrate: “The single most effective sports supplement ever” - 9:40</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">The post workout nutrient timing: what’s the truth? - 11:00</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1"><strong>3 Big Myths in Sports Nutrition:</strong></p>
+                    
+                    <ul class="ul1">
+                    <li class="li1">“Eating a lot of protein is bad for your kidneys” - 14:00</li>
+                    </ul>
+                    <ul class="ul1">
+                    <li class="li1">“Kids shouldn’t take supplements” - 16:04</li>
+                    </ul>
+                    <ul class="ul1">
+                    <li class="li1">“You need to clean up your diet before taking supplements” - 18:00</li>
+                    </ul>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">The diet that works the best is the diet you will be compliant with - 20:00</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">The Dirty Secret of the Super Lean - they are hungry all the time - 23:54</p>
+                    <p class="p2">&nbsp;</p>
+                    <p class="p1">Favorite Resources:</p>
+                    
+                    <p class="p1">National Strength and Conditioning Association Textbooks - <a href="http://www.amazon.com/NSCA-National-Strength-Conditioning-Association/e/B007NLWDL8">http://www.amazon.com/NSCA-National-Strength-Conditioning-Association/e/B007NLWDL8</a></p>
+                    
+                    <p class="p1">The Essentials of Sports Nutrition and Supplements - <a href="http://www.amazon.com/Essentials-Sports-Nutrition-Supplements-Antonio/dp/1627038159">http://www.amazon.com/Essentials-Sports-Nutrition-Supplements-Antonio/dp/1627038159</a></p>
+                    <p class="p1">Favorite Twitter Handles: https://twitter.com/YLMSportScience</p>
+                    
+                    <p class="p1">Learn more about Jose Antonio, PhD</p>
+                    
+                    <p class="p1">International Society for Sports Nutrition - <a href="http://www.sportsnutritionsociety.org/">http://www.issn.net</a></p>
+                    
+                    <p class="p1">Twitter: @joseantonioPhD</p></div>
+                    </div>
+
+
+                    <script type="text/javascript">
+                      // remove any embed tags from episode description
+                      $("#episode-description-holder").find("embed").remove();
+                      $("#episode-description-holder").find("iframe").remove();
+                    </script>
+                    <!--audio-->
+
+                    <style>
+                      #showTitleHeader {
+                        margin-bottom: 10px;
+                      }
+                      
+                      #showTitleHeader a, #showTitleHeader a:link, #showTitleHeader a:visited {
+                        color: #2a2c36;
+                        text-shadow: 1px 1px 1px #fff;
+                      }
+                    </style>
+                        </div>    
+                  </div>
+                </div>
+              </div>
+        <!-- End Customer Before Podly-->
+            
+            </div>
+            <!--End Row --> 
+
+          </div>
+        <!-- Container to wrap customer after / before podly -->
+
+
+
+        
+        <!-- Pannel wrapping just the player --> 
+        <div class="col-xs-12">
+          <div>
+          
+            <section id="Details">
+              <h2 id="Details" class="page-header">
+                <a class="anchorjs-link " href="#Details" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>
+                
+                  Details
+                </h2>
+              </section>
+            
+        
+        
+
+          <!-- Embeded Player demo --> 
+             
+            
+                <!-- Details  -->
+                  <div class="col-xs-12"> 
+                    
+                      <p>
+                        The interactive player above is assembled from an index of the HealYourselfRadio.com podcast. 
+                      </p>
+                     
+                      <p>
+                        The index contains the following info about relevant links:
+                        <ul>
+                          <li>Time mentioned (in seconds from the start)</li>
+                          <li>Link name (as it should appear to an end user) </li>
+                          <li>URL of the most relevant external web page </li>
+                          <li>[not show here] Image most relevant to url / link name</li> 
+                        </ul>
+                      </p>
+                      <p>
+                        *Podly's index can also be used for search and discovery, see below.  
+                      </p>  
+                    </div>
+                  <!-- End Details  -->
+
+                
+                  
+                   <!-- Video demo on Upvoted 
+                    <div class="col-xs-12"> 
+                      <hr>
+                      <h4>
+                        Demo of embeded Podly player on reddit (simulated)
+                      </h4>
+                      <!-- 4:3 aspect ratio 
+                      <div class="embed-responsive embed-responsive-4by3">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/G5S_OWIU6cg"></iframe>
+                      </div>
+                    </div>--> 
+                   
+                    <!-- End Video Demo on Upvoted -->    
+            
+            </div>
+          </div>
+
+ 
+      
+  <!-- Search -->
+        <div class="col-xs-12">
+           
+         <section id="SearchSection">
+            <h2 id="SearchSection" class="page-header">
+              <a class="anchorjs-link " href="#SearchSection" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Search </h2>
+           <!-- Search --> 
+            <p>
+              We've indexed ~1,000 hours of audio / video content, primarily on 1 podcast, the Joe Rogan Experience (JRE).  Each episode of the JRE is ~3 hours long and covers a wide range of topics.  Finding a particular topic in these podcasts is nearly impossible without Podly.  Podly makes search easy and nearly instant.  
+            </p>
+            <h5>*Example of search across a podcast</h5>
+            <div class="row">
+              <div class="col-xs-12 col-md-12">
+                <a href="#" class="thumbnail">
+                  <img src="https://pbs.twimg.com/media/BDluhgXCQAEdEiy.png:large" alt="...">
+                </a>
+                <div class="well well-sm">* Codebase for the search example above depends on depreciated haskell libraries, I'm re-writing the codebase in Angular / Firebase and will have a working example of search soon.</div>
+              </div>
+            </div>
+          </section>
+        </div>
+  <!-- End Search -->
+ 
+
+  <!-- Social -->
+      <div class="col-xs-12">
+         <section id="Social">
+           <h2 id="Social" class="page-header">
+
+            <a class="anchorjs-link " href="#Social" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Social Discovery</h2>
+           <!-- Search --> 
+            <p>
+              Interacive podcast players (based on Podly's index) can be generated on the fly and embeded on twitter and Facebook, example below.  
+            </p>
+            <p>
+
+              This is a BIG deal for podcasts.  
+            </p>
+            <p>
+
+              One of the biggest problem podcasters face is increasing their reach. Podly's social sharing feature makes it easy for podcasts to be discovered by new viewers on the sites they already frequent like Facebook and Twitter. 
+            </p>
+
+              <h5>*Example of embeded player on Facebook</h5>
+              <div class="row">
+                <div class="col-xs-12 col-md-12">
+                  <a href="#" class="thumbnail">
+                    <img src="imgs/PodlyFlash.png" alt="...">
+                  </a>
+                  <div class="well well-sm">* Codebase for the social share example above depends on depreciated libraries, I'm re-writing the codebase in Angular / Firebase and will have a working example of social share soon.</div>
+                </div>
+              </div>
+          </section> 
+        </div> 
+          
+
+  <!-- End Social -->
+
+
+  <!-- Project History -->
+      <div class="col-xs-12"> 
+        <section id="projectHistory">
+         <h2 id="projectHistory" class="page-header"><a class="anchorjs-link " href="#projectHistory" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Project History </h2>
+         
+          Podly was originally conceved and  written in 2012 using: yesod (haskell), postgresql, angular (javascript/coffeescript), heroku.
+
+          I'm re-writing the code using Agular and Firebase. 
+        </section>
+      </div> 
+  <!-- End Project History -->
+
+  <!-- Contact -->
+      <div class="col-xs-12"> 
+        <section id="contact">
+         <h2 id="contact" class="page-header"><a class="anchorjs-link " href="#contact" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Contact </h2>
+        </section>
+         
+          <a href='mailto:podlyplayer@gmail.com'>Send us an email and say hi.</a> 
+        
+      </div> 
+  <!-- End Contact -->
+  
+  <!-- Why Podly? 
+     <h2 id="whyPodly" class="page-header"><a class="anchorjs-link " href="#whyPodly" aria-label="Anchor link for: labels" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; position: absolute; margin-left: -1em; padding-right: 0.5em;"></a>Project History </h2>
+     More info coming later today (23-July-2015)--> 
+
+       
+</div> 
+</div>
+  <!-- End Master Div --> 
+</body>
+</html> 
