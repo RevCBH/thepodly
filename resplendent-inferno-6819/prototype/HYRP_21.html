@@ -44,6 +44,8 @@
   
   <!-- Master Div -->
     <div class = "container-fluid">
+      <!-- div for row -->
+      <div class = "row">
       
     
           <p></p><p></p>
@@ -62,16 +64,16 @@
                       Episode 21 - Does Your Brain Even Lift? Brain based fitness with Troy Dodson
                     </h5>
                     
-                  <div class='container'>
+                  <div class='container container-fluid'>
                     <div class = 'row-fluid pull-left'>
                     <!-- Image --> 
                       <img id="jp_poster_0" src="https://assets.libsyn.com/secure/content/9540987?width=480&height=320&overlay=true&player_time=1438715804317" style="width: auto; height: 320px; display: block; text-align: center; margin: 0px auto;" class="img-rounded" class="text-left">
 
                     
                     <!-- Audio Control -->
-                        <audio controls="" type='audio/mpg' name="media" id='audioPlayer' width="480" onload="document.getElementById('audioPlayer').pause(); document.getElementById('audioPlayer').currentTime=0">
+                        <audio controls autoplay type='audio/mpg' name="media" id='audioPlayer' width="480" onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0">
                             
-                          <source src="http://traffic.libsyn.com/preview/healyourselfradio/Troy_Dodson_Final_Cut-_8415_1.17_PM.mp3" type="audio/mpeg" preload = 'auto' autoplay='0' autostart='0'>
+                          <source src="http://traffic.libsyn.com/preview/healyourselfradio/Troy_Dodson_Final_Cut-_8415_1.17_PM.mp3" type="audio/mpeg" preload = 'auto' autoplay='1' autostart='1'>
                         </audio>
                          </br>
                     
@@ -85,6 +87,13 @@
                     <!-- Embded player relevant links -->   
                       <div id="Embded player relevant links">
                         <h5>Show Notes</h5>
+                          <!-- Test Link 
+                          <a href="javascript:void myJsFunc(onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0");">
+                            ASDF
+                          </a>
+                          -->
+
+
                           <!-- Play Relevent Links --> 
                             <!--Intro
                               <p>
@@ -117,9 +126,9 @@
                             </p>
 
                         
-                          <!-- Z Health Performance Solutions -->
+                          <!-- Z Health Performance -->
                             <p>
-                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=410"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 6:50 | Z Health Performance Solutions - training using brain-based training</button> 
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=410"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 6:50 | Z Health Performance - brain-based training</button> 
                               <a href = "http://www.zhealtheducation.com" target="_blank">
                                   
                                   <button type='button' class="btn btn-primary">
@@ -142,13 +151,13 @@
 
                           <!-- Quantifying the Fitness of Your Nervous System Using Heart Rate Variability  -->
                             <p>
-                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=2409"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 20:09 | Quantifying the Fitness of Your Nervous System Using Heart Rate Variability </button> 
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=2409"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 20:09 | Quantifying Your Nervous System Fitness With Heart Rate Variability </button> 
                                 
                             </p>
 
-                          <!-- Getting objective data on the effects of training on HRV (Heart Rate Variability)   -->
+                          <!-- Data on the effects of training on HRV (Heart Rate Variability)   -->
                             <p>
-                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(22*60+58)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 22:58 | Getting objective data on the effects of training on HRV (Heart Rate Variability) </button> 
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(22*60+58)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 22:58 | Data on the effects of training on HRV (Heart Rate Variability) </button> 
                                 
                             </p>
 
@@ -297,6 +306,9 @@
     
 
        
-
-</div>
-  <!-- End Master Div --> 
+        <!-- div for row -->
+        </div>
+    
+    <!-- End Master Div --> 
+    </div>
+    

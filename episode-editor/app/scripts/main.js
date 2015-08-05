@@ -12,7 +12,12 @@ $(document).ready(function() {
   //creates database reference to user data 
   var usersRef = myDataRef.child('users'); 
 
-  //saving user objects
+  
+
+
+
+
+  /*saving user objects
   usersRef.set({
   	JonChung: {
   		author: 'Jon Chung', 
@@ -24,6 +29,47 @@ $(document).ready(function() {
   	}
 
   });
+	
+
+ 
+
+
+  //add a user object
+  usersRef.update({
+  	NewUserTest: {
+  		author: 'New User Name',
+  		podcastName: 'Podcast Namerino'
+  	}
+  });
+  */
+
+
+
+
+
+ //Button click = write author name to Firebase 
+  	$('#authorButton').click(function() {
+       	//takes input of 'User' Field and assignes it to newUser
+       	var newUser  = $("input[id=inputUser]").val();    
+
+       	//takes input of 'Author' Field and assignes it to newAuthor
+       	var newAuthor = $("input[id=inputAuthor]").val();    
+
+		//takes input of 'Podcast Title' Field and assignes it to newPodcastTitle
+       	var newPodcastTitle = $("input[id=podcastTitle]").val();    
+
+		
+    	
+    	//write author name to Firebase
+	  	usersRef.update({
+	  		newUser: {
+		  		author: newAuthor,
+		  		podcastName: newPodcastTitle
+	  		}
+  		});
+    });
+
+
 
 
   //helper function updates the '.infoTest' field 
@@ -33,7 +79,7 @@ $(document).ready(function() {
 	  	"Author: " + author + "</br>" +
 		"Title: " + podcastName + "</br>" +	  	
 		"</p>"
-	}; 
+	)}; 
 
 
 	//Retrieve new posts as they are added to our database
