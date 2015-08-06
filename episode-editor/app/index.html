@@ -11,7 +11,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
+    <!-- bower:css --
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,6 +22,7 @@
     <!-- endbuild -->
     <!-- infoNav.css is used to style firebase info --> 
     <link rel="stylesheet" href="styles/infoNav.css">
+
   
   </head>
   <body>
@@ -45,40 +46,52 @@
       
 
       <!--Goal 1: Enter data into a field, hit enter, database updates --> 
-
       <div class="panel panel-default">
-        <form class="form-inline">
-            
-            <!-- New User --> 
-            <div class="form-group">
-              <label for="newUser">User</label>
-              <input type="text" class="form-control" id="inputUser" placeholder="username">
-            </div>            
-
-
-            <!-- New Author --> 
-            <div class="form-group">
-              <label for="newAuthor">Author</label>
-              <input type="text" class="form-control" id="inputAuthor" placeholder="Jane Doe">
-            </div>
-            
-
-            <!-- New Title --> 
-            <div class="form-group">
-              <label for="podcastTitle">Podcast Title </label>
-              <input type="text" class="form-control" id="podcastTitle" placeholder="Jane Doe">
-            </div>
-            
-            <button type="submit" class="btn btn-default" id="authorButton">Update</button>
-        </form>
-      
+        <div class="panel-heading">
+          
+          <!-- Title of Podcast from Firebase --> 
+          <div class="podcastTitleTest" alt="podcast title"></div>
         
+        </div>
+        <div class="panel-body"> 
+            
 
-        <!-- Where podcast info showes up --> 
-        <div class="infoTest"></div>
-        <div class="testAdd"></div> 
 
 
+            <form class="form-inline">
+                <!-- New User --> 
+                <div class="form-group">
+                  <label for="newUser">User</label>
+                  <input type="email" class="form-control" id="inputUser" placeholder="username">
+                </div>            
+
+
+                <!-- New Author --> 
+                <div class="form-group">
+                  <label for="newAuthor">Author</label>
+                  <input type="text" class="form-control" id="inputAuthor" placeholder="Jane Doe">
+                </div>
+                
+
+                <!-- New Title --> 
+                <div class="form-group">
+                  <label for="podcastTitle">Podcast Title </label>
+                  <input type="text" class="form-control" id="podcastTitle" placeholder="Jane Doe">
+                </div>
+                
+                <button type="submit" class="btn btn-default" id="authorButton">Update</button>
+            </form>
+          
+            
+
+            <!-- Where podcast info showes up --> 
+            <div class="infoTest"></div>
+            <div class="testAdd"></div> 
+
+        <!-- End panel body --> 
+        </div> 
+
+      <!-- End panel --> 
       </div> 
 
 
@@ -133,6 +146,13 @@
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+
+    <!-- build:js scripts/createDemoPodcast.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/createDemoPodcast.js"></script>
+    <!-- endbuild -->
+
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

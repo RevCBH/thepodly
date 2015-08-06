@@ -5,44 +5,63 @@ $(document).ready(function() {
 
   //create firebase reference
   var rootUrl = 'sky-jump-run.firebaseIO.com/'; 
+  var titleUrl = 'https://sky-jump-run.firebaseio.com/demoPodcast/hyr/podcastName'; 
+
+  //creates database reference to rootUrl
   var myDataRef = new Firebase(rootUrl);
   
-  //creates database reference to user data 
-  var usersRef = myDataRef.child('users'); 
+  //creates database reference to demoPodcast
+  var demoPodcastRef = new Firebase(titleUrl); 
 
+  //creates database reference to Podcast
+  var usersRef = myDataRef.child('users'); 
   
 
 
 
 
-  /*saving user objects
-  usersRef.set({
-  	JonChung: {
-  		author: 'Jon Chung', 
-  		podcastName: 'Heal Yourself Radio'
-  	},
-  	CedricDahl: {
-  		author: 'Cedric Dahl', 
-  		podcastName: 'Future Phone'
-  	}
-
-  });
-	
-
- 
-
-
-  //add a user object
-  usersRef.update({
-  	NewUserTest: {
-  		author: 'New User Name',
-  		podcastName: 'Podcast Namerino'
+  /*save demoPodcastRef objects 
+  demoPodcastRef.set({
+  	hyr: {
+  		podcastName: 'Heal Yourself Radio', 
+      author: 'Jon Chung', 
+      notes: {
+        time: '', 
+        title: '',
+        url: ''
+      }
   	}
   });
   */
+	
+
+  /*$('.podcastTitleTest').append("<h1>Heal Yourself...</h1>"); 
+
+  //test write to demoPodcastRef to console. 
+    ref.on("value", function(snapshot) {
+    console.log(snapshot.val());
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+  */
+
+  //Retrieve Podcast Title
+    demoPodcastRef.on("value", function(snapshot) {
+      var title = snapshot.val();
+      
+      //write to DOM via '.podcastTitleTest'
+      $('.podcastTitleTest').append("<h3> " + title + "</h3>"); 
+
+      });
+  
+
+   
 
 
+  
 
+
+/*
 
 
  //Button click = write author name to Firebase 
@@ -65,7 +84,7 @@ $(document).ready(function() {
   		});
     });
 
-
+*/
 
 
   //helper function updates the '.infoTest' field 
@@ -87,6 +106,9 @@ $(document).ready(function() {
 
 	});
 	
+
+
+
 
 	
 	//replaces userRef list when a child is updated
@@ -136,18 +158,3 @@ $(document).ready(function() {
 //End brakets / pares / ;   
 });
 
-
-
-
-
-
-$(document).ready(function() {
-
-  
-  // Setup Bootstrap tab handlers for the navigation pills in
-  // the page header
-  $('#header-nav li a').click(function (e) {
-    e.preventDefault();
-    $(this).tab('show');
-  });
-});
