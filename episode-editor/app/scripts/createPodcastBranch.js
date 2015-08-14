@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   //create firebase reference
   var rootUrl = 'sky-jump-run.firebaseIO.com/'; 
-  var titleUrl = 'https://sky-jump-run.firebaseio.com/demoPodcast/hyr/podcastName'; 
+  var titleUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/20'; 
 
   //creates database reference to rootUrl
   var myDataRef = new Firebase(rootUrl);
@@ -22,15 +22,13 @@ $(document).ready(function() {
 
   //save demoPodcastRef objects 
   demoPodcastRef.set({
-  	hyr: {
-  		podcastName: 'Heal Yourself Radio', 
-      author: 'Jon Chung', 
+      episodeName: 'EVIDENCE-BASED SPORTS NUTRITION HACKS WITH DR. JOSE ANTONIO', 
+      episodeDescription: '',
       notes: {
         time: '', 
         title: '',
         url: ''
       }
-  	}
   });
   
 	
@@ -45,7 +43,7 @@ $(document).ready(function() {
   });
   */
 
-  //Retrieve Podcast Title
+  /*Retrieve Podcast Title
     demoPodcastRef.on("value", function(snapshot) {
       var title = snapshot.val();
       
@@ -53,7 +51,7 @@ $(document).ready(function() {
       $('.podcastTitleTest').append("<h3> " + title + "</h3>"); 
 
       });
-  
+  */
 
    
 
@@ -86,7 +84,7 @@ $(document).ready(function() {
 
 */
 
-
+/*
   //helper function updates the '.infoTest' field 
 	var infoTestWrite = function(author, podcastName){
 		$('.infoTest').append(
@@ -153,7 +151,7 @@ $(document).ready(function() {
 
 
 
-
+*/
 
 //End brakets / pares / ;   
 });
