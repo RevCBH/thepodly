@@ -11,7 +11,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css --
+    <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,10 +20,10 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
-    <!-- infoNav.css is used to style firebase info --> 
+    <!-- infoNav.css is used to style firebase info -->
     <link rel="stylesheet" href="styles/infoNav.css">
 
-  
+
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -41,54 +41,54 @@
         <h3 class="text-muted">Podly Episode Editor</h3>
       </div>
 
-      
-      
-    
+
+
+
       <div class="panel panel-default">
         <div class="panel-heading">
-          
-          <!-- Title of Podcast from Firebase --> 
+
+          <!-- Title of Podcast from Firebase -->
           <div class="podcastTitleTest" alt="podcast title"></div>
-        
+
         </div>
-        <div class="panel-body"> 
+        <div class="panel-body">
 
             <h4>Enter Episode Info</h4>
             <div class="row">
-              
-              <!-- Episode # --> 
+
+              <!-- Episode # -->
               <div class="col-xs-2">
                   <label for="newEpisodeNum">Episode #</label>
                 <input type="text" class="form-control" placeholder="#?" id="inputEpisodeNumber">
               </div>
-              
-              <!-- Episode Name --> 
+
+              <!-- Episode Name -->
               <div class="col-xs-3">
                 <label for="episodeName">Episode Name </label>
                 <input type="text" class="form-control" placeholder="episode name?" id="episodeNameField">
               </div>
-              
-              <!-- Episode Description --> 
+
+              <!-- Episode Description -->
               <div class="col-xs-4">
                 <label for="episodeDescription">Episode Description</label> (Optional)
                 <input type="text" class="form-control" placeholder="" id='episodeDescription'>
               </div>
-            <!-- Update Button --> 
+            <!-- Update Button -->
               <div class="col-xs-2">
               </br>
                 <label>&nbsp;</label>
                 <button type="submit" class="btn btn-default" id="submitButton">Update</button>
               </div>
-          
+
           </div>
 
 
           <hr>
 
           <p>
-            <!--This is where you write the episode info --> 
+            <!--This is where you write the episode info -->
             <h4>
-              <div class="episodeInfoAdd"></div> 
+              <div class="episodeInfoAdd"></div>
             </h4>
               <div class="episodeDescriptionAdd"></div>
           </p>
@@ -98,18 +98,18 @@
           <h4>Add Show Notes</h4>
 
 
-          
-            
 
-            <!-- Where podcast info showes up --> 
+
+
+            <!-- Where podcast info showes up -->
             <div class="infoTest"></div>
-            <div class="testAdd"></div> 
+            <div class="testAdd"></div>
 
-        <!-- End panel body --> 
-        </div> 
+        <!-- End panel body -->
+        </div>
 
-      <!-- End panel --> 
-      </div> 
+      <!-- End panel -->
+      </div>
 
 
 
@@ -166,9 +166,9 @@
 
     <!-- build:js scripts/podcastTitle.js (displays the title of the podcast)) -->
     <script src="scripts/podcastTitle.js"></script>
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
-    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title") 
+    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
     <script src="scripts/addSection.js"></script>
     <!-- endbuild -->
 
