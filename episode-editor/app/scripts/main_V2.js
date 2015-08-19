@@ -13,6 +13,10 @@ $(document).ready(function() {
     //episode specific variables
       //setting newEpisodeNumber to 000 as a base value so I can hide it till it has a non 0 value when entered    
       var newEpisodeNumber = '000';
+      
+      //delte soon: just testing this
+      sessionStorage.setItem('newEpisodeNumber', newEpisodeNumber);
+      
       var newEpisodeName = '';
       var newEpisodeDescription = '';
       var podcastUrl = ''; 
@@ -105,13 +109,6 @@ $(document).ready(function() {
             $('.episodeDescriptionAdd').empty();
           });
 
-        /*Delete | Duplicative | Episode child_removed | Delete Episode Data in Dom when child is deleted
-          episodesRef.child(newEpisodeNumber).on("child_removed", function(snapshot) {
-            //1st we clear the DOM of old episode info
-            shitGotDeleted();
-            $('.episodeInfoAdd').append("Shit got deleted");
-          });
-          */
         
         //Episode removed | Delete Episode Data in Dom when child is deleted
           episodesRef.child(newEpisodeNumber).on("child_removed", function(snapshot) {
@@ -162,9 +159,9 @@ $(document).ready(function() {
     //[Button] Update High Level Episode Info (click) = add high level episode info (Episode #, Name, Description)
       $('#submitButton').click(function(){
           //takes input of 'Episode Number' field and assignes it to newEpisodeNumber
-          newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();    
+          newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();  
 
-
+          
           //takes input of 'Episode Name' Field and assignes it to newPodcastTitle
           newEpisodeName = $("input[id=episodeNameField]").val();    
           
@@ -264,99 +261,10 @@ $(document).ready(function() {
 
           //show podcast URL form
           $('.podcastUrlForm').show();
-
-          /*
-          //1) takes input of 'Podcast URL' field and assignes it to newPodcastUrl
-          podcastUrl=$("input[id=podcastUrlField]").val();   
-
-          //2) creates Firebase child under /users with newUserName
-          var eRef = episodesRef.child(newEpisodeNumber);
-          eRef.update({
-            podcastUrl: podcastUrl
-          });
           
-          //show podcast url edit button
-          $('.podcastUrl').show();
-
-          //show podcast URL
-          $('.podcastUrl').prepend('<hr>' + '<h5> Podcast URL: ' + podcastUrl + '</h5>');
-
-
-          //hide podcast URL form
-          $('.podcastUrlForm').hide();
-
-          
-
-          //4) show Episode Notes Section 
-          $('.showEpisodeNotes').show();
-
-          */
         });
 
 
-
-  
-
-
-//displaying info from Firebase
-  
-  
-    
-    /*(delete next wipe) creates database reference to healyourselfradio 
-    var usersRef = myDataRef.child('users');
-    var healyourselfradio = myDataRef.child('healyourselfradio');  
-    */
-
-    //DELETE test to load episode 15 for testing purposes
-    //episodeInfoWrite(9);
-
-    
-    
-
-      /*clear Dom for episodeName & episodeDescription
-      $('.episodeInfoAdd').empty();
-      $('.episodeDescriptionAdd').empty();
-
-      //Do the following once
-      episodesRef.child(newEpisodeNumber).on("value", function(snapshot){
-
-        // The callback function will get called multiple times, once for each child (episodeDescription, episodeName, episodeNotes (Ben: is this bad 4 perf?))
-       snapshot.forEach(function(childSnapshot) {
-          
-          // key will itterate
-          var key = childSnapshot.key();
-          
-            // childData will be the actual contents of the child
-            var childData = childSnapshot.val();
-
-             //write to DOM via '.infoTest' with helper function 'infoTestWrite'
-             //episodeInfoWrite(childData.author, childData.podcastName); 
-      };
-      */
-
-  	/*replaces notes list when a child is updated
-  	usersRef.on("child_changed", function(snapshot) {
-  		//clear out DOM in .infoTest
-      $(".infoTest").empty(); 
-
-      //do the following once
-  		usersRef.once("value", function(snapshot) {
-  		 
-       // The callback function will get called twice, once for "JonChung" and once for "CedricDahl"
-  		 snapshot.forEach(function(childSnapshot) {
-  		    
-          // key will be "JonChung" the first time and "CedricDahl" the second time
-  			  var key = childSnapshot.key();
-  			  
-            // childData will be the actual contents of the child
-  			    var childData = childSnapshot.val();
-
-  			     //write to DOM via '.infoTest' with helper function 'infoTestWrite'
-  			     //episodeInfoWrite(childData.author, childData.podcastName); 
-  		 	});
-  		});
-  	});
-    */
 
 //End brakets / pares / ;   
 });
