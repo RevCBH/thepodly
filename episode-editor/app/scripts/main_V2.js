@@ -1,131 +1,365 @@
-//test write Episode Number to DB
-
 // jshint devel:true
-
 
 $(document).ready(function() {
 
   //initilizing variables
     //create firebase references
-    var rootUrl = 'sky-jump-run.firebaseIO.com/'; 
-    var myDataRef = new Firebase(rootUrl);
-    
-    var episodesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'; 
-    var episodesRef = new Firebase(episodesUrl); 
+      var rootUrl = 'sky-jump-run.firebaseIO.com/'; 
+      var myDataRef = new Firebase(rootUrl);
+      
+      var episodesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'; 
+      var episodesRef = new Firebase(episodesUrl); 
 
-    /*Setting newEpisodeNumber to 000 becuase I'm lazy and 
-    don't yet want to write needed functionality 
-    to determine if episode info has been written yet.
-    will neeed to replace this eventually with a more thoughtful solution
-    */
-    var newEpisodeNumber = "000";
+    //episode specific variables
+      //setting newEpisodeNumber to 000 as a base value so I can hide it till it has a non 0 value when entered    
+      var newEpisodeNumber = '000';
+      var newEpisodeName = '';
+      var newEpisodeDescription = '';
+      var podcastUrl = ''; 
+
+    //initilaizing html strings to load at start 
+      //episode high level html
+      var showEpisodeEditButton = '<button class="btn btn-default" type="submit" role="button" id="episodeEditButton">Edit Episode Info</button>'; 
+      var enterEpisodeInfo = '<h4>Enter Episode Info</h4><div class="row"><!-- Episode # --><div class="col-xs-2"><label for="newEpisodeNum">Episode #</label><input type="text" class="form-control" id="inputEpisodeNumber" placeholder="?" ></div><!-- Episode Name --> <div class="col-xs-3"><label for="episodeName">Episode Name </label><input type="text" class="form-control" placeholder="episode name?" id="episodeNameField"></div><!-- Episode Description --><div class="col-xs-4"><label for="episodeDescription">Episode Description</label> (Optional)<input type="text" class="form-control" placeholder="" id="episodeDescription"></div><!-- Update Button --> <div class="col-xs-2"></br><label>&nbsp;</label><button type="submit" class="btn btn-default" id="submitButton">Update</button></div><!--End "row" class--> </div>';
+
+      //podcast media 
+      //var showPodcastUrlForm = '<hr><h4>Enter Podcast URL</h4><form class="form-inline"><div class="form-group"><input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField"><button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button></div></form>'
+      var showPodcastUrlForm ='<hr><h4>Enter Podcast URL</h4><input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField"><button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button>'; 
+      var podcastUrlEditButton = '<button type="submit" class="btn btn-default" id="podcastUrlEditButton">Edit URL</button>'; 
+
+      //episode notes
+      var showEpisodeNotesHeader = '<hr><h4>Add Show Notes</h4>'; 
     
-    //(delete next wipe) creates database reference to healyourselfradio 
+   
+
+  //function setup
+    //function to display 'Show Episode Info'
+    var displayShowEpisodeEditButton = function(){
+    $('.episodeEditButtonArea').append(showEpisodeEditButton);  
+    };
+
+    //function to display 'Enter Episode Info'
+    var displayEnterEpisodeInfo = function(){
+    $('.enterEpisodeInfo').append(enterEpisodeInfo);  
+    };
+
+    //function to display 'Podcast URL form'
+    var displayPodcastUrlForm = function(){
+    $('.podcastUrlForm').append(showPodcastUrlForm);  
+    };
+
+
+    //function to display 'Podcast URL Edit Button '
+    var displayPodcastUrlEditButton = function(){
+    $('.podcastUrlEditButton').append(podcastUrlEditButton);  
+    };
+
+    //function to display 'Show Episode Notes Header'
+    var displayShowEpisodeNotesHeader = function(){
+    $('.showEpisodeNotes').append(showEpisodeNotesHeader);  
+    };
+
+    //function that high level episode shit got deleted 
+      var shitGotDeleted = function(){
+        $('.episodeInfoAdd').empty();
+        newEpisodeName = '';
+        $('.episodeDescriptionAdd').empty();
+        newEpisodeDescription='';
+      };
+
+    //function to empty() episode high level info
+      var emptyEpisodeHighLevelInfo = function(){
+        $('.episodeInfoAdd').empty();
+        $('.episodeDescriptionAdd').empty();
+      };
+
+    //function to write Episode Data to DOM
+      var episodeInfoWrite = function(newEpisodeNumber){
+        
+        //2) Write to the DOM in episodeInfoAdd
+        episodesRef.child(newEpisodeNumber).once("value", function(snapshot) {
+          var infoShow = snapshot.val();    
+          $('.episodeInfoAdd').append(
+            //"<hr>" +   
+            "<h4>" + "Episode " + newEpisodeNumber + " - " + infoShow.episodeName + "</h4>");
+          
+        //3) Write to the DOM in episodeDescriptionAdd
+          $('.episodeDescriptionAdd').append(
+            infoShow.episodeDescription);
+            console.log(snapshot.val());
+
+          //4 Append Edit Button in DOM
+          $('.episodeEditButtonArea').show();
+
+
+        },
+        //Error code, appears in Console if read failed 
+        function (errorObject) {
+          console.log("The read failed: " + errorObject.code);
+        });
+      
+        //Episode child_changed | Replace Episode Data in Dom when child is updated
+          episodesRef.child(newEpisodeNumber).on("child_changed", function(snapshot) {
+             //1st we clear the DOM of old episode info
+            $('.episodeInfoAdd').empty();
+            $('.episodeDescriptionAdd').empty();
+          });
+
+        /*Delete | Duplicative | Episode child_removed | Delete Episode Data in Dom when child is deleted
+          episodesRef.child(newEpisodeNumber).on("child_removed", function(snapshot) {
+            //1st we clear the DOM of old episode info
+            shitGotDeleted();
+            $('.episodeInfoAdd').append("Shit got deleted");
+          });
+          */
+        
+        //Episode removed | Delete Episode Data in Dom when child is deleted
+          episodesRef.child(newEpisodeNumber).on("child_removed", function(snapshot) {
+             //1st we clear the DOM of old episode info
+            shitGotDeleted();
+            $('.episodeInfoAdd').append("<hr>" + "Episode " + newEpisodeNumber + " was deleted by an admin of your account");
+          });
+      };
+
+  //calling starting funcitons and conditionals 
+    //shows 'enter episode info'
+    displayEnterEpisodeInfo();
+    
+    //Edit Button
+      //loads episode edit button 
+      displayShowEpisodeEditButton();
+      //hides episode edit button 
+      $('.episodeEditButtonArea').hide();
+      
+    
+    //Podcast Media
+      //loads podcast url form
+      displayPodcastUrlForm();
+      //hides podcast url form
+      $('.podcastUrlForm').hide();
+
+      //loads podcast url edit button
+      displayPodcastUrlEditButton();
+      //hides podcast url edit button
+      $('.podcastUrlEditButton').hide();
+
+    //Episode Notes
+      //loads episode notes header
+      displayShowEpisodeNotesHeader();
+      //hides episode notes header
+      $('.showEpisodeNotes').hide();
+      
+    //Episode high level info (Ep #, name, description)
+      //Clears DOM of Episode name/ description areas   
+      if(newEpisodeNumber='000'){
+        //calls function to empty() episode high level info
+        emptyEpisodeHighLevelInfo();
+      }
+    
+
+  //Button Clicks
+
+    //[Button] Update High Level Episode Info (click) = add high level episode info (Episode #, Name, Description)
+      $('#submitButton').click(function(){
+          //takes input of 'Episode Number' field and assignes it to newEpisodeNumber
+          newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();    
+
+
+          //takes input of 'Episode Name' Field and assignes it to newPodcastTitle
+          newEpisodeName = $("input[id=episodeNameField]").val();    
+          
+          
+          //takes input of 'Episode Description' Field and assignes it to newAuthor
+          newEpisodeDescription=$("input[id=episodeDescription]").val();    
+
+
+          //creates Firebase child under /users with newUserName
+          var eRef = episodesRef.child(newEpisodeNumber);
+          eRef.set({
+            episodeName: newEpisodeName, 
+            episodeDescription: newEpisodeDescription, 
+            episodeNotes: ''
+          });
+
+          //clear out DOM 'enterEpisodeInfo'
+          $('.enterEpisodeInfo').hide();
+
+
+          //write to DOM where 'enterEpisodeInfo' used to be
+          episodeInfoWrite(newEpisodeNumber);
+          
+
+          //if else statment showing podcastUrlForm ONLY if podcastUrl = ''; 
+          $('.podcastUrlForm').show();
+
+          
+      });
+
+
+    //[Button] Edit High Level Episode Info (click) = edit high level episode info (Episode #, Name, Description)
+    $('#episodeEditButton').click(function(){    
+        //calls function to empty() episode high level info
+        emptyEpisodeHighLevelInfo();
+
+        //hides episode edit button 
+        $('.episodeEditButtonArea').hide();
+
+        //displayEnterEpisodeInfo();
+        $('.enterEpisodeInfo').show();
+        
+        //puts latest episode info into input fields
+        $('#inputEpisodeNumber').val(newEpisodeNumber);
+        $('#episodeNameField').val(newEpisodeName);
+        $('#episodeDescription').val(newEpisodeDescription);
+        
+        //hide Podcast URL field
+        $('.podcastUrlEditButton').hide();
+
+        //empty podcast URL 
+          $('.podcastUrl').empty();
+
+        //show Enter Podcast URL 
+        $('.podcastUrlForm').show();
+        
+      });
+
+
+
+       //[Button] Podcast URL (click) = write to Firebase
+      $('#podcastUrlButton').click(function(){
+          //1) takes input of 'Podcast URL' field and assignes it to newPodcastUrl
+          podcastUrl=$("input[id=podcastUrlField]").val();   
+
+          //2) creates Firebase child under /users with newUserName
+          var eRef = episodesRef.child(newEpisodeNumber);
+          eRef.update({
+            podcastUrl: podcastUrl
+          });
+          
+          //show podcast url edit button
+          $('.podcastUrlEditButton').show();
+
+          //show podcast URL
+          $('.podcastUrl').prepend('<hr>' + '<h5> Podcast URL: ' + podcastUrl + '</h5>');
+
+
+          //hide podcast URL form
+          $('.podcastUrlForm').hide();
+
+          
+
+          //4) show Episode Notes Section 
+          $('.showEpisodeNotes').show();
+        });
+
+
+        //[Button] Podcast URL Edit (click) = edit Podcast URL
+      $('#podcastUrlEditButton').click(function(){
+          //empty podcast URL 
+          $('.podcastUrl').empty();
+
+          //hide podcast 'edit URL' button
+          $('.podcastUrlEditButton').hide();
+          
+
+          //show podcast URL form
+          $('.podcastUrlForm').show();
+
+          /*
+          //1) takes input of 'Podcast URL' field and assignes it to newPodcastUrl
+          podcastUrl=$("input[id=podcastUrlField]").val();   
+
+          //2) creates Firebase child under /users with newUserName
+          var eRef = episodesRef.child(newEpisodeNumber);
+          eRef.update({
+            podcastUrl: podcastUrl
+          });
+          
+          //show podcast url edit button
+          $('.podcastUrl').show();
+
+          //show podcast URL
+          $('.podcastUrl').prepend('<hr>' + '<h5> Podcast URL: ' + podcastUrl + '</h5>');
+
+
+          //hide podcast URL form
+          $('.podcastUrlForm').hide();
+
+          
+
+          //4) show Episode Notes Section 
+          $('.showEpisodeNotes').show();
+
+          */
+        });
+
+
+
+  
+
+
+//displaying info from Firebase
+  
+  
+    
+    /*(delete next wipe) creates database reference to healyourselfradio 
     var usersRef = myDataRef.child('users');
     var healyourselfradio = myDataRef.child('healyourselfradio');  
+    */
 
+    //DELETE test to load episode 15 for testing purposes
+    //episodeInfoWrite(9);
 
-//Button click = update high level info to /episodes
-    $('#submitButton').click(function(){
-        //takes input of 'Episode Number' field and assignes it to newEpisodeNumber
-        newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();    
-
-
-        //takes input of 'Episode Name' Field and assignes it to newPodcastTitle
-        var newEpisodeName = $("input[id=episodeNameField]").val();    
-        
-        
-        //takes input of 'Episode Description' Field and assignes it to newAuthor
-        var newEpisodeDescription=$("input[id=episodeDescription]").val();    
-
-
-        //creates child under /users with newUserName
-        var eRef = episodesRef.child(newEpisodeNumber);
-        eRef.set({
-          episodeName: newEpisodeName, 
-          episodeDescription: newEpisodeDescription, 
-          episodeNotes: ''
-        });
-    });
-      
-
-//writing from Firebase
-  
-  /*helper function updates the '.infoTest' field 
-  	var episodeInfoWrite = function(name, description){
-  		$('.episodeInfoAdd').append(
-  	  	episodeName + episodeDescription
-  	)}; 
-  */
-
-  /*Currently being coppied | Retrieve new posts as they are added to our database
-    episodesRef.child("11").on("child_added", function(snapshot, prevChildKey) {
-    var newPost = snapshot.val();
-    //write to DOM via '.infoTest' with helper function 'infoTestWrite'
-    episodeInfoWrite(newPost.episodeName, newPost.episodeDescription); 
-    });	
-  */
-
-  //Currently being copied, delete original when done | Attach an asynchronous callback to read the data at our posts reference
-  episodesRef.child(newEpisodeNumber).on("value", function(snapshot) {
-    var infoShow = snapshot.val();    
-    //$('.episodeInfoAdd').append(infoShow); 
     
-    //episodeInfoWrite(infoShow.episodeName, infoShow.episodeDescription); 
-    //**** //Test the code below, if it works de-bug the code above
-    $('.episodeInfoAdd').append(
-      "Episode " + newEpisodeNumber + " - " + infoShow.episodeName );
-    $('.episodeDescriptionAdd').append(
-      infoShow.episodeDescription);
     
 
+      /*clear Dom for episodeName & episodeDescription
+      $('.episodeInfoAdd').empty();
+      $('.episodeDescriptionAdd').empty();
 
-    console.log(snapshot.val());
-  },
-  //Error code, appears in Console if read failed 
-  function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
+      //Do the following once
+      episodesRef.child(newEpisodeNumber).on("value", function(snapshot){
 
-  });
+        // The callback function will get called multiple times, once for each child (episodeDescription, episodeName, episodeNotes (Ben: is this bad 4 perf?))
+       snapshot.forEach(function(childSnapshot) {
+          
+          // key will itterate
+          var key = childSnapshot.key();
+          
+            // childData will be the actual contents of the child
+            var childData = childSnapshot.val();
 
+             //write to DOM via '.infoTest' with helper function 'infoTestWrite'
+             //episodeInfoWrite(childData.author, childData.podcastName); 
+      };
+      */
 
-  /*Currently being coppied | Retrieve new posts as they are added to our database
-	episodesRef.on("child_added", function(snapshot, prevChildKey) {
-	  var newPost = snapshot.val();
-	  //write to DOM via '.infoTest' with helper function 'infoTestWrite'
-	  episodeInfoAdd(newPost.author, newPost.podcastName); 
+  	/*replaces notes list when a child is updated
+  	usersRef.on("child_changed", function(snapshot) {
+  		//clear out DOM in .infoTest
+      $(".infoTest").empty(); 
 
-	});
-	*/
+      //do the following once
+  		usersRef.once("value", function(snapshot) {
+  		 
+       // The callback function will get called twice, once for "JonChung" and once for "CedricDahl"
+  		 snapshot.forEach(function(childSnapshot) {
+  		    
+          // key will be "JonChung" the first time and "CedricDahl" the second time
+  			  var key = childSnapshot.key();
+  			  
+            // childData will be the actual contents of the child
+  			    var childData = childSnapshot.val();
 
-	
-	//replaces notes list when a child is updated
-	usersRef.on("child_changed", function(snapshot) {
-		$(".infoTest").empty(); 
-
-		usersRef.once("value", function(snapshot) {
-		 // The callback function will get called twice, once for "JonChung" and once for "CedricDahl"
-		  
-		  	snapshot.forEach(function(childSnapshot) {
-		    // key will be "JonChung" the first time and "CedricDahl" the second time
-			  
-			    var key = childSnapshot.key();
-			    // childData will be the actual contents of the child
-
-			    var childData = childSnapshot.val();
-
-			     //write to DOM via '.infoTest' with helper function 'infoTestWrite'
-			     episodeInfoWrite(childData.author, childData.podcastName); 
-
-		 	});
-		});
-	});
-
-
+  			     //write to DOM via '.infoTest' with helper function 'infoTestWrite'
+  			     //episodeInfoWrite(childData.author, childData.podcastName); 
+  		 	});
+  		});
+  	});
+    */
 
 //End brakets / pares / ;   
 });
-
 
 
 

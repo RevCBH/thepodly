@@ -1,0 +1,314 @@
+ <!DOCTYPE html>
+<html>
+  <title></title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+    
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+      <!-- Boostrap Goodness --> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Custom CSS--> 
+        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- More bootstrap goodness -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- End more bootstrap goodness -->
+  
+  <!-- Master Div -->
+    <div class = "container-fluid">
+      <!-- div for row -->
+      <div class = "row">
+      
+    
+          <p></p><p></p>
+          <!-- Embeded Player demo --> 
+             
+            <div class="old-panel panel-default col-xs-12">
+              <div class="old-panel-body">
+                
+                  
+                    <h4>
+                      Heal Yourself Radio Podcast  (Player by 
+                      <a href="mailto:podlyplayer@gmail.com">Podly</a>
+                      )
+                    </h4>
+                    <h5>
+                      Episode 21 - Does Your Brain Even Lift? Brain based fitness with Troy Dodson
+                    </h5>
+                    
+                  <div class='container container-fluid'>
+                    <div class = 'row-fluid pull-left'>
+                    <!-- Image --> 
+                      <img id="jp_poster_0" src="https://assets.libsyn.com/secure/content/9540987?width=480&height=320&overlay=true&player_time=1438715804317" style="width: auto; height: 320px; display: block; text-align: center; margin: 0px auto;" class="img-rounded" class="text-left">
+
+                    
+                    <!-- Audio Control -->
+                        <audio controls autoplay type='audio/mpg' name="media" id='audioPlayer' width="480" onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0">
+                            
+                          <source src="http://traffic.libsyn.com/preview/healyourselfradio/Troy_Dodson_Final_Cut-_8415_1.17_PM.mp3" type="audio/mpeg" preload = 'auto' autoplay='1' autostart='1'>
+                        </audio>
+                         </br>
+                    
+                        
+                    
+                      <!-- End / Audio Controls --> 
+                    </div>
+                  </div>
+
+                      
+                    <!-- Embded player relevant links -->   
+                      <div id="Embded player relevant links">
+                        <h5>Show Notes</h5>
+                          <!-- Test Link 
+                          <a href="javascript:void myJsFunc(onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0");">
+                            ASDF
+                          </a>
+                          -->
+
+
+                          <!-- Play Relevent Links --> 
+                            <!--Intro
+                              <p>
+                                <button type="button" class="btn btn-default btn"" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=08">
+                                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;</button> Intro
+                              </p>-->
+                            
+                          <!-- Guest: Troy Dodson -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> 0:00 | Guest: Troy Dodson</button> 
+                                <a href = "https://www.facebook.com/troydodson" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Facebook
+                                  </button>
+                                </a>
+                                <a href = "http://www.brainbasedfitnessrx.com" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    BrainBaisedFitnessRx.com
+                                  </button>
+                                </a> 
+                            </p>
+
+
+                          <!-- What is brain-based fitness?  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=142"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;2:22 |  What is brain-based fitness? 
+                              </button> 
+                                
+                            </p>
+
+                        
+                          <!-- Z Health Performance -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=410"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 6:50 | Z Health Performance - brain-based training</button> 
+                              <a href = "http://www.zhealtheducation.com" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+                          
+                          <!-- Case Study: Using Brain Exercises to overcome chronic pain, sweaty palms, and injury recovery -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=780"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;13:05 | Case Study: Using Brain Exercises to overcome chronic pain, sweaty palms, and injury recovery</button> 
+                                
+                            </p>
+
+                          <!-- Case Study: Z-health + Functional Neurology for a woman with tremors, and gut problems -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=1096"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 18:16 | Case Study: Z-health + Functional Neurology for a woman with tremors, and gut problems</button> 
+                                
+                            </p>
+
+                          <!-- Quantifying the Fitness of Your Nervous System Using Heart Rate Variability  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=2409"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 20:09 | Quantifying Your Nervous System Fitness With Heart Rate Variability </button> 
+                                
+                            </p>
+
+                          <!-- Data on the effects of training on HRV (Heart Rate Variability)   -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(22*60+58)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 22:58 | Data on the effects of training on HRV (Heart Rate Variability) </button> 
+                                
+                            </p>
+
+                          <!-- Why you want more from your parasympathetic nervous system (feed and breed) -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(24*60+50)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 24:50 | Why you want more from your parasympathetic nervous system (feed and breed)</button> 
+                                  
+                            </p>
+
+                          
+
+                          <!-- Troy’s favorite HRV tool - myIthlete - myithlete.com  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(26*60+19)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 26:19 | Troy’s favorite HRV tool - myIthlete.com</button> 
+                              <a href = "http://www.myithlete.com" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+
+
+                            <!-- Learn more about HRV training. Andrew Flatt, MS, CSCS  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(26*60+48)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 26:48 | Learn more about HRV training. Andrew Flatt, MS, CSCS</button> 
+                              <a href = "http://www.hrvtraining.com" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+
+                          
+                            <!-- Best practices for programming  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(27*60+44)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 27:44 | Best practices for programming</button> 
+                              
+                            </p>
+
+                            <!-- The most important muscle system for the brain -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(28*60+47)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 28:47 | The most important muscle system for the brain - Your Eyes </button> 
+                              
+                            </p>                    
+
+                            <!-- Working on your breath - Expand-a-lung tool - expand-a-lung.com -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(33*60+18)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 33:18 | Working on your breath - Expand-a-lung tool - expand-a-lung.com </button> 
+                              <a href = "http://www.expand-a-lung.com" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>                                                        
+
+                              
+                            <!-- Books and resources -->
+                            </br>
+                            <p>
+                            <h5>
+                              Books and Resources
+                            </h5>
+
+                            <ul>
+                              <!-- The Brain that Changes Itself --> 
+                              <li>
+                                Book: 
+                                <a href = "http://www.amazon.com/The-Brain-That-Changes-Itself/dp/067003830X" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    The Brain that Changes Itself 
+                                  </button> 
+                                </a>
+                              </li><br/>
+                              
+                              <!-- Explain Pain --> 
+                              <li>
+                                Book: 
+                                <a href = "http://www.amazon.com/Explain-Pain-David-Butler/dp/0987342665/ref=sr_1_1?ie=UTF8&qid=1438712160&sr=8-1&keywords=explain+pain+book" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Explain Pain 
+                                  </button> 
+                                </a>
+                                
+                              </li><br/>
+                              
+                              <!-- One Small Step Can Change Your Life  --> 
+                              <li>
+                              Book: 
+                                <a href = "http://www.amazon.com/Small-Step-Change-Your-Life/dp/076118032X" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    One Small Step Can Change Your Life 
+                                  </button> 
+                                </a>
+                              </li><br/>
+
+                              <!-- The Radical Leap --> 
+                              <li>
+                              Book: 
+                                <a href = "http://www.amazon.com/The-Radical-Leap-Personal-Leadership/dp/0989300218" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    The Radical Leap 
+                                  </button> 
+                                </a>
+                              </li><br/>
+
+                              <!-- Palo Alto Prize --> 
+                              <li> Award: 
+                                <a href = "paloaltoprize.com" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Palo Alto Prize 
+                                  </button> 
+                                </a>
+                              </li><br/>
+                              
+                              <!-- Learn more about Troy --> 
+                              <li> Learn more about Troy: 
+                                <a href = "https://www.facebook.com/troydodson" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Facebook
+                                  </button>
+                                </a>
+                                <a href = "http://www.brainbasedfitnessrx.com" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    BrainBaisedFitnessRx.com
+                                  </button>
+                                </a> 
+                              </li><br/>
+                            </ul>
+                          </p>
+
+
+                 
+                <!-- Pannel wrapping just the player --> 
+                
+              
+                </div>
+            </div>
+
+    
+
+       
+        <!-- div for row -->
+        </div>
+    
+    <!-- End Master Div --> 
+    </div>
+    

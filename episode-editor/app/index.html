@@ -52,57 +52,94 @@
         
         </div>
         <div class="panel-body"> 
-
-            <h4>Enter Episode Info</h4>
+          
+          <!-- This div starts loaded and is hidden when folks hit the 'Update' button it comes back when people hit the 'Edit' button -->
+          <div class="enterEpisodeInfo">
+             <!--Hiding html so we can test loading it with JS, keeping it here for reference incase we want to edit this code in the JS later
+             <h4>Enter Episode Info</h4>
+            
             <div class="row">
               
-              <!-- Episode # --> 
+              <!-- Episode # --
               <div class="col-xs-2">
                   <label for="newEpisodeNum">Episode #</label>
                 <input type="text" class="form-control" placeholder="#?" id="inputEpisodeNumber">
               </div>
               
-              <!-- Episode Name --> 
+              <!-- Episode Name --
               <div class="col-xs-3">
                 <label for="episodeName">Episode Name </label>
                 <input type="text" class="form-control" placeholder="episode name?" id="episodeNameField">
               </div>
               
-              <!-- Episode Description --> 
+              <!-- Episode Description --
               <div class="col-xs-4">
                 <label for="episodeDescription">Episode Description</label> (Optional)
-                <input type="text" class="form-control" placeholder="" id='episodeDescription'>
+                <input type="text" class="form-control" placeholder="" id="'"episodeDescription">
               </div>
-            <!-- Update Button --> 
+            
+              <!-- Update Button --
               <div class="col-xs-2">
-              </br>
+                </br>
                 <label>&nbsp;</label>
                 <button type="submit" class="btn btn-default" id="submitButton">Update</button>
               </div>
-          
+            
+            <!--End 'row' class--
+            </div>
+           
+
+          <!--end 'enterEpisodeInfo' class-->
           </div>
 
 
-          <hr>
-
-          <p>
-            <!--This is where you write the episode info --> 
-            <h4>
+          <!--This Div starts hidden, loads episode info, then hides it when a user wants to edit episode info-->
+          <div class="showEpisodeInfo">
+            <p>
+            <!--This is where you write the episode info -->             
               <div class="episodeInfoAdd"></div> 
-            </h4>
               <div class="episodeDescriptionAdd"></div>
-          </p>
+              <div class="episodeEditButtonArea">
+                <!--hiding edit high level episode button, keeping it here for reference incase we want to edit this code in the JS later
+                <button class="btn btn-default" id="episodeEditButton" type="submit" role="button">Edit Episode Info</button>--> 
+              </div>
+              
+              
+            </p>
+          </div> 
 
-          <hr>
+          <div class="podcastUrlForm">
+            <!-- hiding but keeping here for HTML reference, incase we want to make easy edits
+            <hr>
+            <h4>Enter Podcast URL</h4>
+              
+                  <input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField">
+                  <button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button>
+              
+            --> 
+          </div> 
+          <div class="podcastUrl">
+          </div>
 
-          <h4>Add Show Notes</h4>
+          <div class="podcastUrlEditButton">
+          </div>
+                <!--
+                <button type="submit" class="btn btn-default" id="podcastUrlEditButton">Enter</button>
+              -->
+          
+
+          <div class="showEpisodeNotes"></div> 
+
+          
 
 
           
             
 
             <!-- Where podcast info showes up --> 
-            <div class="infoTest"></div>
+            <div class="infoTest">
+
+            </div>
             <div class="testAdd"></div> 
 
         <!-- End panel body --> 
@@ -115,24 +152,25 @@
 
 
 
+      <!-- Delte : placeholder for marketing content 
+        <div class="row marketing tab-content">
+          <div role="tabpanel" class="tab-pane active" id="edit">
+            Edit
+          </div>
+          <div role="tabpanel" class="tab-pane" id="settings">
+            Settings
+          </div>
+          <div role="tabpanel" class="tab-pane" id="help">
+            Help
+          </div>
 
-      <div class="row marketing tab-content">
-        <div role="tabpanel" class="tab-pane active" id="edit">
-          Edit
-        </div>
-        <div role="tabpanel" class="tab-pane" id="settings">
-          Settings
-        </div>
-        <div role="tabpanel" class="tab-pane" id="help">
-          Help
         </div>
 
+        <div class="footer">
+          <p><span class="glyphicon glyphicon-heart"></span> from the Podly team</p>
+        </div>
       </div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Podly team</p>
-      </div>
-    </div>
+    -->
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -164,8 +202,13 @@
     <script src="scripts/main_V2.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js scripts/podcastTitle.js (displays the title of the podcast)) -->
+    <!-- build:js scripts/podcastTitle.js (displays the title of the podcast) -->
     <script src="scripts/podcastTitle.js"></script>
+    <!-- endbuild -->  
+
+
+    <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) -->
+    <script src="scripts/main_podcastUrl.js"></script>
     <!-- endbuild -->  
 
     <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title") 
