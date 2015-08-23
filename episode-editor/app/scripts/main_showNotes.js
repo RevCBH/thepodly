@@ -32,6 +32,7 @@ $(document).ready(function() {
 //Starting Actions
   //Hide Edit Button 
   $('#noteButtonEdit').hide();
+  
 
 
 //Button clicks
@@ -91,7 +92,8 @@ $(document).ready(function() {
           //create new var for Firebase reference to tRefchid(noteTiem)
           var timeRef = tRef.child(noteTime);
 
-          //delete old row time (if it exists)
+          //temporarily commenting this out so I can add all the time / show notes for episode 22 
+          /*delete old row time (if it exists)
           if(noteTimeCounter>0){
             //initialize oldTimeRef
             //var oldTimeRef = timeRef.child(oldNoteTime);
@@ -100,13 +102,14 @@ $(document).ready(function() {
             tRef.child(oldNoteTime).remove(); 
 
             /*replace oldNoteTime with noteTime
-            oldTimeRef.update(noteTime);*/
+            oldTimeRef.update(noteTime);*
             //set oldNoteTimeto '', so we avoid accidentaly deleting a time we want to keep! 
             oldNoteTime = '';
           }
 
           //increment noteTimeCounter so we know this row's time has been updated
             noteTimeCounter+=1; 
+          */
 
           //write to /time url = noteWords & noteUrl
             timeRef.set({
@@ -181,32 +184,3 @@ $(document).ready(function() {
       });
     
 });
-
-/*Delete : Example below for referendce while writing noteButtonEnter function 
- //[Button] Podcast URL (click) = write to Firebase
-      $('#podcastUrlButton').click(function(){
-          //1) takes input of 'Podcast URL' field and assignes it to newPodcastUrl
-          podcastUrl=$("input[id=podcastUrlField]").val();   
-
-          //2) creates Firebase child under /users with newUserName
-          var eRef = episodesRef.child(newEpisodeNumber);
-          eRef.update({
-            podcastUrl: podcastUrl
-          });
-          
-          //show podcast url edit button
-          $('.podcastUrlEditButton').show();
-
-          //show podcast URL
-          $('.podcastUrl').prepend('<hr>' + '<h5> Podcast URL: ' + podcastUrl + '</h5>');
-
-
-          //hide podcast URL form
-          $('.podcastUrlForm').hide();
-
-          
-
-          //4) show Episode Notes Section 
-          $('.showEpisodeNotes').show();
-        });
-*/

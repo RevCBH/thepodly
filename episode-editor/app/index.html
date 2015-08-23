@@ -56,41 +56,40 @@
           <!-- This div starts loaded and is hidden when folks hit the 'Update' button it comes back when people hit the 'Edit' button -->
           <div class="enterEpisodeInfo">
              <!--Hiding html so we can test loading it with JS, keeping it here for reference incase we want to edit this code in the JS later
-             <h4>Enter Episode Info</h4>
-            
-            <div class="row">
+               <h4>Enter Episode Info</h4>
               
-              <!-- Episode # --
-              <div class="col-xs-2">
-                  <label for="newEpisodeNum">Episode #</label>
-                <input type="text" class="form-control" placeholder="#?" id="inputEpisodeNumber">
-              </div>
+              <div class="row">
+                
+                <!-- Episode # --
+                <div class="col-xs-2">
+                    <label for="newEpisodeNum">Episode #</label>
+                  <input type="text" class="form-control" placeholder="#?" id="inputEpisodeNumber">
+                </div>
+                
+                <!-- Episode Name --
+                <div class="col-xs-3">
+                  <label for="episodeName">Episode Name </label>
+                  <input type="text" class="form-control" placeholder="episode name?" id="episodeNameField">
+                </div>
+                
+                <!-- Episode Description --
+                <div class="col-xs-4">
+                  <label for="episodeDescription">Episode Description</label> (Optional)
+                  <input type="text" class="form-control" placeholder="" id="'"episodeDescription">
+                </div>
               
-              <!-- Episode Name --
-              <div class="col-xs-3">
-                <label for="episodeName">Episode Name </label>
-                <input type="text" class="form-control" placeholder="episode name?" id="episodeNameField">
-              </div>
+                <!-- Update Button --
+                <div class="col-xs-2">
+                  </br>
+                  <label>&nbsp;</label>
+                  <button type="submit" class="btn btn-default" id="submitButton">Update</button>
+                </div>
               
-              <!-- Episode Description --
-              <div class="col-xs-4">
-                <label for="episodeDescription">Episode Description</label> (Optional)
-                <input type="text" class="form-control" placeholder="" id="'"episodeDescription">
+              <!--End 'row' class--
               </div>
             
-              <!-- Update Button --
-              <div class="col-xs-2">
-                </br>
-                <label>&nbsp;</label>
-                <button type="submit" class="btn btn-default" id="submitButton">Update</button>
-              </div>
-            
-            <!--End 'row' class--
-            </div>
-           
-
-          <!--end 'enterEpisodeInfo' class-->
-          </div>
+            <!--end 'enterEpisodeInfo' class-->
+           </div>
 
 
           <!--This Div starts hidden, loads episode info, then hides it when a user wants to edit episode info-->
@@ -130,17 +129,29 @@
 
           <div class="showEpisodeNotes"></div> 
 
+          <!-- Audio Control -->
+          <div class="podcastAudioArea"></div>
+              
+          
+              <!-- Hiding the original HTML
+              <audio controls type='audio/mpg' name="media" id='audioPlayer' width="480">
+                <source src="http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3" type="audio/mpeg" preload = "auto">
+              </audio>
+               </br>
+             --> 
+
+
+          
+          <!-- Add a show note --> 
           <div class="demoLineItem">
               <table class="table table-hover">
-              <caption>Enter Show Notes</caption>
+              <caption>Add a Show Note</caption>
               <thead>
               <tbody>
                 <thead>
                   <tr>
                     <th>
-                      <!-- Delete if you don't want to show
-                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                      -->
+                    
                     </th>
                     <th>time</th>
                     <th>words</th>
@@ -148,10 +159,10 @@
                     <th>&nbsp;</th>
                   </tr>
                 </thead>
-                <tr class = "info">
+                <tr class = "success">
                   <div class="row">
                     <td id="notePlayButtonCell">
-                      <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                      &nbsp;
                     </td>
                     <td id="noteTimeCell">
                       <input type="text" class="form-control" id="noteTimeInput" placeholder="time">
@@ -172,30 +183,32 @@
                     </td>
                   </div>
                 </tr>
-                <td>
-                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                  </td>
-                  <td>time</td>
-                  <td>words</td>
-                  <td>url</td>
-                  <td>&nbsp;</td>
-                </tr>
+               
 
               </tbody>
               </table>
           </div> 
 
-          
 
+            <!-- Top o' Firebase Table --> 
+            <div class="spewTableTop"> 
+            </div> 
 
-          
-            
+            <!-- Testing writing firebase table guts --> 
+            <div class="spewTime">
+            </div> 
 
-            <!-- Where podcast info showes up --> 
+            <!-- Top o' Firebase Table --> 
+            <div class="spewTableBottom"> 
+            </div> 
+
+            <!-- Delete? Is this ever getting used? Where podcast info showes up 
             <div class="infoTest">
 
             </div>
-            <div class="testAdd"></div> 
+            <div class="testAdd"></div> --> 
+
+
 
         <!-- End panel body --> 
         </div> 
@@ -206,26 +219,6 @@
 
 
 
-
-      <!-- Delte : placeholder for marketing content 
-        <div class="row marketing tab-content">
-          <div role="tabpanel" class="tab-pane active" id="edit">
-            Edit
-          </div>
-          <div role="tabpanel" class="tab-pane" id="settings">
-            Settings
-          </div>
-          <div role="tabpanel" class="tab-pane" id="help">
-            Help
-          </div>
-
-        </div>
-
-        <div class="footer">
-          <p><span class="glyphicon glyphicon-heart"></span> from the Podly team</p>
-        </div>
-      </div>
-    -->
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -253,6 +246,11 @@
     <!-- endbuild -->
 
 
+    <!-- build:js scripts/main_showNotesTable.js  -->
+    <script src="scripts/main_showNotesTable.js"></script>
+    <!-- endbuild -->  
+
+
     <!-- build:js scripts/main.js -->
     <script src="scripts/main_V2.js"></script>
     <!-- endbuild -->
@@ -265,6 +263,11 @@
     <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) -->
     <script src="scripts/main_showNotes.js"></script>
     <!-- endbuild -->  
+
+
+    <script src = "scripts/main_showNotesPlayButton.js"></script>
+
+
 
     <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title") 
     <script src="scripts/addSection.js"></script>
