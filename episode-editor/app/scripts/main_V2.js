@@ -91,7 +91,7 @@ $(document).ready(function() {
         //3) Write to the DOM in episodeDescriptionAdd
           $('.episodeDescriptionAdd').append(
             infoShow.episodeDescription);
-            console.log(snapshot.val());
+            //console.log(snapshot.val());
 
           //4 Append Edit Button in DOM
           $('.episodeEditButtonArea').show();

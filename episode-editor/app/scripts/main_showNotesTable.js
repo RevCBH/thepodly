@@ -16,27 +16,9 @@ $(document).ready(function() {
     //table html
     var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>&nbsp;</th></thead>';
     var tableBot ='</tbody></table>';
-    //var tableGuts = '<tr class = "info"> <div class="row"> <td id="notePlayButtonCell"> <span class="glyphicon glyphicon-play" aria-hidden="true"></span> </td> <td id="noteTimeCell"> <input type="text" class="form-control" id="noteTimeInput" placeholder="time"> <div class="noteTimeContainer"></div> </td> <td id="noteWordsCell"> <input type="text" class="form-control" id="noteWordsInput" placeholder="words"> <div class="noteWordsContainer"></div> </td> <td id="noteUrlCell"> <input type="text" class="form-control" id="noteUrlInput" placeholder="url"> <div class="noteUrlContainer"></div> </td> <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonEnter">Enter</button> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> </td> </div> </tr> ';
     
-// Test 1: Spew out all the data from Firebase on https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes		
-	/*/ Test 1b: Order data by time 
-	var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
-	ref2.orderByKey().on("child_added", function(snapshot) {
-	  $('.spewTime').append(snapshot.key() + '</br>' + snapshot.val().noteWords + '</br>' + snapshot.val().noteUrl + '<p></p><p></p>'); 
-	});
-	//*/
 
-	/*/Test 1c: Update the list in realtime by using on.'value' insted of on.'child'
-	var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
-	ref2.on("value", function(snapshot) {
-		$('.spewTime').empty(); 
-	  snapshot.forEach(function(childSnapshot) {
-	  	$('.spewTime').append(childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>'); 
-	  });	  
-	});	
-	//*/
-
-// Test 2: Organise the data in to a table	
+//Organise the data in to a table	
 	
 	//1st we load the table data (middle of table) from firebase
 	var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
@@ -64,7 +46,7 @@ $(document).ready(function() {
 	  	}
 	  	
 	  	//create rows in the table
-	  	var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell">' + childSnapshot.key() + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td> <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> </td> </div> </tr>';
+		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + childSnapshot.key() + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td> <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> </td> </div> </tr>';
 	  	$("#myTable").find('tbody').append($(tableGuts));	  		
 	  });	  
 	  	
@@ -79,12 +61,28 @@ $(document).ready(function() {
 
 	});	
 
-// Test 4: hook up row play button to media O.O 
-	//(see main_showNotesPlayButton.js)
 
-
-// Test 5: Make rows editable O.O 
+// Test 5: Make rows editable O.O  (sooooon)
 
 
 
     });
+
+
+// Completed tests, saving for reference |  Test 1: Spew out all the data from Firebase on https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes		
+	/*/ Test 1b: Order data by time 
+	var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
+	ref2.orderByKey().on("child_added", function(snapshot) {
+	  $('.spewTime').append(snapshot.key() + '</br>' + snapshot.val().noteWords + '</br>' + snapshot.val().noteUrl + '<p></p><p></p>'); 
+	});
+	//*/
+
+	/*/Test 1c: Update the list in realtime by using on.'value' insted of on.'child'
+	var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
+	ref2.on("value", function(snapshot) {
+		$('.spewTime').empty(); 
+	  snapshot.forEach(function(childSnapshot) {
+	  	$('.spewTime').append(childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>'); 
+	  });	  
+	});	
+	//*/
