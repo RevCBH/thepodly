@@ -1,0 +1,257 @@
+ <!DOCTYPE html>
+<html>
+  <title></title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+    
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+      <!-- Boostrap Goodness --> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Custom CSS--> 
+        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- More bootstrap goodness -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- End more bootstrap goodness -->
+  
+  <!-- Master Div -->
+    <div class = "container-fluid">
+      <!-- div for row -->
+      <div class = "row">
+      
+    
+          <p></p><p></p>
+          <!-- Embeded Player demo --> 
+             
+            <div class="old-panel panel-default col-xs-12">
+              <div class="old-panel-body">
+                
+                  
+                    <h4>
+                      Heal Yourself Radio Podcast  (Player by 
+                      <a href="mailto:podlyplayer@gmail.com">Podly</a>
+                      )
+                    </h4>
+                    <h5>
+                      Episode 23b Football Concussion Special - Looking beyond the brain in concussion care with Dr. John Leddy
+                    </h5>
+                    
+                  <div class='container container-fluid'>
+                    <div class = 'row-fluid pull-left'>
+                    <!-- Image --> 
+                      <img src="https://assets.libsyn.com/secure/content/9671693?width=480&height=320&overlay=true&player_time=1440525069064" style="width: auto; height: 320px; display: block; text-align: center; margin: 0px auto;" class="img-rounded" class="text-left">
+
+                    
+                    <!-- Audio Control -->
+                        <audio controls type='audio/mpg' name="media" id='audioPlayer' width="480" onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0">
+                            
+                          <source src="http://traffic.libsyn.com/preview/healyourselfradio/John_Leddy_Interview_Final_edit.mp3" type="audio/mpeg" preload = "auto">
+                        </audio>
+                         </br>
+                    
+                        
+                    
+                      <!-- End / Audio Controls --> 
+                    </div>
+                  </div>
+
+                      
+                    <!-- Embded player relevant links -->   
+                      <div id="Embded player relevant links">
+                        <h5>Show Notes</h5>
+
+                            
+                          <!-- Guest: Dr. Barry Willer - Brain Injury Psychologist --> 
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> 0:00 | Guest: Dr. Barry Willer - Brain Injury Psychologist --></button> 
+                            </p>
+
+                          <!-- Low level exercise may benefit concussion patients if done at the right time --> 
+                         
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(5*60)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>  5:00 |  Low level exercise may benefit concussion patients if done at the right time</button>   
+                            </p>
+
+
+                          <!-- A lot of concussion patients may have a neck injury that explains their symptoms with and without brain injury - 6:00
+
+   -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(6*60)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 6:00 |  A lot of concussion patients may have a neck injury that explains their symptoms with and without brain injury 
+
+
+                              </button> 
+                              
+                                
+                            </p>
+
+                        
+                          <!-- Many people think that a brain injury would be unique by cognitive symptoms, but many whiplash patients have cognitive symptoms that mimic concussion -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(7*60+5)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 7:05 | Many people think that a brain injury would be unique by cognitive symptoms, but many whiplash patients have cognitive symptoms that mimic concussion</button> 
+                              
+                            </p>
+                          
+                          <!-- Proprioception - why the neck affects balance, thinking, and concentration  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(7*60+30)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;7:30 | Proprioception - why the neck affects balance, thinking, and concentration </button> 
+                                
+                            </p>
+
+                          <!-- The importance of a good case history in concussion cases - 8:40 -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(8*60+40)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 8:40 | The importance of a good case history in concussion cases</button> 
+                                
+                            </p>
+
+                          <!-- Concussion may injure the balance and ocular system which affects the brain  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(10*60+10)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 10:10 | Concussion may injure the balance and ocular system which affects the brain </button> 
+                                
+                            </p>
+
+                          <!-- Having a neck injury AND concussion will likely require a longer recovery -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(10*60+30)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 10:30 | Having a neck injury AND concussion will likely require a longer recovery  </button> 
+                                
+                            </p>
+
+                          <!-- How do you address neck injuries after a head injury? -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(11*60+11)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 11:11 | How do you address neck injuries after a head injury? </button> 
+                              <ul>
+                                <li>Ice within 72 hours followed by heat</li>
+                                <li>Stretching and Massage for spasm</li>
+                              </ul>
+
+                                  
+                            </p>
+
+                          
+
+                          <!-- Proprioceptive exercises for neck injury - improving movement position sense - 12:00-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(12*60+00)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 12:00 | Proprioceptive exercises for neck injury - improving movement position sense</button> 
+                              
+                            </p>
+
+
+                            <!-- Upper cervical chiropractors: a low force option for fixing C1-C2 - 13:05-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(13*60+05)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;13:05 | Upper cervical chiropractors: a low force option for fixing C1-C2 </button> 
+                              <a href = "http://goodtohear.co.uk/happiness" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+
+                          
+                            <!-- WNeck strength: a potential solution that makes sense has no downside - 13:54  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(13*60+54)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 13:54 | Neck strength: a potential solution that makes sense has no downside </button> 
+                              
+                            </p>
+
+                            <!-- Where is the future of concussion research headed - 15:42 -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(15*60+42)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;15:42 | Where is the future of concussion research headed</button> 
+
+                                                       
+                            </p>                    
+
+                            <!-- Most research is focused on return to play, but return to school is a question that is more important and needs to be addressed - 18:23 -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(18*60+23)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 18:23 | Most research is focused on return to play, but return to school is a question that is more important and needs to be addressed</button> 
+                            </p>                                                 
+
+                            <!-- Baseline tests to consider before a season starts - 19:30 -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(19*60+30)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 19:30 | Baseline tests to consider before a season starts</button> 
+                              <ul>
+                                <li>SCAT3 Test</li>
+                                <li>
+                                  King-Devick Test
+                                  <a href="http://kingdevicktest.com/" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button> 
+                                </a>
+                                </li>
+                            </p>
+                              
+                            <!-- Learn more about Dr. Leddy -->
+                            </br>
+                            <p>
+                            <h5>
+                              Learn more about Dr. Leddy
+                            </h5>
+
+                            <ul>
+                              <!-- The Brain that Changes Itself --> 
+                              <li>
+                                UB Concussion Management Clinic
+                                <a href = " http://concussion.ubmd.com/" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button> 
+                                </a>
+                              </li>
+                              <li>
+                                Dr. Leddy’s list of published research
+                                <a href = "http://www.ncbi.nlm.nih.gov/pubmed/?term=leddy+and+concussion" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button> 
+                                </a>
+                              </li>
+                              <br/>
+                            </ul>
+                          </p>
+
+
+                 
+                <!-- Pannel wrapping just the player --> 
+                
+              
+                </div>
+            </div>
+
+    
+
+       
+        <!-- div for row -->
+        </div>
+    
+    <!-- End Master Div --> 
+    </div>
+    

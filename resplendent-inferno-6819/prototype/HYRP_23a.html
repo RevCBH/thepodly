@@ -1,0 +1,231 @@
+ <!DOCTYPE html>
+<html>
+  <title></title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+    
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+      <!-- Boostrap Goodness --> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Custom CSS--> 
+        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- More bootstrap goodness -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- End more bootstrap goodness -->
+  
+  <!-- Master Div -->
+    <div class = "container-fluid">
+      <!-- div for row -->
+      <div class = "row">
+      
+    
+          <p></p><p></p>
+          <!-- Embeded Player demo --> 
+             
+            <div class="old-panel panel-default col-xs-12">
+              <div class="old-panel-body">
+                
+                  
+                    <h4>
+                      Heal Yourself Radio Podcast  (Player by 
+                      <a href="mailto:podlyplayer@gmail.com">Podly</a>
+                      )
+                    </h4>
+                    <h5>
+                      Episode 2a Football Concussion Special - Pro-Brain and Pro-Sports with Dr. Tad Seifert
+                    </h5>
+                    
+                  <div class='container container-fluid'>
+                    <div class = 'row-fluid pull-left'>
+                    <!-- Image --> 
+                      <img src="https://assets.libsyn.com/secure/content/9671619?width=480&height=320&overlay=true&player_time=1440526381506" style="width: auto; height: 320px; display: block; text-align: center; margin: 0px auto;" class="img-rounded" class="text-left">
+
+                    
+                    <!-- Audio Control -->
+                        <audio controls type='audio/mpg' name="media" id='audioPlayer' width="480" onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0">
+                            
+                          <source src="http://traffic.libsyn.com/healyourselfradio/Dr_Tad_Seifert_Final_Edit-_82315_3.04_PM.mp3" type="audio/mpeg" preload = "auto">
+                        </audio>
+                         </br>
+                    
+                        
+                    
+                      <!-- End / Audio Controls --> 
+                    </div>
+                  </div>
+
+                      
+                    <!-- Embded player relevant links -->   
+                      <div id="Embded player relevant links">
+                        <h5>Show Notes</h5>
+
+                            
+                          <!-- Guest: Dr. Barry Willer - Brain Injury Psychologist --> 
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> 0:00 | Guest: Dr. Tad Seifert --></button> 
+                            </p>
+
+                          <!-- LConcussion is a traumatic brain injury. It is more than getting your bell rung or a stinger - --> 
+                         
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(5*60)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>  5:00 |  Concussion is a traumatic brain injury. It is more than getting your bell rung or a stinger</button>   
+                            </p>
+
+
+                          <!-- What should you do if you have a concussion? Err too quickly rather than too late -->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(6*60+45)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 6:45 |  What should you do if you have a concussion? Err too quickly rather than too late
+
+
+                              </button> 
+                              
+                                
+                            </p>
+
+                        
+                          <!-- Controversies in Concussion Care - how much should we rest -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(8*60+15)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 8:15 | Controversies in Concussion Care - how much should we rest</button> 
+                              
+                            </p>
+                          
+                          <!-- Addressing fear of brain injury and sports: Inactivity and obesity are a bigger threat to our kids than sports injuries  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(10*60+15)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;10:15 | Addressing fear of brain injury and sports: Inactivity and obesity are a bigger threat to our kids than sports injuries </button> 
+                                
+                            </p>
+
+                          <!-- One of the biggest problems is not necessarily the head injury itself, but the mismanagement of head injury” -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(11*60+30)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 11:30 | One of the biggest problems is not necessarily the head injury itself, but the mismanagement of head injury”</button> 
+                                
+                            </p>
+
+                          <!-- Tips for getting prepared for your sports season-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(12*60+45)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 12:45 | Tips for getting prepared for your sports season </button> 
+                                
+                            </p>
+
+                          <!-- Increase your cardiovascular base - fatigue increases odds of injury across the board -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(13*60+11)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 13:11 | Increase your cardiovascular base - fatigue increases odds of injury across the board </button> 
+                            </p>
+
+                          
+
+                          <!-- Boxers and martial artists have been using neck strengthening for decades-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(14*60+29)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 14:29 | Boxers and martial artists have been using neck strengthening for decades</button> 
+                              
+                            </p>
+
+
+                            <!-- Future concussion treatments on the horizon - CGRP receptor antibodies-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(15*60+15)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;15:15 | Future concussion treatments on the horizon - CGRP receptor antibodies </button> 
+                              <a href = "http://goodtohear.co.uk/happiness" target="_blank">
+                                  
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button>
+                                </a>
+                            </p>
+
+                          
+                            <!-- The CTE controversy - What’s the evidence?   -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(16*60+32)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 16:32 | The CTE controversy - What’s the evidence?  </button> 
+                              
+                            </p>
+
+                            <!-- Brain Tips for Dr. Seifer -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(21*60+52)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;21:52 | Brain Tips for Dr. Seifer</button> 
+
+                                                       
+                            </p>                    
+
+                            <!-- Dr. Seifert’s favorite Twitter Handles -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(24*60+39)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 24:39 |Dr. Seifert’s favorite Twitter Handles</button> 
+                            </p>                                                 
+                              <ul>
+                                <li>
+                                    Dr. Chris Giza - @griz1
+                                  <a href="https://twitter.com/griz1" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link</a>
+                                  </button> </li>
+                                <li>US Surgeon General - Dr. Vivek Murthy - @surgeon_general
+                                  <a href="https://twitter.com/Surgeon_General" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button> 
+                                </a>
+                                </li>
+                                <li>Fighter Diet aka Pauline Nordin @fighter_diet
+                                    <a href="https://twitter.com/Fighter_Diet" target="_blank">
+                                    <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button> 
+                                </li>
+                              </ul>
+
+                            <!-- Learn more about Dr. Seifert: -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer')"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;Learn more about Dr. Seifert:</button> 
+                                  <a href="r" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button> 
+                                </a>
+                                
+                            </p>
+                            
+
+                 
+                <!-- Pannel wrapping just the player --> 
+                
+              
+                </div>
+            </div>
+
+    
+
+       
+        <!-- div for row -->
+        </div>
+    
+    <!-- End Master Div --> 
+    </div>
+    

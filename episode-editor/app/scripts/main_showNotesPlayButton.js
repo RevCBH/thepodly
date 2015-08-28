@@ -10,13 +10,34 @@ var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the
 var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
 var cellTime; 
 var formatTime; 
+var hash=0;
 
+
+//play magic as people come to page
+	//search for hash
+		hash = window.location.hash; // Gets '#foo' from http://example.com/page.html#foo
+    //console.log('hash before operation is: '+ hash);
+    //remove #
+    	hash=hash.replace('#','');
+    
+    //convert # to number
+    	var hashTime = Number(hash); 
+
+    //confirm hash is removed
+    	console.log('hash after operation is: '+ hashTime);
 
 
 	//starting code
 		//write html into dom podcastAudioArea
-		$('.podcastAudioArea').append('<h4>Episode Media</h4>' + audioPlayer);
+		$('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
 
+		//set hash to be playtime 
+	    if(hashTime !=0 || hashTime !== ''){
+	    	console.log('hash is not equal to 0 or ""');
+	    	cellTime = hashTime; 
+			//document.getElementById('audioPlayer').play(); 
+			document.getElementById('audioPlayer').currentTime=(cellTime);
+	    }
 	//Master Audio Controls
 		//html for control [button]s
 			// [button] back 5 sec
@@ -92,20 +113,35 @@ var formatTime;
 			//grab line count via 'spewCount' of event, we'll use this to figure out the play time from the 2nd <td> in the row
 			var spewCountMemory =  $(this).attr('spewCount');	
 			
-			//console.log('spewCountMemory is: '+ spewCountMemory);
+			//test, is this registering? 
+			console.log('test test test');
+			console.log('spewCountMemory is: '+ spewCountMemory);
 			
-			//Get play time directly from the 2nd <td> 
+			
+			
+				//Get play time directly from the 2nd <td> 
 				cellTime = $('#noteTimeCell_spewCount_'+spewCountMemory).html();  
-				
+		
+			//test for finite
+			if(isFinite(cellTime)){
+				$('.podcastAudioArea').prepend('its Finite!');
+
+			}else{
+//********** You are here ***********/
+				//if notFinite turn into seconds
+				cellTime = moment.duration(cellTime).asSeconds();
+				//$('.podcastAudioArea').prepend('cell Time is currently '+ cellTime+ ' </br>its NOT!!! Finite!');
+			}
+
 				//test that correct times are coming through 
 				//$('.podcastAudioArea').append(cellTime);
 				//$('.podcastAudioArea').append(cellTime);
 				//control play time 
-				document.getElementById('audioPlayer').play(); 
+				//document.getElementById('audioPlayer').play(); 
 				document.getElementById('audioPlayer').currentTime=(cellTime);
 		
 		
-		//show hours if there's enough time
+		/*show hours if there's enough time
 		if(cellTime>=3600){
 			formatTime = moment().startOf('day')
 	        .seconds(cellTime)
@@ -119,8 +155,8 @@ var formatTime;
 	       }
 
 		/////test writing time in mm:ss
-		//$('.podcastAudioArea').append('<p></p>'+formatTime);		
-
+		//$('.podcastAudioArea').append('<p>Jello!</p>');		
+		*/
 		
 
 		});
