@@ -33,21 +33,20 @@
 
     <div class="container">
       <div class="header">
-        
-        <div class="episodeNumberTest"></div>
-        <div class="episodeNameTest"></div>
-        <div class="podcastAudioArea"></div>
-        <!-- Hiding description for now <div class="episodeDescriptionTest"></div> --> 
-        <div class="spewTime"></div>
-        <!-- Delete? <div class="episodeShowNotesTest"></div> --> 
-        
-        <!-- Hide all this stuff, it's from demo.html and not needed here 
+        <div class="tweetTrial">Twitter link here for testing
+            
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://resplendent-inferno-6819.firebaseapp.com/prototype/dist-copy/demo.html" data-text="talking about Morgan Spurlock and Supersize Me" data-count="none">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script> 
+              
+        </div>
+        <div class="episodeHeader"></div>
         <div class="episodeDesc"></div>
         <div class="timeShow"></div>
         <div class="timeTablePractice"></div>
         <div class="podcastAudioArea"></div>
         <div class="spewTime"></div>
-        <div class="myTable2"></div> -->
+        
+        <div class="myTable2"></div> 
         
         <!-- End panel body --> 
         </div> 
@@ -84,7 +83,7 @@
     <!-- endbuild -->
 
 
-    <!-- build:js scripts/main_showNotesTable.js  --
+    <!-- build:js scripts/main_showNotesTable.js  -->
     //<script src="scripts/main_showNotesTable.js"></script>
     <!-- endbuild -->  
 
@@ -99,30 +98,21 @@
 
 
     <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) -->
-    
-    <script src="bower_components/moment/moment.js"></script>
     <script src="scripts/main_showNotes.js"></script>
     <!-- endbuild -->  
 
-    <!--Hide, all this is from demo.html--
+
     <script src = "scripts/main_showNotesPlayButton.js"></script>
 
-    
+    <script src="bower_components/moment/moment.js"></script>
 
     <script src="scripts/writeTableOnly.js"></script>
     
     <script src="scripts/writeEpisodeHeaders.js"></script>
 
-    -->
+    <script src="scripts/writeUrlTime.js"></script>
     
-    <!-- <script src="scripts/writeEpisodeNumberFromUrl.js"></script> --> 
-    <script src="scripts/writeEmbedMagic.js"></script> 
-
-
-    <!--Delete 
-    <script type="scripts/writeUrlTime.js"></script>
-    -->     
-    
+    <script src="scripts/twitterWidget.js"></script>
 
     
 
