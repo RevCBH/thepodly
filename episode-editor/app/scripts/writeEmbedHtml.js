@@ -7,10 +7,10 @@
 $(document).ready(function() {
 
 	//initialize firebase variables
-      var rootUrl = 'sky-jump-run.firebaseIO.com/';
+      var rootUrl = Config.firebase.rootUrl;
       var myDataRef = new Firebase(rootUrl);
 
-      var episodesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/';
+      var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
       var episodesRef = new Firebase(episodesUrl);
 
     //episode specific variables
@@ -21,7 +21,7 @@ $(document).ready(function() {
       var audioPlayer;
 
     //table stuff
-   	  var episode22NotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes';
+   	  var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
 	  var episode22NotesRef = new Firebase(episode22NotesUrl);
 
 /*

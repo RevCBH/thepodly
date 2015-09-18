@@ -2,37 +2,37 @@ $(document).ready(function() {
 
 //initilizing variables
     //create firebase references
-    var rootUrl = 'sky-jump-run.firebaseIO.com/'; 
+    var rootUrl = Config.firebase.rootUrl;
     var myDataRef = new Firebase(rootUrl);
-    
-    var episodesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'; 
-    var episodesRef = new Firebase(episodesUrl); 
 
-    
+    var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
+    var episodesRef = new Firebase(episodesUrl);
 
-    //variable initialization 
+
+
+    //variable initialization
 //****** Change value of newEpisodeNumber back to '' after getting time write to work on Firebase
     var newEpisodeNumber = 22;
     var podcastUrl='';
 //noteTimeCounter may need serialization as we scale table
     var noteTimeCounter = '0';
-    
+
     //form control html
     var noteTimeInput = '<input type="text" class="form-control" id="noteTimeInput" placeholder="time">';
     var noteWordsInput = '<input type="text" class="form-control" id="noteWordsInput" placeholder="words">';
-    var noteUrlInput = '<input type="text" class="form-control" id="noteUrlInput" placeholder="url">'; 
+    var noteUrlInput = '<input type="text" class="form-control" id="noteUrlInput" placeholder="url">';
 
 
     //note
-    var noteTime=''; 
+    var noteTime='';
     var noteWords='';
     var noteUrl='';
 
 
 //Starting Actions
-  //Hide Edit Button 
+  //Hide Edit Button
   $('#noteButtonEdit').hide();
-  
+
 
 
 //Button clicks
@@ -48,11 +48,11 @@ $(document).ready(function() {
     //[Button] Podcast URL (click) = pull player URL from DOM and add player into Show notes
     $('#podcastUrlButton').click(function(){
         //takes input of 'Podcast URL' field and assignes it to newPodcastUrl
-        podcastUrl=$("input[id=podcastUrlField]").val();   
+        podcastUrl=$("input[id=podcastUrlField]").val();
 
-        //show Episode Notes Section 
+        //show Episode Notes Section
         $('.showEpisodeNotes').show();
-        
+
         //show podcast URL
         $('.showEpisodeNotes').append('<audio controls type="audio/mpg" name="media" id="audioPlayer" width="480"><source src="' + podcastUrl + '" type="audio/mpeg" preload = "auto"></audio>');
 
@@ -60,9 +60,9 @@ $(document).ready(function() {
     });
 
 
-    //[Button] 'Enter' show notes = writes to Firebase 
+    //[Button] 'Enter' show notes = writes to Firebase
       $('#noteButtonEnter').click(function(){
-        //Step 0) 
+        //Step 0)
           //if a note time has been prevoiusly created for this row, set oldNoteTime as a varable so you can delete it in Firebase and replace it with the new one
           if(noteTimeCounter>0){
             var oldNoteTime = noteTime;
@@ -70,117 +70,117 @@ $(document).ready(function() {
 
         //Step 1) Write to Firebase
           //get input time, assign to variable noteTime
-          noteTime=$("input[id=noteTimeInput]").val(); 
-          
+          noteTime=$("input[id=noteTimeInput]").val();
 
-//********** You are here | deleting old note times in Firebase if a new time is entered in a specific row **********/ 
-            
-            //if note time is changed in the row, delete rows previous note time 
-            //if noteTime counter >0, delete old noteTime in firebase before writing new noteTime in Firebase 
-            
 
-          //get input words, assign to variable 
-          noteWords=$("input[id=noteWordsInput]").val();           
+//********** You are here | deleting old note times in Firebase if a new time is entered in a specific row **********/
 
-          //get input url, assign to variable 
-          noteUrl=$("input[id=noteUrlInput]").val();   
+            //if note time is changed in the row, delete rows previous note time
+            //if noteTime counter >0, delete old noteTime in firebase before writing new noteTime in Firebase
 
-          
-          //write time to firebase 
-          var eRef = episodesRef.child(newEpisodeNumber);            
+
+          //get input words, assign to variable
+          noteWords=$("input[id=noteWordsInput]").val();
+
+          //get input url, assign to variable
+          noteUrl=$("input[id=noteUrlInput]").val();
+
+
+          //write time to firebase
+          var eRef = episodesRef.child(newEpisodeNumber);
           var tRef = eRef.child("episodeNotes");
           //create new var for Firebase reference to tRefchid(noteTiem)
           var timeRef = tRef.child(noteTime);
 
-          //temporarily commenting this out so I can add all the time / show notes for episode 22 
+          //temporarily commenting this out so I can add all the time / show notes for episode 22
           /*delete old row time (if it exists)
           if(noteTimeCounter>0){
             //initialize oldTimeRef
             //var oldTimeRef = timeRef.child(oldNoteTime);
-            
+
             //remove oldTime
-            tRef.child(oldNoteTime).remove(); 
+            tRef.child(oldNoteTime).remove();
 
             /*replace oldNoteTime with noteTime
             oldTimeRef.update(noteTime);*
-            //set oldNoteTimeto '', so we avoid accidentaly deleting a time we want to keep! 
+            //set oldNoteTimeto '', so we avoid accidentaly deleting a time we want to keep!
             oldNoteTime = '';
           }
 
           //increment noteTimeCounter so we know this row's time has been updated
-            noteTimeCounter+=1; 
+            noteTimeCounter+=1;
           */
 
           //write to /time url = noteWords & noteUrl
             timeRef.set({
               noteWords: noteWords,
-              noteUrl: noteUrl              
+              noteUrl: noteUrl
             });
 
 
 
-        //Step 2) turn input forms to fixed text 
-          //empty noteTimeInput and replace with text 
+        //Step 2) turn input forms to fixed text
+          //empty noteTimeInput and replace with text
           $('#noteTimeInput').hide();
           $('.noteTimeContainer').append(noteTime);
 
-          //empty noteWordsCell and replace with text 
+          //empty noteWordsCell and replace with text
           $('#noteWordsInput').hide();
           $('.noteWordsContainer').append(noteWords);
 
 
-          //empty noteUrlInput and replace with text 
+          //empty noteUrlInput and replace with text
           $('#noteUrlInput').hide();
           $('.noteUrlContainer').append(noteUrl);
 
-          //swap [Enter] button for [Edit] button 
+          //swap [Enter] button for [Edit] button
           $('#noteButtonEnter').hide();
           $('#noteButtonEdit').show();
       });
 
 
 
-    //[Button] 'Edit' show notes = makes fields accessible again 
+    //[Button] 'Edit' show notes = makes fields accessible again
       $('#noteButtonEdit').click(function(){
 
       //empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
-        //empty  
+        //empty
           $('.noteTimeContainer').empty();
         //append
           //show noteTimeInput form field
           $('#noteTimeInput').show();
-          //empty noteTimeInput to prep it for new value incase it's been changed externally 
+          //empty noteTimeInput to prep it for new value incase it's been changed externally
           $('#noteTimeInput').empty();
-          //update value of field to be the time        
+          //update value of field to be the time
           $('#noteTimeInput').val(noteTime);
-        
-      //empty noteWordsCell and append form control  
+
+      //empty noteWordsCell and append form control
         //empty
           $('.noteWordsContainer').empty();
         //append
           //show noteWordsInput form field
           $('#noteWordsInput').show();
-          //empty noteWordsInput to prep it for new value incase it's been changed externally 
+          //empty noteWordsInput to prep it for new value incase it's been changed externally
           $('#noteWordsInput').empty();
-          //update value of field to be the time        
+          //update value of field to be the time
           $('#noteWordsInput').val(noteWords);
-        
 
-      //empty noteUrlCell and append form control  
+
+      //empty noteUrlCell and append form control
         //empty
           $('.noteUrlContainer').empty();
-        //append form control 
+        //append form control
           //show noteWordsInput form field
           $('#noteUrlInput').show();
-          //empty noteWordsInput to prep it for new value incase it's been changed externally 
+          //empty noteWordsInput to prep it for new value incase it's been changed externally
           $('#noteUrlInput').empty();
-          //update value of field to be the time        
+          //update value of field to be the time
           $('#noteUrlInput').val(noteUrl);
 
-        //swap [Edit] button for [Enter] button 
+        //swap [Edit] button for [Enter] button
         $('#noteButtonEnter').show();
         $('#noteButtonEdit').hide();
 
       });
-    
+
 });

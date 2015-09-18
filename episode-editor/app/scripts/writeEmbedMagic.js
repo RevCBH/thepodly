@@ -17,10 +17,10 @@
 $(document).ready(function(){
 //0: initalize variables
   //initialize firebase variables
-      var rootUrl = 'sky-jump-run.firebaseIO.com/';
+      var rootUrl = Config.firebase.rootUrl;
       var myDataRef = new Firebase(rootUrl);
 
-      var episodesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/';
+      var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
       var episodesRef = new Firebase(episodesUrl);
 
 
@@ -31,7 +31,7 @@ $(document).ready(function(){
       console.log('search before operation is: '+ search);
 
     //remove ?
-      search=search.replace('?','')
+      search=search.replace('?','');
 
     //convert # to number
       var embedEpisodeNumber = Number(search);
