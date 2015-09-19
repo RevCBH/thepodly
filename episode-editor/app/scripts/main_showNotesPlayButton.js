@@ -124,7 +124,7 @@ var hash=0;
 		
 			//test for finite
 			if(isFinite(cellTime)){
-				$('.podcastAudioArea').prepend('its Finite!');
+				console.log('its Finite!');
 
 			}else{
 //********** You are here ***********/
