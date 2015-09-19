@@ -33,11 +33,8 @@
 
     <div class="container">
       <div class="header">
-        <ul id="header-nav" class="nav nav-pills pull-right">
-          <li role="presentation" class="active"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
-          <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-          <li role="presentation"><a href="#help" aria-controls="help" role="tab" data-toggle="tab">Help</a></li>
-        </ul>
+        <div id="auth-panel" class="pull-right">
+        </div>
         <h3 class="text-muted">Podly Episode Editor</h3>
       </div>
 
@@ -260,19 +257,22 @@
     <script src="scripts/main_showNotes.js"></script>
     <!-- endbuild -->
 
+    <!-- build:js scripts/generated/config.js -->
     <script src="scripts/generated/config.js"></script>
+    <!-- endbuild -->
 
+    <!-- build:js scripts/controllers/auth.js -->
+    <script src="scripts/controllers/auth.js"></script>
+    <!-- endbuild -->
 
     <script src = "scripts/main_showNotesPlayButton.js"></script>
 
-
-
-    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
-    <script src="scripts/addSection.js"></script>
+    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title") -->
+    <!--<script src="scripts/addSection.js"></script>-->
     <!-- endbuild -->
 
-    <!-- build:js scripts/createDemoPodcast.js
-    <script src="scripts/createPodcastBranch.js"></script>
+    <!-- build:js scripts/createDemoPodcast.js -->
+    <!--<script src="scripts/createPodcastBranch.js"></script>-->
     <!-- endbuild -->
 
 
