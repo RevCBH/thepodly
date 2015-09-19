@@ -20,10 +20,10 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
-    <!-- infoNav.css is used to style firebase info --> 
+    <!-- infoNav.css is used to style firebase info -->
     <link rel="stylesheet" href="styles/infoNav.css">
 
-  
+
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -41,54 +41,54 @@
         <h3 class="text-muted">Podly Episode Editor</h3>
       </div>
 
-      
-      
-    
+
+
+
       <div class="panel panel-default">
         <div class="panel-heading">
-          
-          
-          <!-- Title of Podcast from Firebase --> 
+
+
+          <!-- Title of Podcast from Firebase -->
           <div class="podcastTitleTest" alt="podcast title"></div>
-        
+
         </div>
-        <div class="panel-body"> 
-          
+        <div class="panel-body">
+
           <!-- This div starts loaded and is hidden when folks hit the 'Update' button it comes back when people hit the 'Edit' button -->
           <div class="enterEpisodeInfo">
              <!--Hiding html so we can test loading it with JS, keeping it here for reference incase we want to edit this code in the JS later
                <h4>Enter Episode Info</h4>
-              
+
               <div class="row">
-                
+
                 <!-- Episode # --
                 <div class="col-xs-2">
                     <label for="newEpisodeNum">Episode #</label>
                   <input type="text" class="form-control" placeholder="#?" id="inputEpisodeNumber">
                 </div>
-                
+
                 <!-- Episode Name --
                 <div class="col-xs-3">
                   <label for="episodeName">Episode Name </label>
                   <input type="text" class="form-control" placeholder="episode name?" id="episodeNameField">
                 </div>
-                
+
                 <!-- Episode Description --
                 <div class="col-xs-4">
                   <label for="episodeDescription">Episode Description</label> (Optional)
                   <input type="text" class="form-control" placeholder="" id="'"episodeDescription">
                 </div>
-              
+
                 <!-- Update Button --
                 <div class="col-xs-2">
                   </br>
                   <label>&nbsp;</label>
                   <button type="submit" class="btn btn-default" id="submitButton">Update</button>
                 </div>
-              
+
               <!--End 'row' class--
               </div>
-            
+
             <!--end 'enterEpisodeInfo' class-->
            </div>
 
@@ -96,28 +96,28 @@
           <!--This Div starts hidden, loads episode info, then hides it when a user wants to edit episode info-->
           <div class="showEpisodeInfo">
             <p>
-            <!--This is where you write the episode info -->             
-              <div class="episodeInfoAdd"></div> 
+            <!--This is where you write the episode info -->
+              <div class="episodeInfoAdd"></div>
               <div class="episodeDescriptionAdd"></div>
               <div class="episodeEditButtonArea">
                 <!--hiding edit high level episode button, keeping it here for reference incase we want to edit this code in the JS later
-                <button class="btn btn-default" id="episodeEditButton" type="submit" role="button">Edit Episode Info</button>--> 
+                <button class="btn btn-default" id="episodeEditButton" type="submit" role="button">Edit Episode Info</button>-->
               </div>
-              
-              
+
+
             </p>
-          </div> 
+          </div>
 
           <div class="podcastUrlForm">
             <!-- hiding but keeping here for HTML reference, incase we want to make easy edits
             <hr>
             <h4>Enter Podcast URL</h4>
-              
+
                   <input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField">
                   <button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button>
-              
-            --> 
-          </div> 
+
+            -->
+          </div>
           <div class="podcastUrl">
           </div>
 
@@ -126,18 +126,18 @@
                 <!--
                 <button type="submit" class="btn btn-default" id="podcastUrlEditButton">Enter</button>
               -->
-          
 
-          <div class="showEpisodeNotes"></div> 
+
+          <div class="showEpisodeNotes"></div>
 
           <!-- Audio Control -->
           <div class="podcastAudioArea"></div>
-              
-          
 
 
-          
-          <!-- Add a show note --> 
+
+
+
+          <!-- Add a show note -->
           <div class="demoLineItem">
               <table class="table table-hover">
               <caption>Add a Show Note</caption>
@@ -146,7 +146,7 @@
                 <thead>
                   <tr>
                     <th>
-                    
+
                     </th>
                     <th>time</th>
                     <th>words</th>
@@ -178,38 +178,38 @@
                     </td>
                   </div>
                 </tr>
-               
+
 
               </tbody>
               </table>
-          </div> 
+          </div>
 
 
-            <!-- Top o' Firebase Table --> 
-            <div class="spewTableTop"> 
-            </div> 
+            <!-- Top o' Firebase Table -->
+            <div class="spewTableTop">
+            </div>
 
-            <!-- Testing writing firebase table guts --> 
+            <!-- Testing writing firebase table guts -->
             <div class="spewTime">
-            </div> 
+            </div>
 
-            <!-- Top o' Firebase Table --> 
-            <div class="spewTableBottom"> 
-            </div> 
+            <!-- Top o' Firebase Table -->
+            <div class="spewTableBottom">
+            </div>
 
-            <!-- Delete? Is this ever getting used? Where podcast info showes up 
+            <!-- Delete? Is this ever getting used? Where podcast info showes up
             <div class="infoTest">
 
             </div>
-            <div class="testAdd"></div> --> 
+            <div class="testAdd"></div> -->
 
 
 
-        <!-- End panel body --> 
-        </div> 
+        <!-- End panel body -->
+        </div>
 
-      <!-- End panel --> 
-      </div> 
+      <!-- End panel -->
+      </div>
 
 
 
@@ -245,7 +245,7 @@
 
     <!-- build:js scripts/main_showNotesTable.js  -->
     <script src="scripts/main_showNotesTable.js"></script>
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
 
     <!-- build:js scripts/main.js -->
@@ -254,20 +254,19 @@
 
     <!-- build:js scripts/podcastTitle.js (displays the title of the podcast) -->
     <script src="scripts/podcastTitle.js"></script>
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
 
     <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) -->
     <script src="scripts/main_showNotes.js"></script>
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
+    <script src="scripts/generated/config.js"></script>
 
     <script src = "scripts/main_showNotesPlayButton.js"></script>
 
 
-
-
-    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title") 
+    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
     <script src="scripts/addSection.js"></script>
     <!-- endbuild -->
 

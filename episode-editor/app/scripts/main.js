@@ -4,7 +4,7 @@
 $(document).ready(function() {
 
   //create firebase reference
-  var rootUrl = 'sky-jump-run.firebaseIO.com/';
+  var rootUrl = Config.firebase.rootUrl;
   var myDataRef = new Firebase(rootUrl);
 
   //creates database reference to healyourselfradio
