@@ -1,43 +1,13 @@
 (function() {
   'use strict';
 
-  // Prototype for an event dispatcher
-  function Event(name) {
-    this.name = name;
-    this.callbacks = [];
-  }
-
-  Event.prototype.addCallback = function(cb) {
-    this.callbacks.push(cb);
-  };
-
-  Event.prototype.dispatch = function(eventArgs) {
-    this.callbacks.forEach(function(cb) {
-      cb(eventArgs);
-    });
-  };
-
-  function useTemplate(templatePath) {
-    //this.templatePath = templatePath;
-    this.templateLoaded = new Event('templateLoaded');
-    this.template = function(state) {
-      return this.templateSet.find('[data-state=' + state + ']').clone();
-    };
-
-    $.get(templatePath, function (data) { // TODO - handle errors
-      this.templateSet = $('<div>' + data + '</div>');
-      console.log('logout state:', this.template('logout'));
-      this.templateLoaded.dispatch();
-    }.bind(this));
-  }
-
   // Controller for login/logout
   var AuthController = function () {
     this.ref = new Firebase(Config.firebase.rootUrl);
     this.panelId = '#auth-panel';
 
-    this.loggedInEvent = new Event('loggedIn');
-    this.loggedOutEvent = new Event('loggedOut');
+    this.loggedInEvent = new podly.Event('loggedIn');
+    this.loggedOutEvent = new podly.Event('loggedOut');
 
     this.onLoggedIn(this.showLogoutLink.bind(this));
     this.onLoggedOut(this.showLoginLink.bind(this));
@@ -48,7 +18,6 @@
           this.authData = authData;
           this.loggedInEvent.dispatch(authData);
         } else {
-          console.log("User is logged out");
           this.authData = null;
           this.loggedOutEvent.dispatch();
         }
@@ -106,7 +75,7 @@
     this.updateView(template);
   };
 
-  useTemplate.bind(AuthController.prototype)('partials/auth.html');
+  podly.useTemplate.bind(AuthController.prototype)('partials/auth.html');
 
   $(document).ready(function() {
     document.AuthController = new AuthController();
