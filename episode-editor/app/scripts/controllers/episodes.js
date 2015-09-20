@@ -52,6 +52,7 @@
   var EpisodesController = function (AuthController) {
     podly.Controller.call(this, '#episode-list-panel');
     this.AuthController = AuthController;
+    this.pinnedState = undefined;
 
     // When the user logs in, get their profile information and create a
     // podcast object for their podcast.
@@ -100,7 +101,11 @@
       }
 
       if(this.AuthController.isLoggedIn) {
-        if(this.podcast === undefined || this.podcast.episodes === undefined) {
+        if(this.pinnedState == 'new') {
+          return; // if the new episode form is open, don't do anything
+        } else if (this.pinnedState == 'collapsed') {
+          t = this.wireCollapsedView();
+        } else if(this.podcast === undefined || this.podcast.episodes === undefined) {
           t = this.template('loading');
         } else {
           t = this.wireListView();
@@ -125,6 +130,11 @@
     var t = this.template('list');
     var podcast = this.podcast;
     t.find('a#new-post-link').click(this.showNewEpisodeForm.bind(this));
+    t.find('a.edit-episode').click(function() {
+      var episodeId = $(this).attr('data-episodeId');
+      document.EpisodesController.selectEpisodeToEdit(episodeId);
+      return false;
+    });
     t.find('a.delete-episode').click(function () {
       var episodeId = $(this).attr('data-episodeId');
       podcast.deleteEpisode(episodeId);
@@ -133,10 +143,30 @@
     return t;
   };
 
+  EpisodesController.prototype.wireCollapsedView = function() {
+    var t = this.template('collapsed');
+    t.find('a#expand-episode-list').click(function () {
+      delete this.pinnedState;
+      this.updateView();
+      return false;
+    }.bind(this));
+    return t;
+  };
+
+  EpisodesController.prototype.selectEpisodeToEdit = function(episodeId) {
+    this.currentEpisode = _.find(this.podcast.episodes,
+                                 function(x) { return x._id == episodeId; });
+    this.pinnedState = 'collapsed';
+    this.updateView();
+  };
+
   /* Wire events for and render the new episode form */
   EpisodesController.prototype.showNewEpisodeForm = function() {
     var t = this.template('new');
+    this.pinnedState = 'new';
+
     t.find('form').submit(function () {
+      delete this.pinnedState;
       var newEpisode = this.firebase.child('podcasts/' + this.userData.podcastId + '/episodes').push();
       newEpisode.set({
         number: t.find('#newEpisodeNumber').val(),
@@ -146,11 +176,9 @@
     }.bind(this));
 
     t.find('a#new-episode-cancel-button').click(function () {
-      // TODO - we take advantage of the 'feature' here that the controller
-      // doesn't keep track of the fact we're showing the new episode form
-      // so if we have it updateView() automatically, it will go back to
-      // whatever state it thinks we should be in.
+      delete this.pinnedState;
       this.updateView();
+      return false;
     }.bind(this));
 
     this.updateView(t);
