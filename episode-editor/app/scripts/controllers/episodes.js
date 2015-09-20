@@ -23,9 +23,11 @@
     this.ref = this.firebase.child('podcasts/' + this._id);
     this.ref.on('value', function(data) {
       data = data.val();
-      this.title = data.title;
-      this.episodes = parseEpisodesObject(data.episodes);
-      this.updatedEvent.dispatch(this);
+      if(data && data.title) {
+        this.title = data.title;
+        this.episodes = parseEpisodesObject(data.episodes);
+        this.updatedEvent.dispatch(this);
+      }
     }.bind(this));
   };
 
@@ -44,6 +46,23 @@
     this.ref.child('episodes/' + episodeId).remove();
   };
 
+  Podcast.createNewPodcast = function(firebase, userRef) {
+    var newPodcast = {
+      ownerId: userRef.key(),
+      title: "Untitled Podcast"
+    };
+
+    var newPodcastRef = firebase.child('podcasts').push(newPodcast, function(err) {
+      if(err) {
+        //TODO - handle error
+      } else {
+        console.log('new podcast id:', newPodcastRef.key());
+        var podcastKey = newPodcastRef.key();
+        userRef.child('podcastId').set(podcastKey);
+      }
+    });
+  };
+
   /* A controller for the list of episodes in a podcast.
    * It takes the AuthController as a construtor argument because it uses the
    * account information to determine which podcast a user owns. The episode
@@ -60,6 +79,9 @@
       var userRef = this.firebase.child('users/' + authData.uid);
       userRef.on('value', function(userData) {
         this.userData = userData.val();
+        if(!this.userData.podcastId) {
+          Podcast.createNewPodcast(this.firebase, userRef);
+        }
         this.podcast = new Podcast(this.userData.podcastId);
         this.podcast.onUpdated(function () {
           this.updateView();
