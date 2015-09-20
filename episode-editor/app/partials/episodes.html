@@ -7,9 +7,10 @@
     <h2>Episodes</h2>
   </div>
   <ul>
-    {{#each episodes}}
+    {{#each podcast.episodes}}
     <li>
       {{number}}: <a href='#' data-episodeId="{{_id}}">{{title}}</a>
+      [<a href='#' class='delete-episode' data-episodeId="{{_id}}">x</a>]
     </li>
     {{/each}}
   </ul>
