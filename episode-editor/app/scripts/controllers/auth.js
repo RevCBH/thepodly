@@ -26,6 +26,8 @@
     this.templateLoaded.addCallback(function() {
       this.firebase.onAuth(function(authData) {
         if (authData) {
+          // TODO - this is a hack and won't work unless you refresh, manage user properly
+          this.firebase.child('users/' + authData.uid + '/name').set('Unnamed User');
           this.authData = authData;
           this.isLoggedIn = true;
           this.loggedInEvent.dispatch(authData);
