@@ -100,17 +100,13 @@ https://cobro-dev.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeN
 
 //part 3) deleteNoteInFirebase(cellTime)
 	var deleteNoteInFirebase = function(cellTime){
-		//test with console.log
-    	console.log('cellTime to delete from Firebase is ' + cellTime);
-
+		
     	//delete cellTime child from Firebase 
     	//test 1 = hard code (test 2 = variable based on cellTime)
     	var deleteNoteRef = new Firebase(episodesUrl+'22/episodeNotes/'+cellTime); //episodesUrl+'22/episodeNotes/'+ cellTime);
-    	console.log('rootUrl is '+rootUrl);
-
+    	
 		deleteNoteRef.remove();
 		
-
 	};
 
 

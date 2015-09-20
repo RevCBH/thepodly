@@ -1,3 +1,6 @@
+//*** THIS DOC ISN"T USED ANYWHERE, ADD TO DELETE LIST
+
+
 /*Notes
   This doc (main_timeConversion.js) converts user entered (formated as xx:yy:zz) into seconds, which are used as keys for show notes in Firebase 
   

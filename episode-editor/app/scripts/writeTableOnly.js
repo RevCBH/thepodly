@@ -18,15 +18,12 @@ $(document).ready(function() {
       //var audioPlayer;
 
     //initialize table stuff
-       var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
-    var episode22NotesRef = new Firebase(episode22NotesUrl);
+      var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
+      var episode22NotesRef = new Firebase(episode22NotesUrl);
 
     //initialize table html
       var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>link</th><th>tweet</th></thead>';
       var tableBot ='</tbody></table>';
-
-
-
 
 
       // starting code
