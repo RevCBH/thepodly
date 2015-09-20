@@ -1,0 +1,37 @@
+<div data-state='loading'>
+  <h2>Loading Episodes...</h2>
+</div>
+
+<div data-state='list' class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Episodes</h2>
+  </div>
+  <ul>
+    {{#each episodes}}
+    <li>
+      {{number}}: <a href='#' data-episodeId="{{_id}}">{{title}}</a>
+    </li>
+    {{/each}}
+  </ul>
+  <a href='#' id='new-post-link'>New Post</a>
+</div>
+
+<div data-state='new' class="panel panel-default">
+  <div class="panel-heading">
+    <h2>New Episode</h2>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="newEpisodeNumber">Number</label>
+      <input id="newEpisodeNumber" type="number" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="newEpisodeTitle">Title</label>
+      <input id="newEpisodeTitle" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a id="new-episode-cancel-button" class="btn btn-default">Cancel</a>
+  </form>
+</div>
+
+<span data-state='hidden'></span>

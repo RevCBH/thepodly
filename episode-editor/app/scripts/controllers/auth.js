@@ -3,27 +3,31 @@
 
   // Controller for login/logout
   var AuthController = function () {
-    this.ref = new Firebase(Config.firebase.rootUrl);
-    this.panelId = '#auth-panel';
+    podly.Controller.call(this, '#auth-panel');
 
     this.loggedInEvent = new podly.Event('loggedIn');
     this.loggedOutEvent = new podly.Event('loggedOut');
+    this.isLoggedIn = false;
 
     this.onLoggedIn(this.showLogoutLink.bind(this));
     this.onLoggedOut(this.showLoginLink.bind(this));
 
     this.templateLoaded.addCallback(function() {
-      this.ref.onAuth(function(authData) {
+      this.firebase.onAuth(function(authData) {
         if (authData) {
           this.authData = authData;
+          console.log("AuthController logged in:", authData);
+          this.isLoggedIn = true;
           this.loggedInEvent.dispatch(authData);
         } else {
           this.authData = null;
+          this.isLoggedIn = false;
           this.loggedOutEvent.dispatch();
         }
       }.bind(this));
     }.bind(this));
   };
+  AuthController.prototype = Object.create(podly.Controller.prototype);
 
   AuthController.prototype.onLoggedIn = function(cb) {
     this.loggedInEvent.addCallback(cb);
@@ -33,14 +37,10 @@
     this.loggedOutEvent.addCallback(cb);
   };
 
-  AuthController.prototype.updateView = function(view) {
-    $(this.panelId).html(view);
-  };
-
   AuthController.prototype.showLogoutLink = function() {
     var template = this.template('logout');
     template.click(function() {
-      this.ref.unauth();
+      this.firebase.unauth();
     }.bind(this));
 
     this.updateView(template);
@@ -52,7 +52,7 @@
     template.submit(function (e) {
       this.updateView(this.template('loading'));
 
-      this.ref.authWithPassword({
+      this.firebase.authWithPassword({
         email: template.find('#loginEmail').val(),
         password: template.find('#loginPassword').val()
       }, function(err, data) {
@@ -75,7 +75,7 @@
     this.updateView(template);
   };
 
-  podly.useTemplate.bind(AuthController.prototype)('partials/auth.html');
+  podly.useTemplateFile('partials/auth.html', AuthController);
 
   $(document).ready(function() {
     document.AuthController = new AuthController();

@@ -38,8 +38,8 @@
         <h3 class="text-muted">Podly Episode Editor</h3>
       </div>
 
-
-
+      <div id="episode-list-panel">
+      </div>
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -218,7 +218,9 @@
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/firebase/firebase.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -278,6 +280,10 @@
 
     <!-- build:js scripts/controllers/auth.js -->
     <script src="scripts/controllers/auth.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/controllers/episodes.js -->
+    <script src="scripts/controllers/episodes.js"></script>
     <!-- endbuild -->
 
     <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
