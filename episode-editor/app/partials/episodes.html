@@ -7,13 +7,21 @@
     <h2>Episodes</h2>
   </div>
   <ul>
-    {{#each episodes}}
+    {{#each podcast.episodes}}
     <li>
-      {{number}}: <a href='#' data-episodeId="{{_id}}">{{title}}</a>
+      {{number}}: <a href='#' class='edit-episode' data-episodeId="{{_id}}">{{title}}</a>
+      [<a href='#' class='delete-episode' data-episodeId="{{_id}}">x</a>]
     </li>
     {{/each}}
   </ul>
   <a href='#' id='new-post-link'>New Post</a>
+</div>
+
+<div data-state='collapsed' class='panel panel-default'>
+  <div class="panel-heading">
+    <h3>{{podcast.title}} > {{currentEpisode.number}}. {{currentEpisode.title}}</h3>
+  </div>
+  <a href='#' id='expand-episode-list'>expand</a>
 </div>
 
 <div data-state='new' class="panel panel-default">
