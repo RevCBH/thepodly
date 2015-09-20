@@ -190,7 +190,7 @@
     // document.AuthController should be available before we try to setup the
     // EpisodesController
     if(document.AuthController === undefined) {
-      console.log("EpisodeController requires AuthController!");
+      throw "EpisodeController requires AuthController!";
     }
 
     document.EpisodesController = new EpisodesController(document.AuthController);
