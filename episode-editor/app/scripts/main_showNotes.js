@@ -18,7 +18,7 @@ $(document).ready(function() {
     var noteTimeCounter = '0';
 
     //form control html
-    var noteTimeInput = '<input type="text" class="form-control" id="noteTimeInput" placeholder="time">';
+    var noteTimeInput = '<input type="text" class="form-control" id="noteTimeInput" placeholder="time hh:mm:ss">';
     var noteWordsInput = '<input type="text" class="form-control" id="noteWordsInput" placeholder="words">';
     var noteUrlInput = '<input type="text" class="form-control" id="noteUrlInput" placeholder="url">';
 
@@ -28,6 +28,19 @@ $(document).ready(function() {
     var noteWords='';
     var noteUrl='';
 
+    // function initalization
+      //initilizize function that will make cellTime usable by converitng it from hh:mm:ss to seconds
+          var hmsToSecondsOnly = function(str) {
+            var p = str.split(':'),
+                s = 0, m = 1;
+
+            while (p.length > 0) {
+                s += m * parseInt(p.pop(), 10);
+                m *= 60;
+            }
+
+            return s;
+        };
 
 //Starting Actions
   //Hide Edit Button
@@ -70,7 +83,8 @@ $(document).ready(function() {
 
         //Step 1) Write to Firebase
           //get input time, assign to variable noteTime
-          noteTime=$("input[id=noteTimeInput]").val();
+          noteTime=hmsToSecondsOnly($("input[id=noteTimeInput]").val());
+          //console.log('time entered is '+noteTime+ ' in seconds.')
 
 
 //********** You are here | deleting old note times in Firebase if a new time is entered in a specific row **********/
@@ -122,7 +136,7 @@ $(document).ready(function() {
         //Step 2) turn input forms to fixed text
           //empty noteTimeInput and replace with text
           $('#noteTimeInput').hide();
-          $('.noteTimeContainer').append(noteTime);
+          $('.noteTimeContainer').append(hmsToSecondsOnly(noteTime));
 
           //empty noteWordsCell and replace with text
           $('#noteWordsInput').hide();
@@ -152,7 +166,7 @@ $(document).ready(function() {
           //empty noteTimeInput to prep it for new value incase it's been changed externally
           $('#noteTimeInput').empty();
           //update value of field to be the time
-          $('#noteTimeInput').val(noteTime);
+          $('#noteTimeInput').val(hmsToSecondsOnly(noteTime));
 
       //empty noteWordsCell and append form control
         //empty

@@ -157,7 +157,7 @@
                       &nbsp;
                     </td>
                     <td id="noteTimeCell">
-                      <input type="text" class="form-control" id="noteTimeInput" placeholder="time">
+                      <input type="text" class="form-control" id="noteTimeInput" placeholder="time | hh:mm:ss">
                       <div class="noteTimeContainer"></div>
                     </td>
                     <td id="noteWordsCell">
@@ -285,6 +285,10 @@
     <!-- build:js scripts/controllers/episodes.js -->
     <script src="scripts/controllers/episodes.js"></script>
     <!-- endbuild -->
+
+    <!--main_timeConversion.js converts secondos into xx:yy time format for readability  -->
+    <script src = "scripts/main_timeConversion.js"></script>
+    
 
     <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
     <script src="scripts/addSection.js"></script>

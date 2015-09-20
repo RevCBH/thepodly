@@ -9,7 +9,7 @@ $(document).ready(function() {
     var episodesRef = new Firebase(episodesUrl);
 
     var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
-  var episode22NotesRef = new Firebase(episode22NotesUrl);
+  	var episode22NotesRef = new Firebase(episode22NotesUrl);
 
     var newEpisodeNumber = '22';
 
@@ -20,7 +20,7 @@ $(document).ready(function() {
 //Organise the data in to a table	
 	
 	//1st we load the table data (middle of table) from firebase
-	var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
+	var ref2 = new Firebase(rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes');
 	ref2.on("value", function(snapshot) {
 		$('.spewTime').empty(); 
 	  	//add table header 
@@ -44,8 +44,20 @@ $(document).ready(function() {
 	  		classToggle = '';
 	  	}
 	  	
+	  	//Turn childSnapshot.key() [episode time in seconds] into xx:yy:zz format so that table shows times in clock format instead of seconds
+	  		//here's how this will work 
+	  		//1) childSnapshot.key() runs through a function that converts it into xx:yy:zz format 
+			var secondsToHms = function(d) {
+				d = Number(d);
+				var h = Math.floor(d / 3600);
+				var m = Math.floor(d % 3600 / 60);
+				var s = Math.floor(d % 3600 % 60);
+				return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); }
+			//2) call the function directly from the 'create rows in table' code below
+
+
 	  	//create rows in the table
-		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + childSnapshot.key() + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
+		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
 	  	//edit button which was cut out of the table guts above, add back in | ' + /* <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> </td>*/ + '
 	  	
 	  	$("#myTable").find('tbody').append($(tableGuts));	  		

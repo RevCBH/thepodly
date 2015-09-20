@@ -120,7 +120,23 @@ var hash=0;
 			
 			
 				//Get play time directly from the 2nd <td> 
-				cellTime = $('#noteTimeCell_spewCount_'+spewCountMemory).html();  
+				cellTime = hmsToSecondsOnly($('#noteTimeCell_spewCount_'+spewCountMemory).html());  
+
+				function hmsToSecondsOnly(str) {
+				    var p = str.split(':'),
+				        s = 0, m = 1;
+
+				    while (p.length > 0) {
+				        s += m * parseInt(p.pop(), 10);
+				        m *= 60;
+				    }
+
+				    return s;
+				}
+
+
+				//test current cell time 
+				console.log('cellTime is ' + cellTime);
 		
 			//test for finite
 			if(isFinite(cellTime)){
