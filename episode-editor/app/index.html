@@ -41,6 +41,9 @@
       <div id="episode-list-panel">
       </div>
 
+      <div id="showNotesPanel">
+      </div>
+
       <div class="panel panel-default">
         <div class="panel-heading">
 
@@ -261,35 +264,42 @@
     <script src="scripts/main_showNotes.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js scripts/generated/config.js -->
+    <!-- Bennett: build:js scripts/generated/config.js --> 
     <script src="scripts/generated/config.js"></script>
     <!-- endbuild -->
 
-    <!-- TODO - some sort of dependency based loading -->
+    <!-- Bennett: TODO - some sort of dependency based loading --
     <script type='text/javascript'>
       podly = {};
     </script>
-    <!-- build:js scripts/lib/event.js -->
+
+    <!-- Bennett: build:js scripts/lib/event.js --
     <script src="scripts/lib/event.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js scripts/lib/controller.js -->
+    <!-- Bennett: build:js scripts/lib/controller.js --
     <script src="scripts/lib/controller.js"></script>
     <!-- endbuild -->
 
     <script src = "scripts/main_showNotesPlayButton.js"></script>
 
-    <!-- build:js scripts/controllers/auth.js -->
+    <!-- Bennett: build:js scripts/controllers/auth.js --
     <script src="scripts/controllers/auth.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js scripts/controllers/episodes.js -->
+    <!-- Bennett: build:js scripts/controllers/episodes.js --
     <script src="scripts/controllers/episodes.js"></script>
+    <!-- endbuild -->
+
+    <!-- Bennett:  build:js scripts/controllers/notes.js --
+    <script src="scripts/controllers/notes.js"></script>
     <!-- endbuild -->
 
     <!--main_timeConversion.js converts secondos into xx:yy time format for readability  -->
     <script src = "scripts/main_timeConversion.js"></script>
     
+    <!-- delete and make part of main_showNotesTable, or somthing else
+    <script src = "scripts/main_editShowNote.js"></script>-->
 
     <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
     <script src="scripts/addSection.js"></script>

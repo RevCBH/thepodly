@@ -1,23 +1,45 @@
 (function() {
+  //don't worry about 'use strict;' it will have console wine if you do silly things
   'use strict';
 
-  /* Convert the episodes object from firebase to the format we want and
+  /* Ben: Convert the episodes object from firebase to the format we want and
    * then sort them by episode number*/
+    /* Ced: takes all items under episodes and converts it into an array, where each item in the array has the ID as part of it */
+    //this is used only in this file, whenever data updates
+    //purpose: make usable ordered array which is easier to use
   function parseEpisodesObject(episodes) {
+    //_(underscorejs) is a neat library, check it out
+    //_chain means we're doing a bunch of operations in a row using hte underscorejs library
+    //. = method cals and here we have a 'pipeline' of actions happening which end at value()
     return _.chain(episodes)
-      .pairs() // this turns the object into an array of [id, data]
+      .pairs() // this turns the object into an array of [id, data] (data IS a js object)
+      //maps is part of underscore
+      //x takes each row in the array which resulted from pairs()
       .map(function(x) { x[1]._id = x[0]; return x[1]; })
+      //.sortBy sorts the array by the episode number in it
       .sortBy(function(x) { return x.number; })
+      //.value runs the pipeline
       .value();
   }
 
-  /* A podcast model 'class'. Given the id of a podcast, it will load the data
+  /* A podcast model 'class'. Given the id of a podcast, it will load the meta-data
    * for that podcast from firebase and trigger the updatedEvent whenever that
    * data changes.
+   * Good for reading, not yet for editing, but you should put editing stuff here
    */
+  
+  //this is setting up a constructor for a Podcast Object
   var Podcast = function(id) {
+    //see 'podly = {};' on index.html, podly is a global variable defined on index.html
+    //anything in podly is a global variable :o
+    //.Firebase is defined scripts/lib/controller.js 
+      //(this pulls the URL out of config and creates a this.firebase) 
+      //('this.' is usually the current object (but no always))
+      //.call 
     podly.Firebase.call(this);
+    //id gets 'id' taken into the Podcast() function
     this._id = id;
+    //for podly.Event see controller.js where a bunch of functions have been defined
     this.updatedEvent = new podly.Event('updated');
 
     this.ref = this.firebase.child('podcasts/' + this._id);
@@ -26,6 +48,8 @@
       if(data && data.title) {
         this.title = data.title;
         this.episodes = parseEpisodesObject(data.episodes);
+        //this lets other parts of the program know when something has ben updated
+        //.dispatch() defined in controller.j
         this.updatedEvent.dispatch(this);
       }
     }.bind(this));
@@ -72,6 +96,7 @@
     podly.Controller.call(this, '#episode-list-panel');
     this.AuthController = AuthController;
     this.pinnedState = undefined;
+    this.episodeSelectedEvent = new podly.Event('episodeSelected');
 
     // When the user logs in, get their profile information and create a
     // podcast object for their podcast.
@@ -179,6 +204,7 @@
     this.currentEpisode = _.find(this.podcast.episodes,
                                  function(x) { return x._id == episodeId; });
     this.pinnedState = 'collapsed';
+    this.episodeSelectedEvent.dispatch(episodeId);
     this.updateView();
   };
 

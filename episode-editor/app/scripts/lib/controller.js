@@ -1,6 +1,8 @@
 (function() {
   // A 'base class' for setting up something with a firebase connection
   function WithFirebase() {
+    //Config is the dev / prod thing we setup in .config/json. 
+    //code lives in scripts/generated/config.js
     this.firebase = new Firebase(Config.firebase.rootUrl);
   }
 
@@ -13,10 +15,13 @@
    *      $("#some-elem-id") will be replace with whatever this controller
    *      wants.
    */
+  
+  //constructs common stuff for all controllers 
   function Controller(panelId) {
     WithFirebase.call(this);
     this.panelId = panelId;
   }
+  
   Controller.prototype = Object.create(WithFirebase.prototype);
 
   /* A convenience function for setting the html of $(this.panelId) */

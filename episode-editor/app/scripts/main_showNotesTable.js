@@ -1,6 +1,27 @@
+/*Notes
+  This doc (main_showNotesTable.js) does 1 thing: writes the table of show notes for the episode editor 
+
+  How it works
+    1) Table data is loaded for middle of the table 
+    2) Table guts are printed
+    3) Table top is put on top
+   
+
+  The code below is seperated into 2 parts
+    0) initizlize variables
+    1) organize data into a table
+    
+ Related files are
+ 	1) deleteEpisodeNote.js (deletes rows of the table when the 'delete' [Button] is clicked
+ 	2) main_editTableRow.js (not yet written as of 21-Sept-15) it will allow in-line editing of rows 
+
+ *Episode Variable
+ 	Also we'll need to add some sort current episode vairable in as a universal  to replace the episode number
+*/
+
 $(document).ready(function() {
 
-//initilizing variables
+//Part 0) initilizing variables
     //create firebase references
     var rootUrl = Config.firebase.rootUrl;
     var myDataRef = new Firebase(rootUrl);
@@ -14,10 +35,10 @@ $(document).ready(function() {
     var newEpisodeNumber = '22';
 
     //table html
-    var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>delete</th></thead>';
+    var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>update</th><th>edit</th><th>delete</th></thead>';
     var tableBot ='</tbody></table>';    
 
-//Organise the data in to a table	
+//Part 1) Organise the data in to a table	
 	
 	//1st we load the table data (middle of table) from firebase
 	var ref2 = new Firebase(rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes');
@@ -57,10 +78,14 @@ $(document).ready(function() {
 
 
 	  	//create rows in the table
-		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
-	  	//edit button which was cut out of the table guts above, add back in | ' + /* <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> </td>*/ + '
+		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonUpdate" spewCount="'+spewCounter+'">Update</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonEdit" spewCount="'+spewCounter+'">Edit</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
+	  	//edit button which was cut out of the table guts above, add back in | ' + /* <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="TablenoteButtonEdit">Edit</button> </td>*/ + '
 	  	
+
 	  	$("#myTable").find('tbody').append($(tableGuts));	  		
+
+		  	//Hide Update Button
+	      	$('#tableNoteButtonUpdate').hide(); 
 	  });	  
 	  	
 
