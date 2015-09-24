@@ -38,6 +38,8 @@ $(document).ready(function() {
     var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>update</th><th>edit</th><th>delete</th></thead>';
     var tableBot ='</tbody></table>';    
 
+    var count = 0;
+
 //Part 1) Organise the data in to a table	
 	
 	//1st we load the table data (middle of table) from firebase
@@ -51,6 +53,7 @@ $(document).ready(function() {
 	  //initilize spewCounter which we'll use to create key references to each row's ID's
 	  var spewCounter = 0;
 
+	  //runs through the DB and writes a table row in the episode editor for each show note
 	  snapshot.forEach(function(childSnapshot) {
 	  	
 	  	spewCounter++; 
@@ -82,10 +85,16 @@ $(document).ready(function() {
 	  	//edit button which was cut out of the table guts above, add back in | ' + /* <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="TablenoteButtonEdit">Edit</button> </td>*/ + '
 	  	
 
-	  	$("#myTable").find('tbody').append($(tableGuts));	  		
+	  	$("#myTable").find('tbody').append($(tableGuts));	 
 
-		  	//Hide Update Button
-	      	$('#tableNoteButtonUpdate').hide(); 
+	  //iterate through table with spew counter and hide all update buttons 
+	  	//Hide Update Button after it's appended (above)
+	    $('#tableNoteButtonUpdate').hide();  
+
+	    //test to see if this is getting executed once or multiple times	    
+	    console.log('count is '+count); 
+	    count=count+1; 
+
 	  });	  
 	  	
 
@@ -96,11 +105,13 @@ $(document).ready(function() {
 	  //re-load #mainCss to re-style page
 	  $("head").append($('<link rel="stylesheet" href="styles/main.css" type="text/css" media="screen" />'));
 	  
+	  
 
 	});	
 
 
 // Test 5: Make rows editable O.O  (sooooon)
+		
 
 
 
