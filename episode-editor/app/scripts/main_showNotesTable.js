@@ -89,7 +89,7 @@ $(document).ready(function() {
 
 	  //iterate through table with spew counter and hide all update buttons 
 	  	//Hide Update Button after it's appended (above)
-	    $('#tableNoteButtonUpdate').hide();  
+	    //$('#tableNoteButtonUpdate').hide();  
 
 	    //test to see if this is getting executed once or multiple times	    
 	    console.log('count is '+count); 

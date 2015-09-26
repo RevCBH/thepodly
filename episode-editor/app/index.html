@@ -20,6 +20,13 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
+    <!-- Include handelbars --> 
+      <!--// From File --> 
+        <script src="handlebars-v2.0.0.js"></script>
+      <!--// From CDN --> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+    <!-- end handlebars include--> 
+
     <!-- infoNav.css is used to style firebase info -->
     <link rel="stylesheet" href="styles/infoNav.css">
 
@@ -39,17 +46,52 @@
       </div>
 
       <div id="episode-list-panel">
+        <div id="episode-list-panel-show">
+        </div>
+        <div id="episode-list-panel-hide">
+        </div>
       </div>
 
       <div id="showNotesPanel">
       </div>
 
       <div class="panel panel-default">
+
         <div class="panel-heading">
 
 
           <!-- Title of Podcast from Firebase -->
-          <div class="podcastTitleTest" alt="podcast title"></div>
+          <div class="podcastTitleTest" alt="podcast title">
+              This is where we'll test {{handlebars}}</br>
+
+
+      
+
+          <!--Template example -->
+              <!--Data will be inserted in its according place, replacing the brackets.
+              <script id="address-template" type="text/x-handlebars-template">
+                <p>You can find me in {{epTitle}}. My address is {{number}} {{street}}.</p>
+              </script>
+
+              <!--Your new content will be displayed in here--
+              <div class="content-placeholder-2"></div>
+            -->
+
+
+        
+          <!-- My test template | moving to delete_testHtmlHandlebars.html --> 
+              <script id="epTest-template" type="text/x-handlebars-template">
+                <p>{{episodeTitle}}</p>
+              </script>
+
+              <!--My new content will be displayed in here-->
+              <div class="content-placeholder"></div>
+              
+
+
+
+            
+          </div>
 
         </div>
         <div class="panel-body">
@@ -297,7 +339,16 @@
 
     <!--main_timeConversion.js converts secondos into xx:yy time format for readability  -->
     <script src = "scripts/main_timeConversion.js"></script>
-    
+
+
+    <!-- delete : delete_testHandlebars_2.js --> 
+    <script src = "scripts/delete_testHandlebars_2.js"></script>
+
+    <!-- delete : delete_testHandlebars.js --
+    <script src = "scripts/delete_testHandlebars.js"></script>
+    --> 
+
+
     <!-- delete and make part of main_showNotesTable, or somthing else
     <script src = "scripts/main_editShowNote.js"></script>-->
 

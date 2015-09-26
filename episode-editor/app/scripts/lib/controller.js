@@ -26,6 +26,7 @@
 
   /* A convenience function for setting the html of $(this.panelId) */
   Controller.prototype.updateView = function(view) {
+    //this writes HTML to a specific 'panel' on the dom and is how Bennett "aims" where the html shows up
     $(this.panelId).html(view);
   };
 
@@ -41,12 +42,17 @@
    */
   function useTemplateFile(templatePath, controllerFunction) {
     (function() {
+      //this does a few things
+        //a) finds the outerHTML of a specific data-state
+        //b) compiles with handlebars to give the complete / final html including handlebars data 
       this.renderTemplate = function(t) {
         return $(Handlebars.compile(t.prop('outerHTML'))(this));
       };
 
       this.templateLoaded = new podly.Event('templateLoaded');
 
+      
+      //*I think this takes in the dataState, finds the specific part and clones it so it can be used without harming the initial copy
       this.template = function(state) {
         var t = this.templateSet.find('[data-state=' + state + ']').clone();
 
@@ -54,6 +60,7 @@
       };
 
       $.get(templatePath, function (data) { // TODO - handle errors
+      //* I think this defines a jQuery element that gets used to analize templatePath 
         this.templateSet = $('<div>' + data + '</div>');
         this.templateLoaded.dispatch();
       }.bind(this));
@@ -64,3 +71,39 @@
   podly.Controller = Controller;
   podly.Firebase = WithFirebase;
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'remove', 'handlebars' ]
+2 info using npm@2.13.0
+3 info using node@v0.12.7
+4 verbose unbuild node_modules/handlebars
+5 info preuninstall handlebars@4.0.3
+6 info uninstall handlebars@4.0.3
+7 verbose unbuild rmStuff handlebars@4.0.3 from /Users/cedricomdahl/thepodly/episode-editor/node_modules
+8 silly gentlyRm /Users/cedricomdahl/thepodly/episode-editor/node_modules/.bin/handlebars is being gently removed
+9 silly gentlyRm verifying /Users/cedricomdahl/thepodly/episode-editor is an npm working directory
+10 silly gentlyRm containing path /Users/cedricomdahl/thepodly/episode-editor is under npm's control, in /Users/cedricomdahl/thepodly/episode-editor
+11 silly gentlyRm deletion target /Users/cedricomdahl/thepodly/episode-editor/node_modules/.bin/handlebars is under /Users/cedricomdahl/thepodly/episode-editor
+12 verbose gentlyRm vacuuming from /Users/cedricomdahl/thepodly/episode-editor/node_modules/.bin/handlebars up to /Users/cedricomdahl/thepodly/episode-editor
+13 silly vacuum-fs removing /Users/cedricomdahl/thepodly/episode-editor/node_modules/.bin/handlebars
+14 silly vacuum-fs quitting because other entries in /Users/cedricomdahl/thepodly/episode-editor/node_modules/.bin
+15 info postuninstall handlebars@4.0.3
+16 silly gentlyRm /Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars is being purged from base /Users/cedricomdahl/thepodly/episode-editor
+17 verbose gentlyRm don't care about contents; nuking /Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars
+18 silly vacuum-fs purging /Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars
+19 verbose stack Error: EACCES, unlink '/Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars/node_modules/.bin/uglifyjs'
+19 verbose stack     at Error (native)
+20 verbose cwd /Users/cedricomdahl/thepodly/episode-editor
+21 error Darwin 14.4.0
+22 error argv "node" "/usr/local/bin/npm" "remove" "handlebars"
+23 error node v0.12.7
+24 error npm  v2.13.0
+25 error path /Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars/node_modules/.bin/uglifyjs
+26 error code EACCES
+27 error errno -13
+28 error Error: EACCES, unlink '/Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars/node_modules/.bin/uglifyjs'
+28 error     at Error (native)
+28 error  { [Error: EACCES, unlink '/Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars/node_modules/.bin/uglifyjs']
+28 error   errno: -13,
+28 error   code: 'EACCES',
+28 error   path: '/Users/cedricomdahl/thepodly/episode-editor/node_modules/handlebars/node_modules/.bin/uglifyjs' }
+29 error Please try running this command again as root/Administrator.
+30 verbose exit [ -13, true ]

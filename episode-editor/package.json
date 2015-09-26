@@ -47,5 +47,8 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "handlebars": "^4.0.3"
   }
 }
