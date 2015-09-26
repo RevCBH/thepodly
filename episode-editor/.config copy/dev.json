@@ -1,0 +1,6 @@
+{
+ "firebase": {
+   "rootUrl": "https://sky-jump-run.firebaseIO.com/"
+   //using dev environment "rootUrl": "https://cobro-dev.firebaseIO.com/"
+ }
+} 
