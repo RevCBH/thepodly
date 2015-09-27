@@ -1,3 +1,6 @@
+/* Break out high level episode info into another doc 
+*/
+
 /*Notes
   This doc (main_showNotes.js) takes user input about a new show note and enters it into the database
   
@@ -61,32 +64,33 @@ $(document).ready(function() {
       var noteWords;
       var noteUrl;
 
+
   //Part 0b) function initalization
        
-        //function: convert hh:mm:ss to seconds
-            var hmsToSecondsOnly = function(str) {
-              var p = str.split(':'),
-                  s = 0, m = 1;
+      //function: convert hh:mm:ss to seconds
+          var hmsToSecondsOnly = function(str) {
+            var p = str.split(':'),
+                s = 0, m = 1;
 
-              while (p.length > 0) {
-                  s += m * parseInt(p.pop(), 10);
-                  m *= 60;
-              }
+            while (p.length > 0) {
+                s += m * parseInt(p.pop(), 10);
+                m *= 60;
+            }
 
-              return s;
-          };
+            return s;
+        };
 
-        //function: convert seconds to hh:mm:ss     
-          var secondsToHms =  function(d) {
-            d = Number(d);
-            var h = Math.floor(d / 3600);
-            var m = Math.floor(d % 3600 / 60);
-            var s = Math.floor(d % 3600 % 60);
-            return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
-          }
+      //function: convert seconds to hh:mm:ss     
+        var secondsToHms =  function(d) {
+          d = Number(d);
+          var h = Math.floor(d / 3600);
+          var m = Math.floor(d % 3600 / 60);
+          var s = Math.floor(d % 3600 % 60);
+          return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
+        }
 
         //function: write show note to firebase
-        var writeShowNotesToFirebase = function(){
+      var writeShowNotesToFirebase = function(){
         //A) Get inputs, assign to variables, write to firebase
           //1) get input time, assign to variable noteTime
             noteTime=hmsToSecondsOnly($("input[id=noteTimeInput]").val());
@@ -106,74 +110,85 @@ $(document).ready(function() {
 
         //B) turn input forms to fixed text
           //1) empty noteTimeInput and replace with text
-            $('#noteTimeInput').hide();
-            $('.noteTimeContainer').append(secondsToHms(noteTime));
+            $('input#noteTimeInput').html('');
+            /* Hiding this so we don't go into edit mode when entering a show note
+              $('#noteTimeInput').hide();
+              $('.noteTimeContainer').append(secondsToHms(noteTime));
+            */
 
           //2) empty noteWordsCell and replace with text
-            $('#noteWordsInput').hide();
-            $('.noteWordsContainer').append(noteWords);
+            $('#noteWordsInput').empty();
+            /* Hiding this so we don't go into edit mode when entering a show note
+              $('#noteWordsInput').hide();
+              $('.noteWordsContainer').append(noteWords);
+            */
 
           //3) empty noteUrlInput and replace with text
-            $('#noteUrlInput').hide();
-            $('.noteUrlContainer').append(noteUrl);
+            $('#noteUrlInput').empty();
+            /* Hiding this so we don't go into edit mode when entering a show note
+             * $('#noteUrlInput').hide();
+             * $('.noteUrlContainer').append(noteUrl);
+            */
 
-          //4) swap [Enter] button for [Edit] button
-            $('#noteButtonEnter').hide();
-            $('#noteButtonEdit').show();
+          /* Hiding this so we don't go into edit mode when entering a show note
+           * 4) swap [Enter] button for [Edit] button
+           * $('#noteButtonEnter').hide();
+           * $('#noteButtonEdit').show();
+           */
 
-          //5) write to /time url = noteWords & noteUrl
+        //C) write to /time url = noteWords & noteUrl
             timeRef.set({
               noteWords: noteWords,
               noteUrl: noteUrl
             });
-          };
+      };
 
-          var editShowNotesButtonClick = function(){
-            //empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
+        var editShowNotesButtonClick = function(){
+          //empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
+          
+          //Part 3a) empty time / append form control 
+            //empty time form field
+              $('.noteTimeContainer').empty();
+              
+            //append show note TimeInput form field
+              $('#noteTimeInput').show();
+              //empty noteTimeInput to prep it for new value incase it's been changed externally
+              $('#noteTimeInput').empty();
+              //update value of field to be the time
+              $('#noteTimeInput').val(secondsToHms(noteTime));
+              
             
-            //Part 3a) empty time / append form control 
-              //empty time form field
-                $('.noteTimeContainer').empty();
-                
-              //append show note TimeInput form field
-                $('#noteTimeInput').show();
-                //empty noteTimeInput to prep it for new value incase it's been changed externally
-                $('#noteTimeInput').empty();
-                //update value of field to be the time
-                $('#noteTimeInput').val(secondsToHms(noteTime));
-                
-              
-            //Part 3b) empty words / append form control 
-              //empty noteWordsCell  
-                $('.noteWordsContainer').empty();
-              
-              //append form control
-                //show noteWordsInput form field
-                $('#noteWordsInput').show();
-                //empty noteWordsInput to prep it for new value incase it's been changed externally
-                $('#noteWordsInput').empty();
-                //update value of field to be the time
-                $('#noteWordsInput').val(noteWords);
+          //Part 3b) empty words / append form control 
+            //empty noteWordsCell  
+              $('.noteWordsContainer').empty();
+            
+            //append form control
+              //show noteWordsInput form field
+              $('#noteWordsInput').show();
+              //empty noteWordsInput to prep it for new value incase it's been changed externally
+              $('#noteWordsInput').empty();
+              //update value of field to be the time
+              $('#noteWordsInput').val(noteWords);
 
 
-            //Part 3c) empty noteUrlCell / append form control
-              //empty
-                $('.noteUrlContainer').empty();
-              
-              //append form control
-                //show noteWordsInput form field
-                $('#noteUrlInput').show();
-                //empty noteWordsInput to prep it for new value incase it's been changed externally
-                $('#noteUrlInput').empty();
-                //update value of field to be the time
-                $('#noteUrlInput').val(noteUrl);
+          //Part 3c) empty noteUrlCell / append form control
+            //empty
+              $('.noteUrlContainer').empty();
+            
+            //append form control
+              //show noteWordsInput form field
+              $('#noteUrlInput').show();
+              //empty noteWordsInput to prep it for new value incase it's been changed externally
+              $('#noteUrlInput').empty();
+              //update value of field to be the time
+              $('#noteUrlInput').val(noteUrl);
 
 
-              //Part 3d) swapping the {'Enter' [Button]} with {'Update' [Button]}
-                //swap [Edit] button for [Enter] button
-                $('#noteButtonUpdate').show();
-                $('#noteButtonEdit').hide();
-              };
+            //Part 3d) swapping the {'Enter' [Button]} with {'Update' [Button]}
+              //swap [Edit] button for [Enter] button
+              $('#noteButtonUpdate').show();
+              $('#noteButtonEdit').hide();
+            };
 
 
           var updateShowNotesButtonClick = function(){
@@ -201,7 +216,10 @@ $(document).ready(function() {
   
     };
 
+
   //Part 0c) starting Actions
+    
+
     //Hide Edit Button
     $('#noteButtonEdit').hide();
     //Hide Update Button

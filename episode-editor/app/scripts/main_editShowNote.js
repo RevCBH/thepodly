@@ -1,3 +1,7 @@
+/* Consider putting edit code back in with main_showNotes and/or breaking out 
+ * funcitons which are used in both places (there are several)
+
+
 /*Notes
   This doc (main_editShowNotes.js) allows users to edit each show note directly in the table of show notes. 
   
@@ -75,7 +79,7 @@ $(document).ready(function() {
             return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
           }
 
-        //function: write show note to firebase
+    //function: write show note to firebase
         var writeShowNotesToFirebase = function(){
         //A) Get inputs, assign to variables, write to firebase
           //1) get input time, assign to variable noteTime
@@ -96,20 +100,31 @@ $(document).ready(function() {
 
         //B) turn input forms to fixed text
           //1) empty noteTimeInput and replace with text
-            $('#noteTimeInput').hide();
-            $('.noteTimeContainer').append(secondsToHms(noteTime));
+            $('input#noteTimeInput').html('');
+            /* Hiding this so we don't go into edit mode when entering a show note
+              $('#noteTimeInput').hide();
+              $('.noteTimeContainer').append(secondsToHms(noteTime));
+            */
 
           //2) empty noteWordsCell and replace with text
-            $('#noteWordsInput').hide();
-            $('.noteWordsContainer').append(noteWords);
+            $('#noteWordsInput').empty();
+            /* Hiding this so we don't go into edit mode when entering a show note
+              $('#noteWordsInput').hide();
+              $('.noteWordsContainer').append(noteWords);
+            */
 
           //3) empty noteUrlInput and replace with text
-            $('#noteUrlInput').hide();
-            $('.noteUrlContainer').append(noteUrl);
+            $('#noteUrlInput').empty();
+            /* Hiding this so we don't go into edit mode when entering a show note
+             * $('#noteUrlInput').hide();
+             * $('.noteUrlContainer').append(noteUrl);
+            */
 
-          //4) swap [Enter] button for [Edit] button
-            $('#noteButtonEnter').hide();
-            $('#noteButtonEdit').show();
+          /* Hiding this so we don't go into edit mode when entering a show note
+           * 4) swap [Enter] button for [Edit] button
+           * $('#noteButtonEnter').hide();
+           * $('#noteButtonEdit').show();
+           */
 
           //5) write to /time url = noteWords & noteUrl
             timeRef.set({
@@ -245,7 +260,7 @@ $(document).ready(function() {
             console.log('Theres an old note time at ' + oldNoteTime + 'that needs to be delted'); 
 
             //delete cellTime child from Firebase | //test 1 = hard code (test 2 = variable based on cellTime)
-            var deleteNoteRef = new Firebase(episodesUrl+'22/episodeNotes/'+oldNoteTime);
+            var deleteNoteRef = new Firebase(episodesUrl+newEpisodeNumber+'/episodeNotes/'+oldNoteTime);
             deleteNoteRef.remove();
           }
       });

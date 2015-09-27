@@ -1,3 +1,5 @@
+/**** NEED a global variable to signal that Podcast URL has been entered ***/
+
 // Test 4: hook up row play button to media O.O 
 	//add media via FireBase
 	//make it play via 
@@ -6,11 +8,12 @@
 $(document).ready(function() {
 	
 //initialize variables
-var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
-var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
-var cellTime; 
-var formatTime; 
-var hash=0;
+	//need to set audio source from Podcast Audio URL field 
+	var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
+	var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
+	var cellTime; 
+	var formatTime; 
+	var hash=0;
 
 
 //play magic as people come to page
@@ -28,8 +31,13 @@ var hash=0;
 
 
 	//starting code
+		//hide podcastAudioArea until audio URL has been entered
+		$('podcastAudioArea').hide;
+
 		//write html into dom podcastAudioArea
-		$('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
+		/* need a global variable to signal that Podcast URL (audioSource) has been entered
+		 *	$('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
+		*/
 
 		//set hash to be playtime 
 	    if(hashTime !=0 || hashTime !== ''){
