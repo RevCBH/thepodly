@@ -67,9 +67,12 @@
     }.bind(controllerFunction.prototype))();
   }
 
+
+
   podly.useTemplateFile = useTemplateFile;
   podly.Controller = Controller;
   podly.Firebase = WithFirebase;
+
 })();
 
 

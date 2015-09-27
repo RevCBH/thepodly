@@ -128,6 +128,79 @@ $(document).ready(function() {
             });
           };
 
+          var editShowNotesButtonClick = function(){
+            //empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
+            
+            //Part 3a) empty time / append form control 
+              //empty time form field
+                $('.noteTimeContainer').empty();
+                
+              //append show note TimeInput form field
+                $('#noteTimeInput').show();
+                //empty noteTimeInput to prep it for new value incase it's been changed externally
+                $('#noteTimeInput').empty();
+                //update value of field to be the time
+                $('#noteTimeInput').val(secondsToHms(noteTime));
+                
+              
+            //Part 3b) empty words / append form control 
+              //empty noteWordsCell  
+                $('.noteWordsContainer').empty();
+              
+              //append form control
+                //show noteWordsInput form field
+                $('#noteWordsInput').show();
+                //empty noteWordsInput to prep it for new value incase it's been changed externally
+                $('#noteWordsInput').empty();
+                //update value of field to be the time
+                $('#noteWordsInput').val(noteWords);
+
+
+            //Part 3c) empty noteUrlCell / append form control
+              //empty
+                $('.noteUrlContainer').empty();
+              
+              //append form control
+                //show noteWordsInput form field
+                $('#noteUrlInput').show();
+                //empty noteWordsInput to prep it for new value incase it's been changed externally
+                $('#noteUrlInput').empty();
+                //update value of field to be the time
+                $('#noteUrlInput').val(noteUrl);
+
+
+              //Part 3d) swapping the {'Enter' [Button]} with {'Update' [Button]}
+                //swap [Edit] button for [Enter] button
+                $('#noteButtonUpdate').show();
+                $('#noteButtonEdit').hide();
+              };
+
+
+          var updateShowNotesButtonClick = function(){
+            console.log('noteTime is ' + noteTime);
+            console.log('noteTimeCounter is ' + noteTimeCounter);
+            
+            var oldNoteTime = noteTime;
+            console.log('oldNoteTime is ' + oldNoteTime);
+
+            //A) call writeShowNotesToFirebase() function to write edited show notes to FB
+            writeShowNotesToFirebase(); 
+
+            //B) hide 'Update' [Button]
+            $('#noteButtonUpdate').hide();
+
+
+            if(oldNoteTime!=noteTime){
+              
+              console.log('Theres an old note time at ' + oldNoteTime + 'that needs to be delted'); 
+
+              //delete cellTime child from Firebase | //test 1 = hard code (test 2 = variable based on cellTime)
+              var deleteNoteRef = new Firebase(episodesUrl+'22/episodeNotes/'+oldNoteTime);
+              deleteNoteRef.remove();
+            }
+  
+    };
+
   //Part 0c) starting Actions
     //Hide Edit Button
     $('#noteButtonEdit').hide();
@@ -168,119 +241,16 @@ $(document).ready(function() {
       });
 
 
-//Part 3) edit show notes
+//Part 3) edit show notes 
   
   //[Button] 'Edit' show notes = makes fields accessible again  
     $('#noteButtonEdit').click(function(){
-    //empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
-    
-    //Part 3a) empty time / append form control 
-      //empty time form field
-        $('.noteTimeContainer').empty();
-        
-      //append show note TimeInput form field
-        $('#noteTimeInput').show();
-        //empty noteTimeInput to prep it for new value incase it's been changed externally
-        $('#noteTimeInput').empty();
-        //update value of field to be the time
-        $('#noteTimeInput').val(secondsToHms(noteTime));
-        
-      
-    //Part 3b) empty words / append form control 
-      //empty noteWordsCell  
-        $('.noteWordsContainer').empty();
-      
-      //append form control
-        //show noteWordsInput form field
-        $('#noteWordsInput').show();
-        //empty noteWordsInput to prep it for new value incase it's been changed externally
-        $('#noteWordsInput').empty();
-        //update value of field to be the time
-        $('#noteWordsInput').val(noteWords);
-
-
-    //Part 3c) empty noteUrlCell / append form control
-      //empty
-        $('.noteUrlContainer').empty();
-      
-      //append form control
-        //show noteWordsInput form field
-        $('#noteUrlInput').show();
-        //empty noteWordsInput to prep it for new value incase it's been changed externally
-        $('#noteUrlInput').empty();
-        //update value of field to be the time
-        $('#noteUrlInput').val(noteUrl);
-
-
-      //Part 3d) swapping the {'Enter' [Button]} with {'Update' [Button]}
-        //swap [Edit] button for [Enter] button
-        $('#noteButtonUpdate').show();
-        $('#noteButtonEdit').hide();
+      editShowNotesButtonClick(); 
     });
       
+  //[Button] 'Update' show notes = writes new info to FB & hides fields
       $('#noteButtonUpdate').click(function(){
-        console.log('noteTime is ' + noteTime);
-        console.log('noteTimeCounter is ' + noteTimeCounter);
-        
-        var oldNoteTime = noteTime;
-        console.log('oldNoteTime is ' + oldNoteTime);
-
-        //A) call writeShowNotesToFirebase() function to write edited show notes to FB
-        writeShowNotesToFirebase(); 
-
-        //B) hide 'Update' [Button]
-        $('#noteButtonUpdate').hide();
-
-//*** 3rd ********** You are here | Looks for changes in time, deletes old time and replaces with new time  **********
-
-        //C)looks a show note's time has been changed, if it has it deletes old time child in Firebase 
-          
-          /*how it works
-            1. when 'edit' [Button] is clicked... 
-              a) Prep the row to be deleted via 'noteTimeCounter'
-                //variable counter from 0 to 1 
-            2. when 'update' [Button] is clicked
-              a)  if ('noteTimeCounter' > 0){delete oldtime in fb}; 
-          */
-            
-          //if a note time has been prevoiusly created for this row, set oldNoteTime as a varable so you can delete it in Firebase and replace it with the new one
-          if(oldNoteTime!=noteTime){
-            
-            console.log('Theres an old note time at ' + oldNoteTime + 'that needs to be delted'); 
-
-            //delete cellTime child from Firebase | //test 1 = hard code (test 2 = variable based on cellTime)
-            var deleteNoteRef = new Firebase(episodesUrl+'22/episodeNotes/'+oldNoteTime);
-            deleteNoteRef.remove();
-          }
+        updateShowNotesButtonClick();
       });
-
-
-
-
-// Notes for right now
-
-          //***may not be needed (see above *should*) if note time is changed in the row, delete rows previous note time
-        
-        //*** temporarily commenting this out so I can add all the time / show notes for episode 22 *** 
-          /*delete old row time (if it exists)
-          if(noteTimeCounter>0){
-            //initialize oldTimeRef
-            //var oldTimeRef = timeRef.child(oldNoteTime);
-
-            //remove oldTime
-            tRef.child(oldNoteTime).remove();
-
-            /*replace oldNoteTime with noteTime
-            oldTimeRef.update(noteTime);*
-            //set oldNoteTimeto '', so we avoid accidentaly deleting a time we want to keep!
-            oldNoteTime = '';
-          }
-
-          //increment noteTimeCounter so we know this row's time has been updated
-            noteTimeCounter+=1;
-          
-          
-      */
-
 
 });

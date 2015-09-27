@@ -35,8 +35,9 @@ $(document).ready(function() {
     var newEpisodeNumber = '22';
 
     //table html
-    var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>update</th><th>edit</th><th>delete</th></thead>';
-    var tableBot ='</tbody></table>';    
+    var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>delete</th></thead>';
+    	//update & edit headers were temporarily cut out <th>update</th><th>edit</th>
+    var tableBot ='</tbody></table>';  
 
     var count = 0;
 
@@ -81,9 +82,9 @@ $(document).ready(function() {
 
 
 	  	//create rows in the table
-		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonUpdate" spewCount="'+spewCounter+'">Update</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonEdit" spewCount="'+spewCounter+'">Edit</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
+		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
 	  	//edit button which was cut out of the table guts above, add back in | ' + /* <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="TablenoteButtonEdit">Edit</button> </td>*/ + '
-	  	
+	  	//edit_v2 & update buttons <td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonUpdate" spewCount="'+spewCounter+'">Update</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonEdit" spewCount="'+spewCounter+'">Edit</button></td>
 
 	  	$("#myTable").find('tbody').append($(tableGuts));	 
 
