@@ -1,8 +1,15 @@
+// *** CRITICAL UPDATE NEEDED *** Need to desipher which podcast this is from the UNIQUE URL# WE GIVE PODCASTERS (FOR NOW) ***
 
+/* Notes
+   This doc (main_firebaseRef.js) does 1 thing: Create Firebase References
+  
+  How it works
+    0) set podcast ID in 'podlyGlobal.podcastID' by reading the # in the unique url 
+    1) the rest is self explanitory 
 
- //create firebase references
+*/
+
     //**** Need to desipher which podcast this is from the UNIQUE URL# WE GIVE PODCASTERS (FOR NOW)***
-
     podlyGlobal.podcastID = 'healyourselfradio';
     
     podlyGlobal.rootUrl = 'https://sky-jump-run.firebaseIO.com/';
@@ -12,6 +19,4 @@
     podlyGlobal.episodesRef = new Firebase(podlyGlobal.episodesUrl);
 
   (function() {
-  	console.log("podlyGlobal.episodesRef is " + podlyGlobal.episodesRef);
-  	console.log("podlyGlobal.episodesUrl is " + podlyGlobal.episodesUrl);
   })();

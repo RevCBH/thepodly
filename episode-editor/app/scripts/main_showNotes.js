@@ -48,7 +48,7 @@ $(document).ready(function() {
 
       //variable initialization
   //****** Change value of newEpisodeNumber back to '' after getting time write to work on Firebase
-      var newEpisodeNumber = 22;
+      //delete | var newEpisodeNumber = 22;
       var podcastUrl='';
 
   //noteTimeCounter may need serialization as we scale table
