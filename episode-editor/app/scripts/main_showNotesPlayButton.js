@@ -5,7 +5,9 @@
 	//make it play via 
 
 
-$(document).ready(function() {
+//reinstate: $(document).ready(function() {
+//delete
+(function() {
 	
 //initialize variables
 	//need to set audio source from Podcast Audio URL field 
@@ -187,7 +189,9 @@ $(document).ready(function() {
 
 		
 
-});		
+//reinstate });		
+//delete
+})();
 
 
 

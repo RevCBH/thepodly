@@ -225,25 +225,53 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
     <!-- endbuild -->
 
-    <script src = "scripts/deleteEpisodeNote.js"></script>
+    <script type='text/javascript'>
+      podlyGlobal = {};
+    </script>
 
+
+    <!-- firebase references --> 
+    <script src="scripts/main_firebaseRef.js"></script>
+    
+   
+    <!-- reference: reference_defineGlobalVarsAndFunctions --> 
+     <script src = "scripts/reference_defineGlobalVarsAndFunctions.js"></script>
+
+    <!-- main_episodeHighLevel.js -->
+     <script src = "scripts/main_episodeHighLevel.js"></script>
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main_controller.js"></script>
+    <!-- endbuild -->
+
+
+     <!-- reference: reference_callGlobalVarsAndFunctions.js --> 
+     <script src = "scripts/reference_callGlobalVarsAndFunctions.js"></script>
+
+
+    
+     
+
+    <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) -->
+    <script src="scripts/main_showNotes.js"></script>
+    <!-- endbuild -->
+
+
+    <script src = "scripts/deleteEpisodeNote.js"></script>
+    
     <!-- build:js scripts/main_showNotesTable.js  -->
     <script src="scripts/main_showNotesTable.js"></script>
     <!-- endbuild -->
 
 
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main_V2.js"></script>
-    <!-- endbuild -->
+ 
 
     <!-- build:js scripts/podcastTitle.js (displays the title of the podcast) -->
     <script src="scripts/podcastTitle.js"></script>
     <!-- endbuild -->
 
 
-    <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) -->
-    <script src="scripts/main_showNotes.js"></script>
-    <!-- endbuild -->
+   
 
     <!-- Bennett: build:js scripts/generated/config.js --> 
     <script src="scripts/generated/config.js"></script>
@@ -287,6 +315,9 @@
     <!-- learn: templates (can be deleted)
     <script src = "scripts/learnTemplates.js"></script>
      --> 
+
+
+      
 
 
     <!-- delete and make part of main_showNotesTable, or somthing else
