@@ -1,11 +1,23 @@
 /* 
- * This doc, 'delete_testRemoteFunction.js' tests if I can trigger a function from an external function
- * called from delete_globalVariableTest.js, 
+ * This doc, 'ref_GlobalVarFunctions.js' tests if I can trigger a function from an external function
+ * called from ref_GlobalVarFunctions.js, 
  * ^ loaded after it in index.html
  */
 //var global ={}; 
 
 var newEpisodeNumber = '000'; 
+
+//delte | test complete | var podcastUrlTest = 'The podcast global variable from reference_defineGlobalVarsAndFunctions.js is working'; 
+//consider deleting | var 
+window.podcastUrl; 
+
+var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
+//var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + window.podcastUrl + '" type="audio/mpeg"></audio>';
+
+podlyGlobal.audioPlayer = function(podcastUrl){
+	var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + podcastUrl + '" type="audio/mpeg"></audio>';
+	return audioPlayer; 
+};
 
 /*
  These are test variables
@@ -50,7 +62,7 @@ var newEpisodeNumber = '000';
 	(function() {
 	    //code here
 	    window.testFunction = function(){
-	     console.log("testFunction works");
+	     console.log('newEpisodeNumber is '+ newEpisodeNumber);
 	    };
 	})();
 */

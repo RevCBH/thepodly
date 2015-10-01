@@ -21,10 +21,9 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
     <!-- Include handelbars --> 
-      <!--// From File --> 
-        <script src="handlebars-v2.0.0.js"></script>
-      <!--// From CDN --> 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+      <!-- see bower below -->
+      <!--// From CDN  (blocking for now, becuase it's in bower)
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script> -->
     <!-- end handlebars include--> 
 
     <!-- infoNav.css is used to style firebase info -->
@@ -84,8 +83,6 @@
                 <!--hiding edit high level episode button, keeping it here for reference incase we want to edit this code in the JS later
                 <button class="btn btn-default" id="episodeEditButton" type="submit" role="button">Edit Episode Info</button>-->
               </div>
-
-
             </p>
           </div>
 
@@ -235,26 +232,44 @@
     
    
     <!-- reference: reference_defineGlobalVarsAndFunctions --> 
-     <script src = "scripts/reference_defineGlobalVarsAndFunctions.js"></script>
+    <script src = "scripts/ref_GlobalVarFunctions.js"></script>
+
+
+    <script src = "scripts/main_showNotesPlayButton.js"></script>
+
+
+    <script src = "scripts/main_podcastMediaUrl.js"></script>
+
 
     <!-- main_episodeHighLevel.js -->
      <script src = "scripts/main_episodeHighLevel.js"></script>
+
+    
+
+
+
+
+
+
 
     <!-- build:js scripts/main.js -->
     <script src="scripts/main_controller.js"></script>
     <!-- endbuild -->
 
 
-     <!-- reference: reference_callGlobalVarsAndFunctions.js --> 
-     <script src = "scripts/reference_callGlobalVarsAndFunctions.js"></script>
 
+     <!-- delete | practice reference: reference_callGlobalVarsAndFunctions.js  
+     <script src = "scripts/reference_callGlobalVarsAndFunctions.js"></script>
+     -->
+
+    
 
     
      
 
-    <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) -->
-    <script src="scripts/main_showNotes.js"></script>
-    <!-- endbuild -->
+    <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL)-->
+    <script src="scripts/main_showNotes.js"></script> 
+    <!-- endbuild 
 
 
     <script src = "scripts/deleteEpisodeNote.js"></script>
@@ -266,7 +281,7 @@
 
  
 
-    <!-- build:js scripts/podcastTitle.js (displays the title of the podcast) -->
+    <!-- build:js scripts/podcastTitle.js (displays the title of the podcast) 
     <script src="scripts/podcastTitle.js"></script>
     <!-- endbuild -->
 
@@ -290,7 +305,7 @@
     <script src="scripts/lib/controller.js"></script>
     <!-- endbuild -->
 
-    <script src = "scripts/main_showNotesPlayButton.js"></script>
+    
 
     <!-- Bennett: build:js scripts/controllers/auth.js --
     <script src="scripts/controllers/auth.js"></script>
@@ -304,8 +319,9 @@
     <script src="scripts/controllers/notes.js"></script>
     <!-- endbuild -->
 
-    <!--main_timeConversion.js converts secondos into xx:yy time format for readability  -->
+    <!--main_timeConversion.js converts secondos into xx:yy time format for readability 
     <script src = "scripts/main_timeConversion.js"></script>
+     -->
 
 
     <!-- learn: handlebars (can be deleted) 

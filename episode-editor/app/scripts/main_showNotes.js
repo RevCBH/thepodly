@@ -67,84 +67,84 @@ $(document).ready(function() {
 
   //Part 0b) function initalization
        
-      //function: convert hh:mm:ss to seconds
-          var hmsToSecondsOnly = function(str) {
-            var p = str.split(':'),
-                s = 0, m = 1;
+    //function: convert hh:mm:ss to seconds
+        var hmsToSecondsOnly = function(str) {
+          var p = str.split(':'),
+              s = 0, m = 1;
 
-            while (p.length > 0) {
-                s += m * parseInt(p.pop(), 10);
-                m *= 60;
-            }
-
-            return s;
+          while (p.length > 0) {
+              s += m * parseInt(p.pop(), 10);
+              m *= 60;
+          }
+          return s;
         };
 
-      //function: convert seconds to hh:mm:ss     
-        var secondsToHms =  function(d) {
-          d = Number(d);
-          var h = Math.floor(d / 3600);
-          var m = Math.floor(d % 3600 / 60);
-          var s = Math.floor(d % 3600 % 60);
-          return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
-        }
+    //function: convert seconds to hh:mm:ss     
+      var secondsToHms =  function(d) {
+        d = Number(d);
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+        return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
+      }
 
-        //function: write show note to firebase
-      var writeShowNotesToFirebase = function(){
-        //A) Get inputs, assign to variables, write to firebase
-          //1) get input time, assign to variable noteTime
-            noteTime=hmsToSecondsOnly($("input[id=noteTimeInput]").val());
+  //function: write show note to firebase
+    var writeShowNotesToFirebase = function(){
+      //A) Get inputs, assign to variables, write to firebase
+        //1) get input time, assign to variable noteTime
+          noteTime=hmsToSecondsOnly($("input[id=noteTimeInput]").val());
 
-          //2) get input words, assign to variable
-            noteWords=$("input[id=noteWordsInput]").val();
+        //2) get input words, assign to variable
+          noteWords=$("input[id=noteWordsInput]").val();
 
-          //3) get input url, assign to variable
-            noteUrl=$("input[id=noteUrlInput]").val();
+        //3) get input url, assign to variable
+          noteUrl=$("input[id=noteUrlInput]").val();
 
-          //4) write time to firebase
-            var eRef = episodesRef.child(newEpisodeNumber);
-            var tRef = eRef.child("episodeNotes");
-            
-          //5) create new var for Firebase reference to tRefchid(noteTiem)
-            var timeRef = tRef.child(noteTime);
+        //4) write time to firebase
+          var eRef = episodesRef.child(newEpisodeNumber);
+          var tRef = eRef.child("episodeNotes");
+          
+        //5) create new var for Firebase reference to tRefchid(noteTiem)
+          var timeRef = tRef.child(noteTime);
 
-        //B) turn input forms to fixed text
-          //1) empty noteTimeInput and replace with text
-            $('input#noteTimeInput').html('');
-            /* Hiding this so we don't go into edit mode when entering a show note
-              $('#noteTimeInput').hide();
-              $('.noteTimeContainer').append(secondsToHms(noteTime));
-            */
-
-          //2) empty noteWordsCell and replace with text
-            $('#noteWordsInput').empty();
-            /* Hiding this so we don't go into edit mode when entering a show note
-              $('#noteWordsInput').hide();
-              $('.noteWordsContainer').append(noteWords);
-            */
-
-          //3) empty noteUrlInput and replace with text
-            $('#noteUrlInput').empty();
-            /* Hiding this so we don't go into edit mode when entering a show note
-             * $('#noteUrlInput').hide();
-             * $('.noteUrlContainer').append(noteUrl);
-            */
-
+      //B) turn input forms to fixed text
+        //1) empty noteTimeInput and replace with text
+          $('input#noteTimeInput').html('');
           /* Hiding this so we don't go into edit mode when entering a show note
-           * 4) swap [Enter] button for [Edit] button
-           * $('#noteButtonEnter').hide();
-           * $('#noteButtonEdit').show();
-           */
+            $('#noteTimeInput').hide();
+            $('.noteTimeContainer').append(secondsToHms(noteTime));
+          */
 
-        //C) write to /time url = noteWords & noteUrl
-            timeRef.set({
-              noteWords: noteWords,
-              noteUrl: noteUrl
-            });
-      };
+        //2) empty noteWordsCell and replace with text
+          $('#noteWordsInput').empty();
+          /* Hiding this so we don't go into edit mode when entering a show note
+            $('#noteWordsInput').hide();
+            $('.noteWordsContainer').append(noteWords);
+          */
 
+        //3) empty noteUrlInput and replace with text
+          $('#noteUrlInput').empty();
+          /* Hiding this so we don't go into edit mode when entering a show note
+           * $('#noteUrlInput').hide();
+           * $('.noteUrlContainer').append(noteUrl);
+          */
+
+        /* Hiding this so we don't go into edit mode when entering a show note
+         * 4) swap [Enter] button for [Edit] button
+         * $('#noteButtonEnter').hide();
+         * $('#noteButtonEdit').show();
+         */
+
+      //C) write to /time url = noteWords & noteUrl
+          timeRef.set({
+            noteWords: noteWords,
+            noteUrl: noteUrl
+          });
+    };
+
+      //function to empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
         var editShowNotesButtonClick = function(){
-          //empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
+          
           
           //Part 3a) empty time / append form control 
             //empty time form field
@@ -230,6 +230,7 @@ $(document).ready(function() {
 
   //Part 1a) [Button] Submit Episode Info (click) = gets Episode number from DOM
     $('#submitButton').on('click', function() {
+      
       //get Episode Number from input form and set it here
       newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();
 
@@ -238,6 +239,7 @@ $(document).ready(function() {
     });
 
 
+  /* Delte moving to main_podcastAudio.js
   //Part 1b) [Button] Podcast URL (click) = pull player URL from DOM and add player into Show notes
     $('#podcastUrlButton').click(function(){
         //takes input of 'Podcast URL' field and assignes it to newPodcastUrl
@@ -252,7 +254,8 @@ $(document).ready(function() {
         //onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0"
     });
 
-
+  */
+  
 //Part 2) show notes [Button] clicks = writes show notes to Firebase  
       $('#noteButtonEnter').click(function(){
         writeShowNotesToFirebase(); 

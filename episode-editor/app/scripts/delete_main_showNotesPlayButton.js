@@ -1,24 +1,28 @@
 /**** NEED a global variable to signal that Podcast URL has been entered ***/
 
+/**** Consider moving #hash functions to a seperate file****/
+
 // Test 4: hook up row play button to media O.O 
 	//add media via FireBase
 	//make it play via 
 
 
 //reinstate: $(document).ready(function() {
-//delete
-(function() {
+//reference: old name: podlyGlobal.showNotesPlayButton = function(){
+podlyGlobal.audioControls = function(){
 	
 //initialize variables
 	//need to set audio source from Podcast Audio URL field 
-	var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
-	var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
+	//var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
+	//var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
 	var cellTime; 
 	var formatTime; 
 	var hash=0;
 
 
-//play magic as people come to page
+
+
+//**** play magic as people come to page **** Allows us to know what section of the podcast we should jump to 
 	//search for hash
 		hash = window.location.hash; // Gets '#foo' from http://example.com/page.html#foo
     //console.log('hash before operation is: '+ hash);
@@ -28,8 +32,9 @@
     //convert # to number
     	var hashTime = Number(hash); 
 
+
     //confirm hash is removed
-    	console.log('hash after operation is: '+ hashTime);
+    	// ***** reinstate | console.log('hash after operation is: '+ hashTime);
 
 
 	//starting code
@@ -43,7 +48,7 @@
 
 		//set hash to be playtime 
 	    if(hashTime !=0 || hashTime !== ''){
-	    	console.log('hash is not equal to 0 or ""');
+	    	// ***** reinstate | console.log('hash is not equal to 0 or ""');
 	    	cellTime = hashTime; 
 			//document.getElementById('audioPlayer').play(); 
 			document.getElementById('audioPlayer').currentTime=(cellTime);
@@ -191,7 +196,7 @@
 
 //reinstate });		
 //delete
-})();
+};
 
 
 

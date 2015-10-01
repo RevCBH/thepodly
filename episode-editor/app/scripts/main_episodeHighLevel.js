@@ -9,7 +9,7 @@ This doc, main_episodeHighLevel.js, is all about setting a podcast's Episode nam
       
     1) we write that to the database & deal with errors 
     
-  The code below is seperated into X parts
+  The code below is seperated into 3 parts
     
     0)initilize a) variables & b) functions
     
@@ -22,9 +22,6 @@ This doc, main_episodeHighLevel.js, is all about setting a podcast's Episode nam
     2) [Button] clicks
       a) [Button] Update High Level Episode Info (click) = add high level episode info (Episode #, Name, Description)
       b) [Button] Edit High Level Episode Info (click) = edit high level episode info (Episode #, Name, Description)
-    
-    
-
 */
 
 
@@ -71,7 +68,11 @@ podlyGlobal.episodeHighLevel = function(){
         episodeInfoWrite(newEpisodeNumber);
 
         //if else statment showing podcastUrlForm ONLY if podcastUrl = '';
-        $('.podcastUrlForm').show();
+        /*delete | hiding this and instead triggering 
+          
+          podlyGlobal.podcastAudio(); in the button click
+          $('.podcastUrlForm').show();
+        */
       };
 	
     //function to display 'Show Episode Info'
@@ -161,7 +162,7 @@ podlyGlobal.episodeHighLevel = function(){
 
   //1c) Episode high level info (Ep #, name, description)
     //Clears DOM of Episode name/ description areas
-    if(newEpisodeNumber='000'){
+    if(newEpisodeNumber=='000'){
       //calls function to empty() episode high level info
       emptyEpisodeHighLevelInfo();
     }
@@ -207,8 +208,7 @@ podlyGlobal.episodeHighLevel = function(){
               //creates Firebase child under /users with newUserName
                 var eRef = podlyGlobal.episodesRef.child(newEpisodeNumber);
                 eRef.update({
-                  episodeName: newEpisodeName, 
-                  episodeNotes: ''
+                  episodeName: newEpisodeName
                 });
 
               //write updated info to DOM
@@ -220,6 +220,9 @@ podlyGlobal.episodeHighLevel = function(){
             takes input of 'Episode Description' Field and assignes it to newEpisodeDescrption
             newEpisodeDescription=$("input[id=episodeDescription]").val();
           */
+        //trigger main_podcastAudio.js
+        podlyGlobal.podcastMediaUrl(); 
+
     });
 
 
@@ -242,15 +245,18 @@ podlyGlobal.episodeHighLevel = function(){
       // delete:  episode description 
       // $('#episodeDescription').val(newEpisodeDescription);
       //
+      
+  //*** you are here
+      /* delete & instead consider an if/then statment 
+        //hide Podcast URL field
+        $('.podcastUrlEditButton').hide();
 
-      //hide Podcast URL field
-      $('.podcastUrlEditButton').hide();
+        //empty podcast URL
+          $('.podcastUrl').empty();
 
-      //empty podcast URL
-        $('.podcastUrl').empty();
-
-      //show Enter Podcast URL
-      $('.podcastUrlForm').show();
+        //show Enter Podcast URL
+        $('.podcastUrlForm').show();
+      */
     });
 
 };

@@ -12,15 +12,18 @@
       //delete or reinstate | var 
       //var newEpisodeNumber = '000';
 
-      //delete soon: just testing this
-      sessionStorage.setItem('newEpisodeNumber', newEpisodeNumber);
-
+      /*delete soon: just testing this
+       sessionStorage.setItem('newEpisodeNumber', newEpisodeNumber);
+        */
       
       /* delete:  episode description 
         var newEpisodeName = '';
         var newEpisodeDescription = '';
-      */
-      var podcastUrl = '';
+        */
+      
+      /* delete Moving to main_podcastAudio.js
+        var podcastUrl = '';
+        */
 
     //initilaizing html strings to load at start
 
@@ -31,13 +34,14 @@
         //delete: Cut <!-- Episode Description --><div class="col-xs-4"><label for="episodeDescription">Episode Description</label> (Optional)<input type="text" class="form-control" placeholder="" id="episodeDescription"></div>
         //episode notes
         var showEpisodeNotesHeader = '<hr><h4>Add Show Notes</h4>';
-      */
+        */
 
-      //podcast media
-      //var showPodcastUrlForm = '<hr><h4>Enter Podcast URL</h4><form class="form-inline"><div class="form-group"><input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField"><button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button></div></form>'
-      var showPodcastUrlForm ='<hr><h4>Enter Podcast URL</h4><input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField"><button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button>';
-      var podcastUrlEditButton = '<button type="submit" class="btn btn-default" id="podcastUrlEditButton">Edit URL</button>';
-
+      /* delete Moving to main_podcastAudio.js
+        //podcast media
+        //var showPodcastUrlForm = '<hr><h4>Enter Podcast URL</h4><form class="form-inline"><div class="form-group"><input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField"><button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button></div></form>'
+        var showPodcastUrlForm ='<hr><h4>Enter Podcast URL</h4><input type="url" class="form-control" placeholder="your podcast url" id="podcastUrlField"><button type="submit" class="btn btn-default" id="podcastUrlButton">Enter</button>';
+        var podcastUrlEditButton = '<button type="submit" class="btn btn-default" id="podcastUrlEditButton">Edit URL</button>';
+        */
       
 
 
@@ -56,16 +60,18 @@
       };
     */
 
-    //function to display 'Podcast URL form'
-    var displayPodcastUrlForm = function(){
-    $('.podcastUrlForm').append(showPodcastUrlForm);
-    };
+    /* delete Moving to main_podcastAudio.js
+      //function to display 'Podcast URL form'
+      var displayPodcastUrlForm = function(){
+      $('.podcastUrlForm').append(showPodcastUrlForm);
+      };
 
 
-    //function to display 'Podcast URL Edit Button '
-    var displayPodcastUrlEditButton = function(){
-    $('.podcastUrlEditButton').append(podcastUrlEditButton);
-    };
+      //function to display 'Podcast URL Edit Button '
+      var displayPodcastUrlEditButton = function(){
+      $('.podcastUrlEditButton').append(podcastUrlEditButton);
+      };
+      */
 
     /* delete Moving to main_episodeHighLevel.js
     //function to display 'Show Episode Notes Header'
@@ -138,9 +144,10 @@
       };
       */
   //calling starting funcitons and conditionals
-    
-    //hides podcastAudioArea
-    $('podcastAudioArea').hide();
+    /* delete Moving to main_podcastAudio.js
+      //hides podcastAudioArea
+      $('podcastAudioArea').hide();
+      */
 
     /* delete Moving to main_episodeHighLevel.js
       //shows 'enter episode info'
@@ -164,25 +171,28 @@
         //hides episode notes header
         $('.showEpisodeNotes').hide();
     */
+    /* delete Moving to main_podcastAudio.js
+      //Podcast Media
+        //loads podcast url form
+        displayPodcastUrlForm();
+        //hides podcast url form
+        $('.podcastUrlForm').hide();
 
-    //Podcast Media
-      //loads podcast url form
-      displayPodcastUrlForm();
-      //hides podcast url form
-      $('.podcastUrlForm').hide();
-
-      //loads podcast url edit button
-      displayPodcastUrlEditButton();
-      //hides podcast url edit button
-      $('.podcastUrlEditButton').hide();
+        //loads podcast url edit button
+        displayPodcastUrlEditButton();
+        //hides podcast url edit button
+        $('.podcastUrlEditButton').hide();
+      */
 
 
-
-    
 
     //starts global function to run episodeHighLevel 
-    //this collects name/ep number and sets the global var for both
-      podlyGlobal.episodeHighLevel(); 
+      console.log('newEpisodeNumber is ' + newEpisodeNumber); 
+      //this collects name/ep number and sets the global var for both
+        podlyGlobal.episodeHighLevel(); 
+
+      //podlyGlobal.podcastAudioSet() collects podcast source URL
+        //podlyGlobal.podcastAudio() is triggered by 
 
 
   //Button Clicks
@@ -256,48 +266,49 @@
       });
 
       */
+      /* delete Moving to main_podcastAudio.js
+        //[Button] Podcast URL (click) = write to Firebase
+        $('#podcastUrlButton').click(function(){
+            //1) takes input of 'Podcast URL' field and assignes it to newPodcastUrl
+            podcastUrl=$("input[id=podcastUrlField]").val();
 
-       //[Button] Podcast URL (click) = write to Firebase
-      $('#podcastUrlButton').click(function(){
-          //1) takes input of 'Podcast URL' field and assignes it to newPodcastUrl
-          podcastUrl=$("input[id=podcastUrlField]").val();
+            //2) creates Firebase child under /users with newUserName
+            var eRef = episodesRef.child(newEpisodeNumber);
+            eRef.update({
+              podcastUrl: podcastUrl
+            });
 
-          //2) creates Firebase child under /users with newUserName
-          var eRef = episodesRef.child(newEpisodeNumber);
-          eRef.update({
-            podcastUrl: podcastUrl
+            //show podcast url edit button
+            $('.podcastUrlEditButton').show();
+
+            //show podcast URL
+            $('.podcastUrl').prepend('<hr>' + '<h5> Podcast URL: ' + podcastUrl + '</h5>');
+
+
+            //hide podcast URL form
+            $('.podcastUrlForm').hide();
+
+
+
+            //4) show Episode Notes Section
+            $('.showEpisodeNotes').show();
           });
 
-          //show podcast url edit button
-          $('.podcastUrlEditButton').show();
 
-          //show podcast URL
-          $('.podcastUrl').prepend('<hr>' + '<h5> Podcast URL: ' + podcastUrl + '</h5>');
+          //[Button] Podcast URL Edit (click) = edit Podcast URL
+        $('#podcastUrlEditButton').click(function(){
+            //empty podcast URL
+            $('.podcastUrl').empty();
 
-
-          //hide podcast URL form
-          $('.podcastUrlForm').hide();
-
+            //hide podcast 'edit URL' button
+            $('.podcastUrlEditButton').hide();
 
 
-          //4) show Episode Notes Section
-          $('.showEpisodeNotes').show();
-        });
+            //show podcast URL form
+            $('.podcastUrlForm').show();
 
-
-        //[Button] Podcast URL Edit (click) = edit Podcast URL
-      $('#podcastUrlEditButton').click(function(){
-          //empty podcast URL
-          $('.podcastUrl').empty();
-
-          //hide podcast 'edit URL' button
-          $('.podcastUrlEditButton').hide();
-
-
-          //show podcast URL form
-          $('.podcastUrlForm').show();
-
-        });
+          });
+        */
 
 
 
