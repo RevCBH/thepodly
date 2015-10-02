@@ -9,12 +9,12 @@
 
 //reinstate: $(document).ready(function() {
 //reference: old name: podlyGlobal.showNotesPlayButton = function(){
-podlyGlobal.audioControls = function(){
+podlyGlobal.audioControls = function(podcastUrl){
 	
 //initialize variables
 	//need to set audio source from Podcast Audio URL field 
 	//var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
-	//var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
+	var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + podcastUrl + '" type="audio/mpeg"></audio>';
 	var cellTime; 
 	var formatTime; 
 	var hash=0;
@@ -27,7 +27,7 @@ podlyGlobal.audioControls = function(){
 		hash = window.location.hash; // Gets '#foo' from http://example.com/page.html#foo
     //console.log('hash before operation is: '+ hash);
     //remove #
-    	hash=hash.replace('#','');
+    	hash = hash.replace('#','');
     
     //convert # to number
     	var hashTime = Number(hash); 
@@ -38,13 +38,15 @@ podlyGlobal.audioControls = function(){
 
 
 	//starting code
-		//hide podcastAudioArea until audio URL has been entered
-		$('podcastAudioArea').hide;
+		//delete: hide podcastAudioArea until audio URL has been entered
+		//delete: $('podcastAudioArea').hide;
 
 		//write html into dom podcastAudioArea
-		/* need a global variable to signal that Podcast URL (audioSource) has been entered
-		 *	$('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
-		*/
+		// delete | old note need a global variable to signal that Podcast URL (audioSource) has been entered
+		 $('.podcastAudioArea').html('<h5>Podcast Audio</h5>' + audioPlayer);
+		 //delete | audioPlayer.attr('autoplay','autoplay');
+		
+		
 
 		//set hash to be playtime 
 	    if(hashTime !=0 || hashTime !== ''){
@@ -79,20 +81,24 @@ podlyGlobal.audioControls = function(){
 			$('div').on('click', '#masterAudioControl_play', function(){
 				var audio = $("#audioPlayer");	
 		        audio.trigger('play'); 
+		        console.log("hello");
+		        event.stopPropagation()
 			});
 
 			//pause 
 			$('div').on('click', '#masterAudioControl_pause', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
+		        event.stopPropagation()
 			});
 
 			//back two sec
 			$('div').on('click', '#masterAudioControl_backTwoSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")-1.1);
+		        audio.prop("currentTime",audio.prop("currentTime")-1);
 		        audio.trigger('play'); 
+		        event.stopPropagation()
 			});
 		
 			
@@ -100,16 +106,18 @@ podlyGlobal.audioControls = function(){
 			$('div').on('click', '#masterAudioControl_backFiveSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")-2.1);
+		        audio.prop("currentTime",audio.prop("currentTime")-5);
 		        audio.trigger('play'); 
+		        event.stopPropagation()
 			});
 
 			//forward two sec
 			$('div').on('click', '#masterAudioControl_forwardTwoSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")+1.1);
+		        audio.prop("currentTime",audio.prop("currentTime")+2);
 		        audio.trigger('play'); 
+		        event.stopPropagation()
 			});
 		
 			
@@ -117,8 +125,9 @@ podlyGlobal.audioControls = function(){
 			$('div').on('click', '#masterAudioControl_forwardiveSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")+1.9);
+		        audio.prop("currentTime",audio.prop("currentTime")+5);
 		        audio.trigger('play'); 
+		        event.stopPropagation()
 			});
 
 

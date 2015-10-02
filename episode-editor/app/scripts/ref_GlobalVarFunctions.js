@@ -9,15 +9,21 @@ var newEpisodeNumber = '000';
 
 //delte | test complete | var podcastUrlTest = 'The podcast global variable from reference_defineGlobalVarsAndFunctions.js is working'; 
 //consider deleting | var 
-window.podcastUrl; 
+//window.podcastUrl; 
 
-var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
+//var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
 //var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + window.podcastUrl + '" type="audio/mpeg"></audio>';
 
+
+
+/* *** You are here *** consider reinstating *** 
 podlyGlobal.audioPlayer = function(podcastUrl){
 	var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + podcastUrl + '" type="audio/mpeg"></audio>';
-	return audioPlayer; 
+	return audioPlayer; 	
 };
+//*/
+
+
 
 /*
  These are test variables

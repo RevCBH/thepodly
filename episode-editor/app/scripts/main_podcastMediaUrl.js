@@ -38,53 +38,51 @@ podlyGlobal.podcastMediaUrl = function(){
 
 
   //part 0b) initilizing functions
-    // ****** first 2 functions RUN ONLY ONCE! ******
-      // *** DO NOT CALL AGAIN OUTSIDE OF STARTING FUNCTIONS / CONDITIONS *** 
+  
+    //function to load 'Podcast URL form'
+      var loadPodcastUrlForm = function(){     
+        $('.podcastUrlForm').empty();
+        //add's html podcast url form to DOM  
+        $('.podcastUrlForm').append(showPodcastUrlForm);
+        //hides podcast url form
+        $('.podcastUrlForm').hide();
+      };
+
+    //function to load 'Podcast URL Edit Button '
+      var loadPodcastUrlEditButton = function(){
+        $('.podcastUrlEditButton').empty(); 
+        //add's html podcast url 'edit' [button] to DOM  
+        $('.podcastUrlEditButton').append(podcastUrlEditButton);
+        //hides podcast url edit button
+        $('.podcastUrlEditButton').hide();
+      };
     
-      //function to display 'Podcast URL form'
-        var loadPodcastUrlForm = function(){     
-          $('.podcastUrlForm').empty();
-          //add's html podcast url form to DOM  
-          $('.podcastUrlForm').append(showPodcastUrlForm);
-          //hides podcast url form
-            $('.podcastUrlForm').hide();
-        };
+    //function to show 'Podcast URL and hide the input form'
+      var showPodcastUrl = function(podcastUrl){
+        //show podcast url edit button
+        $('.podcastUrlEditButton').show();
 
-      //function to display 'Podcast URL Edit Button '
-        var loadPodcastUrlEditButton = function(){
-        //RUNS ONLY ONCE! 
-        //DO NOT CALL AGAIN OUTSIDE OF STARTING FUNCTIONS / CONDITIONS
-          $('.podcastUrlEditButton').empty(); 
-          //add's html podcast url 'edit' [button] to DOM  
-          $('.podcastUrlEditButton').append(podcastUrlEditButton);
-          //hides podcast url edit button
-          $('.podcastUrlEditButton').hide();
-        };
-    
-      // END ****** first 2 functions RUN ONLY ONCE! ******
+        //show podcast URL
+        $('.podcastUrl').prepend('<hr>' + '<h5>Episode # '+newEpisodeNumber+' Audio URL</h5> ' + podcastUrl);
 
-    var showPodcastUrl = function(podcastUrl){
-      //show podcast url edit button
-      $('.podcastUrlEditButton').show();
+        //hide podcast URL form
+        $('.podcastUrlForm').hide();
 
-      //show podcast URL
-      $('.podcastUrl').prepend('<hr>' + '<h5>Episode # '+newEpisodeNumber+' Audio URL</h5> ' + podcastUrl);
+        //set hidden podcastUrlField to value of podcastUrl
+        $("input[id=podcastUrlField]").val(podcastUrl);
 
-      //hide podcast URL form
-      $('.podcastUrlForm').hide();
-
-      //set hidden podcastUrlField to value of podcastUrl
-      $("input[id=podcastUrlField]").val(podcastUrl);
-
-      //4) show Episode Notes Section
-      $('.showEpisodeNotes').show();
-    };
-
+        //4) show Episode Notes Section
+        $('.showEpisodeNotes').show();
+      };
 
     //Shows Audio Player below episode Audio URL
       var showPodcastPlayer = function(podcastUrl){
-        $('.podcastAudioArea').append(podlyGlobal.audioPlayer(podcastUrl));
+        //$('.podcastAudioArea').append(podlyGlobal.audioPlayer(podcastUrl));
         $('.podcastAudioArea').show();  
+        //call Audio Controls to show audio player
+        podlyGlobal.audioControls(podcastUrl); 
+        //call  Show Notes to show 
+        
       };
 
     //shows URL field and enter button

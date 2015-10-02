@@ -64,6 +64,8 @@ $(document).ready(function() {
       var noteWords;
       var noteUrl;
 
+      //html
+      var showNotesHtml = '<table class="table table-hover"> <caption>Add a Show Note</caption> <thead> <tbody> <thead> <tr> <th> </th> <th>time</th> <th>words</th> <th>url</th> <th>&nbsp;</th> </tr> </thead> <tr class = "success"> <div class="row"> <td id="notePlayButtonCell"> &nbsp; </td> <td id="noteTimeCell"> <input type="text" class="form-control" id="noteTimeInput" placeholder="time | hh:mm:ss"> <div class="noteTimeContainer"></div> </td> <td id="noteWordsCell"> <input type="text" class="form-control" id="noteWordsInput" placeholder="words"> <div class="noteWordsContainer"></div> </td> <td id="noteUrlCell"> <input type="text" class="form-control" id="noteUrlInput" placeholder="url"> <div class="noteUrlContainer"></div> </td> <td id="noteButtonAreaCell"> <button type="button" class="btn btn-default" id="noteButtonEnter">Enter</button> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> <button type="button" class="btn btn-default" id="noteButtonUpdate">Update</button> </td> </div> </tr> </tbody> </table>';
 
   //Part 0b) function initalization
        
@@ -218,7 +220,8 @@ $(document).ready(function() {
 
 
   //Part 0c) starting Actions
-    
+    //show 'add show note'    
+    $('.demoLineItem').append(showNotesHtml);
 
     //Hide Edit Button
     $('#noteButtonEdit').hide();
@@ -255,7 +258,7 @@ $(document).ready(function() {
     });
 
   */
-  
+
 //Part 2) show notes [Button] clicks = writes show notes to Firebase  
       $('#noteButtonEnter').click(function(){
         writeShowNotesToFirebase(); 
