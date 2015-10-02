@@ -34,7 +34,7 @@
 */
 
 
-$(document).ready(function() {
+podlyGlobal.showNoteCreator = function(podcastUrl){
 //Part 0) initilize variables / initilize functions / starting functions 
 
   //Part 0a) initilizing variables
@@ -49,7 +49,7 @@ $(document).ready(function() {
       //variable initialization
   //****** Change value of newEpisodeNumber back to '' after getting time write to work on Firebase
       //delete | var newEpisodeNumber = 22;
-      var podcastUrl='';
+      //delete | now a global var | var podcastUrl='';
 
   //noteTimeCounter may need serialization as we scale table
       var noteTimeCounter = '0';
@@ -277,4 +277,4 @@ $(document).ready(function() {
         updateShowNotesButtonClick();
       });
 
-});
+};

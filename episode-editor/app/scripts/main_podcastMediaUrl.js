@@ -81,7 +81,8 @@ podlyGlobal.podcastMediaUrl = function(){
         $('.podcastAudioArea').show();  
         //call Audio Controls to show audio player
         podlyGlobal.audioControls(podcastUrl); 
-        //call  Show Notes to show 
+        //call  Show Notes Creator to display show note creator
+        podlyGlobal.showNoteCreator(podcastUrl); 
         
       };
 
