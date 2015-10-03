@@ -19,7 +19,7 @@
  	Also we'll need to add some sort current episode vairable in as a universal  to replace the episode number
 */
 
-podlyGlobal.showNotesTable = function(podcastUrl){
+podlyGlobal.showNotesTable = function(podcastUrl){  
 
 //Part 0) initilizing variables
     /*delete old firebase ref
@@ -50,6 +50,8 @@ podlyGlobal.showNotesTable = function(podcastUrl){
 	//1st we load the table data (middle of table) from firebase
 	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes'; 
 	var ref2 = new Firebase(ref1);
+	
+
 	ref2.on("value", function(snapshot) {
 		$('.spewTime').empty(); 
 	  	//add table header 
@@ -116,12 +118,34 @@ podlyGlobal.showNotesTable = function(podcastUrl){
 	});	
 
 
-// Test 5: Make rows editable O.O  (sooooon)
-		
+// *** you are here | Test | put rows in reverse chronology 
+	var fb = new Firebase(ref1);
+
+		// listen for all changes and update
+		fb.endAt().limitToFirst(1000).on('value', update);
+
+		// print the output of our array
+		function update(snap) {
+		   var list = [];
+		    snap.forEach(function(ss) {
+		       var data = ss.val();
+		       data['.priority'] = ss.getPriority();
+		       data['.key'] = ss.key();
+		       list.unshift(data); 
+		    });
+		   // print/process the results...
+			//itterate throgh the list and print 1) Time, 2) words, 3) url 
+			var i; 
+			for (i=0; i<list.length; i++){
+			console.log(list[i][".key"] + '    ' + list[i].noteWords + '    ' + list[i].noteUrl);
+			//console.log('list [0] is ' + list[1].noteUrl);	
+			}
+			
+			
+		};	
 
 
-
-    };
+ };
 
 
 // Completed tests, saving for reference |  Test 1: Spew out all the data from Firebase on https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes

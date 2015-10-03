@@ -1,5 +1,4 @@
-/* Break out high level episode info into another doc 
-*/
+/* **** Move Edit Episode Info to another doc **** */
 
 /*Notes
   This doc (main_showNotes.js) takes user input about a new show note and enters it into the database
@@ -94,7 +93,10 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
 
     //function: write show note to firebase
       var writeShowNotesToFirebase = function(){
+      //delete test
+        console.log('start works: writeShowNotesToFirebase');
       //A) Get inputs, assign to variables, write to firebase
+        
         //1) get input time, assign to variable noteTime
           noteTime=hmsToSecondsOnly($("input[id=noteTimeInput]").val());
 
@@ -113,21 +115,22 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
 
       //B) turn input forms to fixed text
         //1) empty noteTimeInput and replace with text
-          $('input#noteTimeInput').html('');
+          $("input[id=noteTimeInput]").val('');
+          //delete | $('input#noteTimeInput').html('');
           /* Hiding this so we don't go into edit mode when entering a show note
             $('#noteTimeInput').hide();
             $('.noteTimeContainer').append(secondsToHms(noteTime));
           */
 
         //2) empty noteWordsCell and replace with text
-          $('#noteWordsInput').empty();
+          $("input[id=noteWordsInput]").val('');
           /* Hiding this so we don't go into edit mode when entering a show note
             $('#noteWordsInput').hide();
             $('.noteWordsContainer').append(noteWords);
           */
 
         //3) empty noteUrlInput and replace with text
-          $('#noteUrlInput').empty();
+          $("input[id=noteUrlInput]").val('');
           /* Hiding this so we don't go into edit mode when entering a show note
            * $('#noteUrlInput').hide();
            * $('.noteUrlContainer').append(noteUrl);
@@ -144,6 +147,7 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
             noteWords: noteWords,
             noteUrl: noteUrl
           });
+      console.log('end works: writeShowNotesToFirebase');
       };
 
       //function to empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
@@ -233,18 +237,19 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
 
 //Part 1) Button clicks
 
-  //Part 1a) [Button] Submit Episode Info (click) = gets Episode number from DOM
-    $('#submitButton').on('click', function() {
-      
-      //get Episode Number from input form and set it here
-      newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();
+  /*delete, this has been moved to main_episodeHighLevel.js
+    //Part 1a) [Button] Submit Episode Info (click) = gets Episode number from DOM
+      $('#submitButton').on('click', function() {
+        
+        //get Episode Number from input form and set it here
+        newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();
 
-      //incrament noteTimeCounter
-      noteTimeCounter += 1;
-    });
+        //incrament noteTimeCounter
+        noteTimeCounter += 1;
+      });
+  */
 
-
-  /* Delte moving to main_podcastAudio.js
+  /* Delete moving to main_podcastAudio.js
   //Part 1b) [Button] Podcast URL (click) = pull player URL from DOM and add player into Show notes
     $('#podcastUrlButton').click(function(){
         //takes input of 'Podcast URL' field and assignes it to newPodcastUrl
