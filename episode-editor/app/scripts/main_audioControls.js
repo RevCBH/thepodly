@@ -1,5 +1,3 @@
-/**** NEED a global variable to signal that Podcast URL has been entered ***/
-
 /**** Consider moving #hash functions to a seperate file****/
 
 // Test 4: hook up row play button to media O.O 

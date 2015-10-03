@@ -39,12 +39,14 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
 
   //Part 0a) initilizing variables
   
+    /*delete old firebase references
       //create firebase references
       var rootUrl = Config.firebase.rootUrl;
       var myDataRef = new Firebase(rootUrl);
 
       var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
       var episodesRef = new Firebase(episodesUrl);
+    */
 
       //variable initialization
   //****** Change value of newEpisodeNumber back to '' after getting time write to work on Firebase
@@ -65,7 +67,7 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
       var noteUrl;
 
       //html
-      var showNotesHtml = '<table class="table table-hover"> <caption>Add a Show Note</caption> <thead> <tbody> <thead> <tr> <th> </th> <th>time</th> <th>words</th> <th>url</th> <th>&nbsp;</th> </tr> </thead> <tr class = "success"> <div class="row"> <td id="notePlayButtonCell"> &nbsp; </td> <td id="noteTimeCell"> <input type="text" class="form-control" id="noteTimeInput" placeholder="time | hh:mm:ss"> <div class="noteTimeContainer"></div> </td> <td id="noteWordsCell"> <input type="text" class="form-control" id="noteWordsInput" placeholder="words"> <div class="noteWordsContainer"></div> </td> <td id="noteUrlCell"> <input type="text" class="form-control" id="noteUrlInput" placeholder="url"> <div class="noteUrlContainer"></div> </td> <td id="noteButtonAreaCell"> <button type="button" class="btn btn-default" id="noteButtonEnter">Enter</button> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> <button type="button" class="btn btn-default" id="noteButtonUpdate">Update</button> </td> </div> </tr> </tbody> </table>';
+      var showNotesHtml = '<table class="table table-hover"> <caption>Add a Show Note to Episode ' + newEpisodeNumber + '</caption> <thead> <tbody> <thead> <tr> <th> </th> <th>time</th> <th>words</th> <th>url</th> <th>&nbsp;</th> </tr> </thead> <tr class = "success"> <div class="row"> <td id="notePlayButtonCell"> &nbsp; </td> <td id="noteTimeCell"> <input type="text" class="form-control" id="noteTimeInput" placeholder="time | hh:mm:ss"> <div class="noteTimeContainer"></div> </td> <td id="noteWordsCell"> <input type="text" class="form-control" id="noteWordsInput" placeholder="words"> <div class="noteWordsContainer"></div> </td> <td id="noteUrlCell"> <input type="text" class="form-control" id="noteUrlInput" placeholder="url"> <div class="noteUrlContainer"></div> </td> <td id="noteButtonAreaCell"> <button type="button" class="btn btn-default" id="noteButtonEnter">Enter</button> <button type="button" class="btn btn-default" id="noteButtonEdit">Edit</button> <button type="button" class="btn btn-default" id="noteButtonUpdate">Update</button> </td> </div> </tr> </tbody> </table>';
 
   //Part 0b) function initalization
        
@@ -90,8 +92,8 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
         return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
       }
 
-  //function: write show note to firebase
-    var writeShowNotesToFirebase = function(){
+    //function: write show note to firebase
+      var writeShowNotesToFirebase = function(){
       //A) Get inputs, assign to variables, write to firebase
         //1) get input time, assign to variable noteTime
           noteTime=hmsToSecondsOnly($("input[id=noteTimeInput]").val());
@@ -103,7 +105,7 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
           noteUrl=$("input[id=noteUrlInput]").val();
 
         //4) write time to firebase
-          var eRef = episodesRef.child(newEpisodeNumber);
+          var eRef = podlyGlobal.episodesRef.child(newEpisodeNumber);
           var tRef = eRef.child("episodeNotes");
           
         //5) create new var for Firebase reference to tRefchid(noteTiem)
@@ -142,7 +144,7 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
             noteWords: noteWords,
             noteUrl: noteUrl
           });
-    };
+      };
 
       //function to empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
         var editShowNotesButtonClick = function(){
@@ -221,7 +223,7 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
 
   //Part 0c) starting Actions
     //show 'add show note'    
-    $('.demoLineItem').append(showNotesHtml);
+    $('.showNotesCreateArea').append(showNotesHtml);
 
     //Hide Edit Button
     $('#noteButtonEdit').hide();

@@ -79,10 +79,15 @@ podlyGlobal.podcastMediaUrl = function(){
       var showPodcastPlayer = function(podcastUrl){
         //$('.podcastAudioArea').append(podlyGlobal.audioPlayer(podcastUrl));
         $('.podcastAudioArea').show();  
+        
         //call Audio Controls to show audio player
         podlyGlobal.audioControls(podcastUrl); 
+        
         //call  Show Notes Creator to display show note creator
         podlyGlobal.showNoteCreator(podcastUrl); 
+
+        //call showNotesTable
+        podlyGlobal.showNotesTable(podcastUrl); 
         
       };
 
@@ -119,7 +124,6 @@ podlyGlobal.podcastMediaUrl = function(){
     //heres the code... 
       //A) if current episode isn't 000, check Episode # to see if it has a podcastUrl
       if (newEpisodeNumber !=='000'){
-        console.log('newEpisodeNumber is: '+newEpisodeNumber);
         //check Firebase for URL associated to episode
           // initilize variables 
             var refTempBuild = podlyGlobal.episodesUrl+newEpisodeNumber;

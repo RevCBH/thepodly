@@ -19,20 +19,22 @@
  	Also we'll need to add some sort current episode vairable in as a universal  to replace the episode number
 */
 
-$(document).ready(function() {
+podlyGlobal.showNotesTable = function(podcastUrl){
 
 //Part 0) initilizing variables
-    //create firebase references
-    var rootUrl = Config.firebase.rootUrl;
-    var myDataRef = new Firebase(rootUrl);
+    /*delete old firebase ref
+	    //create firebase references
+	    var rootUrl = Config.firebase.rootUrl;
+	    var myDataRef = new Firebase(rootUrl);
 
-    var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
-    var episodesRef = new Firebase(episodesUrl);
+	    var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
+	    var episodesRef = new Firebase(episodesUrl);
 
-    var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
-  	var episode22NotesRef = new Firebase(episode22NotesUrl);
+	    var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
+	  	var episode22NotesRef = new Firebase(episode22NotesUrl);
+	  */
 
-    var newEpisodeNumber = '22';
+    //delete, now uisng global variable | var newEpisodeNumber = '22';
 
     //table html
     var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>delete</th></thead>';
@@ -43,8 +45,11 @@ $(document).ready(function() {
 
 //Part 1) Organise the data in to a table	
 	
+
+
 	//1st we load the table data (middle of table) from firebase
-	var ref2 = new Firebase(rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes');
+	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes'; 
+	var ref2 = new Firebase(ref1);
 	ref2.on("value", function(snapshot) {
 		$('.spewTime').empty(); 
 	  	//add table header 
@@ -116,7 +121,7 @@ $(document).ready(function() {
 
 
 
-    });
+    };
 
 
 // Completed tests, saving for reference |  Test 1: Spew out all the data from Firebase on https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes

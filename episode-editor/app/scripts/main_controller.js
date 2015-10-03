@@ -187,7 +187,6 @@
 
 
     //starts global function to run episodeHighLevel 
-      console.log('newEpisodeNumber is ' + newEpisodeNumber); 
       //this collects name/ep number and sets the global var for both
         podlyGlobal.episodeHighLevel(); 
 
