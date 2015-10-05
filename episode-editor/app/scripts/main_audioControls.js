@@ -80,14 +80,14 @@ podlyGlobal.audioControls = function(podcastUrl){
 				var audio = $("#audioPlayer");	
 		        audio.trigger('play'); 
 		        console.log("hello");
-		        event.stopPropagation()
+		        event.stopPropagation();
 			});
 
 			//pause 
 			$('div').on('click', '#masterAudioControl_pause', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        event.stopPropagation()
+		        event.stopPropagation();
 			});
 
 			//back two sec
@@ -96,7 +96,7 @@ podlyGlobal.audioControls = function(podcastUrl){
 		        audio.trigger('pause'); 
 		        audio.prop("currentTime",audio.prop("currentTime")-1);
 		        audio.trigger('play'); 
-		        event.stopPropagation()
+		        event.stopPropagation();
 			});
 		
 			
@@ -106,7 +106,7 @@ podlyGlobal.audioControls = function(podcastUrl){
 		        audio.trigger('pause'); 
 		        audio.prop("currentTime",audio.prop("currentTime")-5);
 		        audio.trigger('play'); 
-		        event.stopPropagation()
+		        event.stopPropagation();
 			});
 
 			//forward two sec
@@ -115,7 +115,7 @@ podlyGlobal.audioControls = function(podcastUrl){
 		        audio.trigger('pause'); 
 		        audio.prop("currentTime",audio.prop("currentTime")+2);
 		        audio.trigger('play'); 
-		        event.stopPropagation()
+		        event.stopPropagation();
 			});
 		
 			
@@ -125,7 +125,7 @@ podlyGlobal.audioControls = function(podcastUrl){
 		        audio.trigger('pause'); 
 		        audio.prop("currentTime",audio.prop("currentTime")+5);
 		        audio.trigger('play'); 
-		        event.stopPropagation()
+		        event.stopPropagation();
 			});
 
 
@@ -134,12 +134,10 @@ podlyGlobal.audioControls = function(podcastUrl){
 
 			//grab line count via 'spewCount' of event, we'll use this to figure out the play time from the 2nd <td> in the row
 			var spewCountMemory =  $(this).attr('spewCount');	
+			var audio = $("#audioPlayer");
 			
 			//test, is this registering? 
-			console.log('test test test');
 			console.log('spewCountMemory is: '+ spewCountMemory);
-			
-			
 			
 				//Get play time directly from the 2nd <td> 
 				cellTime = hmsToSecondsOnly($('#noteTimeCell_spewCount_'+spewCountMemory).html());  
@@ -195,7 +193,9 @@ podlyGlobal.audioControls = function(podcastUrl){
 		/////test writing time in mm:ss
 		//$('.podcastAudioArea').append('<p>Jello!</p>');		
 		*/
-		
+			//play audio when clicked 
+			audio.trigger('play'); 
+		    event.stopPropagation();
 
 		});
 

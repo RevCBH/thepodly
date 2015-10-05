@@ -91,12 +91,11 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
         return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
       }
 
+    
     //function: write show note to firebase
       var writeShowNotesToFirebase = function(){
-      //delete test
-        console.log('start works: writeShowNotesToFirebase');
+      
       //A) Get inputs, assign to variables, write to firebase
-        
         //1) get input time, assign to variable noteTime
           noteTime=hmsToSecondsOnly($("input[id=noteTimeInput]").val());
 
@@ -147,9 +146,10 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
             noteWords: noteWords,
             noteUrl: noteUrl
           });
-      console.log('end works: writeShowNotesToFirebase');
+     
       };
 
+   
       //function to empty noteTimeCell, append form control, add value of noteTime into noteTimeInput
         var editShowNotesButtonClick = function(){
           

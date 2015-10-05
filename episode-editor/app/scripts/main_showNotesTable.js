@@ -19,7 +19,7 @@
  	Also we'll need to add some sort current episode vairable in as a universal  to replace the episode number
 */
 
-podlyGlobal.showNotesTable = function(podcastUrl){  
+podlyGlobal.showNotesTable = function(){  
 
 //Part 0) initilizing variables
     /*delete old firebase ref
@@ -35,6 +35,8 @@ podlyGlobal.showNotesTable = function(podcastUrl){
 	  */
 	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes'; 
 	var ref2 = new Firebase(ref1);
+	//delete | var ref3 = podlyGlobal.episodesUrl + newEpisodeNumber; 
+
 
     //delete, now uisng global variable | var newEpisodeNumber = '22';
 
@@ -49,14 +51,6 @@ podlyGlobal.showNotesTable = function(podcastUrl){
     var spewCounter = 0;
 
 //Part 0b) initilize functions
-	// *** you are here | Test | put rows in reverse chronology 
-		//1) add spew counter
-		//2) add alternatiing class for table
-		//3) add table guts
-		//4) append to body
-		//5) close table
-		//6) re-load mainCss to re-style the page 
-		//7) wiggle, wiggle, wiggle 
 
 
 	//Turn childSnapshot.key() [episode time in seconds] into xx:yy:zz format so that table shows times in clock format instead of seconds
@@ -129,8 +123,8 @@ podlyGlobal.showNotesTable = function(podcastUrl){
 		$("head").append($('<link rel="stylesheet" href="styles/main.css" type="text/css" media="screen" />'));
 	};
 
-//Part X) Organise the data in to a table		
-
+	//Part X) Organise the data in to a table		
+	//can delete | just here for reference
 	var standardChronology = function(){
 		//1st we load the table data (middle of table) from firebase
 
@@ -193,12 +187,21 @@ podlyGlobal.showNotesTable = function(podcastUrl){
 
 //Part 1) starting functions
 	//runs old way of making the table work (earliest time to latest)
-	// temporarily block out | standardChronology(); 
+	// can delete  | temp block out | standardChronology(); 
 	
-	//runs new way of makigng the table work (latest time to earliest)
-	reverseChronology(); 
-
-
+	//test if there are show notes, if there are, show them, if not, do nothing
+	ref2.on('value', function(snapshot) {
+		console.log('test value is: ' + snapshot.val());
+		var exists = (snapshot.val() !== null);
+		if (exists){
+			//displays episode notes in referense choronology 
+			reverseChronology(); 
+		}else{
+			console.log('shit dont exist');
+		}
+		
+	});
+		
  };
 
 

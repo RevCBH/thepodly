@@ -87,7 +87,7 @@ podlyGlobal.podcastMediaUrl = function(){
         podlyGlobal.showNoteCreator(podcastUrl); 
 
         //call showNotesTable
-        podlyGlobal.showNotesTable(podcastUrl); 
+        podlyGlobal.showNotesTable(); 
         
       };
 
