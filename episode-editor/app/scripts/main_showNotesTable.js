@@ -33,6 +33,8 @@ podlyGlobal.showNotesTable = function(podcastUrl){
 	    var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
 	  	var episode22NotesRef = new Firebase(episode22NotesUrl);
 	  */
+	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes'; 
+	var ref2 = new Firebase(ref1);
 
     //delete, now uisng global variable | var newEpisodeNumber = '22';
 
@@ -43,106 +45,158 @@ podlyGlobal.showNotesTable = function(podcastUrl){
 
     var count = 0;
 
-//Part 1) Organise the data in to a table	
-	
+    //initilize spewCounter which we'll use to create key references to each row's ID's
+    var spewCounter = 0;
+
+//Part 0b) initilize functions
+	// *** you are here | Test | put rows in reverse chronology 
+		//1) add spew counter
+		//2) add alternatiing class for table
+		//3) add table guts
+		//4) append to body
+		//5) close table
+		//6) re-load mainCss to re-style the page 
+		//7) wiggle, wiggle, wiggle 
 
 
-	//1st we load the table data (middle of table) from firebase
-	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes'; 
-	var ref2 = new Firebase(ref1);
-	
-
-	ref2.on("value", function(snapshot) {
-		$('.spewTime').empty(); 
-	  	//add table header 
-		$('.spewTime').prepend(tableTop);
-
-
-	  //initilize spewCounter which we'll use to create key references to each row's ID's
-	  var spewCounter = 0;
-
-	  //runs through the DB and writes a table row in the episode editor for each show note
-	  snapshot.forEach(function(childSnapshot) {
-	  	
-	  	spewCounter++; 
-	  	
-	  	//Hidden reference | simple Firebase code
-	  	//$('.spewTime').append(spewCounter + ') ' + childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>'); 
-
-	  	//class toggle (even = info, odd = )
-	  	if(spewCounter%2==0){
-	  		var classToggle = 'info';
-	  	}else{
-	  		classToggle = '';
-	  	}
-	  	
-	  	//Turn childSnapshot.key() [episode time in seconds] into xx:yy:zz format so that table shows times in clock format instead of seconds
-	  		//here's how this will work 
-	  		//1) childSnapshot.key() runs through a function that converts it into xx:yy:zz format 
-			var secondsToHms = function(d) {
-				d = Number(d);
-				var h = Math.floor(d / 3600);
-				var m = Math.floor(d % 3600 / 60);
-				var s = Math.floor(d % 3600 % 60);
-				return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); }
-			//2) call the function directly from the 'create rows in table' code below
+	//Turn childSnapshot.key() [episode time in seconds] into xx:yy:zz format so that table shows times in clock format instead of seconds
+		//here's how this will work 
+		//1) childSnapshot.key() runs through a function that converts it into xx:yy:zz format 
+	var secondsToHms = function(d) {
+		d = Number(d);
+		var h = Math.floor(d / 3600);
+		var m = Math.floor(d % 3600 / 60);
+		var s = Math.floor(d % 3600 % 60);
+		return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); }; 
+		//2) call the function directly from the 'create rows in table' code below
 
 
-	  	//create rows in the table
-		var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
-	  	//edit button which was cut out of the table guts above, add back in | ' + /* <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="TablenoteButtonEdit">Edit</button> </td>*/ + '
-	  	//edit_v2 & update buttons <td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonUpdate" spewCount="'+spewCounter+'">Update</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonEdit" spewCount="'+spewCounter+'">Edit</button></td>
+	var reverseChronology = function (){
+		var fb = new Firebase(ref1);
 
-	  	$("#myTable").find('tbody').append($(tableGuts));	 
+			// listen for all changes and update
+			fb.endAt().limitToFirst(1000).on('value', update);
 
-	  //iterate through table with spew counter and hide all update buttons 
-	  	//Hide Update Button after it's appended (above)
-	    //$('#tableNoteButtonUpdate').hide();  
+			// print the output of our array
+			function update(snap) {
+			   var list = [];
+			    snap.forEach(function(ss) {
+			       var data = ss.val();
+			       data['.priority'] = ss.getPriority();
+			       data['.key'] = ss.key();
+			       list.unshift(data); 
+			    });
+			   // prep to print results
+				
+				$('.spewTime').empty(); 
+			  	//add table header 
+				$('.spewTime').prepend(tableTop);
 
-	    //test to see if this is getting executed once or multiple times	    
-	    console.log('count is '+count); 
-	    count=count+1; 
+			//check results 
+				
+				//itterate throgh the list and print 1) Time, 2) words, 3) url 
+				var i; 
+				for (i=0; i<list.length; i++){
+				console.log(list[i][".key"] + '    ' + list[i].noteWords + '    ' + list[i].noteUrl);
+				
+				//spew count increment 
+				spewCounter++; 
 
-	  });	  
-	  	
+				//class toggle (even = info, odd = )
+			  	if(spewCounter%2==0){
+			  		var classToggle = 'info';
+			  	}else{
+			  		classToggle = '';
+			  	}
 
-	  	//table close (bottom)
+			  	//printed table 
+			  	//create rows in the table
+				var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(list[i][".key"]) + '</td> <td id="noteWordsCell">' + list[i].noteWords + '</td> <td id="noteUrlCell">' + list[i].noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
+
+				//insert tableGuts var into
+				$("#myTable").find('tbody').append($(tableGuts));	
+				}		
+
+				//test to see if this is getting executed once or multiple times	    
+			    console.log('count is '+count); 
+			    count=count+1; 
+		};	
+		
+		//table close (bottom)
 		$("#myTable").find('tbody').append($(tableBot));	  	
 
+		//re-load #mainCss to re-style page
+		$("head").append($('<link rel="stylesheet" href="styles/main.css" type="text/css" media="screen" />'));
+	};
+
+//Part X) Organise the data in to a table		
+
+	var standardChronology = function(){
+		//1st we load the table data (middle of table) from firebase
+
+		
+
+		ref2.on("value", function(snapshot) {
+			$('.spewTime').empty(); 
+		  	//add table header 
+			$('.spewTime').prepend(tableTop);
+
+		  
+
+		  //runs through the DB and writes a table row in the episode editor for each show note
+		  snapshot.forEach(function(childSnapshot) {
+		  	
+		  	spewCounter++; 
+		  	
+		  	//Hidden reference | simple Firebase code
+		  	//$('.spewTime').append(spewCounter + ') ' + childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>'); 
+
+		  	//class toggle (even = info, odd = )
+		  	if(spewCounter%2==0){
+		  		var classToggle = 'info';
+		  	}else{
+		  		classToggle = '';
+		  	}
+		  	
+		 
+
+		  	//create rows in the table
+			var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
+		  	//edit button which was cut out of the table guts above, add back in | ' + /* <td id="noteButtonAreaCell"> <!-- Standard button --> <button type="button" class="btn btn-default" id="TablenoteButtonEdit">Edit</button> </td>*/ + '
+		  	//edit_v2 & update buttons <td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonUpdate" spewCount="'+spewCounter+'">Update</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonEdit" spewCount="'+spewCounter+'">Edit</button></td>
+
+		  	//insert tableGuts var into DOM
+		  	$("#myTable").find('tbody').append($(tableGuts));	 
+
+		  //iterate through table with spew counter and hide all update buttons 
+		  	//Hide Update Button after it's appended (above)
+		    //$('#tableNoteButtonUpdate').hide();  
+
+		    /*delete test to see if this is getting executed once or multiple times	    
+			    console.log('count is '+count); 
+			    count=count+1; 
+			*/
+		  });	  
+		  	
+
+		  	//table close (bottom)
+			$("#myTable").find('tbody').append($(tableBot));	  	
+
+		
+		  //re-load #mainCss to re-style page
+		  $("head").append($('<link rel="stylesheet" href="styles/main.css" type="text/css" media="screen" />'));
+		  
+		  
+
+		});	
+	};
+
+//Part 1) starting functions
+	//runs old way of making the table work (earliest time to latest)
+	// temporarily block out | standardChronology(); 
 	
-	  //re-load #mainCss to re-style page
-	  $("head").append($('<link rel="stylesheet" href="styles/main.css" type="text/css" media="screen" />'));
-	  
-	  
-
-	});	
-
-
-// *** you are here | Test | put rows in reverse chronology 
-	var fb = new Firebase(ref1);
-
-		// listen for all changes and update
-		fb.endAt().limitToFirst(1000).on('value', update);
-
-		// print the output of our array
-		function update(snap) {
-		   var list = [];
-		    snap.forEach(function(ss) {
-		       var data = ss.val();
-		       data['.priority'] = ss.getPriority();
-		       data['.key'] = ss.key();
-		       list.unshift(data); 
-		    });
-		   // print/process the results...
-			//itterate throgh the list and print 1) Time, 2) words, 3) url 
-			var i; 
-			for (i=0; i<list.length; i++){
-			console.log(list[i][".key"] + '    ' + list[i].noteWords + '    ' + list[i].noteUrl);
-			//console.log('list [0] is ' + list[1].noteUrl);	
-			}
-			
-			
-		};	
+	//runs new way of makigng the table work (latest time to earliest)
+	reverseChronology(); 
 
 
  };
