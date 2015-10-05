@@ -41,9 +41,37 @@ podlyGlobal.showNotesTable = function(){
     //delete, now uisng global variable | var newEpisodeNumber = '22';
 
     //table html
-    var tableTop = '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>delete</th></thead>';
+
+//***** you are here, where the eff do you set the embed link??? ****
+    var tempEmbedLink='<p><iframe src="'+ podlyGlobal.rootUrl + 'episode-editor/app/embed.html?' + newEpisodeNumber + '" frameborder="0" width="600" height="1500" scrolling="no"></iframe></p>';
+    var embedLink = 'embed.html?'+newEpisodeNumber; 
+	var embedButton = '<div id="embedButton"><button type="button" class="btn btn-default btn-sm" id="" data-toggle="modal" data-target="#myModal">Embed Player | <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>';
+    var embedModal = '<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Embed Podly Player in your Website or Blog</h4><p>Copy the code below and place it in the html of your Website or Blog.</p>
+      </div>
+      <div class="modal-body">
+        <p>'+tempEmbedLink+'</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>'; 
+
+    var tableTop = embedButton + embedModal + '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>delete</th></thead>';
     	//update & edit headers were temporarily cut out <th>update</th><th>edit</th>
     var tableBot ='</tbody></table>';  
+
+
 
     var count = 0;
 

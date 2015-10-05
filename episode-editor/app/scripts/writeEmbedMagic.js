@@ -17,7 +17,7 @@
 $(document).ready(function(){
 //0: initalize variables
   //initialize firebase variables
-      var rootUrl = Config.firebase.rootUrl;
+      var rootUrl = 'https://sky-jump-run.firebaseio.com/';
       var myDataRef = new Firebase(rootUrl);
 
       var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
