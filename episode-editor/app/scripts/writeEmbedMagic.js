@@ -199,8 +199,10 @@ $(document).ready(function(){
         cellTime = hashTime;
       //for testing only, this autoplays audio | document.getElementById('audioPlayer').play();
       document.getElementById('audioPlayer').currentTime=(cellTime);
-
+      var audio = $("#audioPlayer");
+                  audio.trigger('play');
     }
+  
   //Master Audio Controls
     //html for control [button]s
       // [button] back 5 sec

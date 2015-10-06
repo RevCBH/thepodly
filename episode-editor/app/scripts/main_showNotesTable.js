@@ -43,7 +43,7 @@ podlyGlobal.showNotesTable = function(){
     //table html
 
 //***** you are here, where the eff do you set the embed link??? ****
-    var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + podlyGlobal.rootUrl + 'embed.html?' + newEpisodeNumber + '1" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
+    var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + podlyGlobal.embedHtml + newEpisodeNumber +'" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
     var embedLink = 'embed.html?'+ newEpisodeNumber; 
 	var embedButton = '<div id="embedButton"><button type="button" class="btn btn-default btn-sm" id="" data-toggle="modal" data-target="#myModal">Embed Player | <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>';
     var embedModal = '<!-- Modal --> <div id="myModal" class="modal fade" role="dialog"> <div class="modal-dialog"> <!-- Modal content--> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">Embed Podly Player in your Website or Blog</h4><p>Copy the code below and place it in the html of your Website or Blog.</p> </div> <div class="modal-body"> <p>'+tempEmbedLink+'</p> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div> </div> </div> </div>';
