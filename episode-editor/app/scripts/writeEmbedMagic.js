@@ -16,6 +16,24 @@
 
 $(document).ready(function(){
 //0: initalize variables
+  /* delete | twitter
+    var twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+     
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));*/
+
   //initialize firebase variables
       var rootUrl = 'https://sky-jump-run.firebaseio.com/';
       var myDataRef = new Firebase(rootUrl);
@@ -52,15 +70,15 @@ $(document).ready(function(){
 
     //initialize table stuff
        var episodeNotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'+embedEpisodeNumber+'/episodeNotes';
-    var episodeNotesRef = new Firebase(episodeNotesUrl);
+       var episodeNotesRef = new Firebase(episodeNotesUrl);
 
     //initialize table html
-      var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>link</th></thead>';
+      var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
       var tableBot ='</tbody></table>';
 
 
 
-// starting code
+
 
 //part 2: Display Episode Header from Firebase (Episode #, Name, Description)
 
@@ -83,8 +101,9 @@ $(document).ready(function(){
 
      episodeInfoWrite(embedEpisodeNumber);
 
+// starting code
 
-
+   
 // part 3: Display Episode Table from Firebase
 
     //Load the table data (middle of table) from firebase
@@ -145,13 +164,21 @@ $(document).ready(function(){
 
         //hide till bring back twitter button | var twitterDrop='<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+ baseUrl + '#' +childSnapshot.key() +'" data-text="'+ childSnapshot.val().noteWords +'" data-count="none">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
       //var twitterDrop='';
-      var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords+'</td> <td id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '</div> </tr>';
+
+      var hashtag1 = "health"; 
+      var hashtag2 = "heal"; 
+      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'"> Tweet </a>';
+
+
+      var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords+'</td> <td id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '<td id="shareTweetCell">' + shareTweetButton + '</td></div> </tr>';
         $("#myTable").find('tbody').append($(tableGuts));
         //$("#hideOldTime").hide();
         //$("#showNewTime").show();
         //console.log(timeClean(2123));
+        twttr.widgets.load(); 
       });
 
+        
 
         //table close (bottom)
       $("#myTable").find('tbody').append($(tableBot));
@@ -304,5 +331,24 @@ $(document).ready(function(){
         document.getElementById('audioPlayer').currentTime=(cellTime);
 
     });
+//delete twttr.widgets.load(); 
 });
 
+var twitterFunction = function(){  
+    window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+     
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+ 
+      return t;
+    }(document, "script", "twitter-wjs"));
+}();
