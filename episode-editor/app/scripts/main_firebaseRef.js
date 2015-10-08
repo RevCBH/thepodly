@@ -14,6 +14,8 @@
     podlyGlobal.embedHtml = 'https://sky-jump-run.firebaseapp.com/embed.html?'; 
 
     podlyGlobal.podcastID = 'healyourselfradio';
+    podlyGlobal.podcastID2 = 'startupLifeHacks';
+
     
     podlyGlobal.rootUrl = 'https://sky-jump-run.firebaseIO.com/';
     podlyGlobal.myDataRef = new Firebase(podlyGlobal.rootUrl);

@@ -38,7 +38,7 @@ $(document).ready(function(){
       var rootUrl = 'https://sky-jump-run.firebaseio.com/';
       var myDataRef = new Firebase(rootUrl);
 
-      var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
+      var episodesUrl = rootUrl + 'podcasts/startupLifeHacks/episodes/';
       var episodesRef = new Firebase(episodesUrl);
 
 
@@ -69,7 +69,7 @@ $(document).ready(function(){
 
 
     //initialize table stuff
-       var episodeNotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'+embedEpisodeNumber+'/episodeNotes';
+       var episodeNotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/startupLifeHacks/episodes/'+embedEpisodeNumber+'/episodeNotes';
        var episodeNotesRef = new Firebase(episodeNotesUrl);
 
     //initialize table html
@@ -101,10 +101,7 @@ $(document).ready(function(){
 
      episodeInfoWrite(embedEpisodeNumber);
 
-
-
 // starting code
-
 
    
 // part 3: Display Episode Table from Firebase
@@ -168,9 +165,9 @@ $(document).ready(function(){
         //hide till bring back twitter button | var twitterDrop='<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+ baseUrl + '#' +childSnapshot.key() +'" data-text="'+ childSnapshot.val().noteWords +'" data-count="none">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
       //var twitterDrop='';
 
-      var hashtag1 = "health"; 
-      var hashtag2 = "heal"; 
-      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'#+'+childSnapshot.key()+'"> Tweet </a>';
+      var hashtag1 = "startup"; 
+      var hashtag2 = "hacks"; 
+      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed2.html?' + embedEpisodeNumber+'#+'+childSnapshot.key()+'"> Tweet </a>';
 
 
       var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords+'</td> <td id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '<td id="shareTweetCell">' + shareTweetButton + '</td></div> </tr>';
@@ -198,21 +195,8 @@ $(document).ready(function(){
 
 //4: Audio Player
   //initialize variables
-    
-//********** you are here ****************//
-  //load audio
- episodesRef.child(embedEpisodeNumber).once("value", function(snapshot) {
-      var audioSource = snapshot.val();
-      var audioUrl = audioSource.podcastUrl; 
-      console.log('dat audio is: '+ audioUrl); 
-
-
-
-
-
-
-
-    var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioUrl + '" type="audio/mpeg"></audio>';
+    var audioSource= 'http://origin1.podcastwebsites.com/196/222/1461/Ep012JayMagpantay.mp3';
+    var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
     var cellTime;
     var formatTime;
     var hash=0;
@@ -347,7 +331,7 @@ $(document).ready(function(){
         document.getElementById('audioPlayer').currentTime=(cellTime);
 
     });
-  });
+//delete twttr.widgets.load(); 
 });
 
 var twitterFunction = function(){  

@@ -99,7 +99,7 @@ podlyGlobal.showNotesTable = function(){
 				//itterate throgh the list and print 1) Time, 2) words, 3) url 
 				var i; 
 				for (i=0; i<list.length; i++){
-				console.log(list[i][".key"] + '    ' + list[i].noteWords + '    ' + list[i].noteUrl);
+				//delete: console.log(list[i][".key"] + '    ' + list[i].noteWords + '    ' + list[i].noteUrl);
 				
 				//spew count increment 
 				spewCounter++; 
@@ -120,7 +120,7 @@ podlyGlobal.showNotesTable = function(){
 				}		
 
 				//test to see if this is getting executed once or multiple times	    
-			    console.log('count is '+count); 
+			    //delete: console.log('count is '+count); 
 			    count=count+1; 
 		};	
 		
