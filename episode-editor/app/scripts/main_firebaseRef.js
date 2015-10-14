@@ -9,19 +9,74 @@
 
 */
 
-    //**** Need to desipher which podcast this is from the UNIQUE URL# WE GIVE PODCASTERS (FOR NOW)***
+podlyGlobal.updatePID = function(a){
+  pID.podcastName = a; 
+
+  podlyGlobal.episodesUrl = podlyGlobal.rootUrl + 'podcasts/'+ pID.podcastName +'/episodes/';
+  podlyGlobal.episodesRef = new Firebase(podlyGlobal.episodesUrl);
+  podlyGlobal.episodeHighLevel(); 
+
+};
+
+podlyGlobal.mNum = function(podcastID){  
+
+/* how it works
+ 1) read m# from URL
+ 2) assign podlyGlobal.podcastID to m#
+ 3) based on M3, find name of podcast
+ 4) assign name of podcast to podlyGlobal.podcastID
+ 5) test to see if this bitch works! 
+*/
+
  
-    podlyGlobal.embedHtml = 'https://sky-jump-run.firebaseapp.com/embed.html?'; 
 
-    podlyGlobal.podcastID = 'healyourselfradio';
-    podlyGlobal.podcastID2 = 'startupLifeHacks';
+    //convert number to name
+      var podcastName; 
 
-    
-    podlyGlobal.rootUrl = 'https://sky-jump-run.firebaseIO.com/';
-    podlyGlobal.myDataRef = new Firebase(podlyGlobal.rootUrl);
+    //connect to db, find number, return name
+      var ref =  new Firebase(podlyGlobal.rootUrl + 'mnum/' + podcastID); 
 
-    podlyGlobal.episodesUrl = podlyGlobal.rootUrl + 'podcasts/'+ podlyGlobal.podcastID+'/episodes/';
-    podlyGlobal.episodesRef = new Firebase(podlyGlobal.episodesUrl);
+      ref.on("value", function(snapshot){
+        pID.podcastName = snapshot.val(); 
+        podlyGlobal.updatePID(pID.podcastName);    
+      }); 
+}
 
-  (function() {
-  })();
+//make an object, see if you can update it in the funciton 
+  var pID = {
+    podcastName: '', 
+    podcastID: ''
+  }; 
+  
+
+  podlyGlobal.embedHtml = 'https://sky-jump-run.firebaseapp.com/embed.html?'; 
+
+  
+  podlyGlobal.rootUrl = 'https://sky-jump-run.firebaseIO.com/';
+  podlyGlobal.myDataRef = new Firebase(podlyGlobal.rootUrl);
+
+  podlyGlobal.podcastID; 
+  
+
+  //part 1: Retrieve m# from URL
+
+  //search for ?
+    var search = window.location.search; // Gets '?foo=bar' from http://example.com/page.html?foo=bar
+      console.log('search before operation is: '+ search);
+
+    //remove ?
+      search=search.replace('?','');
+
+    //convert # to number
+      podlyGlobal.podcastID = Number(search);
+
+  podlyGlobal.mNum(podlyGlobal.podcastID);
+  
+  
+
+
+
+  
+(function() {
+})();
+

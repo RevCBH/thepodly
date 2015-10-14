@@ -188,7 +188,7 @@
 
     //starts global function to run episodeHighLevel 
       //this collects name/ep number and sets the global var for both
-        podlyGlobal.episodeHighLevel(); 
+//********* YOU ARE HERE *** REINSTATE IF NEEDED  podlyGlobal.episodeHighLevel(); 
 
       //podlyGlobal.podcastAudioSet() collects podcast source URL
         //podlyGlobal.podcastAudio() is triggered by 
