@@ -16,47 +16,44 @@
 
 $(document).ready(function(){
 //0: initalize variables
-  /* delete | twitter
-    var twttr = (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0],
-        t = window.twttr || {};
-      if (d.getElementById(id)) return t;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-     
-      t._e = [];
-      t.ready = function(f) {
-        t._e.push(f);
-      };
-
-      return t;
-    }(document, "script", "twitter-wjs"));*/
+  
+  
 
   //initialize firebase variables
       var rootUrl = 'https://sky-jump-run.firebaseio.com/';
+      /* Delete 
       var myDataRef = new Firebase(rootUrl);
 
-      var episodesUrl = rootUrl + 'podcasts/startupLifeHacks/episodes/';
+      var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
       var episodesRef = new Firebase(episodesUrl);
+      */
 
 
 //part 1a: Retrieve Episode number from URL
 
+
+//******* YOU ARE HERE | BREAK APART THE SEARCH QUERY AT THE & A SEPERATE EPISODEID ********// 
+
+
   //search for ?
     var search = window.location.search; // Gets '?foo=bar' from http://example.com/page.html?foo=bar
-      console.log('search before operation is: '+ search);
+
+
 
     //remove ?
-      search=search.replace('?','');
-
+      search = search.replace('?','');
+      console.log('search looks like this: ' + search); 
+      
+      var tempStr = search.split('&'); 
+      console.log('tempStr looks like this: '+ tempStr); 
+      
+      console.log('tempStr[0] looks like this: '+ tempStr[0]); 
+      console.log('tempStr[1] looks like this: '+ tempStr[1]); 
+    
     //convert # to number
-      var embedEpisodeNumber = Number(search);
-
-    //confirm search is removed
-      console.log('search after operation is: '+ embedEpisodeNumber);
-
+      var embedEpisodeNumber = tempStr[0];
+      var mnum = tempStr[1]; 
+  
 
 //part 1b: Use Episode Number to set variables related to specific Episode
 
@@ -67,10 +64,11 @@ $(document).ready(function(){
     //initialize base URL
      //? Use for Twitter links, but make programatic insted of base | var baseUrl = 'https://resplendent-inferno-6819.firebaseapp.com/prototype/dist-copy/hyr_22.html';
 
-
+     /*
     //initialize table stuff
-       var episodeNotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/startupLifeHacks/episodes/'+embedEpisodeNumber+'/episodeNotes';
+       var episodeNotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'+embedEpisodeNumber+'/episodeNotes';
        var episodeNotesRef = new Firebase(episodeNotesUrl);
+    */ 
 
     //initialize table html
       var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
@@ -80,39 +78,47 @@ $(document).ready(function(){
 
 
 
+
+
+
+
+
 //part 2: Display Episode Header from Firebase (Episode #, Name, Description)
 
-  //function to write Episode Data to DOM
-      var episodeInfoWrite = function(newEpisodeNumber){
+  //function to write Episode Header to DOM
+    var episodeInfoWrite = function(newEpisodeNumber){
+      //connect to db, find number, return name
+      var ref =  new Firebase(rootUrl + 'mnum/' + mnum); 
 
-        //Write to the DOM in episodeInfoAdd
-        episodesRef.child(embedEpisodeNumber).once("value", function(snapshot) {
+      //outer asynchronous function uses hashTime to figure out podcastName
+      ref.on("value", function(snapshot){
+        var podcastName = snapshot.val(); 
+
+        //initilize new firebase with path to podcastName / episodes
+        var ref2 = new Firebase(rootUrl + 'podcasts/' + podcastName + '/episodes/')
+
+        //inner asynchronous function writes to the DOM in episodeInfoAdd
+        ref2.child(embedEpisodeNumber).once("value", function(snapshot) {
           var infoShow = snapshot.val();
           $('.episodeNameTest').append(
             //"<hr>" +
             "<h4>" + "Episode " + embedEpisodeNumber + " - " + infoShow.episodeName + "</h4>");
 
-        //Write to the DOM in episodeDescriptionAdd
+          //Write to the DOM in episodeDescriptionAdd
           $('.episodeDescriptionTest').append(
             infoShow.episodeDescription);
             //console.log(snapshot.val());
         });
-      };
-
-     episodeInfoWrite(embedEpisodeNumber);
-
-
+      }); 
+    };
 
 // starting code
-
+  episodeInfoWrite(embedEpisodeNumber);
 
    
 // part 3: Display Episode Table from Firebase
 
     //Load the table data (middle of table) from firebase
-
-    //delete | var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
-
     episodeNotesRef.on("value", function(snapshot) {
       $('.spewTime').empty();
         //add table header
@@ -168,8 +174,8 @@ $(document).ready(function(){
         //hide till bring back twitter button | var twitterDrop='<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+ baseUrl + '#' +childSnapshot.key() +'" data-text="'+ childSnapshot.val().noteWords +'" data-count="none">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
       //var twitterDrop='';
 
-      var hashtag1 = "startup"; 
-      var hashtag2 = "hacks"; 
+      var hashtag1 = "health"; 
+      var hashtag2 = "heal"; 
       var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'#+'+childSnapshot.key()+'"> Tweet </a>';
 
 

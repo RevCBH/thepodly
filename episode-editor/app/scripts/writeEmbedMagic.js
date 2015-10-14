@@ -16,47 +16,36 @@
 
 $(document).ready(function(){
 //0: initalize variables
-  /* delete | twitter
-    var twttr = (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0],
-        t = window.twttr || {};
-      if (d.getElementById(id)) return t;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-     
-      t._e = [];
-      t.ready = function(f) {
-        t._e.push(f);
-      };
-
-      return t;
-    }(document, "script", "twitter-wjs"));*/
+  
+  
 
   //initialize firebase variables
       var rootUrl = 'https://sky-jump-run.firebaseio.com/';
+      
+      /* Delete 
       var myDataRef = new Firebase(rootUrl);
 
       var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
       var episodesRef = new Firebase(episodesUrl);
+      */
 
 
 //part 1a: Retrieve Episode number from URL
 
+
+//******* YOU ARE HERE | BREAK APART THE SEARCH QUERY AT THE & A SEPERATE EPISODEID ********// 
+
+
   //search for ?
     var search = window.location.search; // Gets '?foo=bar' from http://example.com/page.html?foo=bar
-      console.log('search before operation is: '+ search);
 
-    //remove ?
-      search=search.replace('?','');
-
-    //convert # to number
-      var embedEpisodeNumber = Number(search);
-
-    //confirm search is removed
-      console.log('search after operation is: '+ embedEpisodeNumber);
-
+    //seperate both sides of the '&'
+      search = search.replace('?','');
+      var tempStr = search.split('&'); 
+    //assign left of & to embedEpisodeNumber, right to mnum 
+      var embedEpisodeNumber = tempStr[0];
+      var mnum = tempStr[1]; 
+  
 
 //part 1b: Use Episode Number to set variables related to specific Episode
 
@@ -64,55 +53,189 @@ $(document).ready(function(){
       var nameOfEpisode;
       var infoShow;
 
+
+      
+
     //initialize base URL
      //? Use for Twitter links, but make programatic insted of base | var baseUrl = 'https://resplendent-inferno-6819.firebaseapp.com/prototype/dist-copy/hyr_22.html';
 
-
+     /*
     //initialize table stuff
        var episodeNotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'+embedEpisodeNumber+'/episodeNotes';
        var episodeNotesRef = new Firebase(episodeNotesUrl);
+    */ 
 
     //initialize table html
       var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
       var tableBot ='</tbody></table>';
 
 
+//4: Audio Player
+  var audioPlayerFunction = function(ref2){
+    //initialize variables
+      
+  //********** you are here ****************//
+    //load audio
+    /* DELETE ASAP 
+      var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
+      var episodesRef = new Firebase(episodesUrl);
+      var baseUrl = rootUrl + 'podcasts/' + podcastName + '/episodes/'
+    */
+
+   ref2.child(embedEpisodeNumber).once("value", function(snapshot){
+        var audioSource = snapshot.val();
+        var audioUrl = audioSource.podcastUrl; 
+        console.log('dat audio is: '+ audioUrl); 
 
 
+      var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioUrl + '" type="audio/mpeg"></audio>';
+      var cellTime;
+      var formatTime;
+      var hash=0;
 
-//part 2: Display Episode Header from Firebase (Episode #, Name, Description)
 
-  //function to write Episode Data to DOM
-      var episodeInfoWrite = function(newEpisodeNumber){
+    //# to set playhead
+      //search for hash
+        hash = window.location.hash; // Gets '#foo' from http://example.com/page.html#foo
+        //console.log('hash before operation is: '+ hash);
+        //remove #
+          hash=hash.replace('#','');
 
-        //Write to the DOM in episodeInfoAdd
-        episodesRef.child(embedEpisodeNumber).once("value", function(snapshot) {
-          var infoShow = snapshot.val();
-          $('.episodeNameTest').append(
-            //"<hr>" +
-            "<h4>" + "Episode " + embedEpisodeNumber + " - " + infoShow.episodeName + "</h4>");
+        //convert # to number
+          var hashTime = Number(hash);
 
-        //Write to the DOM in episodeDescriptionAdd
-          $('.episodeDescriptionTest').append(
-            infoShow.episodeDescription);
-            //console.log(snapshot.val());
+        //confirm hash is removed
+          console.log('hash after operation is: '+ hashTime);
+
+
+    //starting code
+      //write html into dom podcastAudioArea
+      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
+
+      //set hash to be playtime
+        if(hashTime !=0 || hashTime !== ''){
+          console.log('hash is not equal to 0 or ""');
+          cellTime = hashTime;
+        //for testing only, this autoplays audio | document.getElementById('audioPlayer').play();
+        document.getElementById('audioPlayer').currentTime=(cellTime);
+        var audio = $("#audioPlayer");
+                    audio.trigger('play');
+      }
+    
+    //Master Audio Controls
+      //html for control [button]s
+        // [button] back 5 sec
+        var masterAudioControl_backFiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_backFiveSec" alt="back 5 seconds"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>';
+        // [button] back 2 sec
+        var masterAudioControl_backTwoSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_backTwoSec" alt="back 2 seconds"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>';
+        // [button] play
+        var masterAudioControl_play = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>';
+          // [button] pause
+          var masterAudioControl_pause = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_pause"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>';
+          // [button] forward 2 sec
+          var masterAudioControl_forwardTwoSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_forwardTwoSec" alt="forward 2 seconds"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>';
+          // [button] forward 5 sec
+          var masterAudioControl_forwardiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_forwardiveSec" alt="forward 5 seconds"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>';
+          //all the buttons!
+          var masterAudioControl_all = masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec;
+
+        //show buttons
+        $('.podcastAudioArea').append('</br>' + masterAudioControl_all);
+
+      //Button Functions
+        //play (use event deligation to listen for this button being clicked and then activate)
+        $('div').on('click', '#masterAudioControl_play', function(){
+          var audio = $("#audioPlayer");
+              audio.trigger('play');
         });
-      };
 
-     episodeInfoWrite(embedEpisodeNumber);
+        //pause
+        $('div').on('click', '#masterAudioControl_pause', function(){
+          var audio = $("#audioPlayer");
+              audio.trigger('pause');
+        });
+
+        //back two sec
+        $('div').on('click', '#masterAudioControl_backTwoSec', function(){
+          var audio = $("#audioPlayer");
+              audio.trigger('pause');
+              audio.prop("currentTime",audio.prop("currentTime")-1.1);
+              audio.trigger('play');
+        });
 
 
+        //back five sec
+        $('div').on('click', '#masterAudioControl_backFiveSec', function(){
+          var audio = $("#audioPlayer");
+              audio.trigger('pause');
+              audio.prop("currentTime",audio.prop("currentTime")-2.1);
+              audio.trigger('play');
+        });
 
-// starting code
+        //forward two sec
+        $('div').on('click', '#masterAudioControl_forwardTwoSec', function(){
+          var audio = $("#audioPlayer");
+              audio.trigger('pause');
+              audio.prop("currentTime",audio.prop("currentTime")+1.1);
+              audio.trigger('play');
+        });
 
 
-   
+        //forward five sec
+        $('div').on('click', '#masterAudioControl_forwardiveSec', function(){
+          var audio = $("#audioPlayer");
+              audio.trigger('pause');
+              audio.prop("currentTime",audio.prop("currentTime")+1.9);
+              audio.trigger('play');
+        });
+
+
+    //Line Item (Show Note) Audio Controls
+      $('.spewTime').on('click', '#notePlayButtonCell', function(event){
+
+        //grab line count via 'spewCount' of event, we'll use this to figure out the play time from the 2nd <td> in the row
+        var spewCountMemory =  $(this).attr('spewCount');
+
+        //test, is this registering?
+        console.log('spewCountMemory is: '+ spewCountMemory);
+
+        //Get play time directly from the 2nd <td>
+        cellTime = $('#noteTimeCell_spewCount_'+spewCountMemory).html();
+
+        //test for finite
+        if(isFinite(cellTime)){
+          //delete test | console.log('its finite')
+
+        }else{
+      //
+          //if notFinite turn into seconds
+          cellTime = moment.duration(cellTime).asSeconds();
+          console.log('it wasnt finite but is now');
+          //$('.podcastAudioArea').prepend('cell Time is currently '+ cellTime+ ' </br>its NOT!!! Finite!');
+        }
+
+          //test that correct times are coming through
+            //$('.podcastAudioArea').append(cellTime);
+            //$('.podcastAudioArea').append(cellTime);
+
+          //control play time
+          document.getElementById('audioPlayer').play();
+          document.getElementById('audioPlayer').currentTime=(cellTime);
+
+      });
+    });
+  };
+
+
 // part 3: Display Episode Table from Firebase
 
+var displayEpisodeTable = function(baseUrl, ref2, hashtags){
+
+
+
+    var episodeNotesRef = new Firebase(baseUrl + embedEpisodeNumber + '/episodeNotes');
+
     //Load the table data (middle of table) from firebase
-
-    //delete | var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
-
     episodeNotesRef.on("value", function(snapshot) {
       $('.spewTime').empty();
         //add table header
@@ -167,10 +290,10 @@ $(document).ready(function(){
 
         //hide till bring back twitter button | var twitterDrop='<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+ baseUrl + '#' +childSnapshot.key() +'" data-text="'+ childSnapshot.val().noteWords +'" data-count="none">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
       //var twitterDrop='';
-
-      var hashtag1 = "health"; 
-      var hashtag2 = "heal"; 
-      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'#+'+childSnapshot.key()+'"> Tweet </a>';
+      
+      var hashtag1 = hashtags[0]; 
+      var hashtag2 = hashtags[1]; 
+      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+mnum+'#+'+childSnapshot.key()+'"> Tweet </a>';
 
 
       var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords+'</td> <td id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '<td id="shareTweetCell">' + shareTweetButton + '</td></div> </tr>';
@@ -194,160 +317,62 @@ $(document).ready(function(){
         //addUrl(thingy);
 
     });
+    audioPlayerFunction(ref2);
+  }
 
 
-//4: Audio Player
-  //initialize variables
-    
-//********** you are here ****************//
-  //load audio
- episodesRef.child(embedEpisodeNumber).once("value", function(snapshot) {
-      var audioSource = snapshot.val();
-      var audioUrl = audioSource.podcastUrl; 
-      console.log('dat audio is: '+ audioUrl); 
+//part 2: Display Episode Header from Firebase (Episode #, Name, Description)
+
+  //function to write Episode Header to DOM
+    var episodeInfoWrite = function(newEpisodeNumber){
+      //connect to db, find number, return name
+      var ref =  new Firebase(rootUrl + 'mnum/' + mnum); 
+
+      //outer asynchronous function uses hashTime to figure out podcastName
+      ref.on("value", function(snapshot){
+        var podcastName = snapshot.val(); 
+        //initizlie baseURL
+        var baseUrl = rootUrl + 'podcasts/' + podcastName + '/episodes/'
+        //initilize new firebase with path to podcastName / episodes
+        var ref2 = new Firebase(rootUrl + 'podcasts/' + podcastName + '/episodes/')
+
+        //inner asynchronous function writes to the DOM in episodeInfoAdd
+        ref2.child(embedEpisodeNumber).once("value", function(snapshot) {
+          var infoShow = snapshot.val();
+          $('.episodeNameTest').append(
+            //"<hr>" +
+            "<h4>" + "Episode " + embedEpisodeNumber + " - " + infoShow.episodeName + "</h4>");
+
+          //Write to the DOM in episodeDescriptionAdd
+          $('.episodeDescriptionTest').append(
+            infoShow.episodeDescription);
+            //console.log(snapshot.val());
+
+          //set hashtags
+            var ref3 = new Firebase(rootUrl + 'podcasts/' + podcastName + '/hashtags/')
+              
+              //itterate through hashtags & fill array
+              ref3.on("value", function(snapshot){
+                var snappy = snapshot.val(); 
+                //create hastag array 
+                var hashtags = Object.keys(snappy).map(function (key) {return snappy[key]});
+                
+                
+
+                //pass hastag array into displayEpisodeTable()
+                displayEpisodeTable(baseUrl, ref2, hashtags); 
+
+              });
+
+        });
+      }); 
+    };
+
+// starting code
+  episodeInfoWrite(embedEpisodeNumber);
 
 
 
-
-
-
-
-    var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioUrl + '" type="audio/mpeg"></audio>';
-    var cellTime;
-    var formatTime;
-    var hash=0;
-
-
-  //# to set playhead
-    //search for hash
-      hash = window.location.hash; // Gets '#foo' from http://example.com/page.html#foo
-      //console.log('hash before operation is: '+ hash);
-      //remove #
-        hash=hash.replace('#','');
-
-      //convert # to number
-        var hashTime = Number(hash);
-
-      //confirm hash is removed
-        console.log('hash after operation is: '+ hashTime);
-
-
-  //starting code
-    //write html into dom podcastAudioArea
-    $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
-
-    //set hash to be playtime
-      if(hashTime !=0 || hashTime !== ''){
-        console.log('hash is not equal to 0 or ""');
-        cellTime = hashTime;
-      //for testing only, this autoplays audio | document.getElementById('audioPlayer').play();
-      document.getElementById('audioPlayer').currentTime=(cellTime);
-      var audio = $("#audioPlayer");
-                  audio.trigger('play');
-    }
-  
-  //Master Audio Controls
-    //html for control [button]s
-      // [button] back 5 sec
-      var masterAudioControl_backFiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_backFiveSec" alt="back 5 seconds"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>';
-      // [button] back 2 sec
-      var masterAudioControl_backTwoSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_backTwoSec" alt="back 2 seconds"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>';
-      // [button] play
-      var masterAudioControl_play = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>';
-        // [button] pause
-        var masterAudioControl_pause = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_pause"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button>';
-        // [button] forward 2 sec
-        var masterAudioControl_forwardTwoSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_forwardTwoSec" alt="forward 2 seconds"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>';
-        // [button] forward 5 sec
-        var masterAudioControl_forwardiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_forwardiveSec" alt="forward 5 seconds"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>';
-        //all the buttons!
-        var masterAudioControl_all = masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec;
-
-      //show buttons
-      $('.podcastAudioArea').append('</br>' + masterAudioControl_all);
-
-    //Button Functions
-      //play (use event deligation to listen for this button being clicked and then activate)
-      $('div').on('click', '#masterAudioControl_play', function(){
-        var audio = $("#audioPlayer");
-            audio.trigger('play');
-      });
-
-      //pause
-      $('div').on('click', '#masterAudioControl_pause', function(){
-        var audio = $("#audioPlayer");
-            audio.trigger('pause');
-      });
-
-      //back two sec
-      $('div').on('click', '#masterAudioControl_backTwoSec', function(){
-        var audio = $("#audioPlayer");
-            audio.trigger('pause');
-            audio.prop("currentTime",audio.prop("currentTime")-1.1);
-            audio.trigger('play');
-      });
-
-
-      //back five sec
-      $('div').on('click', '#masterAudioControl_backFiveSec', function(){
-        var audio = $("#audioPlayer");
-            audio.trigger('pause');
-            audio.prop("currentTime",audio.prop("currentTime")-2.1);
-            audio.trigger('play');
-      });
-
-      //forward two sec
-      $('div').on('click', '#masterAudioControl_forwardTwoSec', function(){
-        var audio = $("#audioPlayer");
-            audio.trigger('pause');
-            audio.prop("currentTime",audio.prop("currentTime")+1.1);
-            audio.trigger('play');
-      });
-
-
-      //forward five sec
-      $('div').on('click', '#masterAudioControl_forwardiveSec', function(){
-        var audio = $("#audioPlayer");
-            audio.trigger('pause');
-            audio.prop("currentTime",audio.prop("currentTime")+1.9);
-            audio.trigger('play');
-      });
-
-
-  //Line Item (Show Note) Audio Controls
-    $('.spewTime').on('click', '#notePlayButtonCell', function(event){
-
-      //grab line count via 'spewCount' of event, we'll use this to figure out the play time from the 2nd <td> in the row
-      var spewCountMemory =  $(this).attr('spewCount');
-
-      //test, is this registering?
-      console.log('spewCountMemory is: '+ spewCountMemory);
-
-      //Get play time directly from the 2nd <td>
-      cellTime = $('#noteTimeCell_spewCount_'+spewCountMemory).html();
-
-      //test for finite
-      if(isFinite(cellTime)){
-        //delete test | console.log('its finite')
-
-      }else{
-    //
-        //if notFinite turn into seconds
-        cellTime = moment.duration(cellTime).asSeconds();
-        console.log('it wasnt finite but is now');
-        //$('.podcastAudioArea').prepend('cell Time is currently '+ cellTime+ ' </br>its NOT!!! Finite!');
-      }
-
-        //test that correct times are coming through
-          //$('.podcastAudioArea').append(cellTime);
-          //$('.podcastAudioArea').append(cellTime);
-
-        //control play time
-        document.getElementById('audioPlayer').play();
-        document.getElementById('audioPlayer').currentTime=(cellTime);
-
-    });
-  });
 });
 
 var twitterFunction = function(){  
