@@ -118,16 +118,16 @@ $(document).ready(function(){
 
 
     //starting code
+      //loading div html 
+        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper" style="display: inline-block;"></div>';
+
       //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
+      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + loadingDiv + '&nbsp;' + '&nbsp;' + audioPlayer);
 
 
 
     //Master Audio Controls
-      //html for loading 
-        //loading div html 
-        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper">Loading</div>';
-
+        
 
 
       //html for control [button]s
@@ -144,10 +144,10 @@ $(document).ready(function(){
           // [button] forward 5 sec
           var masterAudioControl_forwardiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_forwardiveSec" alt="forward 5 seconds"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>';
           //all the buttons!
-          var masterAudioControl_all = loadingDiv + masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec;
+          var masterAudioControl_all =  masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec + '&nbsp;';
 
         //show buttons
-        $('.podcastAudioArea').append('</br>' + masterAudioControl_all);
+        $('.podcastAudioArea').append('</br>' + '<div id="masterAudioDiv" style="display: inline-block;"> '+masterAudioControl_all+'</div>');
         //hide loading div
           //$('.loadingDivWrapper').hide();
 
