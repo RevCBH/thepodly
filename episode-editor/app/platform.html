@@ -16,13 +16,21 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- build:css(.tmp) styles/bootstrap-social.css -->
+    
+    
+    
+    <!-- build:css(.tmp) styles/font-awesome.css -->
 
+    <link rel="stylesheet" href="styles/customStuff.scss">
+    
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
     <!-- infoNav.css is used to style firebase info --> 
     <link rel="stylesheet" href="styles/infoNav.css">
+
 
   
   </head>
@@ -32,10 +40,56 @@
     <![endif]-->
 
 
-
     <div class="container">
       <div class="header">
+        <div class="podcasterInfo">
+          
+          <div class="row">
+
+            <div class = "col-md-8" id="podcasterInfo_title">
+                Podcast | The Tim Ferriss Show 
+            </div>
+            <div class = "col-md-4" id = "podcasterInfo_social">
+                <a href = "https://www.facebook.com/TimFerriss"> 
+                    Facebook
+                </a> 
+                 | 
+                <a href ="https://twitter.com/tferriss">
+                Twitter
+                </a>
+                |
+                <a href="http://fourhourworkweek.com/podcast/">
+                 Blog
+                </a>
+                |
+                <a href="https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2">
+                 iTunes
+                </a>
+            </div>
+            <!--
+                <div class = "co-md-12" id="podcasterInfo_subscribe">
+                    Subscribe to the show (
+                        <a href ="https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2">
+                            iTunes
+                        </a>
+                        , 
+                        <a href = "http://feeds.feedburner.com/thetimferrissshow">
+                            non-iTunes feed
+                        </a>
+                        )
+                </div>
+            --> 
+            
+            
+          </div> 
         
+        </div>
+        
+        <div id='rowly' class = 'row'>
+            <div class = 'span12'>
+                <hr>
+            </div>
+        </div>
 
         <div class="episodeNumberTest"></div>
         
@@ -44,10 +98,7 @@
         <div class="podcastAudioArea"></div>
         <!-- Hiding description for now <div class="episodeDescriptionTest"></div> --> 
         <div class="spewTime"></div>
-        <!-- Delete? <div class="episodeShowNotesTest"></div> --> 
-        
-        
-        <!-- End panel body --> 
+    
         </div> 
       <!-- End panel --> 
       </div> 
@@ -121,7 +172,7 @@
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     
     <!-- Load writeEmbedMagic.js last as it needs all dependencies above it --> 
-    <script src="scripts/writeEmbedMagic.js"></script> 
+    <script src="scripts/writeEmbedMagic-Platform.js"></script> 
     
     
    

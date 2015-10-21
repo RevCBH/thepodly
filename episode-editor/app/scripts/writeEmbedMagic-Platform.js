@@ -69,6 +69,15 @@ $(document).ready(function(){
       var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
       var tableBot ='</tbody></table>';
 
+ //create a function to show loading when play is called
+   
+     var loadingFunction = function(){
+       $('.loadingDivWrapper').show();
+       $("#audioPlayer").bind('playing', function() {
+         $('.loadingDivWrapper').hide();
+        });
+     }
+   
 
 //4: Audio Player
   var audioPlayerFunction = function(ref2){
@@ -109,26 +118,17 @@ $(document).ready(function(){
 
 
     //starting code
-      //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
+      //loading div html 
+        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper" style="display: inline-block;">&nbsp;</div> ';
 
-      //set hash to be playtime
-        if(hashTime !=0 || hashTime !== ''){
-          cellTime = hashTime;
-        //for testing only, this autoplays audio | document.getElementById('audioPlayer').play();
-        document.getElementById('audioPlayer').currentTime=(cellTime);
-        var audio = $("#audioPlayer");
-                    audio.trigger('pause');
-        if(hashTime > 0){
-          audio = $("#audioPlayer");
-                    audio.trigger('play');
-        }
-      }
-    
+      //write html into dom podcastAudioArea
+      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + loadingDiv + audioPlayer);
+
+
+
     //Master Audio Controls
-      //html for loading 
-        //loading div html 
-        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper">Loading</div>';
+        
+
 
       //html for control [button]s
         // [button] back 5 sec
@@ -144,12 +144,44 @@ $(document).ready(function(){
           // [button] forward 5 sec
           var masterAudioControl_forwardiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_forwardiveSec" alt="forward 5 seconds"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>';
           //all the buttons!
-          var masterAudioControl_all = masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec;
+          var masterAudioControl_all =  masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec + '&nbsp;';
 
         //show buttons
-        $('.podcastAudioArea').append('</br>' + masterAudioControl_all);
+        $('.podcastAudioArea').append('</br>' + '<div id="masterAudioDiv" style="display: inline-block;"> '+masterAudioControl_all+'</div>');
         //hide loading div
-          $('.loadingDivWrapper').hide();
+          //$('.loadingDivWrapper').hide();
+
+
+      //set hash to be playtime
+        if(hashTime !=0 || hashTime !== ''){
+            cellTime = hashTime;
+          //for testing only, this autoplays audio | document.getElementById('audioPlayer').play();
+          document.getElementById('audioPlayer').currentTime=(cellTime);
+          var audio = $("#audioPlayer");
+                      audio.trigger('pause');
+          
+          //detect if a specific time has been added to the URL 
+          if(hashTime > 0){
+            audio = $("#audioPlayer");
+            audio.trigger('play');
+            $('.loadingDivWrapper').show();
+            
+            //loading spinner
+              var cl = new CanvasLoader('canvasloader-container');
+              cl.setColor('#6cc5f5'); // default is '#000000'
+              cl.setDiameter(25); // default is 40
+              cl.setDensity(84); // default is 40
+              cl.setRange(0.9); // default is 1.3
+              cl.setSpeed(1); // default is 2
+              cl.setFPS(60); // default is 24
+              cl.show(); // Hidden by default
+           
+           // detect when player is actually plaing and hide the div showing 'Loading' & the spinner 
+           $("#audioPlayer").bind('playing', function() {
+             $('.loadingDivWrapper').hide();
+            });
+          }
+        }
 
       //Button Functions
         //play (use event deligation to listen for this button being clicked and then activate)
@@ -230,6 +262,13 @@ $(document).ready(function(){
           //control play time
           document.getElementById('audioPlayer').play();
           document.getElementById('audioPlayer').currentTime=(cellTime);
+          
+          //loading display
+          $('.loadingDivWrapper').show();
+           // detect when player is actually plaing and hide the div showing 'Loading' & the spinner 
+           $("#audioPlayer").bind('playing', function() {
+             $('.loadingDivWrapper').hide();
+            });
 
       });
     });
