@@ -16,6 +16,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/loading.css">
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
@@ -131,11 +132,15 @@
     -->
 
     <!-- <script src="scripts/writeEpisodeNumberFromUrl.js"></script> --> 
-    
+    <script src="http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js"></script>
+
     <!-- Twitter Widget --> 
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     
+    <!-- Load writeEmbedMagic.js last as it needs all dependencies above it --> 
     <script src="scripts/writeEmbedMagic.js"></script> 
+    
+    
    
      
     <!--Delete 

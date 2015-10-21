@@ -54,6 +54,7 @@ podlyGlobal.audioControls = function(podcastUrl){
 			document.getElementById('audioPlayer').currentTime=(cellTime);
 	    }
 	//Master Audio Controls
+		
 		//html for control [button]s
 			// [button] back 5 sec
 			var masterAudioControl_backFiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_backFiveSec" alt="back 5 seconds"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>';
