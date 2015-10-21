@@ -119,10 +119,10 @@ $(document).ready(function(){
 
     //starting code
       //loading div html 
-        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper" style="display: inline-block;"></div>';
+        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper" style="display: inline-block;">&nbsp;</div> ';
 
       //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + loadingDiv + '&nbsp;' + '&nbsp;' + audioPlayer);
+      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + loadingDiv + audioPlayer);
 
 
 
@@ -262,6 +262,13 @@ $(document).ready(function(){
           //control play time
           document.getElementById('audioPlayer').play();
           document.getElementById('audioPlayer').currentTime=(cellTime);
+          
+          //loading display
+          $('.loadingDivWrapper').show();
+           // detect when player is actually plaing and hide the div showing 'Loading' & the spinner 
+           $("#audioPlayer").bind('playing', function() {
+             $('.loadingDivWrapper').hide();
+            });
 
       });
     });
