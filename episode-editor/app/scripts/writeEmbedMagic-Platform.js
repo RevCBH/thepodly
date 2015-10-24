@@ -66,7 +66,7 @@ $(document).ready(function(){
     */ 
 
     //initialize table html
-      var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
+      var tableTop = '<table id="myTable" class="table table-hover"><tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
       var tableBot ='</tbody></table>';
 
  //create a function to show loading when play is called
@@ -122,7 +122,7 @@ $(document).ready(function(){
         var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper" style="display: inline-block;">&nbsp;</div> ';
 
       //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + loadingDiv + audioPlayer);
+      $('.podcastAudioArea').append(/*'<h6>Audio Controls</h6>' + */ loadingDiv + audioPlayer);
 
 
 
@@ -389,7 +389,7 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
           var infoShow = snapshot.val();
           $('.episodeNameTest').append(
             //"<hr>" +
-            "<h4>" + "Episode " + embedEpisodeNumber + " - " + infoShow.episodeName + "</h4>");
+            "<h5>" + "Episode " + embedEpisodeNumber + " - " + infoShow.episodeName + "</h5>");
 
           //Write to the DOM in episodeDescriptionAdd
           $('.episodeDescriptionTest').append(

@@ -6,6 +6,23 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 /* Podcast Info Title */
 
+
+/* Controls Loading thing */
+.loadingDivWrapper{
+  display: inline-block;
+  z-index: 2; 
+}
+
+.podcasterInfo{
+  padding-top: 25px; 
+  padding-bottom: 15px; 
+  margin-top: -20px; 
+  background-color: white; 
+  width: 700px;
+  z-index: 1; 
+  border-bottom: 2px solid #B3B3B3;
+}
+
 #podcasterInfo_social
 {
   text-align: right;
@@ -28,6 +45,8 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
   margin: 5px; 
 }
 
+
+/* I don't know what this stuff is for */ 
 
 .browsehappy {
   margin: 0.2em 0;

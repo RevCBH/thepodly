@@ -20,9 +20,7 @@
     
     
     
-    <!-- build:css(.tmp) styles/font-awesome.css -->
-
-    <link rel="stylesheet" href="styles/customStuff.scss">
+    
     
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
@@ -30,6 +28,7 @@
     <!-- endbuild -->
     <!-- infoNav.css is used to style firebase info --> 
     <link rel="stylesheet" href="styles/infoNav.css">
+
 
 
   
@@ -43,10 +42,11 @@
     <div class="container">
       <div class="header">
         <div class="podcasterInfo">
+        <!--  data-spy="affix" data-offset-top="0" data-offset-bottom="200">--> 
           
           <div class="row">
 
-            <div class = "col-md-8" id="podcasterInfo_title">
+            <div class = "col-md-7" id="podcasterInfo_title">
                 Podcast | The Tim Ferriss Show 
             </div>
             <div class = "col-md-4" id = "podcasterInfo_social">
@@ -66,36 +66,25 @@
                  iTunes
                 </a>
             </div>
-            <!--
-                <div class = "co-md-12" id="podcasterInfo_subscribe">
-                    Subscribe to the show (
-                        <a href ="https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2">
-                            iTunes
-                        </a>
-                        , 
-                        <a href = "http://feeds.feedburner.com/thetimferrissshow">
-                            non-iTunes feed
-                        </a>
-                        )
-                </div>
-            --> 
+            
             
             
           </div> 
         
-        </div>
         
-        <div id='rowly' class = 'row'>
-            <div class = 'span12'>
-                <hr>
+        
+            <div id='rowly' class = 'row'>
+                <div class = 'span12'>
+                    <hr>
+                </div>
             </div>
-        </div>
 
-        <div class="episodeNumberTest"></div>
-        
-        <div class="episodeNameTest"></div>
-        
-        <div class="podcastAudioArea"></div>
+            <div class="episodeNumberTest"></div>
+            
+            <div class="episodeNameTest"></div>
+            
+            <div class="podcastAudioArea"></div>
+        </div>
         <!-- Hiding description for now <div class="episodeDescriptionTest"></div> --> 
         <div class="spewTime"></div>
     

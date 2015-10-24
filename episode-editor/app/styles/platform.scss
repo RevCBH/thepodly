@@ -1,0 +1,31 @@
+$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+
+/* Podcast Info Title */
+
+#podcasterInfo_social
+{
+  text-align: right;
+  padding-top: 10px; 
+}
+
+#podcasterInfo_title{
+  /*color: #4f4d4d;*/
+  color: red; 
+  padding: 0px;
+  margin: 0px; 
+  font-size: 25px; 
+  font-weight: 500;
+}
+
+
+#rowly hr
+{
+  background-color: red;
+  padding: 0px; 
+  margin: 5px; 
+}
