@@ -66,49 +66,8 @@ $(document).ready(function(){
     */ 
 
     //initialize table html
-      var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
+      var tableTop = '<table id="myTable" class="table table-hover"><tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
       var tableBot ='</tbody></table>';
-
-
-
-//Matthis's magical goodness 
-  var matthisMagicGoodness = function(episodeNumber,mnum,startTime){
-
-    console.log("three variables at the start of matthisMagicGoodness are: " + episodeNumber + mnum + startTime); 
-  // Charset we will use to encode the url data
-    var CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-    var BASE = CHARSET.length
-
-    var shortenerDomain = 'https://shorturl.firebaseapp.com'
-
-    // Encode a number using the `CHARSET` base
-    var encode = function (i) {
-      var r
-      var output = ''
-      while (true) {
-        r = i % BASE
-        output = CHARSET[r] + output
-        i = (i - r) / BASE
-        if (i < 1) {
-          return output
-        }
-      }
-    }
-
-    var url = shortenerDomain + '/' + encode(episodeNumber) + '-' + encode(mnum); 
-
-    if (startTime != null){ url = url + '-' + encode(startTime);} 
-
-    //note: the & below creates a search field  with an episode number & podcast ID (proxy for name), we'll parse this later in writeEmbedMagic.js
-    
-    //delete: var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + shortenerDomain + '/' + encode(newEpisodeNumber) + '-' + encode(podlyGlobal.podcastID) + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
-
-    console.log("url at the end of matthisMagicGoodness is: " + url); 
-
-    return url; 
-  };
-    //end Matthis's magical goodness 
-
 
  //create a function to show loading when play is called
    
@@ -160,10 +119,10 @@ $(document).ready(function(){
 
     //starting code
       //loading div html 
-        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper">&nbsp;</div> ';
+        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper" style="display: inline-block;">&nbsp;</div> ';
 
       //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Audio Controls</h5>' + loadingDiv + audioPlayer);
+      $('.podcastAudioArea').append(/*'<h6>Audio Controls</h6>' + */ loadingDiv + audioPlayer);
 
 
 
@@ -382,13 +341,7 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
       
       var hashtag1 = hashtags[0]; 
       var hashtag2 = hashtags[1]; 
-      //old tweet button : var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'&'+mnum+'#+'+childSnapshot.key()+'"> Tweet </a>';
-      
-      // variables for Matthis's magic function: episodeNumber,mnum,startTime
-      
-      //new tweet button : 
-      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="'+ matthisMagicGoodness(embedEpisodeNumber,mnum,childSnapshot.key()) +'"> Tweet </a>';
-
+      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'&'+mnum+'#+'+childSnapshot.key()+'"> Tweet </a>';
 
 
       var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords+'</td> <td id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '<td id="shareTweetCell">' + shareTweetButton + '</td></div> </tr>';
@@ -436,7 +389,7 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
           var infoShow = snapshot.val();
           $('.episodeNameTest').append(
             //"<hr>" +
-            "<h4>" + "Episode " + embedEpisodeNumber + " - " + infoShow.episodeName + "</h4>");
+            "<h5>" + "Episode " + embedEpisodeNumber + " - " + infoShow.episodeName + "</h5>");
 
           //Write to the DOM in episodeDescriptionAdd
           $('.episodeDescriptionTest').append(

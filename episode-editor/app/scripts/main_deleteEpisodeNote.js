@@ -14,15 +14,16 @@
     
 */
 
-$(document).ready(function(){
+podlyGlobal.deleteEpisodeNote = function(){
 //Part 0) initalize variables
+  /*delete old firebase ref
   //initialize firebase variables
       var rootUrl = Config.firebase.rootUrl;
       var myDataRef = new Firebase(rootUrl);
 
       var episodesUrl = rootUrl+'podcasts/healyourselfradio/episodes/';
       var episodesRef = new Firebase(episodesUrl);
-
+	*/
 
 //part 1) modal on click of [delete] button (id = “noteButtonDelete") 
 	//(use event deligation to listen for this button being clicked and then activate)
@@ -87,7 +88,7 @@ $(document).ready(function(){
 		
 	});
 
-https://cobro-dev.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes/1
+//wtf is this doing here? | https://cobro-dev.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes/1
 
 
 //part 2) delete note row in the DOM 
@@ -103,12 +104,12 @@ https://cobro-dev.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeN
 		
     	//delete cellTime child from Firebase 
     	//test 1 = hard code (test 2 = variable based on cellTime)
-    	var deleteNoteRef = new Firebase(episodesUrl+'22/episodeNotes/'+cellTime); //episodesUrl+'22/episodeNotes/'+ cellTime);
+    	var deleteNoteRef = new Firebase(podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes/' + cellTime); //episodesUrl+'22/episodeNotes/'+ cellTime);
     	
 		deleteNoteRef.remove();
 		
 	};
 
 
-});
+}();
 

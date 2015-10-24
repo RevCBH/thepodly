@@ -1,25 +1,25 @@
 /*Notes
-  This doc (main_showNotesTable.js) does 1 thing: writes the table of show notes for the episode editor
+  This doc (main_showNotesTable.js) does 1 thing: writes the table of show notes for the episode editor 
 
   How it works
-    1) Table data is loaded for middle of the table
+    1) Table data is loaded for middle of the table 
     2) Table guts are printed
     3) Table top is put on top
-
+   
 
   The code below is seperated into 2 parts
     0) initizlize variables
     1) organize data into a table
-
+    
  Related files are
  	1) deleteEpisodeNote.js (deletes rows of the table when the 'delete' [Button] is clicked
- 	2) main_editTableRow.js (not yet written as of 21-Sept-15) it will allow in-line editing of rows
+ 	2) main_editTableRow.js (not yet written as of 21-Sept-15) it will allow in-line editing of rows 
 
  *Episode Variable
  	Also we'll need to add some sort current episode vairable in as a universal  to replace the episode number
 */
 
-podlyGlobal.showNotesTable = function(){
+podlyGlobal.showNotesTable = function(){  
 
 //Part 0) initilizing variables
     /*delete old firebase ref
@@ -33,48 +33,23 @@ podlyGlobal.showNotesTable = function(){
 	    var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
 	  	var episode22NotesRef = new Firebase(episode22NotesUrl);
 	  */
-	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes';
+	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes'; 
 	var ref2 = new Firebase(ref1);
-	//delete | var ref3 = podlyGlobal.episodesUrl + newEpisodeNumber;
+	//delete | var ref3 = podlyGlobal.episodesUrl + newEpisodeNumber; 
 
 
     //delete, now uisng global variable | var newEpisodeNumber = '22';
 
     //table html
 
-
- /*Matthis's code
-    // Charset we will use to encode the url data
-    var CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-    var BASE = CHARSET.length
-
-    var shortenerDomain = 'shorturl.firebaseio.com'
-
-    // Encode a number using the `CHARSET` base
-    var encode = function (i) {
-      var r
-      var output = ''
-      while (true) {
-        r = i % BASE
-        output = CHARSET[r] + output
-        i = (i - r) / BASE
-        if (i < 1) {
-          return output
-        }
-      }
-    }
-
     //note: the & below creates a search field  with an episode number & podcast ID (proxy for name), we'll parse this later in writeEmbedMagic.js
-    var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + shortenerDomain + '/' + encode(newEpisodeNumber) + '-' + encode(podlyGlobal.podcastID) + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
-    
-    end Matthis's code */
-
-    var embedLink = 'embed.html?'+ newEpisodeNumber;
-    var embedButton = '<div id="embedButton"><button type="button" class="btn btn-default btn-sm" id="" data-toggle="modal" data-target="#myModal">Embed Player | <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>';
+    var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + podlyGlobal.embedHtml + newEpisodeNumber + '&'+ podlyGlobal.podcastID + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
+    var embedLink = 'embed.html?'+ newEpisodeNumber; 
+	var embedButton = '<div id="embedButton"><button type="button" class="btn btn-default btn-sm" id="" data-toggle="modal" data-target="#myModal">Embed Player | <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>';
     var embedModal = '<!-- Modal --> <div id="myModal" class="modal fade" role="dialog"> <div class="modal-dialog"> <!-- Modal content--> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">Embed Podly Player in your Website or Blog</h4><p>Copy the code below and place it in the html of your Website or Blog.</p> </div> <div class="modal-body"> <p>'+tempEmbedLink+'</p> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div> </div> </div> </div>';
     var tableTop = embedButton + embedModal + '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>delete</th></thead>';
     	//update & edit headers were temporarily cut out <th>update</th><th>edit</th>
-    var tableBot ='</tbody></table>';
+    var tableBot ='</tbody></table>';  
 
 
 
@@ -87,14 +62,14 @@ podlyGlobal.showNotesTable = function(){
 
 
 	//Turn childSnapshot.key() [episode time in seconds] into xx:yy:zz format so that table shows times in clock format instead of seconds
-		//here's how this will work
-		//1) childSnapshot.key() runs through a function that converts it into xx:yy:zz format
+		//here's how this will work 
+		//1) childSnapshot.key() runs through a function that converts it into xx:yy:zz format 
 	var secondsToHms = function(d) {
 		d = Number(d);
 		var h = Math.floor(d / 3600);
 		var m = Math.floor(d % 3600 / 60);
 		var s = Math.floor(d % 3600 % 60);
-		return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); };
+		return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); }; 
 		//2) call the function directly from the 'create rows in table' code below
 
 
@@ -111,23 +86,23 @@ podlyGlobal.showNotesTable = function(){
 			       var data = ss.val();
 			       data['.priority'] = ss.getPriority();
 			       data['.key'] = ss.key();
-			       list.unshift(data);
+			       list.unshift(data); 
 			    });
 			   // prep to print results
-
-				$('.spewTime').empty();
-			  	//add table header
+				
+				$('.spewTime').empty(); 
+			  	//add table header 
 				$('.spewTime').prepend(tableTop);
 
-			//check results
-
-				//itterate throgh the list and print 1) Time, 2) words, 3) url
-				var i;
+			//check results 
+				
+				//itterate throgh the list and print 1) Time, 2) words, 3) url 
+				var i; 
 				for (i=0; i<list.length; i++){
 				//delete: console.log(list[i][".key"] + '    ' + list[i].noteWords + '    ' + list[i].noteUrl);
-
-				//spew count increment
-				spewCounter++;
+				
+				//spew count increment 
+				spewCounter++; 
 
 				//class toggle (even = info, odd = )
 			  	if(spewCounter%2==0){
@@ -136,47 +111,47 @@ podlyGlobal.showNotesTable = function(){
 			  		classToggle = '';
 			  	}
 
-			  	//printed table
+			  	//printed table 
 			  	//create rows in the table
 				var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(list[i][".key"]) + '</td> <td id="noteWordsCell">' + list[i].noteWords + '</td> <td id="noteUrlCell">' + list[i].noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
 
 				//insert tableGuts var into
-				$("#myTable").find('tbody').append($(tableGuts));
-				}
+				$("#myTable").find('tbody').append($(tableGuts));	
+				}		
 
-				//test to see if this is getting executed once or multiple times
-			    //delete: console.log('count is '+count);
-			    count=count+1;
-		};
-
+				//test to see if this is getting executed once or multiple times	    
+			    //delete: console.log('count is '+count); 
+			    count=count+1; 
+		};	
+		
 		//table close (bottom)
-		$("#myTable").find('tbody').append($(tableBot));
+		$("#myTable").find('tbody').append($(tableBot));	  	
 
 		//re-load #mainCss to re-style page
 		$("head").append($('<link rel="stylesheet" href="styles/main.css" type="text/css" media="screen" />'));
 	};
 
-	//Part X) Organise the data in to a table
+	//Part X) Organise the data in to a table		
 	//can delete | just here for reference
 	var standardChronology = function(){
 		//1st we load the table data (middle of table) from firebase
 
-
+		
 
 		ref2.on("value", function(snapshot) {
-			$('.spewTime').empty();
-		  	//add table header
+			$('.spewTime').empty(); 
+		  	//add table header 
 			$('.spewTime').prepend(tableTop);
 
-
+		  
 
 		  //runs through the DB and writes a table row in the episode editor for each show note
 		  snapshot.forEach(function(childSnapshot) {
-
-		  	spewCounter++;
-
+		  	
+		  	spewCounter++; 
+		  	
 		  	//Hidden reference | simple Firebase code
-		  	//$('.spewTime').append(spewCounter + ') ' + childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>');
+		  	//$('.spewTime').append(spewCounter + ') ' + childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>'); 
 
 		  	//class toggle (even = info, odd = )
 		  	if(spewCounter%2==0){
@@ -184,8 +159,8 @@ podlyGlobal.showNotesTable = function(){
 		  	}else{
 		  		classToggle = '';
 		  	}
-
-
+		  	
+		 
 
 		  	//create rows in the table
 			var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + secondsToHms(childSnapshot.key()) + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords + '</td> <td id="noteUrlCell">' + childSnapshot.val().noteUrl + '</td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="noteButtonDelete" spewCount="'+spewCounter+'">Delete</button></td> </div> </tr>';
@@ -193,48 +168,48 @@ podlyGlobal.showNotesTable = function(){
 		  	//edit_v2 & update buttons <td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonUpdate" spewCount="'+spewCounter+'">Update</button></td><td><!-- Standard button --> <button type="button" class="btn btn-default" id="tableNoteButtonEdit" spewCount="'+spewCounter+'">Edit</button></td>
 
 		  	//insert tableGuts var into DOM
-		  	$("#myTable").find('tbody').append($(tableGuts));
+		  	$("#myTable").find('tbody').append($(tableGuts));	 
 
-		  //iterate through table with spew counter and hide all update buttons
+		  //iterate through table with spew counter and hide all update buttons 
 		  	//Hide Update Button after it's appended (above)
-		    //$('#tableNoteButtonUpdate').hide();
+		    //$('#tableNoteButtonUpdate').hide();  
 
-		    /*delete test to see if this is getting executed once or multiple times
-			    console.log('count is '+count);
-			    count=count+1;
+		    /*delete test to see if this is getting executed once or multiple times	    
+			    console.log('count is '+count); 
+			    count=count+1; 
 			*/
-		  });
-
+		  });	  
+		  	
 
 		  	//table close (bottom)
-			$("#myTable").find('tbody').append($(tableBot));
+			$("#myTable").find('tbody').append($(tableBot));	  	
 
-
+		
 		  //re-load #mainCss to re-style page
 		  $("head").append($('<link rel="stylesheet" href="styles/main.css" type="text/css" media="screen" />'));
+		  
+		  
 
-
-
-		});
+		});	
 	};
 
 //Part 1) starting functions
 	//runs old way of making the table work (earliest time to latest)
-	// can delete  | temp block out | standardChronology();
-
+	// can delete  | temp block out | standardChronology(); 
+	
 	//test if there are show notes, if there are, show them, if not, do nothing
 	ref2.on('value', function(snapshot) {
 		console.log('test value is: ' + snapshot.val());
 		var exists = (snapshot.val() !== null);
 		if (exists){
-			//displays episode notes in referense choronology
-			reverseChronology();
+			//displays episode notes in referense choronology 
+			reverseChronology(); 
 		}else{
 			console.log('shit dont exist');
 		}
-
+		
 	});
-
+		
  };
 
 

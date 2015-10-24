@@ -1,0 +1,11 @@
+<div data-state="hidden"></div>
+
+<div data-state="loading">loading notes...</div>
+
+<ul data-state="listOfShit">
+	{{#each notesList.notes}}
+    <li>
+      {{time}}: <a href='#'>{{title}}</a>
+    </li>
+    {{/each}}
+</ul>

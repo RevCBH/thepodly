@@ -1,30 +1,52 @@
-/*Notes
-  This doc (delteEpisodeNote.js) deletes a specific podcast show note at a specific time in the episode editor. 
-  How it works
-    0) user clicks [delete] button (id = “noteButtonDelete")
-    1) confirmation modal appears and prompts the user, “are you sure?” 
-    3) if the user selects "yes", the table row for that note is emptied and the note for that particular time is deleted in Firebase
-    
+//*** THIS DOC ISN"T USED ANYWHERE, ADD TO DELETE LIST
 
-  The code below is seperated into 3 parts
+
+/*Notes
+  This doc (main_timeConversion.js) converts user entered (formated as xx:yy:zz) into seconds, which are used as keys for show notes in Firebase 
+  
+  How it works
+    0) when a user enteres show notes they are converted to seconds and stored in the database that way
+    1) error handling if a users enters something unusable, the input field goes red and an error appears above it. 
+    
+    
+  The code below is seperated into X parts
     0) Initilize variables 
-    1) modal on click of [delete] button (id = “noteButtonDelete")
-    2) delete note row in the DOM 
-    3) delete note from firebase 
+    1) time is found in the table, as it's found it's converted from seconds to xx:yy format
+    =
+    2) *** Later we do the conversion when people enter their time text too *** 
     
 */
 
 $(document).ready(function(){
 //Part 0) initalize variables
-  //initialize firebase variables
-      var rootUrl = Config.firebase.rootUrl;
-      var myDataRef = new Firebase(rootUrl);
+	/* Delete 
+	  //initialize firebase variables
+	      var rootUrl = 'sky-jump-run.firebaseIO.com/';
+	      var myDataRef = new Firebase(rootUrl);
 
-      var episodesUrl = rootUrl+'podcasts/healyourselfradio/episodes/';
-      var episodesRef = new Firebase(episodesUrl);
+	      var episodesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/';
+	      var episodesRef = new Firebase(episodesUrl);
+	*/
 
 
-//part 1) modal on click of [delete] button (id = “noteButtonDelete") 
+//part 1) time is found in the table, as it's found it's converted from seconds to xx:yy format
+	function hmsToSecondsOnly(str) {
+	    var p = str.split(':'),
+	        s = 0, m = 1;
+
+	    while (p.length > 0) {
+	        s += m * parseInt(p.pop(), 10);
+	        m *= 60;
+	    }
+
+	    return s;
+	}
+
+
+
+
+/*
+	
 	//(use event deligation to listen for this button being clicked and then activate)
     $('div').on('click', '#noteButtonDelete', function(){
 		//event.stopPropagation() limits the number of times the alert pops up, without it the alert would show 5 times :P 
@@ -44,23 +66,8 @@ $(document).ready(function(){
 		    	//initialize cellTime
 		    	var cellTime;
 
-		    	//initilizize function that will make cellTime usable by converitng it from hh:mm:ss to seconds
-		    	var hmsToSecondsOnly = function(str) {
-				    var p = str.split(':'),
-				        s = 0, m = 1;
-
-				    while (p.length > 0) {
-				        s += m * parseInt(p.pop(), 10);
-				        m *= 60;
-				    }
-
-				    return s;
-				};
-
 		    	//Get play time directly from the 2nd <td> 
-				cellTime = hmsToSecondsOnly($('#noteTimeCell_spewCount_'+spewCountMemory).html());  
-
-				
+				cellTime = $('#noteTimeCell_spewCount_'+spewCountMemory).html();  
 		
 				//test for finite
 				if(isFinite(cellTime)){
@@ -87,8 +94,6 @@ $(document).ready(function(){
 		
 	});
 
-https://cobro-dev.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes/1
-
 
 //part 2) delete note row in the DOM 
 	//create a funciton which takes the spewCountMemory as a param
@@ -100,15 +105,18 @@ https://cobro-dev.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeN
 
 //part 3) deleteNoteInFirebase(cellTime)
 	var deleteNoteInFirebase = function(cellTime){
-		
+		//test with console.log
+    	console.log('cellTime to delete from Firebase is ' + cellTime);
+
     	//delete cellTime child from Firebase 
     	//test 1 = hard code (test 2 = variable based on cellTime)
-    	var deleteNoteRef = new Firebase(episodesUrl+'22/episodeNotes/'+cellTime); //episodesUrl+'22/episodeNotes/'+ cellTime);
+    	var deleteNoteRef = new Firebase('https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes/'+ cellTime);
     	
 		deleteNoteRef.remove();
 		
+
 	};
 
-
+*/
 });
 

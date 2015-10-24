@@ -1,0 +1,242 @@
+ <!DOCTYPE html>
+<html>
+  <title></title>
+  <!-- head -->
+    <head>
+      <!-- Include jQuery --> 
+      <script type='text/javascript' src='jquery-1.11.3.min.js'></script>
+      
+    
+      <!-- podlyPrototype JS --> 
+      <script type='text/javascript' src='podlyPrototype.js'></script>
+      
+      <!-- Boostrap Goodness --> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Custom CSS--> 
+        <link href="css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+<!-- body -->
+  <body>
+  <!-- More bootstrap goodness -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- End more bootstrap goodness -->
+  
+  <!-- Master Div -->
+    <div class = "container-fluid">
+      <!-- div for row -->
+      <div class = "row">
+      
+    
+          <p></p><p></p>
+          <!-- Embeded Player demo --> 
+             
+            <div class="old-panel panel-default col-xs-12">
+              <div class="old-panel-body">
+                
+                  
+                    <h4>
+                      Heal Yourself Radio Podcast  (Player by 
+                      <a href="mailto:podlyplayer@gmail.com">Podly</a>
+                      )
+                    </h4>
+                    <h5>
+                      Episode 25 - How to Survive a Trip to the Emergency Room with Dr. Michael Mollo
+                    </h5>
+                    
+                  <div class='container container-fluid'>
+                    <div class = 'row-fluid pull-left'>
+                    <!-- Image --> 
+                      <img src="https://ssl-static.libsyn.com/p/assets/6/8/6/4/686426485f912311/height_320_width_480_overlay_Mike_Mollo.jpg" class="img-rounded" class="text-left">
+
+                    
+                    <!-- Audio Control -->
+                        <audio controls type='audio/mpg' name="media" id='audioPlayer' width="480" onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0">
+                            
+                          <source src="https://traffic.libsyn.com/preview/secure/healyourselfradio/Michael_Mollo_final_edit.mp3" type="audio/mpeg" preload = "auto">
+                        </audio>
+                         </br>
+                    
+                        
+                    
+                      <!-- End / Audio Controls --> 
+                    </div>
+                  </div>
+
+                      
+                    <!-- Embded player relevant links -->   
+                      <div id="Embded player relevant links">
+                        <h5>Show Notes</h5>
+
+                            
+                          <!-- Guest: Dr. Michael Mollo --> 
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> 0:00 | Guest: Dr. Michael Mollo </button> 
+                            </p>
+
+                          <!-- ER doctors are doing a lot of primary care now?--> 
+                         
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(3*60+35)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>  3:35 |  ER doctors are doing a lot of primary care now?</button>   
+                            </p>
+
+
+                          <!-- Best and worst times to go to the ER - weekday mornings best; weekends worst-->
+                            <p>
+                              <button type="button" class="btn btn-default btn"  onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(5*60+12)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 5:12 |  Best and worst times to go to the ER - weekday mornings best; weekends worst 
+                              </button> 
+                            </p>
+
+                        
+                          <!-- Red Flag Complaints that have high priority - abdominal pain, chest pain, neurological symptoms -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(6*60+28)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 6:28 | Red Flag Complaints that have high priority - abdominal pain, chest pain, neurological symptoms</button> 
+                              
+                            </p>
+                          
+                          <!-- Identifying a brain bleed in a young/fit population -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(7*60+50)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;7:50 | Identifying a brain bleed in a young/fit population </button> 
+                                
+                            </p>
+
+                          <!-- How to identify an emergency headache vs a regular headache -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(9*60+15)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 9:15 | How to identify an emergency headache vs a regular headache</button> 
+                                
+                            </p>
+
+                          <!-- When should you use urgent care versus the emergency room?  -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(10*60+10)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 10:10 | When should you use urgent care versus the emergency room? </button> 
+                                
+                            </p>
+
+                          <!-- For doctors and staff, this is the worst day of the patient’s life. Patients want to be kept informed, even if it’s bad news -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(14*60)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 14:00 | For doctors and staff, this is the worst day of the patient’s life. Patients want to be kept informed, even if it’s bad news  </button> 
+                                
+                            </p>
+
+                          <!-- Tips for making the ER more bearable -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(15*60+16)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 15:16 | Tips for making the ER more bearable </button> 
+                              <ul>
+                                <li>Bring your phone charger</li>
+                                <li>Bring books/reading</li>
+                                <li>Use your nurses and techs for updates</li>
+                                <li>Don’t be embarrassed. This happens more than you think.</li>
+                              </ul>
+                            </p>
+
+                          
+
+                          <!-- Don’t ignore serious symptoms. Even if you’re young-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(16*60+30)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 16:30 | Don’t ignore serious symptoms. Even if you’re young</button> 
+                              
+                            </p>
+
+
+                            <!-- Don’t lie about your medical history and social history (drugs). The doctor is there to help you, not arrest you -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(18*60+23)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;18:23 | Don’t lie about your medical history and social history (drugs). The doctor is there to help you, not arrest you </button> 
+                             </p>
+
+                          
+                            <!-- Where is the future of ER medicine going? -->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(23*60+54)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp; 23:54 | Where is the future of ER medicine going? </button> 
+                              
+                            </p>
+
+                            <!-- Physician’s Assistants and Nurse Practitioners, the future of primary care-->
+                            <p>
+                              <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(25*60+30)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;25:30 | Physician’s Assistants and Nurse Practitioners, the future of primary care</button> 
+                            </p>                    
+
+                            
+                            <!-- Health Tips from Dr. Mollo: -->
+                            <p>
+                             Health Tips from Dr. Mollo:
+                              <ul>
+                                <li>
+                                  <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(27*60+21)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;27:21 | Don’t waste your calories on meals you won’t remember</button> 
+                                </li>
+                                
+                                <li>
+                                  <button type="button" class="btn btn-default btn" onclick="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=(29*60+00)"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>&nbsp;29:00 | Dr. Mollo working on sleep study on ER physicians</button> 
+                                </li>
+                                
+                              </ul>
+                            </p>
+
+
+
+                           
+
+                            <!-- Baseline tests to consider before a season starts - 19:30 -->
+                            <p>
+                              Resources:
+                              <ul>
+                                <li>
+                                    Twitter hashtags - 
+                                    <a href="https://twitter.com/search?q=%23FOAMEM%20&src=typd" target="_blank">
+                                      #FOAMEM 
+                                      <button type='button' class="btn btn-primary">
+                                        Link
+                                      </button> 
+                                    </a>
+                                    <a href="https://twitter.com/search?q=%23FOAMMED&src=typd" target="_blank">
+                                      #FOAMMED
+                                      <button type='button' class="btn btn-primary">
+                                        Link
+                                      </button> 
+                                    </a>
+                                </li>
+
+                                <li>
+                                  cmcedmasters.com
+                                  <a href="http://cmcedmasters.com/" target="_blank">
+                                  <button type='button' class="btn btn-primary">
+                                    Link
+                                  </button> 
+                                </a>
+                                </li>
+                            </p>
+                              
+                 
+                <!-- Pannel wrapping just the player --> 
+                
+                </div>
+            </div>
+
+    
+
+       
+        <!-- div for row -->
+        </div>
+    
+    <!-- End Master Div --> 
+    </div>
+    

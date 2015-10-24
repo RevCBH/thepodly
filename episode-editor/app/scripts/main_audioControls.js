@@ -1,44 +1,60 @@
+/**** Consider moving #hash functions to a seperate file****/
+
 // Test 4: hook up row play button to media O.O 
 	//add media via FireBase
 	//make it play via 
 
 
-$(document).ready(function() {
+//reinstate: $(document).ready(function() {
+//reference: old name: podlyGlobal.showNotesPlayButton = function(){
+podlyGlobal.audioControls = function(podcastUrl){
 	
 //initialize variables
-var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
-var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioSource + '" type="audio/mpeg"></audio>';
-var cellTime; 
-var formatTime; 
-var hash=0;
+	//need to set audio source from Podcast Audio URL field 
+	//var audioSource= 'http://traffic.libsyn.com/healyourselfradio/biohacking_and_the_quantified_self.mp3';
+	var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + podcastUrl + '" type="audio/mpeg"></audio>';
+	var cellTime; 
+	var formatTime; 
+	var hash=0;
 
 
-//play magic as people come to page
+
+
+//**** play magic as people come to page **** Allows us to know what section of the podcast we should jump to 
 	//search for hash
 		hash = window.location.hash; // Gets '#foo' from http://example.com/page.html#foo
     //console.log('hash before operation is: '+ hash);
     //remove #
-    	hash=hash.replace('#','');
+    	hash = hash.replace('#','');
     
     //convert # to number
     	var hashTime = Number(hash); 
 
+
     //confirm hash is removed
-    	console.log('hash after operation is: '+ hashTime);
+    	// ***** reinstate | console.log('hash after operation is: '+ hashTime);
 
 
 	//starting code
+		//delete: hide podcastAudioArea until audio URL has been entered
+		//delete: $('podcastAudioArea').hide;
+
 		//write html into dom podcastAudioArea
-		$('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
+		// delete | old note need a global variable to signal that Podcast URL (audioSource) has been entered
+		 $('.podcastAudioArea').html('<h5>Podcast Audio</h5>' + audioPlayer);
+		 //delete | audioPlayer.attr('autoplay','autoplay');
+		
+		
 
 		//set hash to be playtime 
 	    if(hashTime !=0 || hashTime !== ''){
-	    	console.log('hash is not equal to 0 or ""');
+	    	// ***** reinstate | console.log('hash is not equal to 0 or ""');
 	    	cellTime = hashTime; 
 			//document.getElementById('audioPlayer').play(); 
 			document.getElementById('audioPlayer').currentTime=(cellTime);
 	    }
 	//Master Audio Controls
+		
 		//html for control [button]s
 			// [button] back 5 sec
 			var masterAudioControl_backFiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_backFiveSec" alt="back 5 seconds"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></button>';
@@ -64,20 +80,24 @@ var hash=0;
 			$('div').on('click', '#masterAudioControl_play', function(){
 				var audio = $("#audioPlayer");	
 		        audio.trigger('play'); 
+		        console.log("hello");
+		        event.stopPropagation();
 			});
 
 			//pause 
 			$('div').on('click', '#masterAudioControl_pause', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
+		        event.stopPropagation();
 			});
 
 			//back two sec
 			$('div').on('click', '#masterAudioControl_backTwoSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")-1.1);
+		        audio.prop("currentTime",audio.prop("currentTime")-1);
 		        audio.trigger('play'); 
+		        event.stopPropagation();
 			});
 		
 			
@@ -85,16 +105,18 @@ var hash=0;
 			$('div').on('click', '#masterAudioControl_backFiveSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")-2.1);
+		        audio.prop("currentTime",audio.prop("currentTime")-5);
 		        audio.trigger('play'); 
+		        event.stopPropagation();
 			});
 
 			//forward two sec
 			$('div').on('click', '#masterAudioControl_forwardTwoSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")+1.1);
+		        audio.prop("currentTime",audio.prop("currentTime")+2);
 		        audio.trigger('play'); 
+		        event.stopPropagation();
 			});
 		
 			
@@ -102,8 +124,9 @@ var hash=0;
 			$('div').on('click', '#masterAudioControl_forwardiveSec', function(){
 				var audio = $("#audioPlayer");
 		        audio.trigger('pause'); 
-		        audio.prop("currentTime",audio.prop("currentTime")+1.9);
+		        audio.prop("currentTime",audio.prop("currentTime")+5);
 		        audio.trigger('play'); 
+		        event.stopPropagation();
 			});
 
 
@@ -112,15 +135,29 @@ var hash=0;
 
 			//grab line count via 'spewCount' of event, we'll use this to figure out the play time from the 2nd <td> in the row
 			var spewCountMemory =  $(this).attr('spewCount');	
+			var audio = $("#audioPlayer");
 			
 			//test, is this registering? 
-			console.log('test test test');
 			console.log('spewCountMemory is: '+ spewCountMemory);
 			
-			
-			
 				//Get play time directly from the 2nd <td> 
-				cellTime = $('#noteTimeCell_spewCount_'+spewCountMemory).html();  
+				cellTime = hmsToSecondsOnly($('#noteTimeCell_spewCount_'+spewCountMemory).html());  
+
+				function hmsToSecondsOnly(str) {
+				    var p = str.split(':'),
+				        s = 0, m = 1;
+
+				    while (p.length > 0) {
+				        s += m * parseInt(p.pop(), 10);
+				        m *= 60;
+				    }
+
+				    return s;
+				}
+
+
+				//test current cell time 
+				console.log('cellTime is ' + cellTime);
 		
 			//test for finite
 			if(isFinite(cellTime)){
@@ -157,13 +194,17 @@ var hash=0;
 		/////test writing time in mm:ss
 		//$('.podcastAudioArea').append('<p>Jello!</p>');		
 		*/
-		
+			//play audio when clicked 
+			audio.trigger('play'); 
+		    event.stopPropagation();
 
 		});
 
 		
 
-});		
+//reinstate });		
+//delete
+};
 
 
 

@@ -69,56 +69,15 @@ $(document).ready(function(){
       var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
       var tableBot ='</tbody></table>';
 
-
-
-//Matthis's magical goodness 
-  var matthisMagicGoodness = function(episodeNumber,mnum,startTime){
-
-    console.log("three variables at the start of matthisMagicGoodness are: " + episodeNumber + mnum + startTime); 
-  // Charset we will use to encode the url data
-    var CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-    var BASE = CHARSET.length
-
-    var shortenerDomain = 'https://shorturl.firebaseapp.com'
-
-    // Encode a number using the `CHARSET` base
-    var encode = function (i) {
-      var r
-      var output = ''
-      while (true) {
-        r = i % BASE
-        output = CHARSET[r] + output
-        i = (i - r) / BASE
-        if (i < 1) {
-          return output
-        }
-      }
-    }
-
-    var url = shortenerDomain + '/' + encode(episodeNumber) + '-' + encode(mnum); 
-
-    if (startTime != null){ url = url + '-' + encode(startTime);} 
-
-    //note: the & below creates a search field  with an episode number & podcast ID (proxy for name), we'll parse this later in writeEmbedMagic.js
-    
-    //delete: var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + shortenerDomain + '/' + encode(newEpisodeNumber) + '-' + encode(podlyGlobal.podcastID) + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
-
-    console.log("url at the end of matthisMagicGoodness is: " + url); 
-
-    return url; 
-  };
-    //end Matthis's magical goodness 
-
-
- //create a function to show loading when play is called
-   
+  //create a function to show loading when play is called
+   /*
      var loadingFunction = function(){
        $('.loadingDivWrapper').show();
        $("#audioPlayer").bind('playing', function() {
-         $('.loadingDivWrapper').hide();
+         $("#spin").hide();
         });
      }
-   
+   */
 
 //4: Audio Player
   var audioPlayerFunction = function(ref2){
@@ -159,16 +118,27 @@ $(document).ready(function(){
 
 
     //starting code
-      //loading div html 
-        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper">&nbsp;</div> ';
-
       //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Audio Controls</h5>' + loadingDiv + audioPlayer);
+      $('.podcastAudioArea').append('<h5>Podcast Audio</h5>' + audioPlayer);
 
-
-
+      //set hash to be playtime
+        if(hashTime !=0 || hashTime !== ''){
+          cellTime = hashTime;
+        //for testing only, this autoplays audio | document.getElementById('audioPlayer').play();
+        document.getElementById('audioPlayer').currentTime=(cellTime);
+        var audio = $("#audioPlayer");
+                    audio.trigger('pause');
+        if(hashTime > 0){
+          audio = $("#audioPlayer");
+                    audio.trigger('play');
+                    //loadingFunction(); 
+        }
+      }
+    
     //Master Audio Controls
-        
+      //html for loading 
+        //loading div html 
+        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper">Loading</div>';
 
 
       //html for control [button]s
@@ -185,44 +155,16 @@ $(document).ready(function(){
           // [button] forward 5 sec
           var masterAudioControl_forwardiveSec = '<button type="button" class="btn btn-default btn-sm" id="masterAudioControl_forwardiveSec" alt="forward 5 seconds"><span class="glyphicon glyphicon-forward" aria-hidden="true"></span></button>';
           //all the buttons!
-          var masterAudioControl_all =  masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec + '&nbsp;';
+          var masterAudioControl_all = loadingDiv + masterAudioControl_backFiveSec + '&nbsp;' + masterAudioControl_backTwoSec + '&nbsp;' + masterAudioControl_play + '&nbsp;' + masterAudioControl_pause + '&nbsp;' + masterAudioControl_forwardTwoSec + '&nbsp;' + masterAudioControl_forwardiveSec;
 
         //show buttons
-        $('.podcastAudioArea').append('</br>' + '<div id="masterAudioDiv" style="display: inline-block;"> '+masterAudioControl_all+'</div>');
+          $('.podcastAudioArea').append('</br>' + masterAudioControl_all);
         //hide loading div
-          //$('.loadingDivWrapper').hide();
+          $('.loadingDivWrapper').hide();
+       
+        //reference ^ function whenever loading is happpening 
 
-
-      //set hash to be playtime
-        if(hashTime !=0 || hashTime !== ''){
-            cellTime = hashTime;
-          //for testing only, this autoplays audio | document.getElementById('audioPlayer').play();
-          document.getElementById('audioPlayer').currentTime=(cellTime);
-          var audio = $("#audioPlayer");
-                      audio.trigger('pause');
-          
-          //detect if a specific time has been added to the URL 
-          if(hashTime > 0){
-            audio = $("#audioPlayer");
-            audio.trigger('play');
-            $('.loadingDivWrapper').show();
-            
-            //loading spinner
-              var cl = new CanvasLoader('canvasloader-container');
-              cl.setColor('#6cc5f5'); // default is '#000000'
-              cl.setDiameter(25); // default is 40
-              cl.setDensity(84); // default is 40
-              cl.setRange(0.9); // default is 1.3
-              cl.setSpeed(1); // default is 2
-              cl.setFPS(60); // default is 24
-              cl.show(); // Hidden by default
-           
-           // detect when player is actually plaing and hide the div showing 'Loading' & the spinner 
-           $("#audioPlayer").bind('playing', function() {
-             $('.loadingDivWrapper').hide();
-            });
-          }
-        }
+      
 
       //Button Functions
         //play (use event deligation to listen for this button being clicked and then activate)
@@ -303,13 +245,6 @@ $(document).ready(function(){
           //control play time
           document.getElementById('audioPlayer').play();
           document.getElementById('audioPlayer').currentTime=(cellTime);
-          
-          //loading display
-          $('.loadingDivWrapper').show();
-           // detect when player is actually plaing and hide the div showing 'Loading' & the spinner 
-           $("#audioPlayer").bind('playing', function() {
-             $('.loadingDivWrapper').hide();
-            });
 
       });
     });
@@ -382,13 +317,7 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
       
       var hashtag1 = hashtags[0]; 
       var hashtag2 = hashtags[1]; 
-      //old tweet button : var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'&'+mnum+'#+'+childSnapshot.key()+'"> Tweet </a>';
-      
-      // variables for Matthis's magic function: episodeNumber,mnum,startTime
-      
-      //new tweet button : 
-      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="'+ matthisMagicGoodness(embedEpisodeNumber,mnum,childSnapshot.key()) +'"> Tweet </a>';
-
+      var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'&'+mnum+'#+'+childSnapshot.key()+'"> Tweet </a>';
 
 
       var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords+'</td> <td id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '<td id="shareTweetCell">' + shareTweetButton + '</td></div> </tr>';

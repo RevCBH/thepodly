@@ -16,7 +16,6 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
@@ -35,7 +34,17 @@
 
     <div class="container">
       <div class="header">
-        
+        <!--
+        <a class="twitter-share-button"
+          href="https://twitter.com/intent/tweet" 
+          data-hashtags="startup, hack" 
+          data-size="large" 
+          data-count="none" 
+          data-text="Don’t lie about your medical history and social history (drugs). The doctor is there to help you, not arrest you" 
+          data-url="https://sky-jump-run.firebaseapp.com/embed.html?25#620">
+            Tweet
+        </a>
+        --> 
 
         <div class="episodeNumberTest"></div>
         
@@ -46,6 +55,13 @@
         <div class="spewTime"></div>
         <!-- Delete? <div class="episodeShowNotesTest"></div> --> 
         
+        <!-- Hide all this stuff, it's from demo.html and not needed here 
+        <div class="episodeDesc"></div>
+        <div class="timeShow"></div>
+        <div class="timeTablePractice"></div>
+        <div class="podcastAudioArea"></div>
+        <div class="spewTime"></div>
+        <div class="myTable2"></div> -->
         
         <!-- End panel body --> 
         </div> 
@@ -115,16 +131,30 @@
     -->
 
     <!-- <script src="scripts/writeEpisodeNumberFromUrl.js"></script> --> 
-    <script src="http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js"></script>
-
+    
     <!-- Twitter Widget --> 
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     
-    <!-- Load writeEmbedMagic.js last as it needs all dependencies above it --> 
-    <script src="scripts/writeEmbedMagic.js"></script> 
+    <script src="scripts/writeEmbedMagic2.js"></script> 
+       <!--  <script>
+      window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+         
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+     
+          return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
     
-    
-   
      
     <!--Delete 
     <script type="scripts/writeUrlTime.js"></script>
