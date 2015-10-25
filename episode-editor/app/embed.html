@@ -8,6 +8,7 @@
 
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css(.) styles/vendor.css -->
@@ -21,10 +22,10 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
-    <!-- infoNav.css is used to style firebase info --> 
+    <!-- infoNav.css is used to style firebase info -->
     <link rel="stylesheet" href="styles/infoNav.css">
 
-  
+
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -35,22 +36,22 @@
 
     <div class="container">
       <div class="header">
-        
+
 
         <div class="episodeNumberTest"></div>
-        
+
         <div class="episodeNameTest"></div>
-        
+
         <div class="podcastAudioArea"></div>
-        <!-- Hiding description for now <div class="episodeDescriptionTest"></div> --> 
+        <!-- Hiding description for now <div class="episodeDescriptionTest"></div> -->
         <div class="spewTime"></div>
-        <!-- Delete? <div class="episodeShowNotesTest"></div> --> 
-        
-        
-        <!-- End panel body --> 
-        </div> 
-      <!-- End panel --> 
-      </div> 
+        <!-- Delete? <div class="episodeShowNotesTest"></div> -->
+
+
+        <!-- End panel body -->
+        </div>
+      <!-- End panel -->
+      </div>
 
 
 
@@ -82,10 +83,13 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
     <!-- endbuild -->
 
+    <!-- build:js scripts/utils.js  -->
+    <script src="scripts/utils/LoadingIndicator.js"></script>
+    <!-- endbuild -->
 
     <!-- build:js scripts/main_showNotesTable.js  --
     //<script src="scripts/main_showNotesTable.js"></script>
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
 
     <!-- build:js scripts/main.js --
@@ -94,48 +98,48 @@
 
     <!-- build:js scripts/podcastTitle.js (displays the title of the podcast) --
     <script src="scripts/podcastTitle.js"></script>
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
 
     <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) --
-    
+
     <script src="bower_components/moment/moment.js"></script>
     <script src="scripts/main_showNotes.js"></script>
-    <!-- endbuild -->  
+    <!-- endbuild -->
 
     <!--Hide, all this is from demo.html--
     <script src = "scripts/main_showNotesPlayButton.js"></script>
 
-    
+
 
     <script src="scripts/writeTableOnly.js"></script>
-    
+
     <script src="scripts/writeEpisodeHeaders.js"></script>
 
     -->
 
-    <!-- <script src="scripts/writeEpisodeNumberFromUrl.js"></script> --> 
+    <!-- <script src="scripts/writeEpisodeNumberFromUrl.js"></script> -->
     <script src="http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js"></script>
 
-    <!-- Twitter Widget --> 
+    <!-- Twitter Widget -->
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    
-    <!-- Load writeEmbedMagic.js last as it needs all dependencies above it --> 
-    <script src="scripts/writeEmbedMagic.js"></script> 
-    
-    
-   
-     
-    <!--Delete 
+
+    <!-- Load writeEmbedMagic.js last as it needs all dependencies above it -->
+    <script src="scripts/writeEmbedMagic.js"></script>
+
+
+
+
+    <!--Delete
     <script type="scripts/writeUrlTime.js"></script>
-    -->     
-    
-
-    
+    -->
 
 
 
-    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title") 
+
+
+
+    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
     <script src="scripts/addSection.js"></script>
     <!-- endbuild -->
 

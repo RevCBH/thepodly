@@ -16,13 +16,13 @@
 
 $(document).ready(function(){
 //0: initalize variables
-  
-  
+
+
 
   //initialize firebase variables
       var rootUrl = 'https://sky-jump-run.firebaseio.com/';
-      
-      /* Delete 
+
+      /* Delete
       var myDataRef = new Firebase(rootUrl);
 
       var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
@@ -33,7 +33,7 @@ $(document).ready(function(){
 //part 1a: Retrieve Episode number from URL
 
 
-//******* YOU ARE HERE | BREAK APART THE SEARCH QUERY AT THE & A SEPERATE EPISODEID ********// 
+//******* YOU ARE HERE | BREAK APART THE SEARCH QUERY AT THE & A SEPERATE EPISODEID ********//
 
 
   //search for ?
@@ -41,11 +41,11 @@ $(document).ready(function(){
 
     //seperate both sides of the '&'
       search = search.replace('?','');
-      var tempStr = search.split('&'); 
-    //assign left of & to embedEpisodeNumber, right to mnum 
+      var tempStr = search.split('&');
+    //assign left of & to embedEpisodeNumber, right to mnum
       var embedEpisodeNumber = tempStr[0];
-      var mnum = tempStr[1]; 
-  
+      var mnum = tempStr[1];
+
 
 //part 1b: Use Episode Number to set variables related to specific Episode
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
       var infoShow;
 
 
-      
+
 
     //initialize base URL
      //? Use for Twitter links, but make programatic insted of base | var baseUrl = 'https://resplendent-inferno-6819.firebaseapp.com/prototype/dist-copy/hyr_22.html';
@@ -63,7 +63,7 @@ $(document).ready(function(){
     //initialize table stuff
        var episodeNotesUrl = 'https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/'+embedEpisodeNumber+'/episodeNotes';
        var episodeNotesRef = new Firebase(episodeNotesUrl);
-    */ 
+    */
 
     //initialize table html
       var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
@@ -71,10 +71,8 @@ $(document).ready(function(){
 
 
 
-//Matthis's magical goodness 
+//Matthis's magical goodness
   var matthisMagicGoodness = function(episodeNumber,mnum,startTime){
-
-    console.log("three variables at the start of matthisMagicGoodness are: " + episodeNumber + mnum + startTime); 
   // Charset we will use to encode the url data
     var CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
     var BASE = CHARSET.length
@@ -95,38 +93,36 @@ $(document).ready(function(){
       }
     }
 
-    var url = shortenerDomain + '/' + encode(episodeNumber) + '-' + encode(mnum); 
+    var url = shortenerDomain + '/' + encode(episodeNumber) + '-' + encode(mnum);
 
-    if (startTime != null){ url = url + '-' + encode(startTime);} 
+    if (startTime != null){ url = url + '-' + encode(startTime);}
 
     //note: the & below creates a search field  with an episode number & podcast ID (proxy for name), we'll parse this later in writeEmbedMagic.js
-    
+
     //delete: var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + shortenerDomain + '/' + encode(newEpisodeNumber) + '-' + encode(podlyGlobal.podcastID) + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
 
-    console.log("url at the end of matthisMagicGoodness is: " + url); 
-
-    return url; 
+    return url;
   };
-    //end Matthis's magical goodness 
+    //end Matthis's magical goodness
 
 
  //create a function to show loading when play is called
-   
-     var loadingFunction = function(){
-       $('.loadingDivWrapper').show();
-       $("#audioPlayer").bind('playing', function() {
-         $('.loadingDivWrapper').hide();
-        });
-     }
-   
+
+    var loadingFunction = function(){
+      ThePodly.LoadingIndicator.showAll()
+      $("#audioPlayer").bind('playing', function() {
+        ThePodly.LoadingIndicator.hideAll()
+      });
+    }
+
 
 //4: Audio Player
   var audioPlayerFunction = function(ref2){
     //initialize variables
-      
+
   //********** you are here ****************//
     //load audio
-    /* DELETE ASAP 
+    /* DELETE ASAP
       var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
       var episodesRef = new Firebase(episodesUrl);
       var baseUrl = rootUrl + 'podcasts/' + podcastName + '/episodes/'
@@ -134,8 +130,8 @@ $(document).ready(function(){
 
    ref2.child(embedEpisodeNumber).once("value", function(snapshot){
         var audioSource = snapshot.val();
-        var audioUrl = audioSource.podcastUrl; 
-        //console.log('dat audio is: '+ audioUrl); 
+        var audioUrl = audioSource.podcastUrl;
+        //console.log('dat audio is: '+ audioUrl);
 
 
       var audioPlayer = '<audio controls preload="load" id="audioPlayer"><source src="' + audioUrl + '" type="audio/mpeg"></audio>';
@@ -159,16 +155,16 @@ $(document).ready(function(){
 
 
     //starting code
-      //loading div html 
-        var loadingDiv = '<!-- Create a div which will be the canvasloader wrapper --><div id="canvasloader-container" class="loadingDivWrapper">&nbsp;</div> ';
+      //loading div html
+        var loadingDiv = ThePodly.LoadingIndicator.getHTML();
 
       //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Audio Controls</h5>' + loadingDiv + audioPlayer);
+      $('.podcastAudioArea').append('<h5>Audio Controls</h5>' + audioPlayer + loadingDiv);
 
 
 
     //Master Audio Controls
-        
+
 
 
       //html for control [button]s
@@ -200,26 +196,16 @@ $(document).ready(function(){
           document.getElementById('audioPlayer').currentTime=(cellTime);
           var audio = $("#audioPlayer");
                       audio.trigger('pause');
-          
-          //detect if a specific time has been added to the URL 
+
+          //detect if a specific time has been added to the URL
           if(hashTime > 0){
             audio = $("#audioPlayer");
             audio.trigger('play');
-            $('.loadingDivWrapper').show();
-            
-            //loading spinner
-              var cl = new CanvasLoader('canvasloader-container');
-              cl.setColor('#6cc5f5'); // default is '#000000'
-              cl.setDiameter(25); // default is 40
-              cl.setDensity(84); // default is 40
-              cl.setRange(0.9); // default is 1.3
-              cl.setSpeed(1); // default is 2
-              cl.setFPS(60); // default is 24
-              cl.show(); // Hidden by default
-           
-           // detect when player is actually plaing and hide the div showing 'Loading' & the spinner 
-           $("#audioPlayer").bind('playing', function() {
-             $('.loadingDivWrapper').hide();
+
+            ThePodly.LoadingIndicator.showAll()
+            // detect when player is actually plaing and hide the div showing 'Loading' & the spinner
+            $("#audioPlayer").bind('playing', function() {
+              ThePodly.LoadingIndicator.hideAll()
             });
           }
         }
@@ -275,6 +261,14 @@ $(document).ready(function(){
     //Line Item (Show Note) Audio Controls
       $('.spewTime').on('click', '#notePlayButtonCell', function(event){
 
+        // Get the HTML of the button
+        var button = $(this)
+        var buttonHTML = button.html()
+
+        // Disable the button and replace it with a loading indicator
+        button.attr('disabled', true)
+        button.html(ThePodly.LoadingIndicator.getHTML())
+
         //grab line count via 'spewCount' of event, we'll use this to figure out the play time from the 2nd <td> in the row
         var spewCountMemory =  $(this).attr('spewCount');
 
@@ -303,13 +297,16 @@ $(document).ready(function(){
           //control play time
           document.getElementById('audioPlayer').play();
           document.getElementById('audioPlayer').currentTime=(cellTime);
-          
+
           //loading display
-          $('.loadingDivWrapper').show();
-           // detect when player is actually plaing and hide the div showing 'Loading' & the spinner 
-           $("#audioPlayer").bind('playing', function() {
-             $('.loadingDivWrapper').hide();
-            });
+          ThePodly.LoadingIndicator.showAll()
+          // detect when player is actually playing
+          $("#audioPlayer").bind('playing', function() {
+            // Re-enable the button and put back the original HTML
+            button.attr('disabled', false)
+            button.html(buttonHTML)
+            ThePodly.LoadingIndicator.hideAll()
+          });
 
       });
     });
@@ -379,14 +376,14 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
 
         //hide till bring back twitter button | var twitterDrop='<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+ baseUrl + '#' +childSnapshot.key() +'" data-text="'+ childSnapshot.val().noteWords +'" data-count="none">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>';
       //var twitterDrop='';
-      
-      var hashtag1 = hashtags[0]; 
-      var hashtag2 = hashtags[1]; 
+
+      var hashtag1 = hashtags[0];
+      var hashtag2 = hashtags[1];
       //old tweet button : var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="https://sky-jump-run.firebaseapp.com/embed.html?' + embedEpisodeNumber+'&'+mnum+'#+'+childSnapshot.key()+'"> Tweet </a>';
-      
+
       // variables for Matthis's magic function: episodeNumber,mnum,startTime
-      
-      //new tweet button : 
+
+      //new tweet button :
       var shareTweetButton = '<a class="twitter-share-button"href="https://twitter.com/intent/tweet"data-hashtags="' + hashtag1 + ', ' + hashtag2 +'"data-size="large"data-count="none"data-text="'+ childSnapshot.val().noteWords +'"data-url="'+ matthisMagicGoodness(embedEpisodeNumber,mnum,childSnapshot.key()) +'"> Tweet </a>';
 
 
@@ -396,10 +393,10 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
         //$("#hideOldTime").hide();
         //$("#showNewTime").show();
         //console.log(timeClean(2123));
-        twttr.widgets.load(); 
+        twttr.widgets.load();
       });
 
-        
+
 
         //table close (bottom)
       $("#myTable").find('tbody').append($(tableBot));
@@ -421,11 +418,11 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
   //function to write Episode Header to DOM
     var episodeInfoWrite = function(newEpisodeNumber){
       //connect to db, find number, return name
-      var ref =  new Firebase(rootUrl + 'mnum/' + mnum); 
+      var ref =  new Firebase(rootUrl + 'mnum/' + mnum);
 
       //outer asynchronous function uses hashTime to figure out podcastName
       ref.on("value", function(snapshot){
-        var podcastName = snapshot.val(); 
+        var podcastName = snapshot.val();
         //initizlie baseURL
         var baseUrl = rootUrl + 'podcasts/' + podcastName + '/episodes/'
         //initilize new firebase with path to podcastName / episodes
@@ -445,22 +442,22 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
 
           //set hashtags
             var ref3 = new Firebase(rootUrl + 'podcasts/' + podcastName + '/hashtags/')
-              
+
               //itterate through hashtags & fill array
               ref3.on("value", function(snapshot){
-                var snappy = snapshot.val(); 
-                //create hastag array 
+                var snappy = snapshot.val();
+                //create hastag array
                 var hashtags = Object.keys(snappy).map(function (key) {return snappy[key]});
-                
-                
+
+
 
                 //pass hastag array into displayEpisodeTable()
-                displayEpisodeTable(baseUrl, ref2, hashtags); 
+                displayEpisodeTable(baseUrl, ref2, hashtags);
 
               });
 
         });
-      }); 
+      });
     };
 
 // starting code
@@ -470,7 +467,7 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
 
 });
 
-var twitterFunction = function(){  
+var twitterFunction = function(){
     window.twttr = (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0],
         t = window.twttr || {};
@@ -479,12 +476,12 @@ var twitterFunction = function(){
       js.id = id;
       js.src = "https://platform.twitter.com/widgets.js";
       fjs.parentNode.insertBefore(js, fjs);
-     
+
       t._e = [];
       t.ready = function(f) {
         t._e.push(f);
       };
- 
+
       return t;
     }(document, "script", "twitter-wjs"));
 }();
