@@ -10,10 +10,9 @@ $(document).ready(function() {
 
   var search = window.location.search; // Gets '?foo=bar' from http://example.com/page.html?foo=bar
   if(search == ""){
-    console.log('search is null: ' + search); 
     window.location.replace("https://storytime.tech/splash/earlyaccess.html");
   }else{
-    console.log('search is: ' + search); 
+
   }
 
 });
