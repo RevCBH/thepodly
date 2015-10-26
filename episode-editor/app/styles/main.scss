@@ -10,30 +10,36 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 /* Controls Loading thing */
 .loadingDivWrapper{
   display: inline-block;
-  z-index: 2; 
+  z-index: 2;
+  font-size: 24px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  vertical-align: top;
 }
 
 .podcasterInfo{
-  padding-top: 25px; 
-  padding-bottom: 15px; 
-  margin-top: -20px; 
-  background-color: white; 
+  padding-top: 25px;
+  padding-bottom: 15px;
+  margin-top: -20px;
+  background-color: white;
   width: 700px;
-  z-index: 1; 
+  z-index: 1;
   border-bottom: 2px solid #B3B3B3;
 }
 
 #podcasterInfo_social
 {
   text-align: right;
-  padding-top: 10px; 
+  padding-top: 10px;
 }
 
 #podcasterInfo_title{
   /*color: #4f4d4d;*/
   padding: 0px;
-  margin: 0px; 
-  font-size: 25px; 
+  margin: 0px;
+  font-size: 25px;
   font-weight: 500;
 }
 
@@ -41,12 +47,12 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 #rowly hr
 {
   background-color: red;
-  padding: 0px; 
-  margin: 5px; 
+  padding: 0px;
+  margin: 5px;
 }
 
 
-/* I don't know what this stuff is for */ 
+/* I don't know what this stuff is for */
 
 .browsehappy {
   margin: 0.2em 0;

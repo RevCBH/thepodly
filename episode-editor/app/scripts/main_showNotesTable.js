@@ -66,10 +66,10 @@ podlyGlobal.showNotesTable = function(){
 
     //note: the & below creates a search field  with an episode number & podcast ID (proxy for name), we'll parse this later in writeEmbedMagic.js
     var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + shortenerDomain + '/' + encode(newEpisodeNumber) + '-' + encode(podlyGlobal.podcastID) + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
-    
+
     end Matthis's code */
 
-    var embedLink = 'embed.html?'+ newEpisodeNumber;
+    var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + podlyGlobal.embedHtml + newEpisodeNumber + '&'+ podlyGlobal.podcastID + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
     var embedButton = '<div id="embedButton"><button type="button" class="btn btn-default btn-sm" id="" data-toggle="modal" data-target="#myModal">Embed Player | <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>';
     var embedModal = '<!-- Modal --> <div id="myModal" class="modal fade" role="dialog"> <div class="modal-dialog"> <!-- Modal content--> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">Embed Podly Player in your Website or Blog</h4><p>Copy the code below and place it in the html of your Website or Blog.</p> </div> <div class="modal-body"> <p>'+tempEmbedLink+'</p> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div> </div> </div> </div>';
     var tableTop = embedButton + embedModal + '<table id="myTable" class="table table-hover"> <caption>Show Notes for Episode ' + newEpisodeNumber +  '</caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>words</th> <th>url</th><th>delete</th></thead>';
