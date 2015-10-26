@@ -399,6 +399,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'genconfig',
       'wiredep',
       'concurrent:server',
       'postcss',
@@ -416,6 +417,7 @@ module.exports = function (grunt) {
     if (target !== 'watch') {
       grunt.task.run([
         'clean:server',
+        'genconfig',
         'concurrent:test',
         'postcss'
       ]);
@@ -429,6 +431,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'genconfig',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -449,4 +452,17 @@ module.exports = function (grunt) {
     'build'
   ]);
 
+  var env_file = './.config/' + (process.env.NODE_ENV || 'dev') + '.json';
+  var settings = require(env_file);
+
+  grunt.registerTask('genconfig', 'generate the config file', function() {
+    var prefix = "// This file is generated from values found under the .config directory\n" +
+                 "// DO NOT EDIT\n" +
+                 "// any changes you make will be lost next time you build with grunt\n\n" +
+                 "var Config =\n";
+    var suffix = ";\n";
+    grunt.file.write(
+        './app/scripts/generated/config.js',
+        prefix + JSON.stringify(settings) + suffix);
+  });
 };
