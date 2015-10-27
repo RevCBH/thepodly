@@ -5,6 +5,16 @@
  *   var Webflow = Webflow || [];
  *   Webflow.push(readyFunction);
  */
+
+
+
+
+
+
+
+
+
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -964,6 +974,36 @@
 
 	  // Submit form to Webflow
 	  function submitWebflow(data) {
+	    
+  /*
+	//Button Clicks
+	   var userEmail;
+
+	   userEmail=$("input[id=userEmail]").val();
+
+        console.log('are we getting input? : ' + userEmail);
+
+        //[Button] Enter Podcast URL (click) = write to Firebase
+	    $('.w-button button').click(function(){
+
+	      //A) takes input of 'Podcast URL' field and assignes it to newPodcastUrl
+	        userEmail=$("input[id=userEmail]").val();
+
+	        console.log('are we getting input? : ' + userEmail); 
+
+	      //B) creates Firebase child under /earlyaccess/ with new email
+	        var ref = new Firebase('https://earlyaccess.firebaseio.com/earlyaccess/emails/'); 
+	          var eRef = ref.child(emails);
+	          eRef.update({
+	            emails: userEmail
+	          });
+	        
+
+	    });
+
+
+*/
+
 	    reset(data);
 
 	    var form = data.form;
@@ -973,7 +1013,7 @@
 	      test: Webflow.env(),
 	      fields: {}
 	    };
-
+		
 	    preventDefault(data);
 
 	    // Find & populate all fields
