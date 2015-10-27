@@ -8,6 +8,7 @@
 
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css(.) styles/vendor.css -->
@@ -103,6 +104,7 @@
     <script src="/bower_components/handlebars/handlebars.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
     <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/sticky-kit/jquery.sticky-kit.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -122,6 +124,12 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
     <!-- endbuild -->
 
+    <!-- sticky: used to affix top --> 
+    <!--<script src="scripts/scripts/jquery.sticky-kit.min.js"></script>--> 
+
+    <!-- build:js scripts/utils/LoadingIndicator.js  -->
+    <!-- Load utils scripts -->
+    <script src="scripts/utils/LoadingIndicator.js"></script>
 
     <!-- build:js scripts/main_showNotesTable.js  --
     //<script src="scripts/main_showNotesTable.js"></script>
@@ -161,7 +169,9 @@
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     
     <!-- Load writeEmbedMagic.js last as it needs all dependencies above it --> 
-    <script src="scripts/writeEmbedMagic-Platform.js"></script> 
+    <script src="scripts/writeEmbedMagic.js"></script> 
+
+    <script src="scripts/platformSpecific.js"></script>
     
     
    

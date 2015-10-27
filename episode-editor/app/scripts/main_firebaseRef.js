@@ -49,7 +49,7 @@ podlyGlobal.mNum = function(podcastID){
   }; 
   
 
-  podlyGlobal.embedHtml = 'https://sky-jump-run.firebaseapp.com/embed.html?'; 
+  podlyGlobal.embedHtml = 'https://storytime.tech/embed.html?'; 
 
   
   podlyGlobal.rootUrl = 'https://sky-jump-run.firebaseIO.com/';
