@@ -8,7 +8,6 @@
 
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css(.) styles/vendor.css -->
@@ -17,15 +16,22 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-
+    <!-- build:css(.tmp) styles/bootstrap-social.css -->
+    
+    
+    
+    
+    
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
-    <!-- infoNav.css is used to style firebase info -->
+    <!-- infoNav.css is used to style firebase info --> 
     <link rel="stylesheet" href="styles/infoNav.css">
 
 
+
+  
   </head>
   <body>
     <!--[if lt IE 10]>
@@ -33,27 +39,58 @@
     <![endif]-->
 
 
-
     <div class="container">
       <div class="header">
+        <div class="podcasterInfo">
+        <!--  data-spy="affix" data-offset-top="0" data-offset-bottom="200">--> 
+          
+          <div class="row">
 
+            <div class = "col-md-7" id="podcasterInfo_title">
+                Podcast | The Tim Ferriss Show 
+            </div>
+            <div class = "col-md-4" id = "podcasterInfo_social">
+                <a href = "https://www.facebook.com/TimFerriss"> 
+                    Facebook
+                </a> 
+                 | 
+                <a href ="https://twitter.com/tferriss">
+                Twitter
+                </a>
+                |
+                <a href="http://fourhourworkweek.com/podcast/">
+                 Blog
+                </a>
+                |
+                <a href="https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2">
+                 iTunes
+                </a>
+            </div>
+            
+            
+            
+          </div> 
+        
+        
+        
+            <div id='rowly' class = 'row'>
+                <div class = 'span12'>
+                    <hr>
+                </div>
+            </div>
 
-
-
-        <div class="episodeNumberTest"></div>
-
-        <div class="episodeNameTest"></div>
-
-        <div class="podcastAudioArea"></div>
-        <!-- Hiding description for now <div class="episodeDescriptionTest"></div> -->
-        <div class="spewTime"></div>
-        <!-- Delete? <div class="episodeShowNotesTest"></div> -->
-
-
-        <!-- End panel body -->
+            <div class="episodeNumberTest"></div>
+            
+            <div class="episodeNameTest"></div>
+            
+            <div class="podcastAudioArea"></div>
         </div>
-      <!-- End panel -->
-      </div>
+        <!-- Hiding description for now <div class="episodeDescriptionTest"></div> --> 
+        <div class="spewTime"></div>
+    
+        </div> 
+      <!-- End panel --> 
+      </div> 
 
 
 
@@ -86,16 +123,9 @@
     <!-- endbuild -->
 
 
-
-
-    <!-- build:js scripts/utils/LoadingIndicator.js  -->
-    <!-- Load utils scripts -->
-    <script src="scripts/utils/LoadingIndicator.js"></script>
-
-
     <!-- build:js scripts/main_showNotesTable.js  --
     //<script src="scripts/main_showNotesTable.js"></script>
-    <!-- endbuild -->
+    <!-- endbuild -->  
 
 
     <!-- build:js scripts/main.js --
@@ -104,50 +134,48 @@
 
     <!-- build:js scripts/podcastTitle.js (displays the title of the podcast) --
     <script src="scripts/podcastTitle.js"></script>
-    <!-- endbuild -->
+    <!-- endbuild -->  
 
 
     <!-- build:js scripts/main_podcastUrl.js (handles read/write of podcast URL) --
-
+    
     <script src="bower_components/moment/moment.js"></script>
     <script src="scripts/main_showNotes.js"></script>
-    <!-- endbuild -->
+    <!-- endbuild -->  
 
     <!--Hide, all this is from demo.html--
     <script src = "scripts/main_showNotesPlayButton.js"></script>
 
-
+    
 
     <script src="scripts/writeTableOnly.js"></script>
-
+    
     <script src="scripts/writeEpisodeHeaders.js"></script>
 
     -->
 
-    <!-- <script src="scripts/writeEpisodeNumberFromUrl.js"></script> -->
+    <!-- <script src="scripts/writeEpisodeNumberFromUrl.js"></script> --> 
     <script src="http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js"></script>
 
-    <!-- Twitter Widget -->
+    <!-- Twitter Widget --> 
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-
-    <!-- Load writeEmbedMagic.js last as it needs all dependencies above it -->
-    <script src="scripts/writeEmbedMagic.js"></script>
+    
+    <!-- Load writeEmbedMagic.js last as it needs all dependencies above it --> 
+    <script src="scripts/writeEmbedMagic-Platform.js"></script> 
+    
+    
+   
+     
+    <!--Delete 
+    <script type="scripts/writeUrlTime.js"></script>
+    -->     
+    
 
     
 
 
 
-
-    <!--Delete
-    <script type="scripts/writeUrlTime.js"></script>
-    -->
-
-
-
-
-
-
-    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title")
+    <!-- build:js scripts/addSection.js (this adds a section to the podcast DB for "title") 
     <script src="scripts/addSection.js"></script>
     <!-- endbuild -->
 
