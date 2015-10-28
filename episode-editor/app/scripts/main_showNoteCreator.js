@@ -1,7 +1,7 @@
 /* **** Move Edit Episode Info to another doc **** */
 
 /*Notes
-  This doc (main_showNotes.js) takes user input about a new show note and enters it into the database
+  This doc (main_showNoteCreator.js) takes user input about a new show note and enters it into the database
   
   How it works
     0) user enters 3 pieces of info
@@ -38,19 +38,6 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
 
   //Part 0a) initilizing variables
   
-    /*delete old firebase references
-      //create firebase references
-      var rootUrl = Config.firebase.rootUrl;
-      var myDataRef = new Firebase(rootUrl);
-
-      var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
-      var episodesRef = new Firebase(episodesUrl);
-    */
-
-      //variable initialization
-  //****** Change value of newEpisodeNumber back to '' after getting time write to work on Firebase
-      //delete | var newEpisodeNumber = 22;
-      //delete | now a global var | var podcastUrl='';
 
   //noteTimeCounter may need serialization as we scale table
       var noteTimeCounter = '0';
@@ -235,36 +222,6 @@ podlyGlobal.showNoteCreator = function(podcastUrl){
     $('#noteButtonUpdate').hide();
 
 
-//Part 1) Button clicks
-
-  /*delete, this has been moved to main_episodeHighLevel.js
-    //Part 1a) [Button] Submit Episode Info (click) = gets Episode number from DOM
-      $('#submitButton').on('click', function() {
-        
-        //get Episode Number from input form and set it here
-        newEpisodeNumber=$("input[id=inputEpisodeNumber]").val();
-
-        //incrament noteTimeCounter
-        noteTimeCounter += 1;
-      });
-  */
-
-  /* Delete moving to main_podcastAudio.js
-  //Part 1b) [Button] Podcast URL (click) = pull player URL from DOM and add player into Show notes
-    $('#podcastUrlButton').click(function(){
-        //takes input of 'Podcast URL' field and assignes it to newPodcastUrl
-        podcastUrl=$("input[id=podcastUrlField]").val();
-
-        //show Episode Notes Section
-        $('.showEpisodeNotes').show();
-
-        //show podcast URL
-        $('.showEpisodeNotes').append('<audio controls type="audio/mpg" name="media" id="audioPlayer" width="480"><source src="' + podcastUrl + '" type="audio/mpeg" preload = "auto"></audio>');
-
-        //onload="document.getElementById('audioPlayer').play(); document.getElementById('audioPlayer').currentTime=0"
-    });
-
-  */
 
 //Part 2) show notes [Button] clicks = writes show notes to Firebase  
       $('#noteButtonEnter').click(function(){
