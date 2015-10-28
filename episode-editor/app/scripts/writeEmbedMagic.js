@@ -66,8 +66,27 @@ $(document).ready(function(){
     */
 
     //initialize table html
-      var tableTop = '<table id="myTable" class="table table-hover"> <caption>  Episode ' + embedEpisodeNumber +  ' Show Notes </caption> <tbody> <thead> <tr> <th> &nbsp; </th> <th>time</th> <th>note</th> <th>link</th> <th>share</th> </thead>';
-      var tableBot ='</tbody></table>';
+      var tableTop =
+        '<table class="table table-hover embed-notes-table-header">' +
+          '<caption>Episode ' + embedEpisodeNumber +  ' Show Notes </caption>' +
+          '<thead>' +
+            '<tr>' +
+              '<th class="embed-notes-table__control">&nbsp;</th>' +
+              '<th class="embed-notes-table__time">time</th>' +
+              '<th class="embed-notes-table__note">note</th>' +
+              '<th class="embed-notes-table__link">link</th>' +
+              '<th class="embed-notes-table__share">share</th>' +
+            '</tr>' +
+          '</thead>' +
+        '</table>' +
+        '<div class="embed-notes-table-body-wrapper">' +
+          '<table id="myTable" class="table table-hover embed-notes-table-body">' +
+            '<tbody>'
+
+      var tableBot =
+            '</tbody>' +
+          '</table>' +
+        '</div>'
 
 
 
@@ -389,7 +408,18 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
 
 
 
-      var tableGuts = '<tr class = "' + classToggle +'" id="spewCount_' + spewCounter +'"> <div class="row"> <td id="notePlayButtonCell" spewCount="'+spewCounter+'"> <button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button> </td> <td id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td> <td id="noteWordsCell">' + childSnapshot.val().noteWords+'</td> <td id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '<td id="shareTweetCell">' + shareTweetButton + '</td></div> </tr>';
+      var tableGuts =
+        '<tr class="' + classToggle +' row" id="spewCount_' + spewCounter +'">' +
+          '<td class="embed-notes-table__control" id="notePlayButtonCell" spewCount="'+spewCounter+'">' +
+            '<button type="button" class="btn btn-default btn-sm" id="playButton_spewCount_'+ spewCounter +'">' +
+              '<span class="glyphicon glyphicon-play" aria-hidden="true"></span>' +
+            '</button>' +
+          '</td>' +
+          '<td class="embed-notes-table__time" id="noteTimeCell_spewCount_'+spewCounter+'">' + timeClean(childSnapshot.key())  + '</td>' +
+          '<td class="embed-notes-table__note" id="noteWordsCell">' + childSnapshot.val().noteWords+'</td>' +
+          '<td class="embed-notes-table__link" id="noteUrlCell">' + addUrl(childSnapshot.val().noteUrl)  + '</td>' +
+          '<td class="embed-notes-table__share" id="shareTweetCell">' + shareTweetButton + '</td>' +
+        '</tr>';
         $("#myTable").find('tbody').append($(tableGuts));
         //$("#hideOldTime").hide();
         //$("#showNewTime").show();
