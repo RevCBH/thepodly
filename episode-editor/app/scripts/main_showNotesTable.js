@@ -22,52 +22,10 @@
 podlyGlobal.showNotesTable = function(){
 
 //Part 0) initilizing variables
-    /*delete old firebase ref
-	    //create firebase references
-	    var rootUrl = Config.firebase.rootUrl;
-	    var myDataRef = new Firebase(rootUrl);
-
-	    var episodesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/';
-	    var episodesRef = new Firebase(episodesUrl);
-
-	    var episode22NotesUrl = rootUrl + 'podcasts/healyourselfradio/episodes/22/episodeNotes';
-	  	var episode22NotesRef = new Firebase(episode22NotesUrl);
-	  */
 	var ref1 = podlyGlobal.episodesUrl + newEpisodeNumber + '/episodeNotes';
 	var ref2 = new Firebase(ref1);
-	//delete | var ref3 = podlyGlobal.episodesUrl + newEpisodeNumber;
-
-
-    //delete, now uisng global variable | var newEpisodeNumber = '22';
-
+	
     //table html
-
-
- /*Matthis's code
-    // Charset we will use to encode the url data
-    var CHARSET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-    var BASE = CHARSET.length
-
-    var shortenerDomain = 'shorturl.firebaseio.com'
-
-    // Encode a number using the `CHARSET` base
-    var encode = function (i) {
-      var r
-      var output = ''
-      while (true) {
-        r = i % BASE
-        output = CHARSET[r] + output
-        i = (i - r) / BASE
-        if (i < 1) {
-          return output
-        }
-      }
-    }
-
-    //note: the & below creates a search field  with an episode number & podcast ID (proxy for name), we'll parse this later in writeEmbedMagic.js
-    var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + shortenerDomain + '/' + encode(newEpisodeNumber) + '-' + encode(podlyGlobal.podcastID) + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
-
-    end Matthis's code */
 
     var tempEmbedLink='&lt;p&gt;&lt;iframe src="' + podlyGlobal.embedHtml + newEpisodeNumber + '&'+ podlyGlobal.podcastID + '" frameborder="0" width="600" height="1500" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;';
     var embedButton = '<div id="embedButton"><button type="button" class="btn btn-default btn-sm" id="" data-toggle="modal" data-target="#myModal">Embed Player | <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>';
@@ -169,14 +127,10 @@ podlyGlobal.showNotesTable = function(){
 			$('.spewTime').prepend(tableTop);
 
 
-
 		  //runs through the DB and writes a table row in the episode editor for each show note
 		  snapshot.forEach(function(childSnapshot) {
 
 		  	spewCounter++;
-
-		  	//Hidden reference | simple Firebase code
-		  	//$('.spewTime').append(spewCounter + ') ' + childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>');
 
 		  	//class toggle (even = info, odd = )
 		  	if(spewCounter%2==0){
@@ -195,14 +149,6 @@ podlyGlobal.showNotesTable = function(){
 		  	//insert tableGuts var into DOM
 		  	$("#myTable").find('tbody').append($(tableGuts));
 
-		  //iterate through table with spew counter and hide all update buttons
-		  	//Hide Update Button after it's appended (above)
-		    //$('#tableNoteButtonUpdate').hide();
-
-		    /*delete test to see if this is getting executed once or multiple times
-			    console.log('count is '+count);
-			    count=count+1;
-			*/
 		  });
 
 
@@ -219,10 +165,8 @@ podlyGlobal.showNotesTable = function(){
 	};
 
 //Part 1) starting functions
-	//runs old way of making the table work (earliest time to latest)
-	// can delete  | temp block out | standardChronology();
 
-	//test if there are show notes, if there are, show them, if not, do nothing
+	//test if there are show notes, if there are, show them. if not, do nothing
 	ref2.on('value', function(snapshot) {
 		console.log('test value is: ' + snapshot.val());
 		var exists = (snapshot.val() !== null);
@@ -238,20 +182,4 @@ podlyGlobal.showNotesTable = function(){
  };
 
 
-// Completed tests, saving for reference |  Test 1: Spew out all the data from Firebase on https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes
-  /*/ Test 1b: Order data by time
-  var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
-  ref2.orderByKey().on("child_added", function(snapshot) {
-    $('.spewTime').append(snapshot.key() + '</br>' + snapshot.val().noteWords + '</br>' + snapshot.val().noteUrl + '<p></p><p></p>');
-  });
-  //*/
 
-  /*/Test 1c: Update the list in realtime by using on.'value' insted of on.'child'
-  var ref2 = new Firebase("https://sky-jump-run.firebaseio.com/podcasts/healyourselfradio/episodes/22/episodeNotes");
-  ref2.on("value", function(snapshot) {
-    $('.spewTime').empty();
-    snapshot.forEach(function(childSnapshot) {
-      $('.spewTime').append(childSnapshot.key() + '</br>' + childSnapshot.val().noteWords + '</br>' + childSnapshot.val().noteUrl + '<p></p><p></p>');
-    });
-  });
-  //*/
