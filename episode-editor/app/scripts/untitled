@@ -1,31 +1,11 @@
-/*
-	We're makign a global function that can convert looooooong links into pretty little bit.ly links 
-*/ 
-podlyGlobal.urlShortener = function(){  
-	
-
-	//steps: convert url --> 'percent-encoding' --> bit.ly
-
-	//step 1: convert programatically make a basic bit.ly
 
 
-	function getShortUr(url, callback){
-	   var accessToken = 'f601d9565a3a86214a25aeb47975962bbd8f579d';
-	   var url = 'https://api-ssl.bitly.com/v3/shorten?access_token=' + accessToken + '&longUrl=' + 'https://mail.google.com/mail/';
+ //create firebase references
+    //**** Need to desipher which podcast this is from the UNIQUE URL# WE GIVE PODCASTERS (FOR NOW)***
+    podlyGlobal.podcastID = 'healyourselfradio';
+    
+    podlyGlobal.rootUrl = 'https://sky-jump-run.firebaseIO.com/';
+    podlyGlobal.myDataRef = new Firebase(podlyGlobal.rootUrl);
 
-	    $.getJSON(
-	        url,
-	        {},
-	        function(response)
-	        {
-	            if(callback)
-	                callback(response.data.url);
-	            	console.log('if happened'); 
-	        	console.log('function(response) happened'); 
-	        }
-	       console.log('$.getJson happened'); 
-	    );
-	}, 
-
-
-}(); 
+    podlyGlobal.episodesUrl = podlyGlobal.rootUrl + 'podcasts/'+ podlyGlobal.podcastID+'/episodes';
+    podlyGlobal.episodesRef = new Firebase(podlyGlobal.episodesUrl);
