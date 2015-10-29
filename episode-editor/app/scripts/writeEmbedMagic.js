@@ -336,9 +336,6 @@ $(document).ready(function(){
 // part 3: Display Episode Table from Firebase
 
 var displayEpisodeTable = function(baseUrl, ref2, hashtags){
-
-
-
     var episodeNotesRef = new Firebase(baseUrl + embedEpisodeNumber + '/episodeNotes');
 
     //Load the table data (middle of table) from firebase
@@ -426,8 +423,6 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
         //console.log(timeClean(2123));
         twttr.widgets.load();
       });
-
-
 
         //table close (bottom)
       $("#myTable").find('tbody').append($(tableBot));

@@ -15,6 +15,10 @@
 */
 
 $(document).ready(function(){
+//redirect
+window.location.replace("https://storytime.tech/embed.html?1&639314838#.1");
+
+
 //0: initalize variables
   /* delete | twitter
     var twttr = (function(d, s, id) {
