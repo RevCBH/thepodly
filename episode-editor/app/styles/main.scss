@@ -179,3 +179,55 @@ body {
     border-bottom: 0;
   }
 }
+
+
+// ----------- iPhone Responsive Design -----------
+@media screen and (max-width: 414px) {
+  body {
+    padding: 10px;
+  }
+  .container, .header {
+    padding: 0;
+  }
+  .episodeNameTest h4 {
+    margin: 10px 0 20px 0;
+    text-align: center;
+  }
+  .podcastAudioArea {
+    text-align: center;
+    h5 {
+      display: none;
+    }
+  }
+  #masterAudioDiv {
+    margin: 10px 0;
+  }
+  .embed-notes-table-body-wrapper {
+    max-height: 224px;
+  }
+  .embed-notes-table-header,
+  .embed-notes-table-body {
+    td, th {
+      padding: 5px 5px 5px 3px !important;
+      vertical-align: middle !important;
+      font-size: 12px;
+    }
+    .embed-notes-table__control .btn {
+      padding: 2px 6px;
+    }
+    .embed-notes-table__note {
+      // white-space: nowrap;
+      // text-overflow: ellipsis;
+    }
+    .embed-notes-table__control { width: 34px; }
+    .embed-notes-table__time    { width: 49px; }
+    .embed-notes-table__note    { width: auto; }
+    .embed-notes-table__link    { width: 28px; }
+    .embed-notes-table__share   { width: 84px; }
+    .embed-notes-body-wrapper {
+      max-height: 200px;
+      overflow-y: scroll;
+    }
+  }
+}
+
