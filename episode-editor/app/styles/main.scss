@@ -46,7 +46,6 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 
 #rowly hr
 {
-  background-color: red;
   padding: 0px;
   margin: 5px;
 }
@@ -75,7 +74,7 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
   .embed-notes-table__link    { width: 42px; }
   .embed-notes-table__share   { width: 92px; }
   .embed-notes-body-wrapper {
-    max-height: 200px;
+    /*max-height: 200px;*/
     overflow-y: scroll;
   }
 }
@@ -85,7 +84,7 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 }
 
 .embed-notes-table-body-wrapper {
-  max-height: 274px;
+  /*max-height: 274px;*/
   overflow-y: auto;
 }
 
@@ -203,7 +202,7 @@ body {
     margin: 10px 0;
   }
   .embed-notes-table-body-wrapper {
-    max-height: 224px;
+    max-height: 475px;
   }
   .embed-notes-table-header,
   .embed-notes-table-body {
