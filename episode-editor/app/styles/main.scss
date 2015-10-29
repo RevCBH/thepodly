@@ -51,6 +51,44 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
   margin: 5px;
 }
 
+// Table that list the notes in the embed page
+.embed-notes-table-header,
+.embed-notes-table-body {
+  width: 100%;
+  .row:before, .row:after {
+    content: none;
+    display: initial;
+  }
+  thead > tr > th {
+    border-top: 1px solid #ddd !important;
+  }
+  tbody {
+    display: block;
+    width: 100%;
+    & > tr > td {
+      border-top: solid 1px transparent !important;
+    }
+  }
+  .embed-notes-table__control { width: 50px; }
+  .embed-notes-table__time    { width: 63px; }
+  .embed-notes-table__note    { width: auto; }
+  .embed-notes-table__link    { width: 42px; }
+  .embed-notes-table__share   { width: 92px; }
+  .embed-notes-body-wrapper {
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+}
+
+.embed-notes-table-header {
+  margin-bottom: 0;
+}
+
+.embed-notes-table-body-wrapper {
+  max-height: 274px;
+  overflow-y: auto;
+}
+
 
 /* I don't know what this stuff is for */
 
