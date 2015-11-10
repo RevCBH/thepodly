@@ -67,7 +67,7 @@ $(".podcasterInfo").stick_in_parent();
       //check results
 
         //itterate throgh the list and print 1) time, 2) words, 3) url
-        console.log('list length =  '+list.length); 
+        //delete | console.log('list length =  '+list.length); 
         var i;
         var j; 
         for (i=0; i<list.length; i++){
@@ -89,7 +89,7 @@ $(".podcasterInfo").stick_in_parent();
       //outer asynchronous function uses hashTime to figure out podcastName
       ref.on("value", function(snapshot){
         var podcastName = snapshot.val();
-        console.log("is podcastName working?" + snapshot.val());
+        
         //initizlie baseURL
         var baseUrl = rootUrl + 'podcasts/' + podcastName + '/podcastTitle'; 
         
@@ -99,7 +99,7 @@ $(".podcasterInfo").stick_in_parent();
         //inner asynchronous function writes Podcast Name to the DOM in podcasterInfo_title
         ref2.once("value", function(snapshot) {
           var infoShow = snapshot.val();
-          console.log("is infoShow working? "+ snapshot.val()); 
+          
           $('#podcasterInfo_title').append(
             infoShow);
         });
@@ -126,7 +126,7 @@ $(".podcasterInfo").stick_in_parent();
       
           //test if there are show notes, if there are, show them. if not, do nothing
           ref3.once('value', function(snapshot) {
-            console.log('test value is: ' + snapshot.val());
+            
             var exists = (snapshot.val() !== null);
             if (exists){
               //displays episode notes in referense choronology

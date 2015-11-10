@@ -363,13 +363,12 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
         //function to turn time into something readable
           var timeClean = function(seconds){
             //show hours if there's enough time
-        var cellTimes = seconds;
-        var formatTime = moment().startOf('day')
-              .seconds(cellTimes)
-              .format('H:mm:ss');
-              return formatTime;
-
-      };
+            var cellTimes = seconds;
+            var formatTime = moment().startOf('day')
+                  .seconds(cellTimes)
+                  .format('H:mm:ss');
+                  return formatTime;
+          };
         /////test writing time in mm:ss and use this for error correction
         //$('.timeShow').prepend(moment.duration(timeClean(200)).asSeconds());
         //$('.timeShow').prepend(timeClean(2123)+" this is a thing!");
