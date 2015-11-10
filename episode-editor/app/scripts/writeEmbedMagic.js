@@ -487,6 +487,8 @@ var displayEpisodeTable = function(baseUrl, ref2, hashtags){
     };
 
 // starting code
+
+  //start the functions! 
   episodeInfoWrite(embedEpisodeNumber);
 
 
