@@ -179,7 +179,7 @@ $(document).ready(function(){
         var loadingDiv = ThePodly.LoadingIndicator.getHTML();
 
       //write html into dom podcastAudioArea
-      $('.podcastAudioArea').append('<h5>Audio Controls</h5>' + audioPlayer + loadingDiv);
+      $('.podcastAudioArea').append(audioPlayer + loadingDiv);
 
 
 

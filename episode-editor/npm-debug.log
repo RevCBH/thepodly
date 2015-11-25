@@ -1,0 +1,179 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'generator-lessapp' ]
+2 info using npm@2.13.0
+3 info using node@v0.12.7
+4 verbose install initial load of /usr/local/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+6 silly cache add args [ 'generator-lessapp', null ]
+7 verbose cache add spec generator-lessapp
+8 silly cache add parsed spec { raw: 'generator-lessapp',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'generator-lessapp',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: '*',
+8 silly cache add   type: 'range' }
+9 silly addNamed generator-lessapp@*
+10 verbose addNamed "*" is a valid semver range for generator-lessapp
+11 silly addNameRange { name: 'generator-lessapp', range: '*', hasData: false }
+12 silly mapToRegistry name generator-lessapp
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/generator-lessapp
+16 verbose addNameRange registry:https://registry.npmjs.org/generator-lessapp not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/generator-lessapp
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 6:36:54 PM
+20 verbose request id 46dc37010d96ab81
+21 http request GET https://registry.npmjs.org/generator-lessapp
+22 http 200 https://registry.npmjs.org/generator-lessapp
+23 silly get cb [ 200,
+23 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+23 silly get     etag: '"CT76BZ70IGB03BBS4HBD1ZPRO"',
+23 silly get     'content-type': 'application/json',
+23 silly get     'cache-control': 'max-age=60',
+23 silly get     'content-length': '24617',
+23 silly get     'accept-ranges': 'bytes',
+23 silly get     date: 'Fri, 13 Nov 2015 02:28:19 GMT',
+23 silly get     via: '1.1 varnish',
+23 silly get     age: '0',
+23 silly get     connection: 'keep-alive',
+23 silly get     'x-served-by': 'cache-sjc3131-SJC',
+23 silly get     'x-cache': 'MISS',
+23 silly get     'x-cache-hits': '0',
+23 silly get     'x-timer': 'S1447381699.653358,VS0,VE214',
+23 silly get     vary: 'Accept' } ]
+24 verbose get saving generator-lessapp to /Users/cedricomdahl/.npm/registry.npmjs.org/generator-lessapp/.cache.json
+25 silly addNameRange number 2 { name: 'generator-lessapp', range: '*', hasData: true }
+26 silly addNameRange versions [ 'generator-lessapp',
+26 silly addNameRange   [ '0.1.4',
+26 silly addNameRange     '0.1.5',
+26 silly addNameRange     '0.1.6',
+26 silly addNameRange     '0.1.7',
+26 silly addNameRange     '0.2.0',
+26 silly addNameRange     '0.2.1',
+26 silly addNameRange     '0.3.0',
+26 silly addNameRange     '0.4.0',
+26 silly addNameRange     '0.4.6',
+26 silly addNameRange     '0.4.7',
+26 silly addNameRange     '0.4.9',
+26 silly addNameRange     '0.4.10',
+26 silly addNameRange     '0.4.11',
+26 silly addNameRange     '0.4.12',
+26 silly addNameRange     '0.4.13',
+26 silly addNameRange     '0.5.0',
+26 silly addNameRange     '0.5.1' ] ]
+27 silly addNamed generator-lessapp@0.5.1
+28 verbose addNamed "0.5.1" is a plain semver version for generator-lessapp
+29 silly mapToRegistry name generator-lessapp
+30 silly mapToRegistry using default registry
+31 silly mapToRegistry registry https://registry.npmjs.org/
+32 silly mapToRegistry uri https://registry.npmjs.org/generator-lessapp
+33 verbose addRemoteTarball https://registry.npmjs.org/generator-lessapp/-/generator-lessapp-0.5.1.tgz not in flight; adding
+34 verbose addRemoteTarball [ 'https://registry.npmjs.org/generator-lessapp/-/generator-lessapp-0.5.1.tgz',
+34 verbose addRemoteTarball   '0e05db8a68d879ea7d56ad1af3ef32571a397fe2' ]
+35 info retry fetch attempt 1 at 6:36:55 PM
+36 info attempt registry request try #1 at 6:36:55 PM
+37 http fetch GET https://registry.npmjs.org/generator-lessapp/-/generator-lessapp-0.5.1.tgz
+38 http fetch 200 https://registry.npmjs.org/generator-lessapp/-/generator-lessapp-0.5.1.tgz
+39 silly fetchAndShaCheck shasum 0e05db8a68d879ea7d56ad1af3ef32571a397fe2
+40 verbose addTmpTarball /var/folders/cj/nmvsj3cm8xl3yj0059btcknr0000gp/T/npm-33249-57d77990/registry.npmjs.org/generator-lessapp/-/generator-lessapp-0.5.1.tgz not in flight; adding
+41 verbose addTmpTarball already have metadata; skipping unpack for generator-lessapp@0.5.1
+42 silly cache afterAdd generator-lessapp@0.5.1
+43 verbose afterAdd /Users/cedricomdahl/.npm/generator-lessapp/0.5.1/package/package.json not in flight; writing
+44 verbose afterAdd /Users/cedricomdahl/.npm/generator-lessapp/0.5.1/package/package.json written
+45 silly install resolved [ { name: 'generator-lessapp',
+45 silly install resolved     version: '0.5.1',
+45 silly install resolved     description: 'Scaffold out a LESS front-end web app',
+45 silly install resolved     license: 'BSD',
+45 silly install resolved     repository:
+45 silly install resolved      { type: 'git',
+45 silly install resolved        url: 'https://github.com/robinpokorny/generator-lessapp' },
+45 silly install resolved     author: { name: 'Robin Pokorný' },
+45 silly install resolved     main: 'app/index.js',
+45 silly install resolved     scripts: { test: 'mocha --reporter spec' },
+45 silly install resolved     files: [ 'app' ],
+45 silly install resolved     keywords:
+45 silly install resolved      [ 'yeoman-generator',
+45 silly install resolved        'web',
+45 silly install resolved        'app',
+45 silly install resolved        'front-end',
+45 silly install resolved        'h5bp',
+45 silly install resolved        'modernizr',
+45 silly install resolved        'less',
+45 silly install resolved        'jquery',
+45 silly install resolved        'grunt' ],
+45 silly install resolved     dependencies:
+45 silly install resolved      { chalk: '^1.0.0',
+45 silly install resolved        cheerio: '^0.18.0',
+45 silly install resolved        'yeoman-generator': '^0.18.9',
+45 silly install resolved        yosay: '^1.0.2' },
+45 silly install resolved     devDependencies: { mocha: '*', underscore: '^1.6.0' },
+45 silly install resolved     peerDependencies: { 'generator-mocha': '>=0.1.0' },
+45 silly install resolved     gitHead: 'be7490f6fa780a016d57d7101945ce4eee6a8923',
+45 silly install resolved     bugs: { url: 'https://github.com/robinpokorny/generator-lessapp/issues' },
+45 silly install resolved     homepage: 'https://github.com/robinpokorny/generator-lessapp',
+45 silly install resolved     _id: 'generator-lessapp@0.5.1',
+45 silly install resolved     _shasum: '0e05db8a68d879ea7d56ad1af3ef32571a397fe2',
+45 silly install resolved     _from: 'generator-lessapp@*',
+45 silly install resolved     _npmVersion: '2.3.0',
+45 silly install resolved     _nodeVersion: '0.10.32',
+45 silly install resolved     _npmUser: { name: 'robinpokorny', email: 'robin@medvedi.eu' },
+45 silly install resolved     maintainers: [ [Object] ],
+45 silly install resolved     dist:
+45 silly install resolved      { shasum: '0e05db8a68d879ea7d56ad1af3ef32571a397fe2',
+45 silly install resolved        tarball: 'http://registry.npmjs.org/generator-lessapp/-/generator-lessapp-0.5.1.tgz' },
+45 silly install resolved     directories: {},
+45 silly install resolved     _resolved: 'https://registry.npmjs.org/generator-lessapp/-/generator-lessapp-0.5.1.tgz' } ]
+46 info install generator-lessapp@0.5.1 into /usr/local/lib
+47 info installOne generator-lessapp@0.5.1
+48 verbose installOne of generator-lessapp to /usr/local/lib not in flight; installing
+49 verbose lock using /Users/cedricomdahl/.npm/_locks/generator-lessapp-77de4cc43e706f59.lock for /usr/local/lib/node_modules/generator-lessapp
+50 silly install write writing generator-lessapp 0.5.1 to /usr/local/lib/node_modules/generator-lessapp
+51 verbose unbuild lib/node_modules/generator-lessapp
+52 silly gentlyRm /usr/local/lib/node_modules/generator-lessapp is being purged from base /usr/local
+53 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/generator-lessapp
+54 verbose tar unpack /Users/cedricomdahl/.npm/generator-lessapp/0.5.1/package.tgz
+55 verbose tar unpacking to /usr/local/lib/node_modules/generator-lessapp
+56 silly gentlyRm /usr/local/lib/node_modules/generator-lessapp is being purged
+57 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/generator-lessapp
+58 silly gunzTarPerm modes [ '755', '644' ]
+59 error tar.unpack untar error /Users/cedricomdahl/.npm/generator-lessapp/0.5.1/package.tgz
+60 verbose unlock done using /Users/cedricomdahl/.npm/_locks/generator-lessapp-77de4cc43e706f59.lock for /usr/local/lib/node_modules/generator-lessapp
+61 verbose fstream_path /usr/local/lib/node_modules/generator-lessapp
+62 verbose fstream_type Directory
+63 verbose fstream_class DirWriter
+64 verbose stack Error: EACCES, mkdir '/usr/local/lib/node_modules/generator-lessapp'
+64 verbose stack     at Error (native)
+65 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25
+65 verbose fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53
+65 verbose fstream_stack FSReqWrap.oncomplete (fs.js:95:15)
+66 verbose cwd /Users/cedricomdahl/thepodly/episode-editor
+67 error Darwin 14.4.0
+68 error argv "node" "/usr/local/bin/npm" "install" "-g" "generator-lessapp"
+69 error node v0.12.7
+70 error npm  v2.13.0
+71 error path /usr/local/lib/node_modules/generator-lessapp
+72 error code EACCES
+73 error errno -13
+74 error Error: EACCES, mkdir '/usr/local/lib/node_modules/generator-lessapp'
+74 error     at Error (native)
+74 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/generator-lessapp']
+74 error   errno: -13,
+74 error   code: 'EACCES',
+74 error   path: '/usr/local/lib/node_modules/generator-lessapp',
+74 error   fstream_type: 'Directory',
+74 error   fstream_path: '/usr/local/lib/node_modules/generator-lessapp',
+74 error   fstream_class: 'DirWriter',
+74 error   fstream_stack:
+74 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25',
+74 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53',
+74 error      'FSReqWrap.oncomplete (fs.js:95:15)' ] }
+75 error Please try running this command again as root/Administrator.
+76 verbose exit [ -13, true ]
+77 verbose unbuild lib/node_modules/generator-lessapp
+78 silly gentlyRm /usr/local/lib/node_modules/generator-lessapp is being purged from base /usr/local
+79 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/generator-lessapp

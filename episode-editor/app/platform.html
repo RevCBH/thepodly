@@ -39,49 +39,95 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <div class="navbar navbar-default navbar-fixed-top visible-xs" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+            <ul clas ="nav navbar-nav">
+                <li class = "active"><a href="#">Link 1 example</a></li> 
+                <li><a href="#">Link 2 example</a></li> 
+            </ul>
+        </div>
+    </div>
+
 
     <div class="container">
       <div class="header">
         <div class="podcasterInfo">
         <!--  data-spy="affix" data-offset-top="0" data-offset-bottom="200">--> 
           
-          <div class="row">
-
-            <div class = "col-md-7" id="podcasterInfo_title">
-                Podcast | 
-            </div>
-            <div class = "col-md-4" id = "podcasterInfo_social">
+        <div class="row">
+          
+          
+                <div class="col-xs-12">
+                    <div class = "" id="podcasterInfo_title">
+                        Podcast | 
+                    </div>
+                    <div class = "" id = "podcasterInfo_social"></div>
                 
-                 
-            </div>
-            
-            
-            
-          </div> 
-        
-        
-        
-            <div id='rowly' class = 'row'>
-                <div class = 'span12'>
-                    <hr>
+                   <div id='rowly' class = 'row'>
+                        <div class = 'span12'>
+                            <hr>
+                        </div>
+                    </div>
+               </div>
+                    <!-- Hiding description for now <div class="episodeDescriptionTest"></div> --> 
+                    
+                    <div class = "col-lg-3 col-md-3 col-sm-3 hidden-xs"> 
+                        Episodes
+                        <nav>
+                          <ul class="pagination pagination-sm">
+                            <li>
+                              <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li class="active"><a href="#">3</a></li>
+                            <li>
+                              <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                        <ul class="nav nav-pills nav-stacked">
+                            
+                            <li><a href="#">30 - The Wave</a></li>
+                            <li><a href="#">31 - The Heroine of Heroin</a></li>
+                            <li><a href="#">32 - The Great North American TIFU</a></li>
+                            <li><a href="#">33 - A Tale of Two Fighters</a></li>
+                            <li><a href="#">34 - The Story of Matthew VanDyke</a></li>
+                            <li><a href="#">35 - Real Life First Person Shooter</a></li>
+                            <li><a href="#">36 - Willie Barcena</a></li>
+                            <li class="active"><a href="#">37 | Reddit in Watercolour</a></li>
+                            <li><a href="#">38 - Hold On</a></li>
+                        </ul>
+                    </div>
+                  <!--  Hidden Menu Test   --> 
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                        <div class="episodeNumberTest"></div>
+                    
+                    <div class="episodeNameTest"></div>
+                    
+                    <div class="podcastAudioArea"></div>
+                        <div class="spewTime"></div>
+                        <!--<div class="episodeList"></div>--> 
+                    </div>
                 </div>
-            </div>
 
-            <div class="episodeNumberTest"></div>
-            
-            <div class="episodeNameTest"></div>
-            
-            <div class="podcastAudioArea"></div>
+          </div>   
         </div>
-        <!-- Hiding description for now <div class="episodeDescriptionTest"></div> --> 
-        <div class="spewTime"></div>
-    
-        </div> 
       <!-- End panel --> 
       </div> 
-    <div class="episodeList">
-
-    </div>
+   
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -159,7 +205,6 @@
     <script src="scripts/writeEmbedMagic.js"></script> 
 
     <script src="scripts/platformSpecific.js"></script>
-
 
     <script src="scripts/platformSpecific_episodeList.js"></script>
     

@@ -4,7 +4,16 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-/* Podcast Info Title */
+
+  
+
+/* Episode List on Platform.html */ 
+
+.episodeList{
+  background-color: #ccffcc; 
+  width: 200px; 
+}
+
 
 
 /* Controls Loading thing */
@@ -22,17 +31,19 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 .podcasterInfo{
   padding-top: 25px;
   padding-bottom: 15px;
-  margin-top: -20px;
+  margin-top: 0;
   background-color: white;
-  width: 700px;
+  /*width: 700px;*/
   z-index: 1;
   border-bottom: 2px solid #B3B3B3;
+  position: relative; 
 }
 
 #podcasterInfo_social
 {
   text-align: right;
   padding-top: 10px;
+  position: relative;
 }
 
 #podcasterInfo_title{
@@ -41,6 +52,7 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
   margin: 0px;
   font-size: 25px;
   font-weight: 500;
+  position: relative; 
 }
 
 
@@ -182,6 +194,16 @@ body {
 
 // ----------- iPhone Responsive Design -----------
 @media screen and (max-width: 414px) {
+  .podcasterInfo{
+    padding-top: 35px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    background-color: white;
+    /*width: 700px;*/
+    z-index: 1;
+    border-bottom: 2px solid #B3B3B3;
+    position: relative; 
+  }
   body {
     padding: 10px;
   }

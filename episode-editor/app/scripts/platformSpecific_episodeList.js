@@ -41,13 +41,7 @@ $(".podcasterInfo").stick_in_parent();
     //initialize table html
       var episodeListTableTop =
         '<table class="table table-hover  embed-notes-table-header">' +
-          '<caption>Episode List</caption>' +
-          '<thead>' +
-            '<tr>' +
-              '<th class="embed-notes-table__control">#</th>' +
-              '<th class="embed-notes-table__link">name</th>' +
-            '</tr>' +
-          '</thead>' +
+          '<caption>Episodes</caption>' +
         '</table>' +
         '<div class="embed-notes-table-body-wrapper">' +
           '<table id="myTable" class="table table-hover embed-notes-table-body">' +
